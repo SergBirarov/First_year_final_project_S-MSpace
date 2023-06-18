@@ -1,0 +1,57 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #222c38;
+}
+
+.nav-bar {
+    background-color: rgba(4, 27, 41, 1);
+    display: block;
+    margin: 38px auto;
+    width: max(1180px);
+    height: 70px;
+    box-shadow: 6px 5px 4px 0 rgba(0, 0, 0, 0.40);
+
+}
+
+.index_main {
+    background: linear-gradient(90deg, rgb(27, 38, 50) 0%, rgba(4, 27, 41, 1) 60%);
+    display: block;
+    margin: 30px auto;
+    width: 1180px;
+    height: 453px;
+    box-shadow: 6px 5px 4px 0 rgba(0, 0, 0, 0.40);
+
+}
+
+.index_section {
+    background: linear-gradient(90deg, rgba(29, 41, 54, 1) 25%, rgba(4, 27, 41, 1) 75%);
+    display: block;
+    margin: 38px auto;
+    width: 1180px;
+    height: 738px;
+    box-shadow: 6px 5px 4px 0 rgba(0, 0, 0, 0.40);
+
+
+    color: #1d2936;
+    color: #041b29;
+    color: rgb(0, 0, 0, 25%);
+}
+
+#heroGIF {
+    position: relative;
+    left: 78%;
+    top: 50%;
+    width: 493px;
+    height: 348px;
+    border-radius: 100%;
+    /* border-radius: 200px; */
+    mix-blend-mode: lighten; /*זה עושה את רקע התמונה יותר ומה לרקע הדף*/
+    transform: translate(-50%, -50%);
+}
