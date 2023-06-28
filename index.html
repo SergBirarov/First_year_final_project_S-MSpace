@@ -5,49 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James-WEBB Final JS Project</title>
     <link rel="stylesheet" href="/Media/index.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-     rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-     <link rel="stylesheet" href="/Media/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Media/index.css">
 </head>
 <body>
-    <!--navbar-->
-    <nav id="navbar" class="navbar navbar-expand-lg sticky-top navbar-dark " >
-        <div class="container text-uppercase fw-bold" style="background-color: #041B29;">
-          <a class="navbar-brand" href="/index.html">
-            <img class="img m-1" src="./Media/Assets/webb logo.png" alt="" width="80" height="35">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-          data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbar">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <li class="nav-item ">
-                <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">store</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">james-webb</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">about us</a>
-              </li>
-            </ul>
-        </div>
-        <div class="btn-group-sm" role="group" aria-label="nav_login">
-          <button type="button" class="btn btn-outline-secondary">LOGIN</button>
-          <button type="button" class="btn btn-outline-secondary">SIGN-UP</button>
-          <a  class="dropdown-toggle" href="">
-            <img class="img-fluid" src="/Media/Assets/profile.png" alt="" width="40" height="40">
-          </a>
-          
-        </div>
-      </nav>
+      <!--navbar-->
 
-    <!--titles-->
-    <div class="container text-light">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #041B29;">
+          <div class="container text-uppercase fw-bold">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <img src="/Media/Assets/webb logo.png" alt="Bootstrap" width="80" height="40">
+            </a>
+            <div class="collapse navbar-collapse" id="navbar">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">about</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">team</a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill">LOGIN</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill">SIGN-UP</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+          
+  <!--titles-->
+
+  <div class="container-lg text-light ">
+
+    <div class="row  mb-3 mt-3" style="background-image:linear-gradient(90deg, rgb(27, 38, 50) 0%, rgb(4, 27, 41) 60%);">
+      <div class="col-sm-8 ">
+        <h1 class="display-4">JAMES WEBB <br>
+          TELESCOPE<br>
+          <small class="text-white-50">OUR MAN MADE EYES TO
+            <br>THE UNIVERSE</small>
+        </h1>
+          <button class="btn btn-dark border-light btn-md rounded-pill text-light fw-bold text-uppercase">Pricing</button>
+          <button class="btn btn-dark border-light btn-md rounded-pill text-light fw-bold text-uppercase">More information</button>
+      </div>
+      <div class="col-sm-4">
+        <img class="img-fluid" src="./Media/Assets/heroGIF.gif" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!--Cards-->
+  <div class="container-lg ">
+    <div class="container  text-light">
+      <div class="row " style="background-image:linear-gradient(90deg, rgb(27, 38, 50) 0%, rgba(4, 27, 41, 1) 60%);">
+        <div class="col-sm-3">
+          <div class="card p-md-2 text-light" style="width: 18rem; background-color: #233142;">
+            <img src="/Media/Assets/1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, saepe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card p-md-2 text-light" style="width: 18rem; background-color: #233142;">
+            <img src="/Media/Assets/2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, saepe.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card p-md-2 text-light" style="width: 18rem; background-color: #233142;">
+            <img src="/Media/Assets/3.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis, itaque?</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="card p-md-2 text-light" style="width: 18rem; background-color: #233142;">
+            <img src="/Media/Assets/4.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, asperiores!</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container">
+            <figure class="text-center">
+              <blockquote class="blockquote">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi minus placeat harum! Error, cum reprehenderit.</p>
+              </blockquote>
+              <figcaption class="blockquote-footer">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </figcaption>
+            </figure>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, fugit minus! 
+              Consectetur reprehenderit possimus saepe quisquam repellat numquam quaerat adipisci
+               at hic mollitia, facere atque nulla, necessitatibus, itaque excepturi beatae.</p>
+          </div>
+        </div>        
+        
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <!-- <div class="container text-light">
 
       <div class="row" style="background-image:linear-gradient(90deg, rgb(27, 38, 50) 0%, rgba(4, 27, 41, 1) 60%);">
         <div class="col-sm-8 p-md-3">
@@ -66,10 +170,10 @@
           <img class="img-fluid" src="./Media/Assets/heroGIF.gif" alt="">
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!--img cards and some info-->
-    <div class="container p-3 text-light">
+    <!-- <div class="container p-3 text-light">
       <div class="row p-md-5" style="background-image:linear-gradient(90deg, rgb(27, 38, 50) 0%, rgba(4, 27, 41, 1) 60%);">
         <div class="col-sm-3">
           <div class="card p-md-2" style="width: 18rem; background-color: #233142;">
@@ -122,14 +226,10 @@
         
       </div>
     </div>
-
+ -->
 
      <!--bootstrap js links-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" 
-    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
