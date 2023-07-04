@@ -59,7 +59,7 @@ h6 {
 /*--------------------------------------------------------------
 # Sections & Section Header
 --------------------------------------------------------------*/
-section {
+/* section {
   padding: 60px 0;
   overflow: hidden;
 }
@@ -2666,4 +2666,4 @@ section {
 
 .footer .credits a {
   color: #fff;
-}
+} 
