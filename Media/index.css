@@ -219,7 +219,7 @@
 
 }
 
-#loginCon .btn-close{
+#loginCon .btn-close, #signUpCon .btn-close{
   padding: 1em;
 }
 
@@ -236,4 +236,16 @@
     border: 2px solid rgba(255, 255, 255, 0.1);
     padding: 1em;
     margin-right: 20px;
+  }
+
+  #signUpCon{
+    min-height: 50vh;
+    min-width: 150%;
+    background-color: #233142;
+
+  }
+
+  .input-group{
+    width: 80%;
+    margin: auto;
   }
