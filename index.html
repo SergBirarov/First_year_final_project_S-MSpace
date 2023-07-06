@@ -28,18 +28,18 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="#about">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Team</a>
+            <a class="nav-link" href="#team">Team</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Secret Game Room</a>
           </li>
         </ul>
         <form class="d-flex p-2" >
-          <button class="btn btn-outline-info" type="submit">Log In</button>
-          <button class="btn btn-outline-secondary" type="submit">SIGN UP</button>
+          <button class="btn btn-outline-info" type="submit" data-bs-toggle="modal" data-bs-target="#logIn">Log In</button>
+          <button class="btn btn-outline-secondary" type="submit" data-bs-toggle="modal" data-bs-target="#signUp">SIGN UP</button>
         </form>
       </div>
     </div>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <div class="col-md-6 col-lg-6 hero-gif">
-          <img src="/Media/Assets/HeaderPic.png" alt="Space GIF" class="img-fluid rounded-4 mb-4">
+          <img src="/Media/Assets/HeaderPic.png" alt="" class="img-fluid rounded-4 mb-4">
         </div>
       </div>
     </div>
@@ -74,34 +74,32 @@
 
         <div class="col-xl-3 col-md-6" data-aos="fade-up">
           <div class="icon-box">
-            <div class="icon"><i class="bi bi-easel"></i></div>
             <h4 class="title"><a href="" class="stretched-link">Discover the awe-inspiring wonders of space travel</a></h4>
           </div>
         </div>
 
         <div class="col-xl-3 col-md-6" data-aos="fade-up">
           <div class="icon-box">
-            <div class="icon"><i class="bi bi-gem"></i></div>
             <h4 class="title"><a href="" class="stretched-link">Experience weightlessness and float among the stars</a></h4>
           </div>
         </div>
 
         <div class="col-xl-3 col-md-6" data-aos="fade-up" >
           <div class="icon-box">
-            <div class="icon"><i class="bi bi-geo-alt"></i></div>
             <h4 class="title"><a href="" class="stretched-link">Unleash your inner adventurer in the boundless cosmos</a></h4>
           </div>
         </div>
 
         <div class="col-xl-3 col-md-6" data-aos="fade-up">
           <div class="icon-box">
-            <div class="icon"><i class="bi bi-command"></i></div>
+            
             <h4 class="title"><a href="" class="stretched-link">Join the ranks of visionary space pioneers</a></h4>
           </div>
         </div>
 
   <!--Info cubes end-->
 
+  <main>
   <!--About us section start-->
   <section id="about" class="about">
     <div class="container" data-aos="fade-up">
@@ -217,16 +215,58 @@
 
     </div>
   </section>   
+
+  <!--Modal-log in-->
+  <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          Show a second modal and hide this one with the button below.
+        </div>
+        <button class="btn btn-primary" data-bs-target="#login2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="login2" aria-hidden="true" aria-labelledby="login2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          Hide this modal and show the first with the button below.
+        </div>
+        <button class="btn btn-primary" data-bs-target="#logIn" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
+  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+  <!--Modal-log in end-->
+  <!--Modal-sign up-->
+    <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--Modal-sign up end-->
+
   <!--Team end-->
- 
+</main>
+ <!--Footer start-->
 
-     <!--bootstrap js links-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
 
-<!--Footer start-->
-<footer class="bg-dark text-light py-3 " id="footer">
+
+
+<footer class="footer bg-dark text-light py-3 " id="footer">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 text-start">
@@ -247,4 +287,9 @@
   </div>
 </footer>
 <!--Footer end-->
+
+     <!--bootstrap js links-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
 </html>
