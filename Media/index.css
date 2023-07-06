@@ -28,7 +28,7 @@
   }
   
   a:hover {
-    color: #00b6a1;
+    color: #d9dddc;
     text-decoration: none;
   }
   
@@ -84,7 +84,7 @@
   }
 
   .header-btn {
-    font-family: var(--font-primary);
+    font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 1px;
@@ -104,24 +104,9 @@
   }
 
  /*Icon boxes*/
- .icon-boxes {
-  padding-bottom: 60px;
-}
-
-@media (min-width: 1200px) {
-  .icon-boxes:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: calc(30% + 20px);
-    background-color: #fff;
-  }
-}
 
 .icon-box {
-  padding: 60px 30px;
+  padding:30px;
   position: relative;
   overflow: hidden;
   background: #233142;
@@ -130,7 +115,6 @@
   border-radius: 8px;
   z-index: 1;
   height: 100%;
-  width: 100%;
   text-align: center;
 }
 
@@ -145,15 +129,7 @@
   transition: 0.3s;
 }
 
-.icon-box .icon {
-  margin-bottom: 20px;
-  padding-top: 10px;
-  display: inline-block;
-  transition: all 0.3s ease-in-out;
-  font-size: 48px;
-  line-height: 1;
-  color: rgba(255, 255, 255, 0.6);
-}
+
 
 .icon-box:hover {
   background: #455d7a;
@@ -215,6 +191,28 @@
 .about .content p:last-child {
   margin-bottom: 0;
 }
+
+/*Team start*/
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.aqua-gradient {
+  background:linear-gradient(0deg, rgba(64,28,130,1) 0%, rgba(32,15,50,1) 100%) !important;
+}
+
+.testimonial-card .avatar {
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 50%;
+}
+/*Team start*/
 
 
 #footer{
