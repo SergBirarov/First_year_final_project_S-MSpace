@@ -219,12 +219,27 @@
   <!--Modal-log in-->
   <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content" id="loginCon">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
-          Show a second modal and hide this one with the button below.
+          <h5 class="display-5 text-center text-white-50 p-2">Log in Below</h5>
+          <form>
+            <div class="form-floating mb-3 " style="width: 80%; margin: auto;">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                    aria-describedby="emailHelp">
+                <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="mb-3 form-floating " style="width: 80%; margin: auto;">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+          </form>
         </div>
-        <button class="btn btn-primary" data-bs-target="#login2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+        <div class="d-flex p-5">
+          <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
+          <button class="btn btn-primary" data-bs-target="#login2" data-bs-toggle="modal" data-bs-dismiss="modal" id="sign_up_from_login">Not a member? Sign-Up Here!</button>
+        </div>
       </div>
     </div>
   </div>
