@@ -11,6 +11,10 @@
     scroll-behavior: smooth;
   }
 
+  body{
+    font-family: var(--font-default);
+  }
+
 
   a {
     text-decoration: none;
