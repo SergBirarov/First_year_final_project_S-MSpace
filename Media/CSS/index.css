@@ -1,42 +1,5 @@
-/* Fonts */
-:root {
-    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-primary: "Montserrat", sans-serif;
-    --font-secondary: "Poppins", sans-serif;
-  }
-  
-  
-  /* Smooth scroll behavior */
-  :root {
-    scroll-behavior: smooth;
-  }
-
-  body{
-    font-family: var(--font-default);
-  }
-
-
-  a {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #d9dddc;
-    text-decoration: none;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-primary);
-  }
-
-  p{
-    font-size: 20px;
-  }
+@import "/Media/CSS/nav_footer.css";
+@import "/Media/CSS/root.css";
   
   .hero-section {
     display: flex;
@@ -75,9 +38,6 @@
 
   }
 
-  #navbar{
-    font-size: 20px;
-  }
 
   .header-btn {
     font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -201,8 +161,8 @@
 }
 
 .testimonial-card .avatar {
-  width: 120px;
-  height: 120px;
+  width: 40%;
+  height: 50%;
   margin-top: -60px;
   overflow: hidden;
   border: 5px solid #fff;
@@ -210,46 +170,3 @@
 }
 /*Team start*/
 
-
-#footer{
-  padding: 0;
-  margin: 0;
-}
-
-/*modals*/
-#loginCon{
-  min-height: 50vh;
-  background-color: #233142;
-
-}
-
-#loginCon .btn-close, #signUpCon .btn-close{
-  padding: 1em;
-}
-
-#submit_login, #sign_up_from_login{
-  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    letter-spacing: 1px;
-    border-radius: 25px;
-    transition: 0.3s;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 1em;
-    margin-right: 20px;
-  }
-
-  #signUpCon{
-    min-height: 50vh;
-    min-width: 150%;
-    background-color: #233142;
-
-  }
-
-  .input-group{
-    width: 80%;
-    margin: auto;
-  }

@@ -3,6 +3,7 @@ import { User } from "./models/User.js";
 
 function Main() {
 
+    $('.btn').button();
     let form = document.querySelector('#registrationForm');
     form.addEventListener("submit", submitForm);
 
