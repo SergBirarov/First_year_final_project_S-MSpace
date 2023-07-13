@@ -1,104 +1,114 @@
 /* Fonts */
 :root {
-    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-primary: "Montserrat", sans-serif;
-    --font-secondary: "Poppins", sans-serif;
-  }
-  
-  
-  /* Smooth scroll behavior */
-  :root {
-    scroll-behavior: smooth;
-  }
+  --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
+}
 
+/* Smooth scroll behavior */
+:root {
+  scroll-behavior: smooth;
+}
 
-  a {
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #d9dddc;
-    text-decoration: none;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-primary);
-  }
+a {
+  text-decoration: none;
+}
 
-  p{
-    font-size: 20px;
-  }
-  
+a:hover {
+  color: #d9dddc;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+p {
+  font-size: 20px;
+}
+
+/*תיקון תיבת ההרשמה שלא היית באמצע*/
+#signUpCon {
+  position: absolute;
+  transform: translate(-50%);
+  left: 50%;
+  top: 10%;
+}
+/*רווח בין הכפתורים LOGIN-SINGUP*/
+.btn-outline-info{
+  margin-right: 8px;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  background-color: rgba(23, 22, 25, 255);
+  color: #fff;
+  padding: 50px;
+}
+
+.hero-content {
+  /* flex: 1; */
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.hero-gif {
+  flex: 1;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.hero-gif img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 576px) {
   .hero-section {
-    display: flex;
-    align-items: center;
-    background-color:rgba(23,22,25,255);
-    color: #fff;
-    padding: 50px;
-  }
-
-  .hero-content {
-    flex: 1;
-    padding-right: 20px;
-    padding-bottom: 20px;
+    flex-direction: column;
+    text-align: center;
   }
 
   .hero-gif {
-    flex: 1;
-    text-align: center;
-    padding-bottom: 20px;
+    padding-top: 20px;
   }
 
-  .hero-gif img {
-    max-width: 100%;
-    height: auto;
-  }
+}
 
-  @media (max-width: 576px) {
-    .hero-section {
-      flex-direction: column;
-      text-align: center;
-    }
+#navbar {
+  font-size: 20px;
+}
 
-    .hero-gif {
-      padding-top: 20px;
-    }
+.header-btn {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 14px 40px;
+  margin-right: 20px;
+  border-radius: 50px;
+  transition: 0.3s;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
 
-  }
+.header-btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
 
-  #navbar{
-    font-size: 20px;
-  }
-
-  .header-btn {
-    font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 14px 40px;
-    margin-right: 20px;
-    border-radius: 50px;
-    transition: 0.3s;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .header-btn:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-  }
-
- /*Icon boxes*/
+/*Icon boxes*/
 
 .icon-box {
-  padding:30px;
+  padding: 30px;
   position: relative;
   overflow: hidden;
   background: #233142;
@@ -193,7 +203,7 @@
 }
 
 .aqua-gradient {
-  background:linear-gradient(0deg, rgba(64,28,130,1) 0%, rgba(32,15,50,1) 100%) !important;
+  background: linear-gradient(0deg, rgba(64, 28, 130, 1) 0%, rgba(32, 15, 50, 1) 100%) !important;
 }
 
 .testimonial-card .avatar {
@@ -204,48 +214,51 @@
   border: 5px solid #fff;
   border-radius: 50%;
 }
+
 /*Team start*/
 
 
-#footer{
+#footer {
   padding: 0;
   margin: 0;
 }
 
 /*modals*/
-#loginCon{
+#loginCon {
   min-height: 50vh;
   background-color: #233142;
 
 }
 
-#loginCon .btn-close, #signUpCon .btn-close{
+#loginCon .btn-close,
+#signUpCon .btn-close {
   padding: 1em;
 }
 
-#submit_login, #sign_up_from_login{
-  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    letter-spacing: 1px;
-    border-radius: 25px;
-    transition: 0.3s;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 1em;
-    margin-right: 20px;
-  }
+#submit_login,
+#sign_up_from_login {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  transition: 0.3s;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 1em;
+  margin-right: 20px;
+}
 
-  #signUpCon{
-    min-height: 50vh;
-    min-width: 150%;
-    background-color: #233142;
+#signUpCon {
+  min-height: 50vh;
+  min-width: 150%;
+  background-color: #233142;
 
-  }
+}
 
-  .input-group{
-    width: 80%;
-    margin: auto;
-  }
+.input-group {
+  width: 80%;
+  margin: auto;
+}
