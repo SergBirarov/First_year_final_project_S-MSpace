@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>James-WEBB Final JS Project</title>
-  <link rel="stylesheet" href="/Media/index.css">
+  <link rel="stylesheet" href="/Media/CSS/index.css">
   <script type="module" src="/scripts/Index.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="/Media/index.css"> -->
+  <link rel="stylesheet" href="/Media/index.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +22,14 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container ">
       <a class="navbar-brand" href="#">James <small class="text-white-50">WEBB</small></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
         aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbar">
+      <div class="collapse navbar-collapse " id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -44,9 +45,9 @@
           </li>
         </ul>
         <form class="d-flex p-2">
-          <button class="btn btn-outline-info" type="submit" data-bs-toggle="modal" data-bs-target="#logIn">Log
+          <button class="btn btn-sm btn-outline-info m-1" type="submit" data-bs-toggle="modal" data-bs-target="#logIn">Log
             In</button>
-          <button class="btn btn-outline-secondary" type="submit" data-bs-toggle="modal" data-bs-target="#signUp">SIGN
+          <button class="btn btn-sm btn-outline-secondary m-1" type="submit" data-bs-toggle="modal" data-bs-target="#signUp">SIGN
             UP</button>
         </form>
       </div>
@@ -68,7 +69,7 @@
           </div>
         </div>
         <div class="col-md-6 col-lg-6 hero-gif">
-          <img src="/Media/Assets/HeaderPic3.png" alt="" class="img-fluid rounded-4 mb-4">
+          <img src="/Media/Assets/HeaderPic.png" alt="" class="img-fluid  mb-4" style="border-radius: 50%;">
         </div>
       </div>
     </div>
@@ -107,7 +108,7 @@
             <h4 class="title"><a href="" class="stretched-link">Join the ranks of visionary space pioneers</a></h4>
           </div>
         </div>
-
+      </div>
         <!--Info cubes end-->
 
         <main>
@@ -115,7 +116,7 @@
           <section id="about" class="about">
             <div class="container" data-aos="fade-up">
 
-              <div class="section-header">
+              <div class="section-header p-4">
                 <h2>About Us</h2>
                 <p>At S&M.Space, we are dedicated to revolutionizing
                   the possibilities of space exploration. As a leading provider
@@ -126,13 +127,14 @@
                   extraordinary journeys beyond Earth's boundaries.</p>
               </div>
 
-              <div class="row gy-4">
+              <div class="row gy-4 p-4">
                 <div class="col-lg-6">
                   <h3>How does it work?</h3>
                   <img src="/Media/Assets/aboutUs.png" class="img-fluid rounded-4 mb-4" alt="">
                   <p>Before embarking on your space travel adventure, meticulous preparations are carried out to ensure
-                    your safety and comfort. Our team of expert engineers meticulously inspects and tests every
-                    component of our spacecraft and satellites to meet the highest standards of reliability.</p>
+                    your safety and comfort. Our <a href="#team">team</a> of expert engineers meticulously inspects and
+                    tests every component of our spacecraft and satellites to meet the highest standards of reliability.
+                  </p>
                   <p>Rigorous training programs are provided, equipping you with essential skills and knowledge to
                     navigate the unique challenges of space travel. Once ready, you will be guided by experienced
                     astronauts, who will be by your side throughout the journey, offering guidance and support. With our
@@ -166,75 +168,54 @@
 
             </div>
             <!--About us section start-->
-
+            <hr class="hr hr-blurry p-4" />
             <!--Team start-->
-            <hr class="hr hr-blurry" />
             <section id="team" class="team">
-              <div class="container row g-1 p-1">
+              <div class="container">
+
 
                 <div class="section-header">
                   <h2>Our Team</h2>
                   <p>Our highly skilled team consists of four dedicated professionals.</p>
                 </div>
 
-                <div class="card testimonial-card mt-2 mb-3 col-xl-3 col-md-6">
-                  <div class="card-up aqua-gradient"></div>
-                  <div class="avatar mx-auto white">
-                    <img src="/Media/Assets/serg.jpg" class="rounded-circle img-fluid" alt="woman avatar">
-                  </div>
-                  <div class="card-body text-center">
-                    <h4 class="card-title font-weight-bold">Sergey Birarov</h4>
-                    <hr>
-                    <p class="lead">CEO</p>
-                    <p class="about">Our CEO is a visionary leader, guiding our company with passion and expertise,
-                      steering us towards success and growth.</p>
-                  </div>
-                </div>
+                <div class="row gy-4">
 
-                <div class="card testimonial-card mt-2 mb-3 col-xl-3 col-md-6">
-                  <div class="card-up aqua-gradient"></div>
-                  <div class="avatar mx-auto white">
-                    <img src="/Media/Assets/Misha.png" class="rounded-circle img-fluid" alt="woman avatar">
-                  </div>
-                  <div class="card-body text-center">
-                    <h4 class="card-title font-weight-bold">Michael Kolomyza</h4>
-                    <hr>
-                    <p class="lead">Software Developer</p>
-                    <p class="about">Our Head of Software Development is a visionary leader, driving innovation and
-                      excellence in coding and technology solutions.</p>
-                  </div>
-                </div>
+                  <div class="col-xl-3 col-md-6 d-flex">
+                    <div class="member">
+                      <img src="/Media/Assets/serg.jpg" class="img-fluid" " alt="">
+                      <h4>Sergey Birarov</h4>
+                      <span>CEO</span>
+                    </div>
+                  </div><!-- End Team Member -->
+        
+                  <div class="col-xl-3 col-md-6 d-flex">
+                    <div class="member">
+                      <img src="/Media/Assets/Misha.png" class="img-fluid" alt="">
+                      <h4>Michael Kolomyza</h4>
+                      <span>Web Development</span>
+                    </div>
+                  </div><!-- End Team Member -->
 
-                <div class="card testimonial-card mt-2 mb-3 col-xl-3 col-md-6">
-                  <div class="card-up aqua-gradient"></div>
-                  <div class="avatar mx-auto white">
-                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg"
-                      class="rounded-circle img-fluid" alt="woman avatar">
-                  </div>
-                  <div class="card-body text-center">
-                    <h4 class="card-title font-weight-bold">Martha Smith</h4>
-                    <hr>
-                    <p class="lead">Head of Socials</p>
-                    <p class="about">Our Head of Social and Communications is an exceptional strategist, ensuring
-                      effective engagement and impactful messaging.</p>
-                  </div>
-                </div>
+                  <div class="col-xl-3 col-md-6 d-flex">
+                    <div class="member">
+                      <img src="/Media/Assets/team-3.jpg" class="img-fluid" alt="">
+                      <h4>Regina Phalange</h4>
+                      <span>H.R</span>
+                    </div>
+                  </div><!-- End Team Member -->
 
-                <div class="card testimonial-card mt-2 mb-3 col-xl-3 col-md-6">
-                  <div class="card-up aqua-gradient"></div>
-                  <div class="avatar mx-auto white">
-                    <img src="/Media/Assets/Ken.jpg" class="rounded-circle img-fluid" alt="woman avatar">
-                  </div>
-                  <div class="card-body text-center">
-                    <h4 class="card-title font-weight-bold">Ken Adams</h4>
-                    <hr>
-                    <p class="lead">Astronaut</p>
-                    <p class="about">Mars-experienced veteran astronaut, bringing unparalleled expertise to space
-                      exploration.</p>
-                  </div>
-                </div>
+                  <div class="col-xl-3 col-md-6 d-flex">
+                    <div class="member">
+                      <img src="/Media/Assets/astronaut in spacesuit floating in space.jpg" class="img-fluid" alt="">
+                      <h4>Ken Adams</h4>
+                      <span>Astronaut</span>
+                    </div>
+                  </div><!-- End Team Member -->
 
+                </div>
               </div>
+
             </section>
 
             <!--Modal-log in-->
@@ -252,13 +233,8 @@
                       </div>
 
                       <div class="mb-3 form-floating " style="width: 80%; margin: auto;">
-                        <!-- <button id="showPass" class="btn btn-outline-secondary" type="button"> -->
-                          <div><i class="far fa-eye-slash fa-7x"></i></div>
-                        </button><!-- תמונה של עין -->
-
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
-                        <h3 id="incorrectPassword" for="password" style="color: red; visibility: hidden;">Incorrect input</h3>
                       </div>
                     </form>
                   </div>
@@ -334,7 +310,7 @@
                         <input id="street" type="text" class="form-control" placeholder="Street">
                         <input id="houseNumber" type="text" class="form-control" placeholder="House">
                       </div>
-                      <button class="btn btn-primary mb-3" type="submit">Send</button>
+                      <button class="btn btn-primary mb-3" type="submit">שליחה</button>
                     </form>
                   </div>
                 </div>
