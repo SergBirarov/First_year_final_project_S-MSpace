@@ -1,21 +1,11 @@
-import { submitForm } from "./function.js";
+import { SendregistrationForm } from "./function.js";
+import { SendLoginForm } from "./function.js";
 import { User } from "./models/User.js";
 
 function Main() {
 
-    let form = document.querySelector('#registrationForm');
-    form.addEventListener("submit", submitForm);
-
-    //כפתור שמראה את הסיסמא
-    document.querySelector('#showPass').addEventListener('click', () => {
-        let pass = document.querySelector('#regPassword');
-        if (pass.type === "password") {
-            pass.type = "text";
-        } else {
-            pass.type = "password";
-        }
-
-    });
+    SendregistrationForm();
+    SendLoginForm();
     
     // //Function test
     // var storedUser = localStorage.getItem('asd');
