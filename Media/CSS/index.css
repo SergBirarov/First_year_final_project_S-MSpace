@@ -35,17 +35,16 @@
     .hero-gif {
       padding-top: 20px;
     }
-
   }
 
 
   .header-btn {
     font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 12px;
     letter-spacing: 1px;
     display: inline-block;
-    padding: 14px 40px;
+    padding: 12px 38px;
     margin-right: 20px;
     border-radius: 50px;
     transition: 0.3s;
@@ -83,6 +82,7 @@
 .icon-box .title a {
   color: #fff;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 
@@ -160,13 +160,44 @@
   background:linear-gradient(0deg, rgba(64,28,130,1) 0%, rgba(32,15,50,1) 100%) !important;
 }
 
-.testimonial-card .avatar {
-  width: 40%;
-  height: 50%;
-  margin-top: -60px;
+.team .member {
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
   overflow: hidden;
-  border: 5px solid #fff;
-  border-radius: 50%;
+  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
 }
+
+.team .member img {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.team .member .member-content {
+  padding: 0 20px 30px 20px;
+}
+
+.team .member h4 {
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 2px;
+  font-size: 20px;
+}
+
+.team .member span {
+  font-style: italic;
+  display: block;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.team .member p {
+  padding-top: 10px;
+  font-size: 14px;
+  font-style: italic;
+  color: #6c757d;
+}
+
 /*Team start*/
 
