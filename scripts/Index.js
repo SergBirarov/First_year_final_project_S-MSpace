@@ -6,7 +6,13 @@ function Main() {
 
     SendregistrationForm();
     SendLoginForm();
-    
+
+
+       
+
+ 
+
+
     // //Function test
     // var storedUser = localStorage.getItem('asd');
     // // Parse the JSON string back into a User object

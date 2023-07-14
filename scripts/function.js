@@ -153,14 +153,18 @@ function SubmitLogin() {
                 /*התחברות כלומר הפניית נתונים מהלוקל סטורג' לתגניות שיציגו אותו*/
                 /*מעבר לדף פרופיל */
                 alert("connect");
-                document.querySelector('#incorrectPassword').style.visibility = "hidden"; 
+                document.querySelector('#incorrectPassword').style.visibility = "hidden";
 
                 return;
             }
-            else{
-               document.querySelector('#incorrectPassword').style.visibility = "visible"; 
+            else {
+                document.querySelector('#incorrectPassword').style.visibility = "visible";
             }
         }
     }
+    else {
+        alert('No registred users');
+    }
 
 }
+
