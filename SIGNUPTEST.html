@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./Media/CSS/index.css">
     <script type="module" src="./scripts/Index.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -15,16 +16,21 @@
 <body>
     <div style="display: none;">
         <h1>טופס הרשמה</h1>
-        <form id="registrationForm">
-            <div class="input-group mb-3">
+        <form id="registrationForm" style="width: 50%; margin: auto;">
+            <div class="input-group mb-3 col-md-4">
                 <input id="regUsername" type="text" class="form-control" placeholder="Username">
+                <div class="invalid-feedback">
+                    Please provide a Username.
+                </div>
             </div>
 
             <div class="input-group mb-3">
-                <input id="regPassword" type="Password" class="form-control" placeholder="Password"
-                    aria-labelledby="passwordHelpBlock">
+                <input id="regPassword" type="Password" class="form-control" placeholder="Password">
+                <div class="invalid-feedback">
+                    Please provide a Password.
+                </div>
                 <button id="showPass" class="btn btn-outline-secondary" type="button">SHOW</button><!-- תמונה של עין -->
-                <div id="passwordHelpBlock" class="form-text">
+                <div id="ilegalPassword" class="form-text">
                     Your password must be 8-20 characters long, contain letters and numbers, and must not
                     contain spaces, special characters, or emoji.
                 </div>
@@ -58,9 +64,9 @@
             <button class="btn btn-primary mb-3" type="submit">Send</button>
         </form>
     </div>
-    <div style="display: none;">
+    <div >
         <h1>טופס התחברות</h1>
-        <form>
+        <form id="logInForm">
             <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
                     aria-describedby="emailHelp">
@@ -80,6 +86,8 @@
         </form>
     </div>
 
+    <!-- https://getbootstrap.com/docs/5.0/forms/validation/? -->
+    <!-- https://bootstrap-4.ru/docs/5.3/forms/validation/ -->
 </body>
 
 </html>

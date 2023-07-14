@@ -1,16 +1,18 @@
 import { SendregistrationForm } from "./function.js";
 import { SendLoginForm } from "./function.js";
+import { AddSuit } from "./function.js";
+import { AddFood } from "./function.js";
+import { AddShip } from "./function.js";
 import { User } from "./models/User.js";
 
 function Main() {
 
-    SendregistrationForm();
-    SendLoginForm();
+    //SendregistrationForm();
+    //SendLoginForm();
+    AddSuit();
+    AddFood();
+    AddShip();
 
-
-       
-
- 
 
 
     // //Function test

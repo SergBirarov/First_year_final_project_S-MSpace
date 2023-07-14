@@ -1,67 +1,67 @@
 @import "/Media/CSS/nav_footer.css";
 @import "/Media/CSS/root.css";
-  
-  .hero-section {
-    display: flex;
-    align-items: center;
-    background-color:rgba(23,22,25,255);
-    color: #fff;
-    padding: 50px;
-  }
 
-  .hero-content {
-    flex: 1;
-    padding-right: 20px;
-    padding-bottom: 20px;
+.hero-section {
+  display: flex;
+  align-items: center;
+  background-color: rgba(23, 22, 25, 255);
+  color: #fff;
+  padding: 50px;
+}
+
+.hero-content {
+  flex: 1;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.hero-gif {
+  flex: 1;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.hero-gif img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
   }
 
   .hero-gif {
-    flex: 1;
-    text-align: center;
-    padding-bottom: 20px;
+    padding-top: 20px;
   }
-
-  .hero-gif img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  @media (max-width: 576px) {
-    .hero-section {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .hero-gif {
-      padding-top: 20px;
-    }
-  }
+}
 
 
-  .header-btn {
-    font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 500;
-    font-size: 12px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 12px 38px;
-    margin-right: 20px;
-    border-radius: 50px;
-    transition: 0.3s;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .header-btn:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-  }
+.header-btn {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 38px;
+  margin-right: 20px;
+  border-radius: 50px;
+  transition: 0.3s;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
 
- /*Icon boxes*/
+.header-btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/*Icon boxes*/
 
 .icon-box {
-  padding:30px;
+  padding: 30px;
   position: relative;
   overflow: hidden;
   background: #233142;
@@ -157,7 +157,7 @@
 }
 
 .aqua-gradient {
-  background:linear-gradient(0deg, rgba(64,28,130,1) 0%, rgba(32,15,50,1) 100%) !important;
+  background: linear-gradient(0deg, rgba(64, 28, 130, 1) 0%, rgba(32, 15, 50, 1) 100%) !important;
 }
 
 .team .member {
@@ -199,5 +199,8 @@
   color: #6c757d;
 }
 
-/*Team start*/
+#ilegalPassword {
+  display: none;
+}
 
+/*Team start*/
