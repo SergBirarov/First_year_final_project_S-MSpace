@@ -1,30 +1,27 @@
-#navbar{
+#navbar {
     font-size: 15px;
 }
 
-  
-
-
-  
-#footer{
+#footer {
     padding: 0;
     margin: 0;
 }
-  
-  /*modals*/
-  #loginCon{
+
+/*modals*/
+#loginCon {
     min-height: 50vh;
     background-color: #233142;
-  
+
 }
-  
-  #loginCon .btn-close, #signUpCon .btn-close{
+
+#loginCon .btn-close,
+#signUpCon .btn-close {
     padding: 1em;
 }
-  
-#submit_login, #sign_up_from_login
-{
-    font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+#submit_login,
+#sign_up_from_login {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 300;
     font-size: 15px;
     letter-spacing: 1px;
@@ -38,15 +35,13 @@
     margin-right: 20px;
 }
 
-#signUpCon
-{
+#signUpCon {
     min-height: 50vh;
     min-width: 150%;
     background-color: #233142;
 }
-  
-.input-group
-{
+
+.input-group {
     width: 80%;
     margin: auto;
 }
