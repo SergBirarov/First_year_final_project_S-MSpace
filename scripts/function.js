@@ -101,7 +101,7 @@ export function submitForm(event) {
     var updatedUsersJSON = JSON.stringify(storedUsers);
 
     // Store the JSON string in localStorage
-    localStorage.setItem("users", updatedUsersJSON);/*מעבר לדף הפרופיל*/
+    localStorage.setItem("users", updatedUsersJSON);
 
 
 
