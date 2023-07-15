@@ -1,1 +1,19 @@
-@import "/Media/CSS/index.css"
+@import "/Media/CSS/root.css";
+@import "/Media/CSS/nav_footer.css";
+
+.card{
+    width: 240px;
+    padding: 0;
+}
+
+.prod{
+    width: 100%;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.card h3, .card p{
+    padding: 0.25rem;
+}
+
+
