@@ -1,0 +1,53 @@
+@import "/Media/CSS/nav_footer.css";
+@import "/Media/CSS/root.css";
+
+img{
+    width: 120px;
+    height: 120px;
+}
+
+
+.icon{
+    width: 1rem;
+    height: 1rem;
+    margin-bottom:0.25rem ;
+    padding:0.5px;
+}
+
+.user-upload {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .user-upload img {
+    width: 30%;
+    height: auto;
+    border-radius: 50%;
+    transition: filter 0.3s ease;
+  }
+  
+  .user-upload .img-avatar-upload {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .user-upload:hover img {
+    filter: brightness(0.8);
+  }
+  
+  .user-upload:hover .img-avatar-upload {
+    opacity: 1;
+  }
+  
+

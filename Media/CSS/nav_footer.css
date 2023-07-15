@@ -13,7 +13,8 @@
   
   /*modals*/
   #loginCon{
-    min-height: 50vh;
+    width: 400px;
+    height: 600px;
     background-color: #233142;
   
 }
@@ -38,11 +39,18 @@
     margin-right: 20px;
 }
 
+
 #signUpCon
 {
-    min-height: 50vh;
-    min-width: 150%;
+    width: 400px;
+    height: 600px;
     background-color: #233142;
+}
+
+.loginform{
+    width: 80%;
+    margin: auto;
+    height: 550px;
 }
   
 .input-group

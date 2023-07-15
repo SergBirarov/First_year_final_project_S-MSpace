@@ -73,6 +73,10 @@
   text-align: center;
 }
 
+.iconRow{
+  margin-top: -90px;
+}
+
 .icon-box .title {
   font-weight: 700;
   margin-bottom: 15px;
