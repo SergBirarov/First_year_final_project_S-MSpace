@@ -240,7 +240,10 @@ export function AddShip() {
             alert("Please fill in all the fields.");
             return;
         }
-
+        if (departureDate > arrivalDate) {
+            alert("Ilegal date");
+            return;
+        }
         // Create a flight object
         let flight = {
             flightNumber: flightNumber,
@@ -272,9 +275,4 @@ export function AddShip() {
 
     })
 }
-function SubmitSuit(event) {
-}
-function SubmitFood(event) {
-}
-function SubmitShip(event) {
-}
+
