@@ -2,8 +2,6 @@ import { User } from "./models/User.js";
 var storedUsers = JSON.parse(localStorage.getItem(`users`));
 var storedSuits;
 var storedFoods;
-<<<<<<< Updated upstream
-=======
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 var stackedFlights = new Array();
 var productGridF = document.getElementById("flightsSec");
@@ -66,7 +64,7 @@ export function BuildStore() {
   AddFlightToStore();
 }
 export function UserTable() {
-    let manager = new User(
+    let user1 = new User(
       `Regi`,
       `admin1234`,
       `/Media/Assets/team-3.jpg`,
@@ -79,32 +77,36 @@ export function UserTable() {
       `25`
     );
   
-    let users = `<tr>
-                  <td><img src="${manager.image}" alt="User Image" class="img-fluid"></td>
-                  <td>${manager.username}</td>
-                  <td>${manager.lastName} ${manager.firstName}</td>
-                  <td>${manager.birthDate}</td>
-                  <td>${manager.street} ${manager.number}, ${manager.city}</td>
-                  <td>${manager.email}</td>
+    let manager = `<tr>
+                  <td><img src="${user1.image}" alt="User Image" class="img-fluid"></td>
+                  <td>${user1.username}</td>
+                  <td>${user1.lastName} ${user1.firstName}</td>
+                  <td>${user1.birthDate}</td>
+                  <td>${user1.street} ${user1.number}, ${user1.city}</td>
+                  <td>${user1.email}</td>
                 </tr>`;
   
     let userTable = document.getElementById("userTable");
     
-    userTable.innerHTML += users;
+    userTable.innerHTML += manager;
+    let users =``;
+    if(storedUsers){
+        storedUsers.forEach(element => {
+            users += `<tr>
+            <td><img src="${element.image}" alt="User Image" class="img-fluid"></td>
+            <td>${element.username}</td>
+            <td>${element.lastName} ${element.firstName}</td>
+            <td>${element.birthDate}</td>
+            <td>${element.street} ${element.number}, ${element.city}</td>
+            <td>${element.email}</td>
+          </tr>`;
+        });
+    }
+   
 
-    storedUsers.forEach(element => {
-        users += `<tr>
-        <td><img src="${element.image}" alt="User Image" class="img-fluid"></td>
-        <td>${element.username}</td>
-        <td>${element.lastName} ${element.firstName}</td>
-        <td>${element.birthDate}</td>
-        <td>${element.street} ${element.number}, ${element.city}</td>
-        <td>${element.email}</td>
-      </tr>`;
-    });
+    userTable.innerHTML += users;
   }
   
->>>>>>> Stashed changes
 export function SendregistrationForm() {
     let form = document.querySelector("#registrationForm");
     form.addEventListener("submit", SubmitRegistrationForm);
@@ -120,11 +122,10 @@ export function SendregistrationForm() {
     });
 }
 export function SubmitRegistrationForm(event) {
-
-    event.preventDefault()
+    event.preventDefault();
     let username = document.getElementById("regUsername").value;
     let password = document.getElementById("regPassword").value;
-    let image = document.getElementById("image").value;
+    let imageInput = document.getElementById("image");
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let email = document.getElementById("email").value;
@@ -133,56 +134,63 @@ export function SubmitRegistrationForm(event) {
     let street = document.getElementById("street").value;
     let number = document.getElementById("houseNumber").value;
 
-    if (username === "" || password === "" || image === "" || firstName === "" || lastName === "" || email === "" || birthDate === "" || city === "" || street === "" || number === "") {
+    if (username === "" || password === "" || firstName === "" || lastName === "" || email === "" || birthDate === "" || city === "" || street === "" || number === "") {
         alert("Please fill in all the required fields.");
         return;
     }
 
+    // Get the selected file from the input
+    let file = imageInput.files[0];
 
-    // Retrieve the stored user data from localStorage
-    let storedUsersJSON = localStorage.getItem("users");
+    // Create a new FileReader instance
+    let reader = new FileReader();
 
-    // Check if the email already exists in localStorage
-    if (storedUsersJSON) {
-        storedUsers = JSON.parse(storedUsersJSON);
-        for (let i = 0; i < storedUsers.length; i++) {
-            if (storedUsers[i].email === email) {
-                alert("Email already exists. Please choose a different email.");/*להכניס את ההודעה לתיבה ולא באלארט*/
-                return;
+    // Set up an event listener for when the file is loaded
+    reader.onload = function(event) {
+        // The file content will be available in event.target.result
+        let imageContent = event.target.result;
+
+        // Retrieve the stored user data from localStorage
+        let storedUsersJSON = localStorage.getItem("users");
+
+        // Check if the email already exists in localStorage
+        if (storedUsersJSON) {
+            let storedUsers = JSON.parse(storedUsersJSON);
+            for (let i = 0; i < storedUsers.length; i++) {
+                if (storedUsers[i].email === email) {
+                    alert("Email already exists. Please choose a different email.");
+                    return;
+                }
             }
+        } else {
+            var storedUsers = [];
         }
-    } else {
-        storedUsers = [];
-    }
 
-    let newUser = new User(username, password, image, firstName, lastName, email, birthDate, city, street, number);
+        let newUser = {
+            username: username,
+            password: password,
+            image: imageContent,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            birthDate: birthDate,
+            city: city,
+            street: street,
+            number: number
+        };
 
-    // Add the User object to the storedUsers array
-    storedUsers.push(newUser);
+        // Add the newUser object to the storedUsers array
+        storedUsers.push(newUser);
 
-    // Convert the storedUsers array to a JSON string
-    let updatedUsersJSON = JSON.stringify(storedUsers);
+        // Convert the storedUsers array to a JSON string
+        let updatedUsersJSON = JSON.stringify(storedUsers);
 
-    // Store the JSON string in localStorage
-    localStorage.setItem("users", updatedUsersJSON);
+        // Store the JSON string in localStorage
+        localStorage.setItem("users", updatedUsersJSON);
+    };
 
-
-
-
-
-    // // Convert the User object to a JSON string
-    // let userJSON = JSON.stringify(newUser);
-
-    // // Store the JSON string in localStorage
-    // localStorage.setItem(username, userJSON);
-
-
-
-    // // Retrieve the JSON string from localStorage
-    // let storedUser = localStorage.getItem(username);
-    // // Parse the JSON string back into a User object
-    // storedUser = JSON.parse(storedUser);
-
+    // Read the file as a data URL (base64 encoded)
+    reader.readAsDataURL(file);
 }
 export function SendLoginForm() {
     let form = document.querySelector("#submit_login");
@@ -427,20 +435,23 @@ export function AddShip() {
 //sergey will finish this- so fuck off
 function AddFlightToStore() {
     let str = ``;
-    storedFlights.forEach((element) => {
-        str += `
-        <div class="card col-lg-3 m-2 mx-auto" >
-        <img src="${element.image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${element.flightNumber}
-        </h3>
-        <p class="small p fw-bold">
-          Price: <span>${element.price}</span>
-        </p>
-        <p class="small p fw-bold">
-          Take off: <span>${element.departureDate}</span>
-        </p>
-      </div>`;
-    });
+    if(storedFlights){
+        storedFlights.forEach((element) => {
+            str += `
+            <div class="card col-lg-3 m-2 mx-auto" >
+            <img src="${element.image}" class="prod" alt="Product 1">
+            <h3 class="fs-4">${element.flightNumber}
+            </h3>
+            <p class="small p fw-bold">
+              Price: <span>${element.price}</span>
+            </p>
+            <p class="small p fw-bold">
+              Take off: <span>${element.departureDate}</span>
+            </p>
+          </div>`;
+        });
+    }
+    
 
     productGridF.innerHTML += str;
 }
