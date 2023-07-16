@@ -2,51 +2,53 @@ import { User } from "./models/User.js";
 var storedUsers = JSON.parse(localStorage.getItem(`users`));
 var storedSuits;
 var storedFoods;
+<<<<<<< Updated upstream
+=======
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 var stackedFlights = new Array();
 var productGridF = document.getElementById("flightsSec");
 var userTable = document.getElementById("userTable");
 
 export function BuildStore() {
-    stackedFlights = [
-        {
-            flightNumber: `165-56A`,
-            departureDate: `26/07/2023`,
-            arrivalDate: `26/08/2025`,
-            classType: `Heavy`,
-            image: `/Media/Assets/Ecom/products/prod1.jpg`,
-            price: `12,500`,
-        },
-        {
-            flightNumber: `187-96A`,
-            departureDate: `26/09/2023`,
-            arrivalDate: `26/09/2024`,
-            classType: `Medium`,
-            image: `/Media/Assets/Ecom/products/prod2.jpg`,
-            price: `11,500`,
-        },
-        {
-            flightNumber: `787-96B`,
-            departureDate: `26/10/2023`,
-            arrivalDate: `26/09/2024`,
-            classType: `Light`,
-            image: `/Media/Assets/Ecom/products/prod3.jpg`,
-            price: `64,500`,
-        },
-        {
-            flightNumber: `T77-96B`,
-            departureDate: `26/10/2029`,
-            arrivalDate: `26/09/2032`,
-            classType: `Heavy`,
-            image: `/Media/Assets/Ecom/products/prod4.jpg`,
-            price: `164,500`,
-        },
-    ];
+  stackedFlights = [
+    {
+      flightNumber: `165-56A`,
+      departureDate: `26/07/2023`,
+      arrivalDate: `26/08/2025`,
+      classType: `Heavy`,
+      image: `/Media/Assets/Ecom/products/prod1.jpg`,
+      price: `12,500`,
+    },
+    {
+      flightNumber: `187-96A`,
+      departureDate: `26/09/2023`,
+      arrivalDate: `26/09/2024`,
+      classType: `Medium`,
+      image: `/Media/Assets/Ecom/products/prod2.jpg`,
+      price: `11,500`,
+    },
+    {
+      flightNumber: `787-96B`,
+      departureDate: `26/10/2023`,
+      arrivalDate: `26/09/2024`,
+      classType: `Light`,
+      image: `/Media/Assets/Ecom/products/prod3.jpg`,
+      price: `64,500`,
+    },
+    {
+      flightNumber: `T77-96B`,
+      departureDate: `26/10/2029`,
+      arrivalDate: `26/09/2032`,
+      classType: `Heavy`,
+      image: `/Media/Assets/Ecom/products/prod4.jpg`,
+      price: `164,500`,
+    },
+  ];
 
-    let str = ``;
+  let str = ``;
 
-    stackedFlights.forEach((element) => {
-        str += `
+  stackedFlights.forEach((element) => {
+    str += `
         <div class="card col-lg-3 m-2 mx-auto" >
         <img src="${element.image}" class="prod" alt="Product 1">
         <h3 class="fs-4">${element.flightNumber}
@@ -58,39 +60,51 @@ export function BuildStore() {
           Take off: <span>${element.departureDate}</span>
         </p>
       </div>`;
-    });
+  });
 
-    productGridF.innerHTML += str;
-    AddFlightToStore();
+  productGridF.innerHTML += str;
+  AddFlightToStore();
 }
 export function UserTable() {
-
-
     let manager = new User(
-        `Regi`,
-        `admin1234`,
-        `/Media/Assets/team-3.jpg`,
-        `Regina`,
-        `Phalange`,
-        `Regina@Phalange.com`,
-        `1996-11-25`,
-        `Hell`,
-        `Hell st`,
-        `25`);
-
-
+      `Regi`,
+      `admin1234`,
+      `/Media/Assets/team-3.jpg`,
+      `Regina`,
+      `Phalange`,
+      `Regina@Phalange.com`,
+      `1996-11-25`,
+      `Hell`,
+      `Hell st`,
+      `25`
+    );
+  
     let users = `<tr>
-            <td>${manager.image}</td>
-             <td>${manager.username}</td>
-             <td>${manager.lastName} ${manager.firstName}</td>
-             <td>${manager.birthDate}</td>
-             <td>${manager.street} ${manager.number}, ${manager.city}</td>
-             <td>${manager.email}</td>
-             </tr>`;
+                  <td><img src="${manager.image}" alt="User Image" class="img-fluid"></td>
+                  <td>${manager.username}</td>
+                  <td>${manager.lastName} ${manager.firstName}</td>
+                  <td>${manager.birthDate}</td>
+                  <td>${manager.street} ${manager.number}, ${manager.city}</td>
+                  <td>${manager.email}</td>
+                </tr>`;
+  
+    let userTable = document.getElementById("userTable");
+    
+    userTable.innerHTML += users;
 
-
-    userTable.innerText += users;
-}
+    storedUsers.forEach(element => {
+        users += `<tr>
+        <td><img src="${element.image}" alt="User Image" class="img-fluid"></td>
+        <td>${element.username}</td>
+        <td>${element.lastName} ${element.firstName}</td>
+        <td>${element.birthDate}</td>
+        <td>${element.street} ${element.number}, ${element.city}</td>
+        <td>${element.email}</td>
+      </tr>`;
+    });
+  }
+  
+>>>>>>> Stashed changes
 export function SendregistrationForm() {
     let form = document.querySelector("#registrationForm");
     form.addEventListener("submit", SubmitRegistrationForm);
