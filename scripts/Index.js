@@ -7,8 +7,8 @@ import { User } from "./models/User.js";
 
 function Main() {
 
-    //SendregistrationForm();
-    //SendLoginForm();
+    SendregistrationForm();
+    SendLoginForm();
     AddSuit();
     AddFood();
     AddShip();
