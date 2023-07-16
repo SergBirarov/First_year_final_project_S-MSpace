@@ -20,8 +20,7 @@ function Main() {
         AddFood();
         AddShip();
     };
-    // BuildStore();
-    // UserTable();
+    
     SendregistrationForm();
     SendLoginForm();
     
