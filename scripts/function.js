@@ -106,10 +106,11 @@ export function SendregistrationForm() {
   });
 }
 export function SubmitRegistrationForm(event) {
-    event.preventDefault();
+
+    event.preventDefault()
     let username = document.getElementById("regUsername").value;
     let password = document.getElementById("regPassword").value;
-    let imageInput = document.getElementById("image");
+    let image = document.getElementById("image").value;
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
     let email = document.getElementById("email").value;
@@ -118,65 +119,45 @@ export function SubmitRegistrationForm(event) {
     let street = document.getElementById("street").value;
     let number = document.getElementById("houseNumber").value;
 
-    if (username === "" || password === "" || firstName === "" || lastName === "" || email === "" || birthDate === "" || city === "" || street === "" || number === "") {
+    if (username === "" || password === "" || image === "" || firstName === "" || lastName === "" || email === "" || birthDate === "" || city === "" || street === "" || number === "") {
         alert("Please fill in all the required fields.");
         return;
     }
 
-    // Get the selected file from the input
-    let file = imageInput.files[0];
 
-    // Create a new FileReader instance
-    let reader = new FileReader();
+    // Retrieve the stored user data from localStorage
+    let storedUsersJSON = localStorage.getItem("users");
 
-    // Set up an event listener for when the file is loaded
-    reader.onload = function (event) {
-        // The file content will be available in event.target.result
-        let imageContent = event.target.result;
-
-        // Retrieve the stored user data from localStorage
-        let storedUsersJSON = localStorage.getItem("users");
-
-        // Check if the email already exists in localStorage
-        if (storedUsersJSON) {
-            storedUsers = JSON.parse(storedUsersJSON);
-            for (let i = 0; i < storedUsers.length; i++) {
-                if (storedUsers[i].email === email) {
-                    alert("Email already exists. Please choose a different email.");
-                    return;
-                }
+    // Check if the email already exists in localStorage
+    if (storedUsersJSON) {
+        storedUsers = JSON.parse(storedUsersJSON);
+        for (let i = 0; i < storedUsers.length; i++) {
+            if (storedUsers[i].email === email) {
+                alert("Email already exists. Please choose a different email.");/*להכניס את ההודעה לתיבה ולא באלארט*/
+                return;
             }
-        } else {
-            storedUsers = [];
         }
+    } else {
+        storedUsers = [];
+    }
 
-        let newUser = new User(
-            username,
-            password,
-            image,
-            firstName,
-            lastName,
-            email,
-            birthDate,
-            city,
-            street,
-            number
-        );
+    let newUser = new User(username, password, image, firstName, lastName, email, birthDate, city, street, number);
 
-        // Add the newUser object to the storedUsers array
-        storedUsers.push(newUser);
+    // Add the User object to the storedUsers array
+    storedUsers.push(newUser);
 
-        // Convert the storedUsers array to a JSON string
-        let updatedUsersJSON = JSON.stringify(storedUsers);
+    // Convert the storedUsers array to a JSON string
+    let updatedUsersJSON = JSON.stringify(storedUsers);
 
-        // Store the JSON string in localStorage
-        localStorage.setItem("users", updatedUsersJSON);
-    };
+    // Store the JSON string in localStorage
+    localStorage.setItem("users", updatedUsersJSON);
 
 
 
-    // Read the file as a data URL (base64 encoded)
-    //reader.readAsDataURL(file);
+
+
+
+
 
     // // Convert the User object to a JSON string
     // let userJSON = JSON.stringify(newUser);
