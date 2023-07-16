@@ -1,5 +1,7 @@
 @import "/Media/CSS/nav_footer.css";
 @import "/Media/CSS/root.css";
+@import "/Media/CSS/store.css";
+@import "/Media/CSS/managerProfile.css";
 
 .hero-section {
   display: flex;
