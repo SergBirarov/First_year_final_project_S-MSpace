@@ -59,21 +59,30 @@ export function BuildStore() {
 
   let str = ``;
 
-  stackedFlights.forEach((element) => {
+
+  for(let i=0; i < stackedFlights.length;i++){
+    
     str += `
         <div class="card col-lg-3 m-2 mx-auto" >
-        <img src="${element.image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${element.flightNumber}
+        <img src="${stackedFlights[i].image}" class="prod" alt="Product 1">
+        <h3 class="fs-4">${stackedFlights[i].flightNumber}
         </h3>
         <p class="small p fw-bold">
-          Price: <span>${element.price}</span>
+          Price: <span>${stackedFlights[i].price}</span>
         </p>
         <p class="small p fw-bold">
-          Take off: <span>${element.departureDate}</span>
+          Take off: <span>${stackedFlights[i].departureDate}</span>
         </p>
+        <button class="prodBut btn btn-info">buy</button>
       </div>`;
-  });
+    };
+    
 
+    // let addBut = document.querySelectorAll(".prodBut");
+    // console.log(addBut);
+    // addBut.forEach(element => {
+    //     element.addEventListener(`click`, AddToCart);
+    // });
   productGridF.innerHTML += str;
   AddFlightToStore();
 }
@@ -226,9 +235,11 @@ function SubmitLoginForm() {
                 storedUsers[i].password === password
             ) {
                 if(password === `admin1234admin`){
+                    // add.classList.toggle(`disabled`)
                     location.assign("./managerProfile.html");
+                    alert(`You are connected as an admin`);
                 }
-                
+                let add = document.getElementById(`addItem`);
                 // alert("connect");
                 // document.querySelector("#incorrectPassword").style.visibility =
                 //     "hidden";
@@ -455,6 +466,7 @@ function AddFlightToStore() {
             <p class="small p fw-bold">
               Take off: <span>${element.departureDate}</span>
             </p>
+            <button class="btn btn-info">buy</button> 
           </div>`;
         });
     }
@@ -463,4 +475,10 @@ function AddFlightToStore() {
     productGridF.innerHTML += str;
 }
 
+
+function AddToCart(index){
+
+    console.log(index);
+
+}
 

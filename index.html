@@ -52,8 +52,8 @@
             In</button>
           <button class="link m-1" id="signup" type="button" data-bs-toggle="modal"
             data-bs-target="#signUp">Sign Up</button>
-            <!-- <button class="btn btn-primary disabled" id="addItem" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
-            aria-controls="offcanvasLeft"><i data-feather="plus"></i></button> -->
+            <button class="btn btn-primary disabled" id="addItem" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+            aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
             <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight"><i data-feather="shopping-cart"></i></button>
         </form>
@@ -69,8 +69,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
 
-          <div class="container">
+          <div class="container" id="alertSpace">
             <h5 class="modal-title display-5 text-center text-white-50 p-2" id="login1">Log in Below</h5>
+            <div class="alert alert-danger" role="alert">
+              A simple danger alert—check it out!
+            </div>
             <p class="lead text-white-50 text-center text-capitalize">Enter your email and password:</p>
 
           </div>
@@ -160,13 +163,31 @@
 <!--Modal-sign up end-->
 
 <!--shopping cart start-->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+<div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
   <div class="offcanvas-header">
     <h5 id="offcanvasRightLabel" class="display-5">Shopping Cart</h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    ...
+    <h3>Your Desired Items</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered" >
+          <thead>
+            <tr>
+              <th>Item Number</th>
+              <th>Picture</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="cartTable">
+            
+          </tbody>
+        </table>
+  </div>
+  <div class="container" id="total">
+    
+  </div>
   </div>
 </div>
 <!--shopping cart end-->

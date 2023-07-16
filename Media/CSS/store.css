@@ -1,10 +1,18 @@
 @import "/Media/CSS/root.css";
 @import "/Media/CSS/nav_footer.css";
 
-#storeGrid .card{
+#storeGrid .card {
     width: 240px;
     padding: 0;
+
+    transition: transform 0.2s;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.2);
+    transform-origin: center;
+    }
 }
+
 
 .prod{
     width: 100%;
