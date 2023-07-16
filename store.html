@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>James-WEBB Final JS Project</title>
+  <title>S&MSpace Shop</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/Media/CSS/store.css">
   <script type="module" src="/scripts/Index.js"></script>
@@ -19,350 +19,543 @@
 
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container ">
-          <a class="navbar-brand" href="#">James <small class="text-white-50">WEBB</small></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
-            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbar">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#team">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Secret Game Room</a>
-              </li>
-            </ul>
-            <form class="d-flex p-2">
-              <button class="link m-1" id="login" type="button" data-bs-toggle="modal"
-                data-bs-target="#logIn">Log
-                In</button>
-              <button class="link m-1" id="signup" type="button" data-bs-toggle="modal"
-                data-bs-target="#signUp">SIGN
-                UP</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-      <!--End of nav bar-->
-        <!--Modal-log in-->
-        <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" id="loginCon">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-    
-                  <div class="container">
-                    <h5 class="modal-title display-5 text-center text-white-50 p-2" id="login1">Log in Below</h5>
-                    <p class="lead text-white-50 text-center text-capitalize">Enter your email and password:</p>
-    
-                  </div>
-    
-                  <form class="loginform">
-                    <div class="form-floating mb-3">
-                      <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
-                        aria-describedby="emailHelp">
-                      <label for="floatingInput">Email address</label>
-                    </div>
-    
-                    <div class="mb-3 form-floating">
-                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                      <label for="floatingPassword">Password</label>
-                    </div>
-                    <div class="modal-footer d-flex">
-                      <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
-                      <button class="btn btn-primary" data-bs-target="#signUp" data-bs-toggle="modal" data-bs-dismiss="modal"
-                        id="sign_up_from_login">Not a member? Sign-Up Here!</button>
-                    </div>
-                  </form>
-    
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Modal-log in end-->
-          <!--Modal-sign up-->
-          <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="signUp" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" id="signUpCon">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-                  <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
-                  <form id="registrationForm" class="loginform">
-                    <div class="input-group mb-3">
-                      <input id="regUsername" type="text" class="form-control" placeholder="Username">
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input id="regPassword" type="Password" class="form-control" placeholder="Password"
-                        aria-labelledby="passwordHelpBlock">
-                      <button id="showPass" class="btn btn-outline-secondary" type="button">
-                        <span><i data-feather="eye"></i></span>
-                      </button><!-- תמונה של עין -->
-                      <div id="passwordHelpBlock" class="form-text text-white-50">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not
-                        contain spaces, special characters, or emoji.
-                      </div>
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input type="file" class="form-control" id="image">
-                      <i class="input-group-text fas fa-camera fa-5x"></i>
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input id="firstName" type="text" class="form-control" placeholder="First Name">
-                      <input id="lastName" type="text" class="form-control" placeholder="Last Name">
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input class="form-control" type="email" id="email" placeholder="Email">
-                    </div>
-    
-    
-                    <div class="input-group mb-3">
-                      <span class="input-group-text">Birth Date</span>
-                      <input class="form-control" type="date" id="birthDate">
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input id="city" type="text" class="form-control" placeholder="City">
-                      <input id="street" type="text" class="form-control" placeholder="Street">
-                      <input id="houseNumber" type="text" class="form-control" placeholder="House">
-                    </div>
-    
-                    <button class="btn btn-primary mb-3" type="submit">שליחה</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-    
-        <!--Modal-sign up end-->
-    
+<body >
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container ">
+      <a class="navbar-brand" href="/index.html">James <small class="text-white-50">WEBB</small></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Secret Game Room</a>
+          </li>
+        </ul>
+        <form class="d-flex p-2">
+          <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
+            In</button>
+          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">SIGN
+            UP</button>
+            <button class="btn btn-primary" id="addItem" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+            aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
+        </form>
 
-    <main>
+      </div>
+    </div>
+  </nav>
+  <!--End of nav bar-->
+  <!--Modal-log in-->
+  <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="loginCon">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+
+          <div class="container">
+            <h5 class="modal-title display-5 text-center text-white-50 p-2" id="login1">Log in Below</h5>
+            <p class="lead text-white-50 text-center text-capitalize">Enter your email and password:</p>
+
+          </div>
+
+          <form class="loginform">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                aria-describedby="emailHelp">
+              <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="modal-footer d-flex">
+              <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
+              <button class="btn btn-primary" data-bs-target="#signUp" data-bs-toggle="modal" data-bs-dismiss="modal"
+                id="sign_up_from_login">Not a member? Sign-Up Here!</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal-log in end-->
+  <!--Modal-sign up-->
+  <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="signUp" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="signUpCon">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
+          <form id="registrationForm" class="loginform">
+            <div class="input-group mb-3">
+              <input id="regUsername" type="text" class="form-control" placeholder="Username">
+            </div>
+
+            <div class="input-group mb-3">
+              <input id="regPassword" type="Password" class="form-control" placeholder="Password"
+                aria-labelledby="passwordHelpBlock">
+              <button id="showPass" class="btn btn-outline-secondary" type="button">
+                <span><i data-feather="eye"></i></span>
+              </button><!-- תמונה של עין -->
+              <div id="passwordHelpBlock" class="form-text text-white-50">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not
+                contain spaces, special characters, or emoji.
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="image">
+              <i class="input-group-text fas fa-camera fa-5x"></i>
+            </div>
+
+            <div class="input-group mb-3">
+              <input id="firstName" type="text" class="form-control" placeholder="First Name">
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name">
+            </div>
+
+            <div class="input-group mb-3">
+              <input class="form-control" type="email" id="email" placeholder="Email">
+            </div>
+
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Birth Date</span>
+              <input class="form-control" type="date" id="birthDate">
+            </div>
+
+            <div class="input-group mb-3">
+              <input id="city" type="text" class="form-control" placeholder="City">
+              <input id="street" type="text" class="form-control" placeholder="Street">
+              <input id="houseNumber" type="text" class="form-control" placeholder="House">
+            </div>
+
+            <button class="btn btn-primary mb-3" type="submit">שליחה</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!--Modal-sign up end-->
+
+  <!--Adding new item of canvas start-->
+  
+
+  <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasLeftLabel">Offcanvas right</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container">
         <div class="row">
-                <div id="eComHead" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#eComHead" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#eComHead" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#eComHead" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                      <button type="button" data-bs-target="#eComHead" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img id="caru" src="/Media/Assets/Ecom/caru1.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Unveil the Mysteries of the Universe</h5>
-                          <p>Embark on an awe-inspiring journey of cosmic discovery as you unravel the secrets of the universe.</p>
-                        </div>
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-header pb-0">
+                <ul class="nav nav-pills profile-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a href="#spaceship" role="tab" id="spaceship-tab" data-bs-toggle="tab" aria-selected="true" class="nav-link active">
+                      <i data-feather="rocket" class="icon"></i><span class="tabtext">Spaceship</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a href="#spacefood" role="tab" id="spacefood-tab" data-bs-toggle="tab" class="nav-link">
+                      <i data-feather="coffee" class="icon"></i><span class="tabtext">Space Food</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a href="#spacesuits" role="tab" id="spacesuits-tab" data-bs-toggle="tab" class="nav-link">
+                      <i data-feather="user-check" class="icon"></i><span class="tabtext">Space Suits</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="spaceship" role="tabpanel" aria-labelledby="spaceship-tab">
+                    <form id="addFlight">
+
+                      <div class="input-group mb-3">
+                          <input id="addFlightNumber" type="text" class="form-control" placeholder="Flight Number">
                       </div>
-                      <div class="carousel-item">
-                        <img id="caru" src="/Media/Assets/Ecom/caru3.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Own a Piece of Space History</h5>
-                          <p>Discover our exclusive collection of authentic space artifacts and memorabilia.</p>
-                        </div>
+          
+                      <div class="input-group mb-3">
+                          <span class="input-group-text">Departure Date</span>
+                          <input class="form-control" type="date" id="addDepartureDate">
                       </div>
-                      <div class="carousel-item">
-                        <img id="caru" src="/Media/Assets/Ecom/caru2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Explore the Final Frontier</h5>
-                          <p>Embark on a journey of a lifetime with our extraordinary space travel experiences.</p>
-                        </div>
+          
+                      <div class="input-group mb-3">
+                          <span class="input-group-text">Arrival Date</span>
+                          <input class="form-control" type="date" id="addArrivalDate">
                       </div>
-                      <div class="carousel-item">
-                        <img id="caru" src="/Media/Assets/Ecom/caru4.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                          <h5>Build Your Interstellar Fleet</h5>
-                          <p>Experience the future of space exploration by acquiring your own cutting-edge spaceship.</p>
-                        </div>
+          
+                      <select id="addShipSize" class="form-select mb-3">
+                          <option selected>Choose a class</option>
+                          <option value="Light">Light</option>
+                          <option value="medium">medium</option>
+                          <option value="Heavy">Heavy</option>
+                      </select>
+          
+                      <div class="input-group mb-3">
+                          <input type="file" class="form-control" id="addShipImage">
+                          <span class="input-group-text">Ships's Image</span>
                       </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#eComHead" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#eComHead" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
+          
+                      <div class="input-group mb-3">
+                          <span class="input-group-text">$</span>
+                          <input id="addShipPrice" type="number" class="form-control">
+                          <span class="input-group-text">.00</span>
+                      </div>
+          
+                      <button id="ShipSubmit" class="btn btn-primary mb-3" type="submit">Send</button>
+                  </form>
                   </div>
-            </div>
-            
-        <div class="container">
-            <h1 class="display-3 mb-5 mt-5 text-center">Welcome to the Space Shop</h1>
-            
-            <div class="filter-section text-center">
-              <h2>Filter Products</h2>
-              <div class="filters">
-                <select id="price-filter">
-                  <option value="">Sort by Price</option>
-                  <option value="low-to-high">Low to High</option>
-                  <option value="high-to-low">High to Low</option>
-                </select>
-                <select id="date-filter">
-                  <option value="">Sort by Date Added</option>
-                  <option value="newest-first">Newest First</option>
-                  <option value="oldest-first">Oldest First</option>
-                </select>
-                <select id="rating-filter">
-                  <option value="">Sort by Rating</option>
-                  <option value="highest-rated">Highest Rated</option>
-                  <option value="lowest-rated">Lowest Rated</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="product-grid row-gap-2 gap-2">
-              <div class="row">
-                <div class="container">
-                    <h1 class="display-5">Space Ships</h1>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img src="/Media/Assets/Ecom/products/prod1.jpg" class="prod" alt="Product 1">
-                  <h3>The SS Barrelling
-                </h3>
-                  <p>Price: $99</p>
-                  <p>Rating: 4.5</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img src="/Media/Assets/Ecom/products/prod2.jpg" class="prod" alt="Product 2">
-                  <h3>The CS Supreme
-                </h3>
-                  <p>Price: $149</p>
-                  <p>Rating: 4.2</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img src="/Media/Assets/Ecom/products/prod3.jpg" class="prod" alt="Product 3">
-                  <h3>The Juno Euphoria
-                </h3>
-                  <p>Price: $199</p>
-                  <p>Rating: 4.8</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img src="/Media/Assets/Ecom/products/prod4.jpg" class="prod" alt="Product 4">
-                  <h3>BC Tuhunder
-                </h3>
-                  <p>Price: $79</p>
-                  <p>Rating: 4.0</p>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product5.jpg" alt="Product 5">
-                  <h3>Product 5</h3>
-                  <p>Price: $129</p>
-                  <p>Rating: 4.6</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product6.jpg" alt="Product 6">
-                  <h3>Product 6</h3>
-                  <p>Price: $89</p>
-                  <p>Rating: 4.3</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product7.jpg" alt="Product 7">
-                  <h3>Product 7</h3>
-                  <p>Price: $249</p>
-                  <p>Rating: 4.9</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product8.jpg" alt="Product 8">
-                  <h3>Product 8</h3>
-                  <p>Price: $119</p>
-                  <p>Rating: 4.1</p>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product9.jpg" alt="Product 9">
-                  <h3>Product 9</h3>
-                  <p>Price: $179</p>
-                  <p>Rating: 4.7</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product10.jpg" alt="Product 10">
-                  <h3>Product 10</h3>
-                  <p>Price: $199</p>
-                  <p>Rating: 4.4</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product11.jpg" alt="Product 11">
-                  <h3>Product 11</h3>
-                  <p>Price: $109</p>
-                  <p>Rating: 4.3</p>
-                </div>
-                <div class="card col-lg-3 m-2 mx-auto">
-                  <img class="prod" src="product12.jpg" alt="Product 12">
-                  <h3>Product 12</h3>
-                  <p>Price: $139</p>
-                  <p>Rating: 4.6</p>
+                  <div class="tab-pane fade" id="spacefood" role="tabpanel" aria-labelledby="spacefood-tab">
+                    <form id="addFood">
+                      <div class="input-group mb-3">
+                          <input id="addFoodName" type="text" class="form-control" placeholder="Food Name">
+                      </div>
+                      <!-- לעצב דחוף -->
+                      <div class="input-group mb-3">
+                          <input type="radio" class="btn-check" name="meat_dairy" id="addMeat" checked>
+                          <label class="btn btn-secondary" for="addMeat">Meat</label>
+                          <input type="radio" class="btn-check" name="meat_dairy" id="addDairy">
+                          <label class="btn btn-secondary" for="addDairy">Dairy</label>
+                      </div>
+          
+                      <div class="input-group mb-3">
+                          <input type="radio" class="btn-check" name="kosher_noKosher" id="addKosher" checked>
+                          <label class="btn btn-secondary" for="addKosher">Kosher</label>
+                          <input type="radio" class="btn-check" name="kosher_noKosher" id="addNoKosher">
+                          <label class="btn btn-secondary" for="addNoKosher">No Kosher</label>
+                      </div>
+          
+                      <div class="input-group mb-3">
+                          <input type="radio" class="btn-check" name="hypoallergenic_no" id="addHypoallergenic" checked>
+                          <label class="btn btn-secondary" for="addHypoallergenic">Hypoallergenic</label>
+                          <input type="radio" class="btn-check" name="hypoallergenic_no" id="addNoHypoallergenic">
+                          <label class="btn btn-secondary" for="addNoHypoallergenic">No Hypoallergenic</label>
+                      </div>
+                      <!-- עד כאן -->
+                      <div class="input-group mb-3">
+                          <input type="file" class="form-control" id="addFoodImage">
+                          <span class="input-group-text">Food's Image</span>
+                      </div>
+          
+                      <div class="input-group mb-3">
+                          <span class="input-group-text">$</span>
+                          <input id="addFoodPrice" type="number" class="form-control">
+                          <span class="input-group-text">.00</span>
+                      </div>
+          
+                      <button id="FoodSubmit" class="btn btn-primary mb-3" type="submit">Send</button>
+                  </form>
+                  </div>
+                  <div class="tab-pane fade" id="spacesuits" role="tabpanel" aria-labelledby="spacesuits-tab">
+                    <div class="section-title">
+                      <h2>Add Space Suit</h2>
+                    </div>
+                    <form id="addSuit">
+                      <div class="input-group mb-3 col-md-4">
+                          <input id="addSuitName" type="text" class="form-control" placeholder="Brand Name">
+                      </div>
+          
+                      
+                      <select id="addSuitSize" class="form-select mb-3">
+                          <option selected>Choose a size</option>
+                          <option value="XS">XS</option>
+                          <option value="S">S</option>
+                          <option value="M">M</option>
+                          <option value="L">L</option>
+                          <option value="XL">XL</option>
+                          <option value="XXL">XXL</option>
+                          <option value="XXXL">XXXL</option>
+                      </select>
+          
+                      <select id="addSuitColor" class="form-select mb-3">
+                          <option selected>Choose a color</option>
+                          <option value="Red">Red</option>
+                          <option value="Orange">Orange</option>
+                          <option value="Yellow">Yellow</option>
+                          <option value="Green">Green</option>
+                          <option value="Blue">Blue</option>
+                          <option value="Violet">Violet</option>
+                          <option value="White">White</option>
+                      </select>
+          
+                      <div class="input-group mb-3">
+                          <input type="file" class="form-control" id="addSuitImage">
+                          <span class="input-group-text">Ships's Image</span>
+                      </div>
+          
+                      <div class="input-group mb-3">
+                          <span class="input-group-text">$</span>
+                          <input id="addSuitPrice" type="number" class="form-control">
+                          <span class="input-group-text">.00</span>
+                      </div>
+          
+                      <button id="SuitSubmit" class="btn btn-primary mb-3" type="submit">Send</button>
+                  </form>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-    </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <footer class="footer bg-dark text-light py-3 " id="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 text-start">
-              <h5>Contact Us</h5>
-              <p>123 Main Street, City, Country</p>
-              <p>Email: info@sm.space</p>
-              <p>Phone: +1 234 567 890</p>
-            </div>
-            <div class="col-lg-6 text-end">
-              <h5>S&M.Space</h5>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <p class="mb-0">© 2023 S&M.Space. All rights reserved.</p>
             </div>
           </div>
         </div>
-      </footer>
-      <!--Footer end-->
-    
-      <!--bootstrap js links-->
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-        <script>
-            feather.replace();
-        </script>
-    </body>
-    
-    </html>
+      </div>
+      
+      
+    </div>
+  </div>
+  <!--Adding new item of canvas end-->
+
+
+  <main>
+    <div class="row">
+      <div id="eComHead" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#eComHead" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#eComHead" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#eComHead" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#eComHead" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img id="caru" src="/Media/Assets/Ecom/caru1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Unveil the Mysteries of the Universe</h5>
+              <p>Embark on an awe-inspiring journey of cosmic discovery as you unravel the secrets of the universe.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img id="caru" src="/Media/Assets/Ecom/caru3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Own a Piece of Space History</h5>
+              <p>Discover our exclusive collection of authentic space artifacts and memorabilia.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img id="caru" src="/Media/Assets/Ecom/caru2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Explore the Final Frontier</h5>
+              <p>Embark on a journey of a lifetime with our extraordinary space travel experiences.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img id="caru" src="/Media/Assets/Ecom/caru4.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Build Your Interstellar Fleet</h5>
+              <p>Experience the future of space exploration by acquiring your own cutting-edge spaceship.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#eComHead" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#eComHead" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1 class="display-3 mb-5 mt-5 text-center">Welcome to the Space Shop</h1>
+
+      <div class="filter-section text-center">
+        <h2>Filter Products</h2>
+        <div class="filters">
+          <select id="price-filter">
+            <option value="">Sort by Price</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+          </select>
+
+          <select id="Ship class">
+            <option value="">Sort by class</option>
+            <option value="highest-rated">Heavy</option>
+            <option value="middle-rated">Mid</option>
+            <option value="lowest-rated">Light</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid gap-2">
+        <div class="row" id="flightsSec">
+          <div class="container">
+            <h1 class="display-5">Space Ships</h1>
+          </div>
+          <!-- <div class="card col-lg-3 m-2 mx-auto" >
+            <img src="/Media/Assets/Ecom/products/prod1.jpg" class="prod" alt="Product 1">
+            <h3 class="fs-4">The SS Barrelling
+            </h3>
+            <p class="small p fw-bold">
+              Price: <span>26/07/2023</span>
+            </p>
+            <p class="small p fw-bold">
+              Take off: <span>26/07/2023</span>
+            </p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img src="/Media/Assets/Ecom/products/prod2.jpg" class="prod" alt="Product 2">
+            <h3 class="fs-4">The CS Supreme
+            </h3>
+            <p class="small p fw-bold">
+              Price: <span>26/07/2023</span>
+            </p>
+            <p class="small p fw-bold">
+              Take off: <span>26/07/2023</span>
+            </p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img src="/Media/Assets/Ecom/products/prod3.jpg" class="prod" alt="Product 3">
+            <h3 class="fs-4">The Juno Euphoria
+            </h3>
+            <p class="small p fw-bold">
+              Price: <span>26/07/2023</span>
+            </p>
+            <p class="small p fw-bold">
+              Take off: <span>26/07/2023</span>
+            </p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img src="/Media/Assets/Ecom/products/prod4.jpg" class="prod" alt="Product 4">
+            <h3 class="fs-4">BC Tuhunder
+            </h3>
+            <p class="small p fw-bold">
+              Price: <span>26/07/2023</span>
+            </p>
+            <p class="small p fw-bold">
+              Take off: <span>26/07/2023</span>
+            </p>
+          </div> -->
+        </div>
+
+        <div class="row">
+          <div class="container">
+            <h1 class="display-5">Space Nutrition Packs</h1>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="/Media/Assets/Ecom/products/food1.png" alt="Product 5">
+            <h3>Product 5</h3>
+            <p>Price: $129</p>
+            <p>Rating: 4.6</p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="/Media/Assets/Ecom/products/food2.png" alt="Product 6">
+            <h3>Product 6</h3>
+            <p>Price: $89</p>
+            <p>Rating: 4.3</p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="/Media/Assets/Ecom/products/food3.png" alt="Product 7">
+            <h3>Product 7</h3>
+            <p>Price: $249</p>
+            <p>Rating: 4.9</p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="/Media/Assets/Ecom/products/food4.png" alt="Product 8">
+            <h3>Product 8</h3>
+            <p>Price: $119</p>
+            <p>Rating: 4.1</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="container">
+            <h1 class="display-5">Space Suits</h1>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="product9.jpg" alt="Product 9">
+            <h3>Product 9</h3>
+            <p>Price: $179</p>
+            <p>Rating: 4.7</p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="product10.jpg" alt="Product 10">
+            <h3>Product 10</h3>
+            <p>Price: $199</p>
+            <p>Rating: 4.4</p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="product11.jpg" alt="Product 11">
+            <h3>Product 11</h3>
+            <p>Price: $109</p>
+            <p>Rating: 4.3</p>
+          </div>
+          <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="product12.jpg" alt="Product 12">
+            <h3>Product 12</h3>
+            <p>Price: $139</p>
+            <p>Rating: 4.6</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="footer bg-dark text-light py-3 " id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-start">
+          <h5>Contact Us</h5>
+          <p>123 Main Street, City, Country</p>
+          <p>Email: info@sm.space</p>
+          <p>Phone: +1 234 567 890</p>
+        </div>
+        <div class="col-lg-6 text-end">
+          <h5>S&M.Space</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p class="mb-0">© 2023 S&M.Space. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--Footer end-->
+
+  <!--bootstrap js links-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+  <script>
+    feather.replace();
+  </script>
+</body>
+
+</html>

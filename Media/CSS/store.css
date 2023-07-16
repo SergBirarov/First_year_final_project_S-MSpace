@@ -8,6 +8,7 @@
 
 .prod{
     width: 100%;
+    height: 50%;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 }

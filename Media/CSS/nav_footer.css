@@ -69,6 +69,12 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
 
-#login:hover, #signup:hover{
+#login:hover, #signup:hover, #addItem:hover{
     color: #f8f9fab5;
+}
+
+#addItem{
+    background: none;
+    border: none;
+    color: var(--bs-secondary);
 }

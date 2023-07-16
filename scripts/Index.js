@@ -4,14 +4,27 @@ import { AddSuit } from "./function.js";
 import { AddFood } from "./function.js";
 import { AddShip } from "./function.js";
 import { User } from "./models/User.js";
+import { BuildStore } from "./function.js";
+import { UserTable } from "./function.js";
+
+
 
 function Main() {
 
+    if (window.location.href.includes("/managerProfile")) {
+        UserTable();
+    };
+    if (window.location.href.includes("/store")) {
+        BuildStore();
+        AddSuit();
+        AddFood();
+        AddShip();
+    };
+    // BuildStore();
+    // UserTable();
     SendregistrationForm();
     SendLoginForm();
-    AddSuit();
-    AddFood();
-    AddShip();
+    
 
 
 
