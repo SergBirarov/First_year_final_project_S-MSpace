@@ -1,11 +1,25 @@
 import { User } from "./models/User.js";
-var storedUsers = JSON.parse(localStorage.getItem(`users`));
+var storedUsers = new Array();
+storedUsers[0] = new User(
+    `admin`,
+    `admin1234admin`,
+    `/Media/Assets/team-3.jpg`,
+    `Regina`,
+    `Phalange`,
+    `Regina@Phalange.com`,
+    `1996-11-25`,
+    `Hell`,
+    `Hell st`,
+    `25`
+)
 var storedSuits;
 var storedFoods;
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 var stackedFlights = new Array();
 var productGridF = document.getElementById("flightsSec");
 var userTable = document.getElementById("userTable");
+localStorage.setItem(`users`, JSON.stringify(storedUsers));
+// storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
 export function BuildStore() {
   stackedFlights = [
@@ -64,47 +78,36 @@ export function BuildStore() {
   AddFlightToStore();
 }
 export function UserTable() {
-    let user1 = new User(
-      `Regi`,
-      `admin1234`,
-      `/Media/Assets/team-3.jpg`,
-      `Regina`,
-      `Phalange`,
-      `Regina@Phalange.com`,
-      `1996-11-25`,
-      `Hell`,
-      `Hell st`,
-      `25`
-    );
+    
   
-    let manager = `<tr>
-                  <td><img src="${user1.image}" alt="User Image" class="img-fluid"></td>
-                  <td>${user1.username}</td>
-                  <td>${user1.lastName} ${user1.firstName}</td>
-                  <td>${user1.birthDate}</td>
-                  <td>${user1.street} ${user1.number}, ${user1.city}</td>
-                  <td>${user1.email}</td>
-                </tr>`;
+    // let manager = `<tr>
+    //               <td><img src="${storedUsers[0].image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
+    //               <td>${storedUsers[0].username}</td>
+    //               <td>${storedUsers[0].lastName} ${storedUsers[0].firstName}</td>
+    //               <td>${storedUsers[0].birthDate}</td>
+    //               <td>${storedUsers[0].street} ${storedUsers[0].number}, ${storedUsers[0].city}</td>
+    //               <td>${storedUsers[0].email}</td>
+    //             </tr>`;
   
     let userTable = document.getElementById("userTable");
     
-    userTable.innerHTML += manager;
+    // userTable.innerHTML += manager;
     let users =``;
     if(storedUsers){
         storedUsers.forEach(element => {
-            users += `<tr>
-            <td><img src="${element.image}" alt="User Image" class="img-fluid"></td>
+            users = `<tr>
+            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
             <td>${element.username}</td>
             <td>${element.lastName} ${element.firstName}</td>
             <td>${element.birthDate}</td>
             <td>${element.street} ${element.number}, ${element.city}</td>
             <td>${element.email}</td>
           </tr>`;
+          userTable.innerHTML += users;
         });
     }
    
 
-    userTable.innerHTML += users;
   }
   
 export function SendregistrationForm() {
@@ -196,16 +199,17 @@ export function SendLoginForm() {
     let form = document.querySelector("#submit_login");
     form.addEventListener("click", SubmitLoginForm);
 
-    //כפתור שמראה את הסיסמא
-    // document.querySelector('#showPass').addEventListener('click', () => {
-    //     let pass = document.querySelector('#floatingPassword');
-    //     if (pass.type === "password") {
-    //         pass.type = "text";
-    //     } else {
-    //         pass.type = "password";
-    //     }
+    document.querySelector('#showPass').addEventListener('click', () => {
+        let pass = document.querySelector('#floatingPassword');
+        if (pass.type === "password") {
+            pass.type = "text";
+        } else {
+            pass.type = "password";
+        }
 
-    // });
+    });
+
+
 }
 function SubmitLoginForm() {
     let email = document.getElementById("floatingEmail").value;
@@ -221,17 +225,20 @@ function SubmitLoginForm() {
                 storedUsers[i].email === email &&
                 storedUsers[i].password === password
             ) {
-                /*התחברות כלומר הפניית נתונים מהלוקל סטורג' לתגניות שיציגו אותו*/
-                /*מעבר לדף פרופיל */
-                alert("connect");
-                document.querySelector("#incorrectPassword").style.visibility =
-                    "hidden";
+                if(password === `admin1234admin`){
+                    location.assign("./managerProfile.html");
+                }
+                
+                // alert("connect");
+                // document.querySelector("#incorrectPassword").style.visibility =
+                //     "hidden";
 
                 return;
-            } else {
-                document.querySelector("#incorrectPassword").style.visibility =
-                    "visible";
             }
+            //  else {
+            //     document.querySelector("#incorrectPassword").style.visibility =
+            //         "visible";
+            // }
         }
     } else {
         alert("No registred users");
