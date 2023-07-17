@@ -13,10 +13,13 @@ storedUsers[0] = new User(
     `25`
 )
 var storedSuits;
-var storedFoods;
+var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 var stackedFlights = new Array();
+var stackedFoods = new Array();
 var productGridF = document.getElementById("flightsSec");
+var productGridFood = document.getElementById("foodSec");
+
 var userTable = document.getElementById("userTable");
 localStorage.setItem(`users`, JSON.stringify(storedUsers));
 // storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
@@ -84,7 +87,65 @@ export function BuildStore() {
     //     element.addEventListener(`click`, AddToCart);
     // });
   productGridF.innerHTML += str;
+
+  stackedFoods = [
+    {
+        foodName: `Minced Brains`,
+        foodType: `meat`,
+        kosherStatus: `no`,
+        hypoallergenicStatus:`yes`,
+        foodImage: `/Media/Assets/Ecom/products/food1.png`,
+        foodPrice: `32.50`,
+    },
+    {
+        foodName: `Ass Bits`,
+        foodType: `meat`,
+        kosherStatus: `Yes`,
+        hypoallergenicStatus:`No`,
+        foodImage: `/Media/Assets/Ecom/products/food2.png`,
+        foodPrice: `19.90`,
+    },
+    {
+        foodName: `Breast Milk`,
+        foodType: `Dairy`,
+        kosherStatus: `Yes`,
+        hypoallergenicStatus:`No`,
+        foodImage: `/Media/Assets/Ecom/products/food3.png`,
+        foodPrice: `312.30`,
+    },
+    {
+        foodName: `Shepareds Pie`,
+        foodType: `meat`,
+        kosherStatus: `No`,
+        hypoallergenicStatus:`Yes`,
+        foodImage: `/Media/Assets/Ecom/products/food4.png`,
+        foodPrice: `99.90`,
+    }
+  ];
+  let foods = ``;
+  for(let i =0; i < stackedFoods.length;i++){
+    foods += `
+    <div class="card col-lg-3 m-2 mx-auto">
+    <img class="prod" src="${stackedFoods[i].foodImage}" alt="Product 5">
+    <h3 class="fw-bold">${stackedFoods[i].foodName}</h3>
+    <p><span class="fw-bold">Dairy/Meat: </span>${stackedFoods[i].foodType}</p>
+    <p><span class="fw-bold">Kosher Status: </span>${stackedFoods[i].kosherStatus}</p>
+    <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${stackedFoods[i].hypoallergenicStatus}</p>
+    <p><span class="fw-bold">Price: </span>${stackedFoods[i].foodPrice}</p>
+    <button class="prodBut btn btn-info">buy</button>
+  </div>
+    `
+  };
+  productGridFood.innerHTML += foods;
+
+  let suits = ``;
+  for(let i=0; i<stackedSuits.length;i++){
+    suits+= `
+        
+    `
+  }
   AddFlightToStore();
+  AddFoodsToStore();
 }
 export function UserTable() {
     
@@ -335,6 +396,8 @@ export function AddFood() {
             return;
         }
 
+        let file = foodImageInput.files[0];
+
         // Create a FileReader instance
         let reader = new FileReader();
 
@@ -355,7 +418,7 @@ export function AddFood() {
 
             // Retrieve the stored food array from localStorage
             let storedFoodsJSON = localStorage.getItem("foods");
-            storedFoods = storedFoodsJSON ? JSON.parse(storedFoodsJSON) : [];
+            let storedFoods = storedFoodsJSON ? JSON.parse(storedFoodsJSON) : [];
 
             // Add the new food object to the stored foods array
             storedFoods.push(food);
@@ -371,9 +434,16 @@ export function AddFood() {
 
             // Optionally, display a success message
             alert("Food item added successfully!");
+
+            // Assuming AddFoodsToStore() is defined elsewhere
+            AddFoodsToStore();
         };
+
+        // Read the file as a data URL
+        reader.readAsDataURL(file);
     });
 }
+
 export function AddShip() {
     document.querySelector("#addFlight").addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent form submission
@@ -450,7 +520,6 @@ export function AddShip() {
     });
 }
 
-//sergey will finish this- so fuck off
 function AddFlightToStore() {
     let str = ``;
     if(storedFlights){
@@ -473,6 +542,27 @@ function AddFlightToStore() {
     
 
     productGridF.innerHTML += str;
+}
+
+function AddFoodsToStore(){
+    let str = ``;
+
+    if(storedFoods){
+        storedFoods.forEach((element) => {
+            str+=`
+            <div class="card col-lg-3 m-2 mx-auto">
+            <img class="prod" src="${element.foodImage}" alt="Product 5">
+            <h3 class="fw-bold">${element.foodName}</h3>
+            <p><span class="fw-bold">Dairy/Meat: </span>${element.foodType}</p>
+            <p><span class="fw-bold">Kosher Status: </span>${element.kosherStatus}</p>
+            <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${element.hypoallergenicStatus}</p>
+            <p><span class="fw-bold">Price: </span>${element.foodPrice}</p>
+            <button class="prodBut btn btn-info">buy</button>
+          </div>`;
+        });
+    }
+
+    productGridFood.innerHTML +=str;
 }
 
 

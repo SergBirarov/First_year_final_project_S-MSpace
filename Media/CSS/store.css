@@ -1,6 +1,9 @@
 @import "/Media/CSS/root.css";
 @import "/Media/CSS/nav_footer.css";
 
+body{
+    overflow-x: hidden;
+}
 #storeGrid .card {
     width: 240px;
     padding: 0;

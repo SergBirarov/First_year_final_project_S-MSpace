@@ -20,9 +20,9 @@
 </head>
 
 <body >
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-5">
     <div class="container ">
-      <a class="navbar-brand" href="/index.html">James <small class="text-white-50">WEBB</small></a>
+      <a class="navbar-brand"  href="#"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
         aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -39,22 +39,28 @@
             <a class="nav-link" href="#team">Team</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/store.html">Store</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#">Secret Game Room</a>
           </li>
         </ul>
         <form class="d-flex p-2">
-          <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
+          <button class="link m-1" id="login" type="button" data-bs-toggle="modal"
+            data-bs-target="#logIn">Log
             In</button>
-          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">SIGN
-            UP</button>
-            <button class="btn btn-primary" id="addItem" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
+          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal"
+            data-bs-target="#signUp">Sign Up</button>
+            <button class="btn btn-primary " id="addItem" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
             aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
+            <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"><i data-feather="shopping-cart"></i></button>
         </form>
-
       </div>
     </div>
   </nav>
   <!--End of nav bar-->
+  
   <!--Modal-log in-->
   <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -62,7 +68,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
 
-          <div class="container">
+          <div class="container" id="alertSpace">
             <h5 class="modal-title display-5 text-center text-white-50 p-2" id="login1">Log in Below</h5>
             <p class="lead text-white-50 text-center text-capitalize">Enter your email and password:</p>
 
@@ -150,7 +156,37 @@
   </div>
   </div>
 
-  <!--Modal-sign up end-->
+<!--Modal-sign up end-->
+
+<!--shopping cart start-->
+<div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel" class="display-5">Shopping Cart</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <h3>Your Desired Items</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered" >
+          <thead>
+            <tr>
+              <th>Item Number</th>
+              <th>Picture</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="cartTable">
+            
+          </tbody>
+        </table>
+  </div>
+  <div class="container" id="total">
+    
+  </div>
+  </div>
+</div>
+<!--shopping cart end-->
 
   <!--Adding new item of canvas start-->
   
@@ -229,7 +265,6 @@
                       <div class="input-group mb-3">
                           <input id="addFoodName" type="text" class="form-control" placeholder="Food Name">
                       </div>
-                      <!-- לעצב דחוף -->
                       <div class="input-group mb-3">
                           <input type="radio" class="btn-check" name="meat_dairy" id="addMeat" checked>
                           <label class="btn btn-secondary" for="addMeat">Meat</label>
@@ -401,112 +436,21 @@
           <div class="container">
             <h1 class="display-5">Space Ships</h1>
           </div>
-          <!-- <div class="card col-lg-3 m-2 mx-auto" >
-            <img src="/Media/Assets/Ecom/products/prod1.jpg" class="prod" alt="Product 1">
-            <h3 class="fs-4">The SS Barrelling
-            </h3>
-            <p class="small p fw-bold">
-              Price: <span>26/07/2023</span>
-            </p>
-            <p class="small p fw-bold">
-              Take off: <span>26/07/2023</span>
-            </p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img src="/Media/Assets/Ecom/products/prod2.jpg" class="prod" alt="Product 2">
-            <h3 class="fs-4">The CS Supreme
-            </h3>
-            <p class="small p fw-bold">
-              Price: <span>26/07/2023</span>
-            </p>
-            <p class="small p fw-bold">
-              Take off: <span>26/07/2023</span>
-            </p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img src="/Media/Assets/Ecom/products/prod3.jpg" class="prod" alt="Product 3">
-            <h3 class="fs-4">The Juno Euphoria
-            </h3>
-            <p class="small p fw-bold">
-              Price: <span>26/07/2023</span>
-            </p>
-            <p class="small p fw-bold">
-              Take off: <span>26/07/2023</span>
-            </p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img src="/Media/Assets/Ecom/products/prod4.jpg" class="prod" alt="Product 4">
-            <h3 class="fs-4">BC Tuhunder
-            </h3>
-            <p class="small p fw-bold">
-              Price: <span>26/07/2023</span>
-            </p>
-            <p class="small p fw-bold">
-              Take off: <span>26/07/2023</span>
-            </p>
-          </div> -->
+          <!--Content inserted from js-->
         </div>
 
-        <div class="row">
+        <div class="row" id="foodSec">
           <div class="container">
             <h1 class="display-5">Space Nutrition Packs</h1>
           </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="/Media/Assets/Ecom/products/food1.png" alt="Product 5">
-            <h3>Product 5</h3>
-            <p>Price: $129</p>
-            <p >Rating: 4.6</p>
-            <button oncl class="btn btn-info">buy</button>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="/Media/Assets/Ecom/products/food2.png" alt="Product 6">
-            <h3>Product 6</h3>
-            <p>Price: $89</p>
-            <p>Rating: 4.3</p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="/Media/Assets/Ecom/products/food3.png" alt="Product 7">
-            <h3>Product 7</h3>
-            <p>Price: $249</p>
-            <p>Rating: 4.9</p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="/Media/Assets/Ecom/products/food4.png" alt="Product 8">
-            <h3>Product 8</h3>
-            <p>Price: $119</p>
-            <p>Rating: 4.1</p>
-            
-          </div>
+          <!--Content inserted from js-->
         </div>
-
+        
         <div class="row">
           <div class="container">
             <h1 class="display-5">Space Suits</h1>
           </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="product9.jpg" alt="Product 9">
-            <h3>Product 9</h3>
-            <p>Price: $179</p>
-            <p>Rating: 4.7</p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="product10.jpg" alt="Product 10">
-            <h3>Product 10</h3>
-            <p>Price: $199</p>
-            <p>Rating: 4.4</p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="product11.jpg" alt="Product 11">
-            <h3>Product 11</h3>
-            <p>Price: $109</p>
-            <p>Rating: 4.3</p>
-          </div>
-          <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="product12.jpg" alt="Product 12">
-            <h3>Product 12</h3>
-            <p>Price: $139</p>
-            <p>Rating: 4.6</p>
-          </div>
+          <!--Content inserted from js-->
         </div>
       </div>
     </div>

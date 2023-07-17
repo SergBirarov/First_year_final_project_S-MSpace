@@ -18,338 +18,349 @@
     rel="stylesheet">
 
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container ">
-          <a class="navbar-brand" href="#">James <small class="text-white-50">WEBB</small></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
-            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbar">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#about">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#team">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/store.html">Store</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Secret Game Room</a>
-              </li>
-            </ul>
-            <form class="d-flex p-2">
-              <button class="link m-1" id="login" type="button" data-bs-toggle="modal"
-                data-bs-target="#logIn">Log
-                In</button>
-              <button class="link m-1" id="signup" type="button" data-bs-toggle="modal"
-                data-bs-target="#signUp">SIGN
-                UP</button>
-            </form>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-5">
+    <div class="container ">
+      <a class="navbar-brand" href="#"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/store.html">Store</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Secret Game Room</a>
+          </li>
+        </ul>
+        <form class="d-flex p-2">
+          <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
+            In</button>
+          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
+            Up</button>
+          <button class="btn btn-primary disabled" id="addItem" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
+          <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+              data-feather="shopping-cart"></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--End of nav bar-->
+
+  <!--Modal-log in-->
+  <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="loginCon">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+
+          <div class="container" id="alertSpace">
+            <h5 class="modal-title display-5 text-center text-white-50 p-2" id="login1">Log in Below</h5>
+            <p class="lead text-white-50 text-center text-capitalize">Enter your email and password:</p>
+
           </div>
+
+          <form class="loginform">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                aria-describedby="emailHelp">
+              <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="mb-3 form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="modal-footer d-flex">
+              <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
+              <button class="btn btn-primary" data-bs-target="#signUp" data-bs-toggle="modal" data-bs-dismiss="modal"
+                id="sign_up_from_login">Not a member? Sign-Up Here!</button>
+            </div>
+          </form>
+
         </div>
-      </nav>
+      </div>
+    </div>
+  </div>
+  <!--Modal-log in end-->
+  <!--Modal-sign up-->
+  <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="signUp" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" id="signUpCon">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
+          <form id="registrationForm" class="loginform">
+            <div class="input-group mb-3">
+              <input id="regUsername" type="text" class="form-control" placeholder="Username">
+            </div>
 
-      <main class="main p-4" id="main">
-
-        <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="card">
-                  <div class="card-header pb-0">
-                    <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <a href="#profile" role="tab" id="profile-tab" data-bs-toggle="tab" aria-selected="true" class="nav-link active">
-                          <i data-feather="user" class="icon"></i><span class="tabtext">Profile</span>
-                        </a>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <a href="#update" role="tab" id="update-tab" data-bs-toggle="tab" class="nav-link">
-                          <i data-feather="info" class="icon"></i><span class="tabtext">Update Information</span>
-                        </a>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <a href="#manage" role="tab" id="manage-tab" data-bs-toggle="tab" class="nav-link">
-                          <i data-feather="list" class="icon"></i><span class="tabtext">Manage Users</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="card-body">
-                    <div class="tab-content">
-                      <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row">
-                          <div class="col-lg-4 col-xxl-3">
-                            <div class="card bg-body-secondary">
-                              <div class="card-body position-relative">
-                                <div class="position-absolute end-0 top-0 p-3">
-                                  <span class="badge bg-primary">Pro</span>
-                                </div>
-                                <div class="text-center mt-3">
-                                  <div class="user-profile-img d-inline-flex mx-auto">
-                                    <img src="/Media/Assets/team-3.jpg" alt="" id="profilePicProfile" class="rounded-circle img-fluid wid-70">
-                                  </div>
-                                  <h5 class="mb-0">Ken</h5>
-                                  <hr class="my-3">
-                                  <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                                    <i data-feather="mail"></i>
-                                    <p class="mb-0">nomail@gmail.com</p>
-                                  </div>
-                                  <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                                    <i data-feather="phone"></i>
-                                    <p class="mb-0">0501231234</p>
-                                  </div>
-                                  <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                                    <i data-feather="map-pin"></i>
-                                    <p class="mb-0">Hell</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-8 col-xxl-9">
-                            <div class="card bg-body-secondary">
-                              <div class="card-header">
-                                <h5>Personal Details</h5>
-                              </div>
-                              <div class="card-body">
-                                <ul class="list-group list-group-flush bg-body-secondary">
-                                  <li class="list-group-item px-0 pt-0">
-                                    <div class="row bg-body-secondary">
-                                      <div class="col-md-6">
-                                        <p class="mb-1 text-muted">Full Name</p>
-                                        <p class="mb-0">Ken Adams</p>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p class="mb-1 text-muted">Phone</p>
-                                        <p class="mb-0">0501231234</p>
-                                      </div>
-                                    </div>
-                                  </li>
-                                  <li class="list-group-item px-0 pt-0 bg-body-secondary">
-                                    <div class="row bg-body-secondary">
-                                      <div class="col-md-6">
-                                        <p class="mb-1 text-muted">Email</p>
-                                        <p class="mb-0">nomail@gmail.com</p>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <p class="mb-1 text-muted">Address</p>
-                                        <p class="mb-0">Hell st. 64</p>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="tab-pane fade" id="update" role="tabpanel" aria-labelledby="update-tab">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="card">
-                              <div class="card-header text-center">
-                                <h5>View And Change Profile</h5>
-                              </div>
-                              <div class="card-body">
-                                <div class="row">
-                                  <div class="col-sm-12 text-center mb-3">
-                                    <div class="user-upload wid-75">
-                                      <img src="/Media/Assets/team-3.jpg" id="profilePicProfile" alt="" class="img-fluid align-content-center">
-                                      <label for="uplfile" class="img-avatar-upload">
-                                        <i data-feather="camera" class="f-24 mb-1"></i>
-                                        <span>Upload</span>
-                                      </label>
-                                      <input type="file" id="uplfile" class="d-none">
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="card">
-                              <div class="card-header">
-                                <h5>Update Information</h5>
-                              </div>
-                              <div class="card-body">
-                                <form>
-                                  <div class="mb-3">
-                                    <label for="fullName" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control" id="fullName">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone</label>
-                                    <input type="text" class="form-control" id="phone">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="emailA" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="emailA">
-                                  </div>
-                                  <div class="mb-3">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="address">
-                                  </div>
-                                  <button type="submit" class="btn btn-primary">Save</button>
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="tab-pane fade" id="manage" role="tabpanel" aria-labelledby="manage-tab">
-                        <h5>Manage Users</h5>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" >
-                                <thead>
-                                  <tr>
-                                    <th>Profile Picture</th>
-
-                                    <th>User Name</th>
-                                    <th>Full Name</th>
-                                    <th>Date of Birth</th>
-                                    <th>Billing Address</th>
-                                    <th>Email</th>
-                                  </tr>
-                                </thead>
-                                <tbody id="userTable">
-                                  
-                                </tbody>
-                              </table>
-                        </div>
-                        
-                      </div>
-          
-        <!--Modal-log in-->
-        <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" id="loginCon">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-    
-                  <div class="container">
-                    <h5 class="modal-title display-5 text-center text-white-50 p-2" id="login1">Log in Below</h5>
-                    <p class="lead text-white-50 text-center text-capitalize">Enter your email and password:</p>
-    
-                  </div>
-    
-                  <form class="loginform">
-                    <div class="form-floating mb-3">
-                      <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
-                        aria-describedby="emailHelp">
-                      <label for="floatingInput">Email address</label>
-                    </div>
-    
-                    <div class="mb-3 form-floating">
-                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                      <label for="floatingPassword">Password</label>
-                    </div>
-                    <div class="modal-footer d-flex">
-                      <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
-                      <button class="btn btn-primary" data-bs-target="#signUp" data-bs-toggle="modal" data-bs-dismiss="modal"
-                        id="sign_up_from_login">Not a member? Sign-Up Here!</button>
-                    </div>
-                  </form>
-    
-                </div>
+            <div class="input-group mb-3">
+              <input id="regPassword" type="Password" class="form-control" placeholder="Password"
+                aria-labelledby="passwordHelpBlock">
+              <button id="showPass" class="btn btn-outline-secondary" type="button">
+                <span><i data-feather="eye"></i></span>
+              </button><!-- תמונה של עין -->
+              <div id="passwordHelpBlock" class="form-text text-white-50">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not
+                contain spaces, special characters, or emoji.
               </div>
             </div>
-          </div>
-          <!--Modal-log in end-->
-          <!--Modal-sign up-->
-          <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="signUp" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" id="signUpCon">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body">
-                  <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
-                  <form id="registrationForm" class="loginform">
-                    <div class="input-group mb-3">
-                      <input id="regUsername" type="text" class="form-control" placeholder="Username">
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input id="regPassword" type="Password" class="form-control" placeholder="Password"
-                        aria-labelledby="passwordHelpBlock">
-                      <button id="showPass" class="btn btn-outline-secondary" type="button">
-                        <div><i class="far fa-eye-slash fa-7x"></i></div>
-                      </button><!-- תמונה של עין -->
-                      <div id="passwordHelpBlock" class="form-text text-white-50">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not
-                        contain spaces, special characters, or emoji.
+
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="image">
+              <i class="input-group-text fas fa-camera fa-5x"></i>
+            </div>
+
+            <div class="input-group mb-3">
+              <input id="firstName" type="text" class="form-control" placeholder="First Name">
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name">
+            </div>
+
+            <div class="input-group mb-3">
+              <input class="form-control" type="email" id="email" placeholder="Email">
+            </div>
+
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Birth Date</span>
+              <input class="form-control" type="date" id="birthDate">
+            </div>
+
+            <div class="input-group mb-3">
+              <input id="city" type="text" class="form-control" placeholder="City">
+              <input id="street" type="text" class="form-control" placeholder="Street">
+              <input id="houseNumber" type="text" class="form-control" placeholder="House">
+            </div>
+
+            <button class="btn btn-primary mb-3" type="submit">שליחה</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!--Modal-sign up end-->
+
+  <!--shopping cart start-->
+  <div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel" class="display-5">Shopping Cart</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <h3>Your Desired Items</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Item Number</th>
+              <th>Picture</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody id="cartTable">
+
+          </tbody>
+        </table>
+      </div>
+      <div class="container" id="total">
+
+      </div>
+    </div>
+  </div>
+  <!--shopping cart end-->
+  <main class="main p-4" id="main">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header pb-0">
+              <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a href="#profile" role="tab" id="profile-tab" data-bs-toggle="tab" aria-selected="true"
+                    class="nav-link active">
+                    <i data-feather="user" class="icon"></i><span class="tabtext">Profile</span>
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a href="#update" role="tab" id="update-tab" data-bs-toggle="tab" class="nav-link">
+                    <i data-feather="info" class="icon"></i><span class="tabtext">Update Information</span>
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a href="#manage" role="tab" id="manage-tab" data-bs-toggle="tab" class="nav-link">
+                    <i data-feather="list" class="icon"></i><span class="tabtext">Manage Users</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="row">
+                    <div class="col-lg-4 col-xxl-3">
+                      <div class="card bg-body-secondary">
+                        <div class="card-body position-relative">
+                          <div class="position-absolute end-0 top-0 p-3">
+                            <span class="badge bg-primary">Pro</span>
+                          </div>
+                          <div class="text-center mt-3">
+                            <div class="user-profile-img d-inline-flex mx-auto">
+                              <img src="/Media/Assets/team-3.jpg" alt="" id="profilePicProfile"
+                                class="rounded-circle img-fluid wid-70">
+                            </div>
+                            <h5 class="mb-0">Ken</h5>
+                            <hr class="my-3">
+                            <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                              <i data-feather="mail"></i>
+                              <p class="mb-0">nomail@gmail.com</p>
+                            </div>
+                            <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                              <i data-feather="phone"></i>
+                              <p class="mb-0">0501231234</p>
+                            </div>
+                            <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                              <i data-feather="map-pin"></i>
+                              <p class="mb-0">Hell</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-    
-                    <div class="input-group mb-3">
-                      <input type="file" class="form-control" id="image">
-                      <i class="input-group-text fas fa-camera fa-5x"></i>
+                    <div class="col-lg-8 col-xxl-9">
+                      <div class="card bg-body-secondary">
+                        <div class="card-header">
+                          <h5>Personal Details</h5>
+                        </div>
+                        <div class="card-body">
+                          <ul class="list-group list-group-flush bg-body-secondary">
+                            <li class="list-group-item px-0 pt-0">
+                              <div class="row bg-body-secondary">
+                                <div class="col-md-6">
+                                  <p class="mb-1 text-muted">Full Name</p>
+                                  <p class="mb-0">Ken Adams</p>
+                                </div>
+                                <div class="col-md-6">
+                                  <p class="mb-1 text-muted">Phone</p>
+                                  <p class="mb-0">0501231234</p>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="list-group-item px-0 pt-0 bg-body-secondary">
+                              <div class="row bg-body-secondary">
+                                <div class="col-md-6">
+                                  <p class="mb-1 text-muted">Email</p>
+                                  <p class="mb-0">nomail@gmail.com</p>
+                                </div>
+                                <div class="col-md-6">
+                                  <p class="mb-1 text-muted">Address</p>
+                                  <p class="mb-0">Hell st. 64</p>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-    
-                    <div class="input-group mb-3">
-                      <input id="firstName" type="text" class="form-control" placeholder="First Name">
-                      <input id="lastName" type="text" class="form-control" placeholder="Last Name">
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input class="form-control" type="email" id="email" placeholder="Email">
-                    </div>
-    
-    
-                    <div class="input-group mb-3">
-                      <span class="input-group-text">Birth Date</span>
-                      <input class="form-control" type="date" id="birthDate">
-                    </div>
-    
-                    <div class="input-group mb-3">
-                      <input id="city" type="text" class="form-control" placeholder="City">
-                      <input id="street" type="text" class="form-control" placeholder="Street">
-                      <input id="houseNumber" type="text" class="form-control" placeholder="House">
-                    </div>
-    
-                    <button class="btn btn-primary mb-3" type="submit">שליחה</button>
-                  </form>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-          <!--Modal-sign up end-->
+                <div class="tab-pane fade" id="update" role="tabpanel" aria-labelledby="update-tab">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="card">
+                        <div class="card-header text-center">
+                          <h5>View And Change Profile</h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-12 text-center mb-3">
+                              <div class="user-upload wid-75">
+                                <img src="/Media/Assets/team-3.jpg" id="profilePicProfile" alt=""
+                                  class="img-fluid align-content-center">
+                                <label for="uplfile" class="img-avatar-upload">
+                                  <i data-feather="camera" class="f-24 mb-1"></i>
+                                  <span>Upload</span>
+                                </label>
+                                <input type="file" id="uplfile" class="d-none">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5>Update Information</h5>
+                        </div>
+                        <div class="card-body">
+                          <form>
+                            <div class="mb-3">
+                              <label for="fullName" class="form-label">Full Name</label>
+                              <input type="text" class="form-control" id="fullName">
+                            </div>
+                            <div class="mb-3">
+                              <label for="phone" class="form-label">Phone</label>
+                              <input type="text" class="form-control" id="phone">
+                            </div>
+                            <div class="mb-3">
+                              <label for="emailA" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="emailA">
+                            </div>
+                            <div class="mb-3">
+                              <label for="address" class="form-label">Address</label>
+                              <input type="text" class="form-control" id="address">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                          </form>
+                        </div>
 
 
-      </main>
+                        <footer class="footer bg-dark py-3 " id="footer">
+                          <div class="container ">
+                            <div class="row">
+                              <div class="col-lg-6 text-start text-secondary">
+                                <h5>Contact Us</h5>
+                                <p>123 Main Street, City, Country</p>
+                                <p>Email: info@sm.space</p>
+                                <p>Phone: +1 234 567 890</p>
+                              </div>
+                              <div class="col-lg-6 text-end text-secondary">
+                                <h5>S&M.Space</h5>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 text-center text-secondary">
+                                <p class="mb-0">© 2023 S&M.Space. All rights reserved.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </footer>
 
-      <footer class="footer bg-dark py-3 " id="footer">
-        <div class="container ">
-          <div class="row">
-            <div class="col-lg-6 text-start text-secondary">
-              <h5>Contact Us</h5>
-              <p>123 Main Street, City, Country</p>
-              <p>Email: info@sm.space</p>
-              <p>Phone: +1 234 567 890</p>
-            </div>
-            <div class="col-lg-6 text-end text-secondary">
-              <h5>S&M.Space</h5>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12 text-center text-secondary">
-              <p class="mb-0">© 2023 S&M.Space. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace();
-    </script>
+                        <script
+                          src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+                        <script>
+                          feather.replace();
+                        </script>
 </body>

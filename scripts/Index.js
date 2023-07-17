@@ -11,14 +11,14 @@ import { UserTable } from "./function.js";
 
 function Main() {
 
-    if (window.location.href.includes("/managerProfile")) {
-        UserTable();
-    };
     if (window.location.href.includes("/store")) {
         BuildStore();
         AddSuit();
         AddFood();
         AddShip();
+    };
+    if (window.location.href.includes("/managerProfile")) {
+        UserTable();
     };
     
     SendregistrationForm();
