@@ -1,9 +1,8 @@
 import { User } from "./models/User.js";
 
 //Arrays for Users:
-var storedUsers = new Array();
 //admin
-storedUsers[0] = new User(
+var storedUsers = [new User(
   `admin`,
   `admin1234admin`,
   `/Media/Assets/team-3.jpg`,
@@ -14,12 +13,12 @@ storedUsers[0] = new User(
   `Hell`,
   `Hell st`,
   `25`
-);
-
+)];
+var cart = []
 // arrays for hardcoded products
 var storedFlights = [
   {
-    flightNumber: `165-56A`,
+    name: `165-56A`,
     departureDate: `26/07/2023`,
     arrivalDate: `26/08/2025`,
     classType: `Heavy`,
@@ -27,7 +26,7 @@ var storedFlights = [
     price: `12,500`,
   },
   {
-    flightNumber: `187-96A`,
+    name: `187-96A`,
     departureDate: `26/09/2023`,
     arrivalDate: `26/09/2024`,
     classType: `Medium`,
@@ -35,7 +34,7 @@ var storedFlights = [
     price: `11,500`,
   },
   {
-    flightNumber: `787-96B`,
+    name: `787-96B`,
     departureDate: `26/10/2023`,
     arrivalDate: `26/09/2024`,
     classType: `Light`,
@@ -43,7 +42,7 @@ var storedFlights = [
     price: `64,500`,
   },
   {
-    flightNumber: `T77-96B`,
+    name: `T77-96B`,
     departureDate: `26/10/2029`,
     arrivalDate: `26/09/2032`,
     classType: `Heavy`,
@@ -54,9 +53,12 @@ var storedFlights = [
 var storedFoods = [
   {
     name: `Minced Brains`,
+    name: `Minced Brains`,
     foodType: `meat`,
     kosherStatus: `no`,
     hypoallergenicStatus: `yes`,
+    foodImage: `/Media/Assets/Ecom/products/food1.png`,
+    price: `32.50`,
     img: `/Media/Assets/Ecom/products/food1.png`,
     price: `32.50`,
   },
@@ -65,7 +67,7 @@ var storedFoods = [
     foodType: `meat`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    img: `/Media/Assets/Ecom/products/food2.png`,
+    foodImage: `/Media/Assets/Ecom/products/food2.png`,
     price: `19.90`,
   },
   {
@@ -73,7 +75,7 @@ var storedFoods = [
     foodType: `Dairy`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    img: `/Media/Assets/Ecom/products/food3.png`,
+    foodImage: `/Media/Assets/Ecom/products/food3.png`,
     price: `312.30`,
   },
   {
@@ -81,7 +83,7 @@ var storedFoods = [
     foodType: `meat`,
     kosherStatus: `No`,
     hypoallergenicStatus: `Yes`,
-    img: `/Media/Assets/Ecom/products/food4.png`,
+    foodImage: `/Media/Assets/Ecom/products/food4.png`,
     price: `99.90`,
   },
 ];
@@ -116,6 +118,9 @@ var storedSuits = [
   },
 ];
 
+if (!(localStorage.getItem('users'))) {
+  localStorage.setItem('users', JSON.stringify(storedUsers))
+}
 if (!(localStorage.getItem('flights'))) {
   localStorage.setItem('flights', JSON.stringify(storedFlights))
 }
@@ -383,12 +388,12 @@ export function AddFood() {
       let img = event.target.result;
 
       let food = {
-        name: name,
+        name: foodName,
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
         hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
-        img: img,
-        price: price,
+        foodImage: foodImage,
+        price: foodPrice,
       };
 
       let storedFoodsJSON = localStorage.getItem("foods");
@@ -446,7 +451,7 @@ export function AddShip() {
       let image = event.target.result;
 
       let flight = {
-        flightNumber: flightNumber,
+        name: flightNumber,
         departureDate: departureDate,
         arrivalDate: arrivalDate,
         classType: classType,
@@ -483,24 +488,25 @@ function AddFlightToStore() {
 
   let str = ``;
   for (let i = 0; i < storedFlights.length; i++) {
-    str += `<div class="card col-lg-3 m-4 mx-auto ">
-    <img src="${storedFlights[i].image}" class="card-img-top" alt="Product ${i + 1}">
-    <div class="card-body">
-      <h5 class="card-title fw-bold">${storedFlights[i].flightNumber}</h5>
-      <p class="card-text">Price: $${storedFlights[i].price}</p>
-      <p class="card-text">Take off: ${storedFlights[i].departureDate}</p>
-      <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
-    </div>
-  </div>
-  
-  `;
+    str += `<div class="card col-lg-3 m-2 mx-auto" >
+        <img src="${storedFlights[i].image}" class="prod" alt="Product 1">
+        <h3 class="fs-4">${storedFlights[i].name}
+        </h3>
+        <p class="small p fw-bold">
+        Price: <span>${storedFlights[i].price}</span>
+        </p>
+        <p class="small p fw-bold">
+        Take off: <span>${storedFlights[i].departureDate}</span>
+        </p>
+        <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
+        </div>`;
   }
   productGridF.innerHTML = str;
 
-  // let flightToCart = document.querySelectorAll('.flightToCart');
-  // for (let i = 0; i < flightToCart.length; i++) {
-  //   flightToCart[i].addEventListener('click', AddFlightToCard);
-  // }
+  let flightToCart = document.querySelectorAll('.flightToCart');
+  for (let i = 0; i < flightToCart.length; i++) {
+    flightToCart[i].addEventListener('click', AddFlightToCart);
+  }
 
 }
 
@@ -518,7 +524,7 @@ function AddFoodsToStore() {
     <p class="card-text"><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
     <p class="card-text"><span class="fw-bold">Hypoallergenic Ingredients: </span>${storedFoods[i].hypoallergenicStatus}</p>
     <p class="card-text">Price: $${storedFoods[i].price}</p>
-    <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+    <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
   </div>
 </div>
 
@@ -526,6 +532,11 @@ function AddFoodsToStore() {
 
   }
   productGridFood.innerHTML = str;
+
+  let foodToCart = document.querySelectorAll('.foodToCart');
+  for (let i = 0; i < foodToCart.length; i++) {
+    foodToCart[i].addEventListener('click', AddFoodToCart);
+  }
 }
 
 function AddSuitsToStore() {
@@ -541,7 +552,7 @@ function AddSuitsToStore() {
     <p class="card-text">Size: ${storedSuits[i].size}</p>
     <p class="card-text">Color: ${storedSuits[i].color}</p>
     <p class="card-text">Price: $${storedSuits[i].price}</p>
-    <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
+    <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
   </div>
 </div>
 
@@ -549,6 +560,10 @@ function AddSuitsToStore() {
   }
 
   productGridSuit.innerHTML = str;
+  let suitToCart = document.querySelectorAll('.suitToCart');
+  for (let i = 0; i < suitToCart.length; i++) {
+    suitToCart[i].addEventListener('click', AddSuitToCart);
+  }
 }
 
 
@@ -556,3 +571,44 @@ function UserCart(product){
   
 }
 
+function UserCart(product){
+  
+}
+
+function AddFlightToCart(event) {
+  let flightIndex = Number(event.target.dataset.ind);
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart.push(storedFlights[flightIndex])
+  localStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function AddFoodToCart(event) {
+  let foodIndex = Number(event.target.dataset.ind);
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart.push(storedFoods[foodIndex])
+  localStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function AddSuitToCart(event) {
+  let suitIndex = Number(event.target.dataset.ind);
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart.push(storedSuits[suitIndex])
+  localStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function UpDatecart() {
+  let str = "";
+  let cart = JSON.parse(localStorage.getItem('cart'))
+
+  for (let i = 0; i < cart.length; i++) {
+    str += `${cart[i].name}, ${cart[i].image}, ${cart[i].price}`
+
+  }
+
+  // innerHTML = str;
+
+  console.log(str);
+}
