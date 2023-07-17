@@ -25,47 +25,47 @@ localStorage.setItem(`users`, JSON.stringify(storedUsers));
 // storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
 export function BuildStore() {
-  stackedFlights = [
-    {
-      flightNumber: `165-56A`,
-      departureDate: `26/07/2023`,
-      arrivalDate: `26/08/2025`,
-      classType: `Heavy`,
-      image: `/Media/Assets/Ecom/products/prod1.jpg`,
-      price: `12,500`,
-    },
-    {
-      flightNumber: `187-96A`,
-      departureDate: `26/09/2023`,
-      arrivalDate: `26/09/2024`,
-      classType: `Medium`,
-      image: `/Media/Assets/Ecom/products/prod2.jpg`,
-      price: `11,500`,
-    },
-    {
-      flightNumber: `787-96B`,
-      departureDate: `26/10/2023`,
-      arrivalDate: `26/09/2024`,
-      classType: `Light`,
-      image: `/Media/Assets/Ecom/products/prod3.jpg`,
-      price: `64,500`,
-    },
-    {
-      flightNumber: `T77-96B`,
-      departureDate: `26/10/2029`,
-      arrivalDate: `26/09/2032`,
-      classType: `Heavy`,
-      image: `/Media/Assets/Ecom/products/prod4.jpg`,
-      price: `164,500`,
-    },
-  ];
+    stackedFlights = [
+        {
+            flightNumber: `165-56A`,
+            departureDate: `26/07/2023`,
+            arrivalDate: `26/08/2025`,
+            classType: `Heavy`,
+            image: `/Media/Assets/Ecom/products/prod1.jpg`,
+            price: `12,500`,
+        },
+        {
+            flightNumber: `187-96A`,
+            departureDate: `26/09/2023`,
+            arrivalDate: `26/09/2024`,
+            classType: `Medium`,
+            image: `/Media/Assets/Ecom/products/prod2.jpg`,
+            price: `11,500`,
+        },
+        {
+            flightNumber: `787-96B`,
+            departureDate: `26/10/2023`,
+            arrivalDate: `26/09/2024`,
+            classType: `Light`,
+            image: `/Media/Assets/Ecom/products/prod3.jpg`,
+            price: `64,500`,
+        },
+        {
+            flightNumber: `T77-96B`,
+            departureDate: `26/10/2029`,
+            arrivalDate: `26/09/2032`,
+            classType: `Heavy`,
+            image: `/Media/Assets/Ecom/products/prod4.jpg`,
+            price: `164,500`,
+        },
+    ];
 
-  let str = ``;
+    let str = ``;
 
 
-  for(let i=0; i < stackedFlights.length;i++){
-    
-    str += `
+    for (let i = 0; i < stackedFlights.length; i++) {
+
+        str += `
         <div class="card col-lg-3 m-2 mx-auto" >
         <img src="${stackedFlights[i].image}" class="prod" alt="Product 1">
         <h3 class="fs-4">${stackedFlights[i].flightNumber}
@@ -79,52 +79,52 @@ export function BuildStore() {
         <button class="prodBut btn btn-info">buy</button>
       </div>`;
     };
-    
+
 
     // let addBut = document.querySelectorAll(".prodBut");
     // console.log(addBut);
     // addBut.forEach(element => {
     //     element.addEventListener(`click`, AddToCart);
     // });
-  productGridF.innerHTML += str;
+    productGridF.innerHTML += str;
 
-  stackedFoods = [
-    {
-        foodName: `Minced Brains`,
-        foodType: `meat`,
-        kosherStatus: `no`,
-        hypoallergenicStatus:`yes`,
-        foodImage: `/Media/Assets/Ecom/products/food1.png`,
-        foodPrice: `32.50`,
-    },
-    {
-        foodName: `Ass Bits`,
-        foodType: `meat`,
-        kosherStatus: `Yes`,
-        hypoallergenicStatus:`No`,
-        foodImage: `/Media/Assets/Ecom/products/food2.png`,
-        foodPrice: `19.90`,
-    },
-    {
-        foodName: `Breast Milk`,
-        foodType: `Dairy`,
-        kosherStatus: `Yes`,
-        hypoallergenicStatus:`No`,
-        foodImage: `/Media/Assets/Ecom/products/food3.png`,
-        foodPrice: `312.30`,
-    },
-    {
-        foodName: `Shepareds Pie`,
-        foodType: `meat`,
-        kosherStatus: `No`,
-        hypoallergenicStatus:`Yes`,
-        foodImage: `/Media/Assets/Ecom/products/food4.png`,
-        foodPrice: `99.90`,
-    }
-  ];
-  let foods = ``;
-  for(let i =0; i < stackedFoods.length;i++){
-    foods += `
+    stackedFoods = [
+        {
+            foodName: `Minced Brains`,
+            foodType: `meat`,
+            kosherStatus: `no`,
+            hypoallergenicStatus: `yes`,
+            foodImage: `/Media/Assets/Ecom/products/food1.png`,
+            foodPrice: `32.50`,
+        },
+        {
+            foodName: `Ass Bits`,
+            foodType: `meat`,
+            kosherStatus: `Yes`,
+            hypoallergenicStatus: `No`,
+            foodImage: `/Media/Assets/Ecom/products/food2.png`,
+            foodPrice: `19.90`,
+        },
+        {
+            foodName: `Breast Milk`,
+            foodType: `Dairy`,
+            kosherStatus: `Yes`,
+            hypoallergenicStatus: `No`,
+            foodImage: `/Media/Assets/Ecom/products/food3.png`,
+            foodPrice: `312.30`,
+        },
+        {
+            foodName: `Shepareds Pie`,
+            foodType: `meat`,
+            kosherStatus: `No`,
+            hypoallergenicStatus: `Yes`,
+            foodImage: `/Media/Assets/Ecom/products/food4.png`,
+            foodPrice: `99.90`,
+        }
+    ];
+    let foods = ``;
+    for (let i = 0; i < stackedFoods.length; i++) {
+        foods += `
     <div class="card col-lg-3 m-2 mx-auto">
     <img class="prod" src="${stackedFoods[i].foodImage}" alt="Product 5">
     <h3 class="fw-bold">${stackedFoods[i].foodName}</h3>
@@ -135,21 +135,21 @@ export function BuildStore() {
     <button class="prodBut btn btn-info">buy</button>
   </div>
     `
-  };
-  productGridFood.innerHTML += foods;
+    };
+    productGridFood.innerHTML += foods;
 
-  let suits = ``;
-  for(let i=0; i<stackedSuits.length;i++){
-    suits+= `
+    let suits = ``;
+    for (let i = 0; i < stackedSuits.length; i++) {
+        suits += `
         
     `
-  }
-  AddFlightToStore();
-  AddFoodsToStore();
+    }
+    AddFlightToStore();
+    AddFoodsToStore();
 }
 export function UserTable() {
-    
-  
+
+
     // let manager = `<tr>
     //               <td><img src="${storedUsers[0].image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
     //               <td>${storedUsers[0].username}</td>
@@ -158,12 +158,12 @@ export function UserTable() {
     //               <td>${storedUsers[0].street} ${storedUsers[0].number}, ${storedUsers[0].city}</td>
     //               <td>${storedUsers[0].email}</td>
     //             </tr>`;
-  
+
     let userTable = document.getElementById("userTable");
-    
+
     // userTable.innerHTML += manager;
-    let users =``;
-    if(storedUsers){
+    let users = ``;
+    if (storedUsers) {
         storedUsers.forEach(element => {
             users = `<tr>
             <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
@@ -173,13 +173,13 @@ export function UserTable() {
             <td>${element.street} ${element.number}, ${element.city}</td>
             <td>${element.email}</td>
           </tr>`;
-          userTable.innerHTML += users;
+            userTable.innerHTML += users;
         });
     }
-   
 
-  }
-  
+
+}
+
 export function SendregistrationForm() {
     let form = document.querySelector("#registrationForm");
     form.addEventListener("submit", SubmitRegistrationForm);
@@ -219,7 +219,7 @@ export function SubmitRegistrationForm(event) {
     let reader = new FileReader();
 
     // Set up an event listener for when the file is loaded
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         // The file content will be available in event.target.result
         let imageContent = event.target.result;
 
@@ -288,32 +288,28 @@ function SubmitLoginForm() {
     let storedUsersJSON = localStorage.getItem("users");
 
     // Check if the email already exists in localStorage
+    // Check if the email already exists in localStorage
     if (storedUsersJSON) {
-        storedUsers = JSON.parse(storedUsersJSON);
-        for (let i = 0; i < storedUsers.length; i++) {
-            if (
-                storedUsers[i].email === email &&
-                storedUsers[i].password === password
-            ) {
-                if(password === `admin1234admin`){
-                    // add.classList.toggle(`disabled`)
-                    location.assign("./managerProfile.html");
-                    alert(`You are connected as an admin`);
-                }
-                let add = document.getElementById(`addItem`);
-                // alert("connect");
-                // document.querySelector("#incorrectPassword").style.visibility =
-                //     "hidden";
+        let storedUsers = JSON.parse(storedUsersJSON);
+        let user = storedUsers.find((u) => u.email === email && u.password === password);
 
-                return;
+        if (user) {
+            localStorage.setItem("connetedUser", updatedSuitsJSON);
+
+            if (password === `admin1234admin`) {
+                location.assign("./managerProfile.html");
+                alert(`You are connected as an admin`);
             }
-            //  else {
-            //     document.querySelector("#incorrectPassword").style.visibility =
-            //         "visible";
-            // }
+            let add = document.getElementById(`addItem`);
+            // alert("connect");
+            // document.querySelector("#incorrectPassword").style.visibility = "hidden";
+            return;
+        } else {
+            // document.querySelector("#incorrectPassword").style.visibility = "visible";
+            alert("Incorrect email or password.");
         }
     } else {
-        alert("No registred users");
+        alert("No registered users.");
     }
 }
 export function AddSuit() {
@@ -522,7 +518,7 @@ export function AddShip() {
 
 function AddFlightToStore() {
     let str = ``;
-    if(storedFlights){
+    if (storedFlights) {
         storedFlights.forEach((element) => {
             str += `
             <div class="card col-lg-3 m-2 mx-auto" >
@@ -539,17 +535,17 @@ function AddFlightToStore() {
           </div>`;
         });
     }
-    
+
 
     productGridF.innerHTML += str;
 }
 
-function AddFoodsToStore(){
+function AddFoodsToStore() {
     let str = ``;
 
-    if(storedFoods){
+    if (storedFoods) {
         storedFoods.forEach((element) => {
-            str+=`
+            str += `
             <div class="card col-lg-3 m-2 mx-auto">
             <img class="prod" src="${element.foodImage}" alt="Product 5">
             <h3 class="fw-bold">${element.foodName}</h3>
@@ -562,11 +558,11 @@ function AddFoodsToStore(){
         });
     }
 
-    productGridFood.innerHTML +=str;
+    productGridFood.innerHTML += str;
 }
 
 
-function AddToCart(index){
+function AddToCart(index) {
 
     console.log(index);
 
