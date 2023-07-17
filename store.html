@@ -161,17 +161,17 @@
   <!--Modal-sign up end-->
 
   <!--shopping cart start-->
-  <div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+  <div class="offcanvas offcanvas-end w-25 bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
     <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel" class="display-5">Shopping Cart</h5>
+      <h5 id="offcanvasRightLabel" class="display-5 text-white-50">Shopping Cart</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body text-white-50">
       <h3>Your Desired Items</h3>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
+      <div class="table-responsive bg-dark-subtle">
+        <table class="table table-bordered bg-dark-subtle">
+          <thead class="">
+            <tr >
               <th>Item Number</th>
               <th>Picture</th>
               <th>Description</th>
@@ -193,31 +193,32 @@
   <!--Adding new item of canvas start-->
 
 
-  <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 id="offcanvasLeftLabel">Offcanvas right</h5>
+      <h5 id="offcanvasLeftLabel" class="fs-2 text-white-50" >Add New Item to Store</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body ">
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
-            <div class="card">
-              <div class="card-header pb-0">
+            <p class="lead text-white-50">Input all Designated Fields</p>
+            <div class="card bg-dark-subtle">
+              <div class="card-header pb-0 ">
                 <ul class="nav nav-pills profile-tabs" id="myTab" role="tablist">
                   <li class="nav-item" role="presentation">
                     <a href="#spaceship" role="tab" id="spaceship-tab" data-bs-toggle="tab" aria-selected="true"
-                      class="nav-link active">
+                      class="nav-link active bg-light text-black">
                       <i data-feather="rocket" class="icon"></i><span class="tabtext">Spaceship</span>
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a href="#spacefood" role="tab" id="spacefood-tab" data-bs-toggle="tab" class="nav-link">
+                    <a href="#spacefood" role="tab" id="spacefood-tab" data-bs-toggle="tab" class="nav-link bg-light text-black">
                       <i data-feather="coffee" class="icon"></i><span class="tabtext">Space Food</span>
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a href="#spacesuits" role="tab" id="spacesuits-tab" data-bs-toggle="tab" class="nav-link">
+                    <a href="#spacesuits" role="tab" id="spacesuits-tab" data-bs-toggle="tab" class="nav-link bg-light text-black">
                       <i data-feather="user-check" class="icon"></i><span class="tabtext">Space Suits</span>
                     </a>
                   </li>
@@ -226,7 +227,10 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="spaceship" role="tabpanel" aria-labelledby="spaceship-tab">
-                    <form id="addFlight">
+                    <div class="section-title">
+                      <h2 class="text-black-50 text-center p-2">Add Space Ship</h2>
+                    </div>
+                    <form id="addFlight" class="w-75 mx-auto">
 
                       <div class="input-group mb-3">
                         <input id="addFlightNumber" type="text" class="form-control" placeholder="Flight Number">
@@ -260,10 +264,13 @@
                         <span class="input-group-text">.00</span>
                       </div>
 
-                      <button id="ShipSubmit" class="btn btn-primary mb-3" type="submit">Send</button>
+                      <button id="ShipSubmit" class="btn btn-primary mb-3 btn btn-light btn-outline-dark w-50" type="submit">Send</button>
                     </form>
                   </div>
                   <div class="tab-pane fade" id="spacefood" role="tabpanel" aria-labelledby="spacefood-tab">
+                    <div class="section-title">
+                      <h2 class="text-black-50 text-center p-2">Add Food Item</h2>
+                    </div>
                     <form id="addFood">
                       <div class="input-group mb-3">
                         <input id="addFoodName" type="text" class="form-control" placeholder="Food Name">
@@ -300,14 +307,14 @@
                         <span class="input-group-text">.00</span>
                       </div>
 
-                      <button id="FoodSubmit" class="btn btn-primary mb-3" type="submit">Send</button>
+                      <button id="FoodSubmit" class="btn btn-light btn-outline-dark w-50" type="submit">Send</button>
                     </form>
                   </div>
                   <div class="tab-pane fade" id="spacesuits" role="tabpanel" aria-labelledby="spacesuits-tab">
                     <div class="section-title">
-                      <h2>Add Space Suit</h2>
+                      <h2 class="text-black-50 text-center p-2">Add Space Suit</h2>
                     </div>
-                    <form id="addSuit">
+                    <form id="addSuit" class="w-75 mx-auto">
                       <div class="input-group mb-3 col-md-4">
                         <input id="addSuitName" type="text" class="form-control" placeholder="Brand Name">
                       </div>
@@ -346,7 +353,7 @@
                         <span class="input-group-text">.00</span>
                       </div>
 
-                      <button id="SuitSubmit" class="btn btn-primary mb-3" type="submit">Send</button>
+                      <button id="SuitSubmit" class="btn btn-light btn-outline-dark w-50" type="submit">Send</button>
                     </form>
                   </div>
                 </div>
@@ -364,7 +371,7 @@
 
   <main>
     <div class="row">
-      <div id="eComHead" class="carousel slide" data-bs-ride="carousel">
+      <div id="eComHead" class="carousel slide" data-bs-ride="carousel" style="height: 90vh;">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#eComHead" data-bs-slide-to="0" class="active" aria-current="true"
             aria-label="Slide 1"></button>
@@ -374,28 +381,28 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img id="caru" src="/Media/Assets/Ecom/caru1.jpg" class="d-block w-100" alt="...">
+            <img id="caru" src="/Media/Assets/Ecom/caru1.jpg" class="d-block w-100 custom-carousel-img" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Unveil the Mysteries of the Universe</h5>
               <p>Embark on an awe-inspiring journey of cosmic discovery as you unravel the secrets of the universe.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img id="caru" src="/Media/Assets/Ecom/caru3.jpg" class="d-block w-100" alt="...">
+            <img id="caru" src="/Media/Assets/Ecom/caru3.jpg" class="d-block w-100 custom-carousel-img" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Own a Piece of Space History</h5>
               <p>Discover our exclusive collection of authentic space artifacts and memorabilia.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img id="caru" src="/Media/Assets/Ecom/caru2.jpg" class="d-block w-100" alt="...">
+            <img id="caru" src="/Media/Assets/Ecom/caru2.jpg" class="d-block w-100 custom-carousel-img" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Explore the Final Frontier</h5>
               <p>Embark on a journey of a lifetime with our extraordinary space travel experiences.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img id="caru" src="/Media/Assets/Ecom/caru4.jpg" class="d-block w-100" alt="...">
+            <img id="caru" src="/Media/Assets/Ecom/caru4.jpg" class="d-block w-100 custom-carousel-img" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Build Your Interstellar Fleet</h5>
               <p>Experience the future of space exploration by acquiring your own cutting-edge spaceship.</p>
@@ -436,22 +443,21 @@
 
       <div class="product-grid gap-2" id="storeGrid">
         <h1 class="display-5">Space Ships</h1>
-        <div id="flightsSec" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        <div id="flightsSec" class="row">
           <div class="container">
           </div>
           <!--Content inserted from js-->
         </div>
 
         <h1 class="display-5">Space Nutrition Packs</h1>
-        <div id="foodSec" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        <div id="foodSec" class="row ">
           <div class="container">
           </div>
           <!--Content inserted from js-->
         </div>
 
-        <<<<<<< HEAD <h1 class="display-5">Space Suits</h1>
-          <div id="suitSec" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-            =======
+  <h1 class="display-5">Space Suits</h1>
+          <div id="suitSec" class="row">
             <div class="row">
               >>>>>>> Misha
               <div class="container">
@@ -488,7 +494,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <<<<<<< HEAD=======>>>>>>> Misha
+
     <script>
       feather.replace();
     </script>

@@ -4,14 +4,24 @@
 body{
     overflow-x: hidden;
 }
+
+.custom-carousel-img {
+    height: 90vh; 
+    object-fit: cover;
+  }
+  
+  
 #storeGrid .card {
-    width: 240px;
+    max-width: 240px;
+    max-height: 300px;
     padding: 0;
+    border: none;
+    box-shadow: 7px 7px 20px 5px rgb(172, 172, 172);
 
     transition: transform 0.2s;
     cursor: pointer;
     &:hover{
-        transform: scale(1.2);
+        transform: scale(1.1);
     transform-origin: center;
     }
 }
@@ -27,5 +37,16 @@ body{
 #storeGrid .card h3, #storeGrid .card p{
     padding: 0.25rem;
 } 
+
+#FoodSubmit, #SuitSubmit, #ShipSubmit{
+    display: block;
+    width: 40%;
+    margin: auto;
+} 
+
+#spaceship-tab, #spacefood-tab, #spacesuits-tab{
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; 
+}
 
 
