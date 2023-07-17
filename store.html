@@ -20,6 +20,7 @@
 </head>
 
 <body>
+  <!--start of nav bar-->
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-5">
     <div class="container ">
       <a class="navbar-brand" href="/index.html"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
@@ -99,6 +100,7 @@
     </div>
   </div>
   <!--Modal-log in end-->
+
   <!--Modal-sign up-->
   <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="signUp" aria-hidden="true">
@@ -156,8 +158,6 @@
       </div>
     </div>
   </div>
-  </div>
-
   <!--Modal-sign up end-->
 
   <!--shopping cart start-->
@@ -171,7 +171,7 @@
       <div class="table-responsive bg-dark-subtle">
         <table class="table table-bordered bg-dark-subtle">
           <thead class="">
-            <tr >
+            <tr>
               <th>Item Number</th>
               <th>Picture</th>
               <th>Description</th>
@@ -192,11 +192,10 @@
   <!--shopping cart end-->
 
   <!--Adding new item of canvas start-->
-
-
-  <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft"
+    aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 id="offcanvasLeftLabel" class="fs-2 text-white-50" >Add New Item to Store</h5>
+      <h5 id="offcanvasLeftLabel" class="fs-2 text-white-50">Add New Item to Store</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body ">
@@ -214,12 +213,14 @@
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a href="#spacefood" role="tab" id="spacefood-tab" data-bs-toggle="tab" class="nav-link bg-light text-black">
+                    <a href="#spacefood" role="tab" id="spacefood-tab" data-bs-toggle="tab"
+                      class="nav-link bg-light text-black">
                       <i data-feather="coffee" class="icon"></i><span class="tabtext">Space Food</span>
                     </a>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <a href="#spacesuits" role="tab" id="spacesuits-tab" data-bs-toggle="tab" class="nav-link bg-light text-black">
+                    <a href="#spacesuits" role="tab" id="spacesuits-tab" data-bs-toggle="tab"
+                      class="nav-link bg-light text-black">
                       <i data-feather="user-check" class="icon"></i><span class="tabtext">Space Suits</span>
                     </a>
                   </li>
@@ -232,6 +233,15 @@
                       <h2 class="text-black-50 text-center p-2">Add Space Ship</h2>
                     </div>
                     <form id="addFlight" class="w-75 mx-auto">
+
+                      <div class="input-group mb-3">
+                        <input id="addFlightCategory" type="text" class="form-control" value="Flight" placeholder="Id"
+                          disabled>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addFlightId" type="text" class="form-control" placeholder="Id">
+                      </div>
 
                       <div class="input-group mb-3">
                         <input id="addFlightNumber" type="text" class="form-control" placeholder="Flight Number">
@@ -265,7 +275,8 @@
                         <span class="input-group-text">.00</span>
                       </div>
 
-                      <button id="ShipSubmit" class="btn btn-primary mb-3 btn btn-light btn-outline-dark w-50" type="submit">Send</button>
+                      <button id="ShipSubmit" class="btn btn-primary mb-3 btn btn-light btn-outline-dark w-50"
+                        type="submit">Send</button>
                     </form>
                   </div>
                   <div class="tab-pane fade" id="spacefood" role="tabpanel" aria-labelledby="spacefood-tab">
@@ -273,6 +284,16 @@
                       <h2 class="text-black-50 text-center p-2">Add Food Item</h2>
                     </div>
                     <form id="addFood">
+
+                      <div class="input-group mb-3">
+                        <input id="addFoodCategory" type="text" class="form-control" value="Food" placeholder="Id"
+                          disabled>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addFoodId" type="text" class="form-control" placeholder="Id">
+                      </div>
+
                       <div class="input-group mb-3">
                         <input id="addFoodName" type="text" class="form-control" placeholder="Food Name">
                       </div>
@@ -316,6 +337,16 @@
                       <h2 class="text-black-50 text-center p-2">Add Space Suit</h2>
                     </div>
                     <form id="addSuit" class="w-75 mx-auto">
+
+                      <div class="input-group mb-3">
+                        <input id="addSuitCategory" type="text" class="form-control" value="Suit" placeholder="Id"
+                          disabled>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addSuitId" type="text" class="form-control" placeholder="Id">
+                      </div>
+
                       <div class="input-group mb-3 col-md-4">
                         <input id="addSuitName" type="text" class="form-control" placeholder="Brand Name">
                       </div>

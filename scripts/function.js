@@ -18,6 +18,8 @@ var cart = new Array();
 // arrays for hardcoded products
 var storedFlights = [
   {
+    category: 'flight',
+    id: `1254`,
     name: `165-56A`,
     departureDate: `26/07/2023`,
     arrivalDate: `26/08/2025`,
@@ -26,6 +28,8 @@ var storedFlights = [
     price: `12,500`,
   },
   {
+    category: 'flight',
+    id: `1258`,
     name: `187-96A`,
     departureDate: `26/09/2023`,
     arrivalDate: `26/09/2024`,
@@ -34,6 +38,8 @@ var storedFlights = [
     price: `11,500`,
   },
   {
+    category: 'flight',
+    id: `1248`,
     name: `787-96B`,
     departureDate: `26/10/2023`,
     arrivalDate: `26/09/2024`,
@@ -42,6 +48,8 @@ var storedFlights = [
     price: `64,500`,
   },
   {
+    category: 'flight',
+    id: `1206`,
     name: `T77-96B`,
     departureDate: `26/10/2029`,
     arrivalDate: `26/09/2032`,
@@ -52,6 +60,8 @@ var storedFlights = [
 ];
 var storedFoods = [
   {
+    category: 'food',
+    id: `2346`,
     name: `Minced Brains`,
     name: `Minced Brains`,
     foodType: `meat`,
@@ -63,6 +73,8 @@ var storedFoods = [
     price: `32.50`,
   },
   {
+    category: 'food',
+    id: `2467`,
     name: `Ass Bits`,
     foodType: `meat`,
     kosherStatus: `Yes`,
@@ -71,6 +83,8 @@ var storedFoods = [
     price: `19.90`,
   },
   {
+    category: 'food',
+    id: `2345`,
     name: `Breast Milk`,
     foodType: `Dairy`,
     kosherStatus: `Yes`,
@@ -79,6 +93,8 @@ var storedFoods = [
     price: `312.30`,
   },
   {
+    category: 'food',
+    id: `2867`,
     name: `Shepareds Pie`,
     foodType: `meat`,
     kosherStatus: `No`,
@@ -89,28 +105,36 @@ var storedFoods = [
 ];
 var storedSuits = [
   {
-    brandName: `Wolf$Gangs`,
+    category: 'suit',
+    id: `3546`,
+    name: `Wolf$Gangs`,
     size: `S/36`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit1.jpg`,
     price: `360.90`,
   },
   {
-    brandName: `Wolf$Gangs`,
+    category: 'suit',
+    id: `3568`,
+    name: `Wolf$Gangs`,
     size: `M/42`,
     color: `Orange`,
     image: `/Media/Assets/Ecom/products/suit2.jpg`,
     price: `422.90`,
   },
   {
-    brandName: `Suits-BaAm`,
+    category: 'suit',
+    id: `3965`,
+    name: `Suits-BaAm`,
     size: `L/46`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit3.jpg`,
     price: `180.90`,
   },
   {
-    brandName: `AlaIster`,
+    category: 'suit',
+    id: `3967`,
+    name: `AlaIster`,
     size: `XL/56`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit4.jpg`,
@@ -313,6 +337,8 @@ export function AddSuit() {
     let color = document.getElementById("addSuitColor").value;
     let imageInput = document.getElementById("addSuitImage");
     let price = document.getElementById("addSuitPrice").value;
+    let id = document.getElementById("addSuitId").value;
+    let category = document.getElementById("addSuitCategory").value;
 
     // Check if any of the fields are empty
     if (
@@ -320,7 +346,9 @@ export function AddSuit() {
       size === "Choose a size" ||
       color === "Choose a color" ||
       !imageInput.files[0] ||
-      !price
+      !price ||
+      !id ||
+      !category
     ) {
       alert("Please fill in all the required fields.");
       return;
@@ -333,7 +361,9 @@ export function AddSuit() {
       let imageContent = event.target.result;
 
       let suit = {
-        brandName: brandName,
+        category: category,
+        id: id,
+        name: brandName,
         size: size,
         color: color,
         image: imageContent,
@@ -364,20 +394,16 @@ export function AddFood() {
     event.preventDefault(); // Prevent form submission
 
     // Retrieve input values
-    let name = document.getElementById("addFoodName").value;
-    let foodType = document.querySelector(
-      'input[name="meat_dairy"]:checked'
-    ).value;
-    let kosherStatus = document.querySelector(
-      'input[name="kosher_noKosher"]:checked'
-    ).value;
-    let hypoallergenicStatus = document.querySelector(
-      'input[name="hypoallergenic_no"]:checked'
-    ).value;
+    let foodName = document.getElementById("addFoodName").value;
+    let foodType = document.querySelector('input[name="meat_dairy"]:checked').value;
+    let kosherStatus = document.querySelector('input[name="kosher_noKosher"]:checked').value;
+    let hypoallergenicStatus = document.querySelector('input[name="hypoallergenic_no"]:checked').value;
     let foodImageInput = document.getElementById("addFoodImage");
-    let price = document.getElementById("addFoodPrice").value;
+    let foodPrice = document.getElementById("addFoodPrice").value;
+    let foodId = document.getElementById("addFoodId").value;
+    let foodCategory = document.getElementById("addFoodCategory").value;
 
-    if (name === "" || price === "") {
+    if (!foodName || !foodPrice || !foodId || !foodCategory) {
       alert("Please fill in all the fields.");
       return;
     }
@@ -390,6 +416,8 @@ export function AddFood() {
       let img = event.target.result;
 
       let food = {
+        id: foodId,
+        category: foodCategory,
         name: foodName,
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
@@ -429,18 +457,25 @@ export function AddShip() {
     let classType = document.getElementById("addShipSize").value;
     let imageInput = document.getElementById("addShipImage");
     let price = document.getElementById("addShipPrice").value;
+    let shipId = document.getElementById("addShipId").value;
+    let shipCategory = document.getElementById("addShipCategory").value;
 
     if (
       flightNumber === "" ||
       departureDate === "" ||
       arrivalDate === "" ||
       classType === "Choose a class" ||
-      price === ""
+      price === "" ||
+      !shipId ||
+      !shipCategory
     ) {
       alert("Please fill in all the fields.");
       return;
     }
-    if (departureDate > arrivalDate) {
+    var date = moment();
+    var currentDate = date.format('YYYY/DD/MM');
+
+    if (departureDate > arrivalDate || departureDate < currentDate) {
       alert("Invalid date");
       return;
     }
@@ -453,6 +488,8 @@ export function AddShip() {
       let image = event.target.result;
 
       let flight = {
+        id: shipId,
+        category: shipCategory,
         name: flightNumber,
         departureDate: departureDate,
         arrivalDate: arrivalDate,
@@ -485,6 +522,7 @@ export function AddShip() {
 
 //adding the products to the store
 
+//להוסיף עוד נתונים על פי הפרמטרים החדשים (id, category)
 function AddFlightToStore() {
   storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
@@ -550,7 +588,7 @@ function AddSuitsToStore() {
     <div class="card col-lg-3 m-2 mx-auto">
   <img src="${storedSuits[i].image}" class="card-img-top" alt="Product ${i + 1}">
   <div class="card-body">
-    <h5 class="card-title fw-bold">${storedSuits[i].brandName}</h5>
+    <h5 class="card-title fw-bold">${storedSuits[i].name}</h5>
     <p class="card-text">Size: ${storedSuits[i].size}</p>
     <p class="card-text">Color: ${storedSuits[i].color}</p>
     <p class="card-text">Price: $${storedSuits[i].price}</p>
@@ -569,8 +607,8 @@ function AddSuitsToStore() {
 }
 
 
-function UserCart(product){
-  
+function UserCart(product) {
+
 }
 
 function AddFlightToCart(event) {
@@ -617,4 +655,8 @@ function UpDatecart() {
   // innerHTML = str;
 
   console.log(str);
+}
+
+export function UpdateInformation() {
+  document.querySelector('click').addEventListener();
 }
