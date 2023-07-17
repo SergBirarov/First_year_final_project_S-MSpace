@@ -12,7 +12,7 @@ storedUsers[0] = new User(
     `Hell st`,
     `25`
 )
-var storedSuits=JSON.parse(localStorage.getItem(`suits`));;
+var storedSuits=JSON.parse(localStorage.getItem(`suits`));
 var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 var stackedFlights = new Array();
@@ -20,6 +20,7 @@ var stackedFoods = new Array();
 var stackedSuits = new Array();
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
+var productGridSuit = document.getElementById("suitSec");
 
 var userTable = document.getElementById("userTable");
 localStorage.setItem(`users`, JSON.stringify(storedUsers));
@@ -138,25 +139,53 @@ export function BuildStore() {
     `
     };
     productGridFood.innerHTML += foods;
-
+    stackedSuits = [
+        {
+            brandName: `Wolf$Gangs`,
+            size: `S/36`,
+            color: `White/Silver`,
+            image: `/Media/Assets/Ecom/products/suit1.jpg`,
+            price: `360.90`
+        },
+        {
+            brandName: `Wolf$Gangs`,
+            size: `M/42`,
+            color: `Orange`,
+            image: `/Media/Assets/Ecom/products/suit2.jpg`,
+            price: `422.90`
+        },
+        {
+            brandName: `Suits-BaAm`,
+            size: `L/46`,
+            color: `White/Silver`,
+            image: `/Media/Assets/Ecom/products/suit3.jpg`,
+            price: `180.90`
+        },
+        {
+            brandName: `AlaIster`,
+            size: `XL/56`,
+            color: `White/Silver`,
+            image: `/Media/Assets/Ecom/products/suit4.jpg`,
+            price: `1360.90`
+        }
+    ]
   let suits = ``;
   for(let i=0; i<stackedSuits.length;i++){
     suits+= `
     <div class="card col-lg-3 m-2 mx-auto text-center">
     <img class="prod" src ="${stackedSuits[i].image}" alt="">
     <h3 class = "fw-bold">${stackedSuits[i].brandName}</h3>
-
+    <p class="fw-bold">Size: <span>${stackedSuits[i].size}</span></p>
+    <p class="fw-bold">color: <span>${stackedSuits[i].color}</span></p>
+    <p class="fw-bold">Price: <span>${stackedSuits[i].price}</span></p>
     </div>
-    `
+    `;
+  };
 
-    // brandName: brandName,
-    //             size: size,
-    //             color: color,
-    //             image: imageContent,
-    //             price: price,
-  }
+  productGridSuit.innerHTML += suits;
   AddFlightToStore();
   AddFoodsToStore();
+  AddSuitsToStore();
 }
 export function UserTable() {
 
@@ -346,6 +375,7 @@ export function AddSuit() {
             return;
         }
 
+        let file = imageInput.files[0];
         // Create a new FileReader instance
         let reader = new FileReader();
 
@@ -381,8 +411,10 @@ export function AddSuit() {
 
             // Optionally, display a success message
             alert("Suit added successfully!");
+            AddSuitsToStore();
         };
 
+        reader.readAsDataURL(file);
     });
 }
 export function AddFood() {
@@ -433,20 +465,16 @@ export function AddFood() {
             // Convert the updated foods array to a JSON string
             let updatedFoodsJSON = JSON.stringify(storedFoods);
 
-            // Store the JSON string in localStorage
             localStorage.setItem("foods", updatedFoodsJSON);
 
             // Clear the form fields
             document.getElementById("addFood").reset();
 
-            // Optionally, display a success message
             alert("Food item added successfully!");
 
-            // Assuming AddFoodsToStore() is defined elsewhere
             AddFoodsToStore();
         };
 
-        // Read the file as a data URL
         reader.readAsDataURL(file);
     });
 }
@@ -475,7 +503,7 @@ export function AddShip() {
             return;
         }
         if (departureDate > arrivalDate) {
-            alert("Illegal date");
+            alert("Invalid date");
             return;
         }
 
@@ -572,6 +600,25 @@ function AddFoodsToStore() {
     productGridFood.innerHTML += str;
 }
 
+function AddSuitsToStore() {
+    let str = ``;
+    if (storedSuits) {
+        storedSuits.forEach((element) => {
+            str += `
+            <div class="card col-lg-3 m-2 mx-auto text-center">
+            <img class="prod" src ="${element.image}" alt="">
+            <h3 class = "fw-bold">${element.brandName}</h3>
+            <p class="fw-bold">Size: <span>${element.size}</span></p>
+            <p class="fw-bold">color: <span>${element.color}</span></p>
+            <p class="fw-bold">Price: <span>${element.price}</span></p>
+            </div>
+            `;
+        });
+    }
+
+
+    productGridSuit.innerHTML += str;
+}
 
 function AddToCart(index) {
 
