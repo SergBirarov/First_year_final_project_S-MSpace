@@ -51,7 +51,6 @@ var storedFlights = [
     price: `164,500`,
   },
 ];
-
 var storedFoods = [
   {
     foodName: `Minced Brains`,
@@ -117,13 +116,23 @@ var storedSuits = [
   },
 ];
 
+if (!(localStorage.getItem('flights'))) {
+  localStorage.setItem('flights', JSON.stringify(storedFlights))
+}
+if (!(localStorage.getItem('foods'))) {
+  localStorage.setItem('foods', JSON.stringify(storedFoods))
+}
+if (!(localStorage.getItem('suits'))) {
+  localStorage.setItem('suits', JSON.stringify(storedSuits))
+}
+
 //html elements for prod and users
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 var productGridSuit = document.getElementById("suitSec");
 
-localStorage.setItem(`users`, JSON.stringify(storedUsers));
-storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
+// localStorage.setItem(`users`, JSON.stringify(storedUsers));
+// storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
 //startup building page with hardcoded elements
 export function BuildStore() {
@@ -211,7 +220,7 @@ export function SubmitRegistrationForm(event) {
         }
       }
     } else {
-      var storedUsers = [];
+      storedUsers = [];
     }
 
     let newUser = {
@@ -467,13 +476,12 @@ export function AddShip() {
 
 
 
-
 //adding the products to the store
 
 function AddFlightToStore() {
-  let str = ``;
   storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
+  let str = ``;
   for (let i = 0; i < storedFlights.length; i++) {
     str += `<div class="card col-lg-3 m-2 mx-auto" >
         <img src="${storedFlights[i].image}" class="prod" alt="Product 1">
@@ -485,11 +493,16 @@ function AddFlightToStore() {
         <p class="small p fw-bold">
         Take off: <span>${storedFlights[i].departureDate}</span>
         </p>
-        <button class="btn btn-primary prodBut data-ind="${i}" data-prod="flight" id="flightToCart-${i}">Add to Cart</button>
+        <button class="flightToCart btn btn-primary prodBut data-ind="${i}" data-prod="flight">Add to Cart</button>
         </div>`;
   }
-
   productGridF.innerHTML = str;
+
+  let flightToCart = document.querySelectorAll('.flightToCart');
+  for (let i = 0; i < flightToCart.length; i++) {
+    flightToCart[i].addEventListener('click', AddFlightToCard);
+  }
+
 }
 
 function AddFoodsToStore() {
@@ -507,23 +520,8 @@ function AddFoodsToStore() {
             <p><span class="fw-bold">Price: </span>${storedFoods[i].foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
             <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food" id="foodToCart-${i}">Add to Cart</button>
             </div>`;
-    let count = 4;
-    if (storedFoods) {
-      storedFoods.forEach((element) => {
-        str += `
-            <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="${element.foodImage}" alt="Product 5">
-            <h3 class="fw-bold">${element.foodName}</h3>
-            <p><span class="fw-bold">Dairy/Meat: </span>${element.foodType}</p>
-            <p><span class="fw-bold">Kosher Status: </span>${element.kosherStatus}</p>
-            <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${element.hypoallergenicStatus}</p>
-            <p><span class="fw-bold">Price: </span>${element.foodPrice}</p>
-            <button class="prodBut btn btn-info">buy</button>
-          </div>`;
-      });
-    }
-  }
 
+  }
   productGridFood.innerHTML = str;
 }
 
@@ -546,3 +544,8 @@ function AddSuitsToStore() {
 
   productGridSuit.innerHTML = str;
 }
+
+export function AddFlightToCard(event) {
+  console.log(event.target.dataset.ind);
+}
+

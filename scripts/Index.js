@@ -5,13 +5,13 @@ import { AddFood } from "./function.js";
 import { AddShip } from "./function.js";
 import { User } from "./models/User.js";
 import { BuildStore } from "./function.js";
-// import { UserTable } from "./function.js";
+import { UserTable } from "./function.js";
+import { AddFlightToCard } from "./function.js";
 
 
 
 
 function Main() {
-
 
 
     if (window.location.href.includes("/store")) {
@@ -26,7 +26,7 @@ function Main() {
 
     SendregistrationForm();
     SendLoginForm();
-
+    AddFlightToCard();
     // let user = JSON.parse(localStorage.getItem('connectedUser'));
     // if (user.password) {
     //     document.getElementById('login').style.display = 'none';
@@ -50,6 +50,6 @@ function Main() {
 
     //     })
     // }
-   
+
 }
 Main();
