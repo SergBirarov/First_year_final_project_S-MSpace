@@ -12,11 +12,12 @@ storedUsers[0] = new User(
     `Hell st`,
     `25`
 )
-var storedSuits;
+var storedSuits=JSON.parse(localStorage.getItem(`suits`));;
 var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 var stackedFlights = new Array();
 var stackedFoods = new Array();
+var stackedSuits = new Array();
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 
@@ -66,14 +67,14 @@ export function BuildStore() {
   for(let i=0; i < stackedFlights.length;i++){
     
     str += `
-        <div class="card col-lg-3 m-2 mx-auto" >
+        <div class="card col-lg-3 m-2 mx-auto text-center" >
         <img src="${stackedFlights[i].image}" class="prod" alt="Product 1">
         <h3 class="fs-4">${stackedFlights[i].flightNumber}
         </h3>
-        <p class="small p fw-bold">
+        <p class=" fw-bold mb-0">
           Price: <span>${stackedFlights[i].price}</span>
         </p>
-        <p class="small p fw-bold">
+        <p class=" fw-bold mb-0">
           Take off: <span>${stackedFlights[i].departureDate}</span>
         </p>
         <button class="prodBut btn btn-info">buy</button>
@@ -125,7 +126,7 @@ export function BuildStore() {
   let foods = ``;
   for(let i =0; i < stackedFoods.length;i++){
     foods += `
-    <div class="card col-lg-3 m-2 mx-auto">
+    <div class="card col-lg-3 m-2 mx-auto text-center">
     <img class="prod" src="${stackedFoods[i].foodImage}" alt="Product 5">
     <h3 class="fw-bold">${stackedFoods[i].foodName}</h3>
     <p><span class="fw-bold">Dairy/Meat: </span>${stackedFoods[i].foodType}</p>
@@ -141,8 +142,18 @@ export function BuildStore() {
   let suits = ``;
   for(let i=0; i<stackedSuits.length;i++){
     suits+= `
-        
+    <div class="card col-lg-3 m-2 mx-auto text-center">
+    <img class="prod" src ="${stackedSuits[i].image}" alt="">
+    <h3 class = "fw-bold">${stackedSuits[i].brandName}</h3>
+
+    </div>
     `
+
+    // brandName: brandName,
+    //             size: size,
+    //             color: color,
+    //             image: imageContent,
+    //             price: price,
   }
   AddFlightToStore();
   AddFoodsToStore();
@@ -556,7 +567,7 @@ function AddFoodsToStore(){
             <p><span class="fw-bold">Dairy/Meat: </span>${element.foodType}</p>
             <p><span class="fw-bold">Kosher Status: </span>${element.kosherStatus}</p>
             <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${element.hypoallergenicStatus}</p>
-            <p><span class="fw-bold">Price: </span>${element.foodPrice}</p>
+            <p><span class="fw-bold">Price: </span>${element.foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
             <button class="prodBut btn btn-info">buy</button>
           </div>`;
         });
