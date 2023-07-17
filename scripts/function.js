@@ -483,25 +483,24 @@ function AddFlightToStore() {
 
   let str = ``;
   for (let i = 0; i < storedFlights.length; i++) {
-    str += `<div class="card col-lg-3 m-2 mx-auto" >
-        <img src="${storedFlights[i].image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${storedFlights[i].flightNumber}
-        </h3>
-        <p class="small p fw-bold">
-        Price: <span>${storedFlights[i].price}</span>
-        </p>
-        <p class="small p fw-bold">
-        Take off: <span>${storedFlights[i].departureDate}</span>
-        </p>
-        <button class="flightToCart btn btn-primary prodBut data-ind="${i}" data-prod="flight">Add to Cart</button>
-        </div>`;
+    str += `<div class="card col-lg-3 m-4 mx-auto ">
+    <img src="${storedFlights[i].image}" class="card-img-top" alt="Product ${i + 1}">
+    <div class="card-body">
+      <h5 class="card-title fw-bold">${storedFlights[i].flightNumber}</h5>
+      <p class="card-text">Price: $${storedFlights[i].price}</p>
+      <p class="card-text">Take off: ${storedFlights[i].departureDate}</p>
+      <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
+    </div>
+  </div>
+  
+  `;
   }
   productGridF.innerHTML = str;
 
-  let flightToCart = document.querySelectorAll('.flightToCart');
-  for (let i = 0; i < flightToCart.length; i++) {
-    flightToCart[i].addEventListener('click', AddFlightToCard);
-  }
+  // let flightToCart = document.querySelectorAll('.flightToCart');
+  // for (let i = 0; i < flightToCart.length; i++) {
+  //   flightToCart[i].addEventListener('click', AddFlightToCard);
+  // }
 
 }
 
@@ -511,15 +510,19 @@ function AddFoodsToStore() {
 
   for (let i = 0; i < storedFoods.length; i++) {
     str += `
-        <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="${storedFoods[i].foodImage}" alt="Product 5">
-            <h3 class="fw-bold">${storedFoods[i].foodName}</h3>
-            <p><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
-            <p><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
-            <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${storedFoods[i].hypoallergenicStatus}</p>
-            <p><span class="fw-bold">Price: </span>${storedFoods[i].foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
-            <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food" id="foodToCart-${i}">Add to Cart</button>
-            </div>`;
+    <div class="card col-lg-3 m-2 mx-auto">
+  <img src="${storedFoods[i].foodImage}" class="card-img-top" alt="Product ${i + 1}">
+  <div class="card-body">
+    <h5 class="card-title fw-bold">${storedFoods[i].foodName}</h5>
+    <p class="card-text"><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
+    <p class="card-text"><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
+    <p class="card-text"><span class="fw-bold">Hypoallergenic Ingredients: </span>${storedFoods[i].hypoallergenicStatus}</p>
+    <p class="card-text">Price: $${storedFoods[i].foodPrice}</p>
+    <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+  </div>
+</div>
+
+  `;
 
   }
   productGridFood.innerHTML = str;
@@ -531,21 +534,21 @@ function AddSuitsToStore() {
 
   for (let i = 0; i < storedSuits.length; i++) {
     str += `
-        <div class="card col-lg-3 m-2 mx-auto text-center">
-        <img class="prod" src ="${storedSuits[i].image}" alt="">
-        <h3 class = "fw-bold">${storedSuits[i].brandName}</h3>
-        <p class="fw-bold">Size: <span>${storedSuits[i].size}</span></p>
-        <p class="fw-bold">color: <span>${storedSuits[i].color}</span></p>
-        <p class="fw-bold">Price: <span>${storedSuits[i].price}</span></p>
-        <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="suit" id="suitToCart-${i}">Add to Cart</button>
-        </div>
+    <div class="card col-lg-3 m-2 mx-auto">
+  <img src="${storedSuits[i].image}" class="card-img-top" alt="Product ${i + 1}">
+  <div class="card-body">
+    <h5 class="card-title fw-bold">${storedSuits[i].brandName}</h5>
+    <p class="card-text">Size: ${storedSuits[i].size}</p>
+    <p class="card-text">Color: ${storedSuits[i].color}</p>
+    <p class="card-text">Price: $${storedSuits[i].price}</p>
+    <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
+  </div>
+</div>
+
         `;
   }
 
   productGridSuit.innerHTML = str;
 }
 
-export function AddFlightToCard(event) {
-  console.log(event.target.dataset.ind);
-}
 
