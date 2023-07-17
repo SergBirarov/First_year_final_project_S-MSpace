@@ -11,10 +11,11 @@ export class User {
         this.city = _city;
         this.street = _street;
         this.number = _number;
+        card = "";
     }
 
-    
-    
+
+
     GetBirthDate() {
         return String(this.birthDate);
     }
