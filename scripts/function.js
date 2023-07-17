@@ -12,9 +12,12 @@ storedUsers[0] = new User(
     `Hell st`,
     `25`
 )
+
+
 var storedSuits=JSON.parse(localStorage.getItem(`suits`));
 var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
+
 var stackedFlights = new Array();
 var stackedFoods = new Array();
 var stackedSuits = new Array();
@@ -78,8 +81,9 @@ export function BuildStore() {
         <p class=" fw-bold mb-0">
           Take off: <span>${stackedFlights[i].departureDate}</span>
         </p>
-        <button class="prodBut btn btn-info">buy</button>
-      </div>`;
+        <button class="btn btn-primary prodBut">Add to Cart</button>
+
+        </div>`;
     };
 
 
@@ -134,8 +138,9 @@ export function BuildStore() {
     <p><span class="fw-bold">Kosher Status: </span>${stackedFoods[i].kosherStatus}</p>
     <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${stackedFoods[i].hypoallergenicStatus}</p>
     <p><span class="fw-bold">Price: </span>${stackedFoods[i].foodPrice}</p>
-    <button class="prodBut btn btn-info">buy</button>
-  </div>
+    <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+
+    </div>
     `
     };
     productGridFood.innerHTML += foods;
@@ -178,11 +183,18 @@ export function BuildStore() {
     <p class="fw-bold">Size: <span>${stackedSuits[i].size}</span></p>
     <p class="fw-bold">color: <span>${stackedSuits[i].color}</span></p>
     <p class="fw-bold">Price: <span>${stackedSuits[i].price}</span></p>
+    <button class="btn btn-primary prodBut">Add to Cart</button>
+
     </div>
     `;
   };
 
   productGridSuit.innerHTML += suits;
+
+  productGridF.addEventListener("click", handleAddToCart);
+  productGridFood.addEventListener("click", handleAddToCart);
+  productGridSuit.addEventListener("click", handleAddToCart);
+
   AddFlightToStore();
   AddFoodsToStore();
   AddSuitsToStore();
@@ -570,8 +582,9 @@ function AddFlightToStore() {
             <p class="small p fw-bold">
               Take off: <span>${element.departureDate}</span>
             </p>
-            <button class="btn btn-info">buy</button> 
-          </div>`;
+            <button class="btn btn-primary prodBut">Add to Cart</button>
+
+            </div>`;
         });
     }
 
@@ -582,6 +595,7 @@ function AddFlightToStore() {
 function AddFoodsToStore() {
     let str = ``;
 
+    let count =4;
     if (storedFoods) {
         storedFoods.forEach((element) => {
             str += `
@@ -592,8 +606,9 @@ function AddFoodsToStore() {
             <p><span class="fw-bold">Kosher Status: </span>${element.kosherStatus}</p>
             <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${element.hypoallergenicStatus}</p>
             <p><span class="fw-bold">Price: </span>${element.foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
-            <button class="prodBut btn btn-info">buy</button>
-          </div>`;
+            <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+
+            </div>`;
         });
     }
 
@@ -611,6 +626,7 @@ function AddSuitsToStore() {
             <p class="fw-bold">Size: <span>${element.size}</span></p>
             <p class="fw-bold">color: <span>${element.color}</span></p>
             <p class="fw-bold">Price: <span>${element.price}</span></p>
+            <button class="btn btn-primary prodBut">Add to Cart</button>
             </div>
             `;
         });
@@ -620,9 +636,17 @@ function AddSuitsToStore() {
     productGridSuit.innerHTML += str;
 }
 
-function AddToCart(index) {
+function handleAddToCart(event) {
+    if (event.target.classList.contains("prodBut")) {
+        const productCard = event.target.closest(".card");
+        const productIndex = productCard.dataset.productIndex;
+        const product = stackedFlights[productIndex];
 
-    console.log(index);
-
+        AddToCart(product);
+    }
 }
 
+
+function AddToCart(product){
+    console.log(product);
+}
