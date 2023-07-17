@@ -14,7 +14,7 @@ storedUsers[0] = new User(
 )
 
 
-var storedSuits=JSON.parse(localStorage.getItem(`suits`));
+var storedSuits = JSON.parse(localStorage.getItem(`suits`));
 var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
@@ -27,7 +27,7 @@ var productGridSuit = document.getElementById("suitSec");
 
 var userTable = document.getElementById("userTable");
 localStorage.setItem(`users`, JSON.stringify(storedUsers));
-// storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
+storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
 export function BuildStore() {
     stackedFlights = [
@@ -174,9 +174,9 @@ export function BuildStore() {
             price: `1360.90`
         }
     ]
-  let suits = ``;
-  for(let i=0; i<stackedSuits.length;i++){
-    suits+= `
+    let suits = ``;
+    for (let i = 0; i < stackedSuits.length; i++) {
+        suits += `
     <div class="card col-lg-3 m-2 mx-auto text-center">
     <img class="prod" src ="${stackedSuits[i].image}" alt="">
     <h3 class = "fw-bold">${stackedSuits[i].brandName}</h3>
@@ -187,17 +187,12 @@ export function BuildStore() {
 
     </div>
     `;
-  };
+    };
 
-  productGridSuit.innerHTML += suits;
-
-  productGridF.addEventListener("click", handleAddToCart);
-  productGridFood.addEventListener("click", handleAddToCart);
-  productGridSuit.addEventListener("click", handleAddToCart);
-
-  AddFlightToStore();
-  AddFoodsToStore();
-  AddSuitsToStore();
+    productGridSuit.innerHTML += suits;
+    AddFlightToStore();
+    AddFoodsToStore();
+    AddSuitsToStore();
 }
 export function UserTable() {
 
@@ -339,15 +334,18 @@ function SubmitLoginForm() {
     // Retrieve the stored user data from localStorage
     let storedUsersJSON = localStorage.getItem("users");
 
-    // Check if the email already exists in localStorage
-    // Check if the email already exists in localStorage
     if (storedUsersJSON) {
         let storedUsers = JSON.parse(storedUsersJSON);
+        // Check if the email already exists in localStorage
         let user = storedUsers.find((u) => u.email === email && u.password === password);
 
-        if (user) {
-            localStorage.setItem("connetedUser", updatedSuitsJSON);
+        // Convert the updated suits array to a JSON string
+        let userJSON = JSON.stringify(user);
 
+        // Store the JSON string in localStorage
+        localStorage.setItem("connectedUser", userJSON);
+
+        if (user) {
             if (password === `admin1234admin`) {
                 location.assign("./managerProfile.html");
                 alert(`You are connected as an admin`);
