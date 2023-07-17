@@ -25,9 +25,6 @@ export class User {
     }
 
 
-    addTOCart(obj) {
-        this.cart.push(obj);
-    }
     GetBirthDate() {
         return String(this.birthDate);
     }

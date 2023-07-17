@@ -14,7 +14,7 @@ var storedUsers = [new User(
   `Hell st`,
   `25`
 )];
-var cart = []
+var cart = new Array();
 // arrays for hardcoded products
 var storedFlights = [
   {
@@ -117,7 +117,9 @@ var storedSuits = [
     price: `1360.90`,
   },
 ];
-
+if (!(localStorage.getItem('cart'))) {
+  localStorage.setItem('cart', JSON.stringify(cart))
+}
 if (!(localStorage.getItem('users'))) {
   localStorage.setItem('users', JSON.stringify(storedUsers))
 }
@@ -577,7 +579,7 @@ function UserCart(product){
 
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
-  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart = JSON.parse(localStorage.getItem('cart'))
   cart.push(storedFlights[flightIndex])
   localStorage.setItem('cart', JSON.stringify(cart));
   UpDatecart();
