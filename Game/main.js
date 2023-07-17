@@ -74,21 +74,28 @@ function Main() {
         context.clearRect(0, 0, canvas.width, canvas.height);
 
         // Отрисовка птицы
-        context.fillStyle = "red";
-        context.fillRect(birdX, birdY, 30, 30);
+        var birdImage = new Image();
+        birdImage.src = "Assets/astronaut.png";
+        context.drawImage(birdImage, birdX, birdY, 50, 50);
 
         // Отрисовка верхней трубы
-        context.fillStyle = "green";
-        context.fillRect(pipeX, 0, pipeWidth, pipeY);
+        var pipeTopImage = new Image();
+        pipeTopImage.src = "Assets/spaceBattery1.png";
+        context.drawImage(pipeTopImage, pipeX, pipeY - pipeTopImage.height, pipeWidth, pipeTopImage.height);
 
         // Отрисовка нижней трубы
-        context.fillStyle = "green";
-        context.fillRect(pipeX, pipeY + gap, pipeWidth, canvas.height - pipeY - gap);
+        var pipeBottomImage = new Image();
+        pipeBottomImage.src = "Assets/spaceBattery2.png";
+        context.drawImage(pipeBottomImage, pipeX, pipeY + gap, pipeWidth, canvas.height - pipeY - gap);
     }
 
     // Функция для обработки нажатия клавиши пробел
     function handleKeyPress(event) {
         if (event.keyCode === 32) { // код клавиши пробел
+            if (!isGameStarted) {
+                isGameStarted = true;
+                document.getElementById("startButton").style.display = "none";
+            }
             birdDY = -jumpStrength;
         }
     }
