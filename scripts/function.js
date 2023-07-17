@@ -607,8 +607,8 @@ function AddSuitsToStore() {
 }
 
 
-function UserCart(product){
-  
+function UserCart(product) {
+
 }
 
 function AddFlightToCart(event) {
@@ -647,4 +647,8 @@ function UpDatecart() {
   // innerHTML = str;
 
   console.log(str);
+}
+
+export function UpdateInformation() {
+  document.querySelector('click').addEventListener();
 }
