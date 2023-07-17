@@ -1,9 +1,8 @@
 import { User } from "./models/User.js";
 
 //Arrays for Users:
-var storedUsers = new Array();
 //admin
-storedUsers[0] = new User(
+var storedUsers = [new User(
   `admin`,
   `admin1234admin`,
   `/Media/Assets/team-3.jpg`,
@@ -14,12 +13,12 @@ storedUsers[0] = new User(
   `Hell`,
   `Hell st`,
   `25`
-);
-
+)];
+var cart = []
 // arrays for hardcoded products
 var storedFlights = [
   {
-    flightNumber: `165-56A`,
+    name: `165-56A`,
     departureDate: `26/07/2023`,
     arrivalDate: `26/08/2025`,
     classType: `Heavy`,
@@ -27,7 +26,7 @@ var storedFlights = [
     price: `12,500`,
   },
   {
-    flightNumber: `187-96A`,
+    name: `187-96A`,
     departureDate: `26/09/2023`,
     arrivalDate: `26/09/2024`,
     classType: `Medium`,
@@ -35,7 +34,7 @@ var storedFlights = [
     price: `11,500`,
   },
   {
-    flightNumber: `787-96B`,
+    name: `787-96B`,
     departureDate: `26/10/2023`,
     arrivalDate: `26/09/2024`,
     classType: `Light`,
@@ -43,7 +42,7 @@ var storedFlights = [
     price: `64,500`,
   },
   {
-    flightNumber: `T77-96B`,
+    name: `T77-96B`,
     departureDate: `26/10/2029`,
     arrivalDate: `26/09/2032`,
     classType: `Heavy`,
@@ -53,36 +52,36 @@ var storedFlights = [
 ];
 var storedFoods = [
   {
-    foodName: `Minced Brains`,
+    name: `Minced Brains`,
     foodType: `meat`,
     kosherStatus: `no`,
     hypoallergenicStatus: `yes`,
     foodImage: `/Media/Assets/Ecom/products/food1.png`,
-    foodPrice: `32.50`,
+    price: `32.50`,
   },
   {
-    foodName: `Ass Bits`,
+    name: `Ass Bits`,
     foodType: `meat`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
     foodImage: `/Media/Assets/Ecom/products/food2.png`,
-    foodPrice: `19.90`,
+    price: `19.90`,
   },
   {
-    foodName: `Breast Milk`,
+    name: `Breast Milk`,
     foodType: `Dairy`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
     foodImage: `/Media/Assets/Ecom/products/food3.png`,
-    foodPrice: `312.30`,
+    price: `312.30`,
   },
   {
-    foodName: `Shepareds Pie`,
+    name: `Shepareds Pie`,
     foodType: `meat`,
     kosherStatus: `No`,
     hypoallergenicStatus: `Yes`,
     foodImage: `/Media/Assets/Ecom/products/food4.png`,
-    foodPrice: `99.90`,
+    price: `99.90`,
   },
 ];
 var storedSuits = [
@@ -386,12 +385,12 @@ export function AddFood() {
       let foodImage = event.target.result;
 
       let food = {
-        foodName: foodName,
+        name: foodName,
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
         hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
         foodImage: foodImage,
-        foodPrice: foodPrice,
+        price: foodPrice,
       };
 
       let storedFoodsJSON = localStorage.getItem("foods");
@@ -449,7 +448,7 @@ export function AddShip() {
       let image = event.target.result;
 
       let flight = {
-        flightNumber: flightNumber,
+        name: flightNumber,
         departureDate: departureDate,
         arrivalDate: arrivalDate,
         classType: classType,
@@ -488,7 +487,7 @@ function AddFlightToStore() {
   for (let i = 0; i < storedFlights.length; i++) {
     str += `<div class="card col-lg-3 m-2 mx-auto" >
         <img src="${storedFlights[i].image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${storedFlights[i].flightNumber}
+        <h3 class="fs-4">${storedFlights[i].name}
         </h3>
         <p class="small p fw-bold">
         Price: <span>${storedFlights[i].price}</span>
@@ -514,18 +513,27 @@ function AddFoodsToStore() {
 
   for (let i = 0; i < storedFoods.length; i++) {
     str += `
-        <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="${storedFoods[i].foodImage}" alt="Product 5">
-            <h3 class="fw-bold">${storedFoods[i].foodName}</h3>
-            <p><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
-            <p><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
-            <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${storedFoods[i].hypoallergenicStatus}</p>
-            <p><span class="fw-bold">Price: </span>${storedFoods[i].foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
-            <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food" id="foodToCart-${i}">Add to Cart</button>
-            </div>`;
+    <div class="card col-lg-3 m-2 mx-auto">
+  <img src="${storedFoods[i].foodImage}" class="card-img-top" alt="Product ${i + 1}">
+  <div class="card-body">
+    <h5 class="card-title fw-bold">${storedFoods[i].name}</h5>
+    <p class="card-text"><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
+    <p class="card-text"><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
+    <p class="card-text"><span class="fw-bold">Hypoallergenic Ingredients: </span>${storedFoods[i].hypoallergenicStatus}</p>
+    <p class="card-text">Price: $${storedFoods[i].price}</p>
+    <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+  </div>
+</div>
+
+  `;
 
   }
   productGridFood.innerHTML = str;
+
+  let foodToCart = document.querySelectorAll('.foodToCart');
+  for (let i = 0; i < foodToCart.length; i++) {
+    foodToCart[i].addEventListener('click', AddFoodToCart);
+  }
 }
 
 function AddSuitsToStore() {
@@ -534,51 +542,62 @@ function AddSuitsToStore() {
 
   for (let i = 0; i < storedSuits.length; i++) {
     str += `
-        <div class="card col-lg-3 m-2 mx-auto text-center">
-        <img class="prod" src ="${storedSuits[i].image}" alt="">
-        <h3 class = "fw-bold">${storedSuits[i].brandName}</h3>
-        <p class="fw-bold">Size: <span>${storedSuits[i].size}</span></p>
-        <p class="fw-bold">color: <span>${storedSuits[i].color}</span></p>
-        <p class="fw-bold">Price: <span>${storedSuits[i].price}</span></p>
-        <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="suit" id="suitToCart-${i}">Add to Cart</button>
-        </div>
+    <div class="card col-lg-3 m-2 mx-auto">
+  <img src="${storedSuits[i].image}" class="card-img-top" alt="Product ${i + 1}">
+  <div class="card-body">
+    <h5 class="card-title fw-bold">${storedSuits[i].brandName}</h5>
+    <p class="card-text">Size: ${storedSuits[i].size}</p>
+    <p class="card-text">Color: ${storedSuits[i].color}</p>
+    <p class="card-text">Price: $${storedSuits[i].price}</p>
+    <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
+  </div>
+</div>
+
         `;
   }
 
   productGridSuit.innerHTML = str;
+  let suitToCart = document.querySelectorAll('.suitToCart');
+  for (let i = 0; i < suitToCart.length; i++) {
+    suitToCart[i].addEventListener('click', AddSuitToCart);
+  }
 }
 
-//לתקן
+
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
-  let users = JSON.parse(localStorage.getItem('users'));
-  console.log(users);
-  let correctUser = JSON.parse(localStorage.getItem('correctUser'));
-  for (let i = 0; i < users.length; i++) {
-    users[i].cart = storedFlights[flightIndex];
-    // if (correctUser.email === users[i].email) {
-    // }
-
-  }
-  console.log(users[0]);
-  localStorage.setItem('users', JSON.stringify(users))
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart.push(storedFlights[flightIndex])
+  localStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
 }
 
 function AddFoodToCart(event) {
   let foodIndex = Number(event.target.dataset.ind);
-  let users = JSON.parse(localStorage.getItem('users'));
-  console.log(users);
-  let correctUser = JSON.parse(localStorage.getItem('correctUser'));
-  for (let i = 0; i < users.length; i++) {
-    users[i].cart.push(storedFlights[flightIndex]);
-    // if (correctUser.email === users[i].email) {
-    // }
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart.push(storedFoods[foodIndex])
+  localStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function AddSuitToCart(event) {
+  let suitIndex = Number(event.target.dataset.ind);
+  let cart = JSON.parse(localStorage.getItem('cart'))
+  cart.push(storedSuits[suitIndex])
+  localStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function UpDatecart() {
+  let str = "";
+  let cart = JSON.parse(localStorage.getItem('cart'))
+
+  for (let i = 0; i < cart.length; i++) {
+    str += `${cart[i].name}, ${cart[i].image}, ${cart[i].price}`
 
   }
-  console.log(users[0]);
-  localStorage.setItem('users', JSON.stringify(users))
-}
-// function UpDateCart() {
 
-//   document.getElementById('total').innerHTML
-// }
+  // innerHTML = str;
+
+  console.log(str);
+}
