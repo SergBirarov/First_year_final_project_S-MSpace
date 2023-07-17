@@ -18,9 +18,105 @@ var storedSuits = JSON.parse(localStorage.getItem(`suits`));
 var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
-var stackedFlights = new Array();
-var stackedFoods = new Array();
-var stackedSuits = new Array();
+storedFlights = [
+    {
+        flightNumber: `165-56A`,
+        departureDate: `26/07/2023`,
+        arrivalDate: `26/08/2025`,
+        classType: `Heavy`,
+        image: `/Media/Assets/Ecom/products/prod1.jpg`,
+        price: `12,500`,
+    },
+    {
+        flightNumber: `187-96A`,
+        departureDate: `26/09/2023`,
+        arrivalDate: `26/09/2024`,
+        classType: `Medium`,
+        image: `/Media/Assets/Ecom/products/prod2.jpg`,
+        price: `11,500`,
+    },
+    {
+        flightNumber: `787-96B`,
+        departureDate: `26/10/2023`,
+        arrivalDate: `26/09/2024`,
+        classType: `Light`,
+        image: `/Media/Assets/Ecom/products/prod3.jpg`,
+        price: `64,500`,
+    },
+    {
+        flightNumber: `T77-96B`,
+        departureDate: `26/10/2029`,
+        arrivalDate: `26/09/2032`,
+        classType: `Heavy`,
+        image: `/Media/Assets/Ecom/products/prod4.jpg`,
+        price: `164,500`,
+    },
+];
+
+storedFoods =  [
+    {
+        foodName: `Minced Brains`,
+        foodType: `meat`,
+        kosherStatus: `no`,
+        hypoallergenicStatus: `yes`,
+        foodImage: `/Media/Assets/Ecom/products/food1.png`,
+        foodPrice: `32.50`,
+    },
+    {
+        foodName: `Ass Bits`,
+        foodType: `meat`,
+        kosherStatus: `Yes`,
+        hypoallergenicStatus: `No`,
+        foodImage: `/Media/Assets/Ecom/products/food2.png`,
+        foodPrice: `19.90`,
+    },
+    {
+        foodName: `Breast Milk`,
+        foodType: `Dairy`,
+        kosherStatus: `Yes`,
+        hypoallergenicStatus: `No`,
+        foodImage: `/Media/Assets/Ecom/products/food3.png`,
+        foodPrice: `312.30`,
+    },
+    {
+        foodName: `Shepareds Pie`,
+        foodType: `meat`,
+        kosherStatus: `No`,
+        hypoallergenicStatus: `Yes`,
+        foodImage: `/Media/Assets/Ecom/products/food4.png`,
+        foodPrice: `99.90`,
+    }
+];
+storedSuits = [
+    {
+        brandName: `Wolf$Gangs`,
+        size: `S/36`,
+        color: `White/Silver`,
+        image: `/Media/Assets/Ecom/products/suit1.jpg`,
+        price: `360.90`
+    },
+    {
+        brandName: `Wolf$Gangs`,
+        size: `M/42`,
+        color: `Orange`,
+        image: `/Media/Assets/Ecom/products/suit2.jpg`,
+        price: `422.90`
+    },
+    {
+        brandName: `Suits-BaAm`,
+        size: `L/46`,
+        color: `White/Silver`,
+        image: `/Media/Assets/Ecom/products/suit3.jpg`,
+        price: `180.90`
+    },
+    {
+        brandName: `AlaIster`,
+        size: `XL/56`,
+        color: `White/Silver`,
+        image: `/Media/Assets/Ecom/products/suit4.jpg`,
+        price: `1360.90`
+    }
+];
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 var productGridSuit = document.getElementById("suitSec");
@@ -30,61 +126,61 @@ localStorage.setItem(`users`, JSON.stringify(storedUsers));
 storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
 export function BuildStore() {
-    stackedFlights = [
-        {
-            flightNumber: `165-56A`,
-            departureDate: `26/07/2023`,
-            arrivalDate: `26/08/2025`,
-            classType: `Heavy`,
-            image: `/Media/Assets/Ecom/products/prod1.jpg`,
-            price: `12,500`,
-        },
-        {
-            flightNumber: `187-96A`,
-            departureDate: `26/09/2023`,
-            arrivalDate: `26/09/2024`,
-            classType: `Medium`,
-            image: `/Media/Assets/Ecom/products/prod2.jpg`,
-            price: `11,500`,
-        },
-        {
-            flightNumber: `787-96B`,
-            departureDate: `26/10/2023`,
-            arrivalDate: `26/09/2024`,
-            classType: `Light`,
-            image: `/Media/Assets/Ecom/products/prod3.jpg`,
-            price: `64,500`,
-        },
-        {
-            flightNumber: `T77-96B`,
-            departureDate: `26/10/2029`,
-            arrivalDate: `26/09/2032`,
-            classType: `Heavy`,
-            image: `/Media/Assets/Ecom/products/prod4.jpg`,
-            price: `164,500`,
-        },
-    ];
+    // stackedFlights = [
+    //     {
+    //         flightNumber: `165-56A`,
+    //         departureDate: `26/07/2023`,
+    //         arrivalDate: `26/08/2025`,
+    //         classType: `Heavy`,
+    //         image: `/Media/Assets/Ecom/products/prod1.jpg`,
+    //         price: `12,500`,
+    //     },
+    //     {
+    //         flightNumber: `187-96A`,
+    //         departureDate: `26/09/2023`,
+    //         arrivalDate: `26/09/2024`,
+    //         classType: `Medium`,
+    //         image: `/Media/Assets/Ecom/products/prod2.jpg`,
+    //         price: `11,500`,
+    //     },
+    //     {
+    //         flightNumber: `787-96B`,
+    //         departureDate: `26/10/2023`,
+    //         arrivalDate: `26/09/2024`,
+    //         classType: `Light`,
+    //         image: `/Media/Assets/Ecom/products/prod3.jpg`,
+    //         price: `64,500`,
+    //     },
+    //     {
+    //         flightNumber: `T77-96B`,
+    //         departureDate: `26/10/2029`,
+    //         arrivalDate: `26/09/2032`,
+    //         classType: `Heavy`,
+    //         image: `/Media/Assets/Ecom/products/prod4.jpg`,
+    //         price: `164,500`,
+    //     },
+    // ];
 
-    let str = ``;
+    // let str = ``;
 
 
-    for (let i = 0; i < stackedFlights.length; i++) {
+    // for (let i = 0; i < stackedFlights.length; i++) {
 
-        str += `
-        <div class="card col-lg-3 m-2 mx-auto text-center" >
-        <img src="${stackedFlights[i].image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${stackedFlights[i].flightNumber}
-        </h3>
-        <p class=" fw-bold mb-0">
-          Price: <span>${stackedFlights[i].price}</span>
-        </p>
-        <p class=" fw-bold mb-0">
-          Take off: <span>${stackedFlights[i].departureDate}</span>
-        </p>
-        <button class="btn btn-primary prodBut">Add to Cart</button>
+    //     str += `
+    //     <div class="card col-lg-3 m-2 mx-auto text-center" >
+    //     <img src="${stackedFlights[i].image}" class="prod" alt="Product 1">
+    //     <h3 class="fs-4">${stackedFlights[i].flightNumber}
+    //     </h3>
+    //     <p class=" fw-bold mb-0">
+    //       Price: <span>${stackedFlights[i].price}</span>
+    //     </p>
+    //     <p class=" fw-bold mb-0">
+    //       Take off: <span>${stackedFlights[i].departureDate}</span>
+    //     </p>
+    //     <button class="btn btn-primary prodBut">Add to Cart</button>
 
-        </div>`;
-    };
+    //     </div>`;
+    // };
 
 
     // let addBut = document.querySelectorAll(".prodBut");
@@ -92,104 +188,104 @@ export function BuildStore() {
     // addBut.forEach(element => {
     //     element.addEventListener(`click`, AddToCart);
     // });
-    productGridF.innerHTML += str;
+    // productGridF.innerHTML += str;
 
-    stackedFoods = [
-        {
-            foodName: `Minced Brains`,
-            foodType: `meat`,
-            kosherStatus: `no`,
-            hypoallergenicStatus: `yes`,
-            foodImage: `/Media/Assets/Ecom/products/food1.png`,
-            foodPrice: `32.50`,
-        },
-        {
-            foodName: `Ass Bits`,
-            foodType: `meat`,
-            kosherStatus: `Yes`,
-            hypoallergenicStatus: `No`,
-            foodImage: `/Media/Assets/Ecom/products/food2.png`,
-            foodPrice: `19.90`,
-        },
-        {
-            foodName: `Breast Milk`,
-            foodType: `Dairy`,
-            kosherStatus: `Yes`,
-            hypoallergenicStatus: `No`,
-            foodImage: `/Media/Assets/Ecom/products/food3.png`,
-            foodPrice: `312.30`,
-        },
-        {
-            foodName: `Shepareds Pie`,
-            foodType: `meat`,
-            kosherStatus: `No`,
-            hypoallergenicStatus: `Yes`,
-            foodImage: `/Media/Assets/Ecom/products/food4.png`,
-            foodPrice: `99.90`,
-        }
-    ];
-    let foods = ``;
-    for (let i = 0; i < stackedFoods.length; i++) {
-        foods += `
-    <div class="card col-lg-3 m-2 mx-auto text-center">
-    <img class="prod" src="${stackedFoods[i].foodImage}" alt="Product 5">
-    <h3 class="fw-bold">${stackedFoods[i].foodName}</h3>
-    <p><span class="fw-bold">Dairy/Meat: </span>${stackedFoods[i].foodType}</p>
-    <p><span class="fw-bold">Kosher Status: </span>${stackedFoods[i].kosherStatus}</p>
-    <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${stackedFoods[i].hypoallergenicStatus}</p>
-    <p><span class="fw-bold">Price: </span>${stackedFoods[i].foodPrice}</p>
-    <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+    // stackedFoods = [
+    //     {
+    //         foodName: `Minced Brains`,
+    //         foodType: `meat`,
+    //         kosherStatus: `no`,
+    //         hypoallergenicStatus: `yes`,
+    //         foodImage: `/Media/Assets/Ecom/products/food1.png`,
+    //         foodPrice: `32.50`,
+    //     },
+    //     {
+    //         foodName: `Ass Bits`,
+    //         foodType: `meat`,
+    //         kosherStatus: `Yes`,
+    //         hypoallergenicStatus: `No`,
+    //         foodImage: `/Media/Assets/Ecom/products/food2.png`,
+    //         foodPrice: `19.90`,
+    //     },
+    //     {
+    //         foodName: `Breast Milk`,
+    //         foodType: `Dairy`,
+    //         kosherStatus: `Yes`,
+    //         hypoallergenicStatus: `No`,
+    //         foodImage: `/Media/Assets/Ecom/products/food3.png`,
+    //         foodPrice: `312.30`,
+    //     },
+    //     {
+    //         foodName: `Shepareds Pie`,
+    //         foodType: `meat`,
+    //         kosherStatus: `No`,
+    //         hypoallergenicStatus: `Yes`,
+    //         foodImage: `/Media/Assets/Ecom/products/food4.png`,
+    //         foodPrice: `99.90`,
+    //     }
+    // ];
+    // let foods = ``;
+    // for (let i = 0; i < stackedFoods.length; i++) {
+    //     foods += `
+    // <div class="card col-lg-3 m-2 mx-auto text-center">
+    // <img class="prod" src="${stackedFoods[i].foodImage}" alt="Product 5">
+    // <h3 class="fw-bold">${stackedFoods[i].foodName}</h3>
+    // <p><span class="fw-bold">Dairy/Meat: </span>${stackedFoods[i].foodType}</p>
+    // <p><span class="fw-bold">Kosher Status: </span>${stackedFoods[i].kosherStatus}</p>
+    // <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${stackedFoods[i].hypoallergenicStatus}</p>
+    // <p><span class="fw-bold">Price: </span>${stackedFoods[i].foodPrice}</p>
+    // <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
 
-    </div>
-    `
-    };
-    productGridFood.innerHTML += foods;
-    stackedSuits = [
-        {
-            brandName: `Wolf$Gangs`,
-            size: `S/36`,
-            color: `White/Silver`,
-            image: `/Media/Assets/Ecom/products/suit1.jpg`,
-            price: `360.90`
-        },
-        {
-            brandName: `Wolf$Gangs`,
-            size: `M/42`,
-            color: `Orange`,
-            image: `/Media/Assets/Ecom/products/suit2.jpg`,
-            price: `422.90`
-        },
-        {
-            brandName: `Suits-BaAm`,
-            size: `L/46`,
-            color: `White/Silver`,
-            image: `/Media/Assets/Ecom/products/suit3.jpg`,
-            price: `180.90`
-        },
-        {
-            brandName: `AlaIster`,
-            size: `XL/56`,
-            color: `White/Silver`,
-            image: `/Media/Assets/Ecom/products/suit4.jpg`,
-            price: `1360.90`
-        }
-    ]
-    let suits = ``;
-    for (let i = 0; i < stackedSuits.length; i++) {
-        suits += `
-    <div class="card col-lg-3 m-2 mx-auto text-center">
-    <img class="prod" src ="${stackedSuits[i].image}" alt="">
-    <h3 class = "fw-bold">${stackedSuits[i].brandName}</h3>
-    <p class="fw-bold">Size: <span>${stackedSuits[i].size}</span></p>
-    <p class="fw-bold">color: <span>${stackedSuits[i].color}</span></p>
-    <p class="fw-bold">Price: <span>${stackedSuits[i].price}</span></p>
-    <button class="btn btn-primary prodBut">Add to Cart</button>
+    // </div>
+    // `
+    // };
+    // productGridFood.innerHTML += foods;
+    // stackedSuits = [
+    //     {
+    //         brandName: `Wolf$Gangs`,
+    //         size: `S/36`,
+    //         color: `White/Silver`,
+    //         image: `/Media/Assets/Ecom/products/suit1.jpg`,
+    //         price: `360.90`
+    //     },
+    //     {
+    //         brandName: `Wolf$Gangs`,
+    //         size: `M/42`,
+    //         color: `Orange`,
+    //         image: `/Media/Assets/Ecom/products/suit2.jpg`,
+    //         price: `422.90`
+    //     },
+    //     {
+    //         brandName: `Suits-BaAm`,
+    //         size: `L/46`,
+    //         color: `White/Silver`,
+    //         image: `/Media/Assets/Ecom/products/suit3.jpg`,
+    //         price: `180.90`
+    //     },
+    //     {
+    //         brandName: `AlaIster`,
+    //         size: `XL/56`,
+    //         color: `White/Silver`,
+    //         image: `/Media/Assets/Ecom/products/suit4.jpg`,
+    //         price: `1360.90`
+    //     }
+    // ]
+    // let suits = ``;
+    // for (let i = 0; i < stackedSuits.length; i++) {
+    //     suits += `
+    // <div class="card col-lg-3 m-2 mx-auto text-center">
+    // <img class="prod" src ="${stackedSuits[i].image}" alt="">
+    // <h3 class = "fw-bold">${stackedSuits[i].brandName}</h3>
+    // <p class="fw-bold">Size: <span>${stackedSuits[i].size}</span></p>
+    // <p class="fw-bold">color: <span>${stackedSuits[i].color}</span></p>
+    // <p class="fw-bold">Price: <span>${stackedSuits[i].price}</span></p>
+    // <button class="btn btn-primary prodBut">Add to Cart</button>
 
-    </div>
-    `;
-    };
+    // </div>
+    // `;
+    // };
 
-    productGridSuit.innerHTML += suits;
+    // productGridSuit.innerHTML += suits;
     AddFlightToStore();
     AddFoodsToStore();
     AddSuitsToStore();
