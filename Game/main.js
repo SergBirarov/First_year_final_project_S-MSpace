@@ -1,67 +1,55 @@
 function Main() {
 
-    // Назначение обработчика события клика по кнопке старт
-    document.getElementById("startButton").addEventListener("click", startGame);
+    let start =  document.getElementById("startButton");
+    
+    start.addEventListener("click", startGame);
 
-    // Переменные для счетчика и кнопки старт
     var score = -1;
     var isGameStarted = false;
 
-    // Функция для обработки нажатия на кнопку старт
     function startGame() {
         isGameStarted = true;
         document.getElementById("startButton").style.display = "none";
     }
 
-    // Функция для увеличения счетчика
     function increaseScore() {
         score++;
         document.getElementById("score").textContent = "Score: " + score;
     }
 
-    // Получение ссылки на холст и его контекст
     var canvas = document.getElementById("gameCanvas");
     var context = canvas.getContext("2d");
 
-    // Переменные для игры
-    var birdX = 50; // начальная позиция птицы по оси X
-    var birdY = canvas.height / 2; // начальная позиция птицы по оси Y
-    var birdDY = 0; // скорость птицы по оси Y
-    var gravity = 0.2; // гравитация
-    var jumpStrength = 4; // сила прыжка
-    var gap = 150; // промежуток между верхней и нижней трубой
-    var pipeWidth = 50; // ширина трубы
-    // var pipeGap = 200; // расстояние между трубами
-    var pipeX = canvas.width; // начальная позиция трубы по оси X
-    var pipeY = generatePipeY(); // начальная позиция трубы по оси Y
-    var pipeSpeed = 2; // скорость движения труб
+    var birdX = 50; 
+    var birdY = canvas.height / 2; 
+    var birdDY = 0; 
+    var gravity = 0.2; 
+    var jumpStrength = 4; 
+    var gap = 150; 
+    var pipeWidth = 50; 
+    var pipeX = canvas.width;
+    var pipeY = generatePipeY(); 
+    var pipeSpeed = 2; 
 
-    // Функция для генерации случайной позиции трубы по оси Y
+   
     function generatePipeY() {
         increaseScore();
 
         return Math.random() * (canvas.height - gap * 2) + gap;
     }
 
-    // Функция для обновления игровых объектов
     function update() {
-        // Обновление позиции птицы
         birdY += birdDY;
         birdDY += gravity;
 
-        // Обновление позиции трубы
         pipeX -= pipeSpeed;
 
         if (birdY < 0 || birdY > canvas.height) {
-            location.reload(); // перезагрузка страницы
+            location.reload(); 
         }
-        // Проверка столкновения птицы с трубой
         if (birdX + pipeWidth > pipeX && birdX < pipeX + pipeWidth && (birdY < pipeY || birdY > pipeY + gap)) {
-            // Птица столкнулась с трубой, игра окончена
-            // alert("Game Over");
-            location.reload(); // перезагрузка страницы
+            location.reload(); 
         }
-        // Проверка, если труба вышла за пределы экрана, генерируем новую трубу
         if (pipeX + pipeWidth < 0) {
             pipeX = canvas.width;
             pipeY = generatePipeY();

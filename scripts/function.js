@@ -53,36 +53,36 @@ var storedFlights = [
 ];
 var storedFoods = [
   {
-    foodName: `Minced Brains`,
+    name: `Minced Brains`,
     foodType: `meat`,
     kosherStatus: `no`,
     hypoallergenicStatus: `yes`,
-    foodImage: `/Media/Assets/Ecom/products/food1.png`,
-    foodPrice: `32.50`,
+    img: `/Media/Assets/Ecom/products/food1.png`,
+    price: `32.50`,
   },
   {
-    foodName: `Ass Bits`,
+    name: `Ass Bits`,
     foodType: `meat`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    foodImage: `/Media/Assets/Ecom/products/food2.png`,
-    foodPrice: `19.90`,
+    img: `/Media/Assets/Ecom/products/food2.png`,
+    price: `19.90`,
   },
   {
-    foodName: `Breast Milk`,
+    name: `Breast Milk`,
     foodType: `Dairy`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    foodImage: `/Media/Assets/Ecom/products/food3.png`,
-    foodPrice: `312.30`,
+    img: `/Media/Assets/Ecom/products/food3.png`,
+    price: `312.30`,
   },
   {
-    foodName: `Shepareds Pie`,
+    name: `Shepareds Pie`,
     foodType: `meat`,
     kosherStatus: `No`,
     hypoallergenicStatus: `Yes`,
-    foodImage: `/Media/Assets/Ecom/products/food4.png`,
-    foodPrice: `99.90`,
+    img: `/Media/Assets/Ecom/products/food4.png`,
+    price: `99.90`,
   },
 ];
 var storedSuits = [
@@ -357,7 +357,7 @@ export function AddFood() {
     event.preventDefault(); // Prevent form submission
 
     // Retrieve input values
-    let foodName = document.getElementById("addFoodName").value;
+    let name = document.getElementById("addFoodName").value;
     let foodType = document.querySelector(
       'input[name="meat_dairy"]:checked'
     ).value;
@@ -368,9 +368,9 @@ export function AddFood() {
       'input[name="hypoallergenic_no"]:checked'
     ).value;
     let foodImageInput = document.getElementById("addFoodImage");
-    let foodPrice = document.getElementById("addFoodPrice").value;
+    let price = document.getElementById("addFoodPrice").value;
 
-    if (foodName === "" || foodPrice === "") {
+    if (name === "" || price === "") {
       alert("Please fill in all the fields.");
       return;
     }
@@ -380,15 +380,15 @@ export function AddFood() {
     let reader = new FileReader();
 
     reader.onload = function (event) {
-      let foodImage = event.target.result;
+      let img = event.target.result;
 
       let food = {
-        foodName: foodName,
+        name: name,
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
         hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
-        foodImage: foodImage,
-        foodPrice: foodPrice,
+        img: img,
+        price: price,
       };
 
       let storedFoodsJSON = localStorage.getItem("foods");
@@ -511,13 +511,13 @@ function AddFoodsToStore() {
   for (let i = 0; i < storedFoods.length; i++) {
     str += `
     <div class="card col-lg-3 m-2 mx-auto">
-  <img src="${storedFoods[i].foodImage}" class="card-img-top" alt="Product ${i + 1}">
+  <img src="${storedFoods[i].img}" class="card-img-top" alt="Product ${i + 1}">
   <div class="card-body">
-    <h5 class="card-title fw-bold">${storedFoods[i].foodName}</h5>
+    <h5 class="card-title fw-bold">${storedFoods[i].name}</h5>
     <p class="card-text"><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
     <p class="card-text"><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
     <p class="card-text"><span class="fw-bold">Hypoallergenic Ingredients: </span>${storedFoods[i].hypoallergenicStatus}</p>
-    <p class="card-text">Price: $${storedFoods[i].foodPrice}</p>
+    <p class="card-text">Price: $${storedFoods[i].price}</p>
     <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
   </div>
 </div>
@@ -551,4 +551,8 @@ function AddSuitsToStore() {
   productGridSuit.innerHTML = str;
 }
 
+
+function UserCart(product){
+  
+}
 
