@@ -1,6 +1,10 @@
 @import "/Media/CSS/nav_footer.css";
 @import "/Media/CSS/root.css";
 
+
+main{
+  min-height: 100vh;
+}
 #profilePicProfile{
     width: 110px;
     height: 110px;
