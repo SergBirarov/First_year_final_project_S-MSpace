@@ -75,7 +75,7 @@
   text-align: center;
 }
 
-.iconRow{
+.iconRow {
   margin-top: -90px;
 }
 
@@ -210,6 +210,14 @@
   display: none;
 }
 
-
-
 /*Team start*/
+
+
+/* store */
+.product-grid .card {
+  border: none;
+  box-shadow: 7px 7px 20px 5px rgb(172, 172, 172);
+}
+.product-grid p{
+  margin: 0;
+}
