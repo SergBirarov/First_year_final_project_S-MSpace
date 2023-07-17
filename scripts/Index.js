@@ -9,6 +9,7 @@ import { UserTable } from "./function.js";
 
 
 
+
 function Main() {
 
     if (window.location.href.includes("/store")) {
