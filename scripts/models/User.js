@@ -1,6 +1,6 @@
 export class User {
 
-    card = "";
+    cart = [];
     username = "";
     password = "";
     image = "";

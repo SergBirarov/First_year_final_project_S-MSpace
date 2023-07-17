@@ -116,6 +116,9 @@ var storedSuits = [
   },
 ];
 
+if (!(localStorage.getItem('users'))) {
+  localStorage.setItem('users', JSON.stringify(storedUsers))
+}
 if (!(localStorage.getItem('flights'))) {
   localStorage.setItem('flights', JSON.stringify(storedFlights))
 }
@@ -493,14 +496,14 @@ function AddFlightToStore() {
         <p class="small p fw-bold">
         Take off: <span>${storedFlights[i].departureDate}</span>
         </p>
-        <button class="flightToCart btn btn-primary prodBut data-ind="${i}" data-prod="flight">Add to Cart</button>
+        <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
         </div>`;
   }
   productGridF.innerHTML = str;
 
   let flightToCart = document.querySelectorAll('.flightToCart');
   for (let i = 0; i < flightToCart.length; i++) {
-    flightToCart[i].addEventListener('click', AddFlightToCard);
+    flightToCart[i].addEventListener('click', AddFlightToCart);
   }
 
 }
@@ -545,7 +548,37 @@ function AddSuitsToStore() {
   productGridSuit.innerHTML = str;
 }
 
-export function AddFlightToCard(event) {
-  console.log(event.target.dataset.ind);
+//לתקן
+function AddFlightToCart(event) {
+  let flightIndex = Number(event.target.dataset.ind);
+  let users = JSON.parse(localStorage.getItem('users'));
+  console.log(users);
+  let correctUser = JSON.parse(localStorage.getItem('correctUser'));
+  for (let i = 0; i < users.length; i++) {
+    users[i].cart = storedFlights[flightIndex];
+    // if (correctUser.email === users[i].email) {
+    // }
+
+  }
+  console.log(users[0]);
+  localStorage.setItem('users', JSON.stringify(users))
 }
 
+function AddFoodToCart(event) {
+  let foodIndex = Number(event.target.dataset.ind);
+  let users = JSON.parse(localStorage.getItem('users'));
+  console.log(users);
+  let correctUser = JSON.parse(localStorage.getItem('correctUser'));
+  for (let i = 0; i < users.length; i++) {
+    users[i].cart.push(storedFlights[flightIndex]);
+    // if (correctUser.email === users[i].email) {
+    // }
+
+  }
+  console.log(users[0]);
+  localStorage.setItem('users', JSON.stringify(users))
+}
+// function UpDateCart() {
+
+//   document.getElementById('total').innerHTML
+// }
