@@ -573,10 +573,6 @@ function UserCart(product){
   
 }
 
-function UserCart(product){
-  
-}
-
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
   cart = JSON.parse(localStorage.getItem('cart'))
