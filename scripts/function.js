@@ -63,10 +63,13 @@ var storedFoods = [
     category: 'food',
     id: `2346`,
     name: `Minced Brains`,
+    name: `Minced Brains`,
     foodType: `meat`,
     kosherStatus: `no`,
     hypoallergenicStatus: `yes`,
     foodImage: `/Media/Assets/Ecom/products/food1.png`,
+    price: `32.50`,
+    img: `/Media/Assets/Ecom/products/food1.png`,
     price: `32.50`,
   },
   {
@@ -410,7 +413,7 @@ export function AddFood() {
     let reader = new FileReader();
 
     reader.onload = function (event) {
-      let foodImage = event.target.result;
+      let img = event.target.result;
 
       let food = {
         id: foodId,
@@ -554,7 +557,7 @@ function AddFoodsToStore() {
   for (let i = 0; i < storedFoods.length; i++) {
     str += `
     <div class="card col-lg-3 m-2 mx-auto">
-  <img src="${storedFoods[i].foodImage}" class="card-img-top" alt="Product ${i + 1}">
+  <img src="${storedFoods[i].img}" class="card-img-top" alt="Product ${i + 1}">
   <div class="card-body">
     <h5 class="card-title fw-bold">${storedFoods[i].name}</h5>
     <p class="card-text"><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
@@ -603,6 +606,10 @@ function AddSuitsToStore() {
   }
 }
 
+
+function UserCart(product){
+  
+}
 
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
