@@ -6,6 +6,9 @@ import { AddShip } from "./function.js";
 import { User } from "./models/User.js";
 import { BuildStore } from "./function.js";
 import { UserTable } from "./function.js";
+import { UpdateInformation } from "./function.js";
+import { LogIn_LogOut } from "./function.js";
+import { LogOut } from "./function.js";
 
 
 
@@ -20,34 +23,17 @@ function Main() {
         AddShip();
     };
     if (window.location.href.includes("/managerProfile")) {
-        UserTable();
+
+        // UserTable();
+        UpdateInformation();
     };
 
     SendregistrationForm();
     SendLoginForm();
-    // let user = JSON.parse(localStorage.getItem('connectedUser'));
-    // if (user.password) {
-    //     document.getElementById('login').style.display = 'none';
-    //     document.getElementById('signup').style.display = 'none';
-    //     document.getElementById('logout').style.display = 'inline-block';
-    // }
-    // else {
-    //     document.getElementById('logout').style.display = 'none';
-    // }
+    document.getElementById('logout').addEventListener('click', LogOut)
 
-    // let logout = document.getElementById('logout');
-    // if (logout) {
-    //     logout.querySelector('click', () => {
-    //         console.log(logout);
-    //         document.getElementById('login').style.display = 'inline-block';
-    //         document.getElementById('signup').style.display = 'inline-block';
-    //         document.getElementById('logout').style.display = 'none';
-    //         let user = new User(``, ``, ``, ``, ``, ``, ``, ``, ``, ``);
-    //         localStorage.setItem("connectedUser", JSON.stringify(user));
-    //         location.assign("./managerProfile.html");
+    LogIn_LogOut();
 
-    //     })
-    // }
 
 }
 Main();

@@ -171,6 +171,7 @@ export function BuildStore() {
   AddFoodsToStore();
   AddSuitsToStore();
 }
+
 //user info table
 export function UserTable() {
   let userTable = document.getElementById("userTable");
@@ -233,6 +234,12 @@ export function SubmitRegistrationForm(event) {
     return;
   }
 
+  if (password.length < 8 || password.length > 21) {
+    console.log('incorrect pass');
+    document.getElementById('passwordHelp').classList.add('none');;
+    return;
+  }
+
   let file = imageInput.files[0];
 
   let reader = new FileReader();
@@ -243,7 +250,9 @@ export function SubmitRegistrationForm(event) {
     let storedUsersJSON = localStorage.getItem("users");
 
     if (storedUsersJSON) {
-      let storedUsers = JSON.parse(storedUsersJSON);
+      storedUsers = JSON.parse(storedUsersJSON);
+      console.log(storedUsers);
+
       for (let i = 0; i < storedUsers.length; i++) {
         if (storedUsers[i].email === email) {
           alert("Email already exists. Please choose a different email.");
@@ -269,12 +278,26 @@ export function SubmitRegistrationForm(event) {
 
     storedUsers.push(newUser);
 
-    let updatedUsersJSON = JSON.stringify(storedUsers);
+    storedUsersJSON = JSON.stringify(storedUsers);
 
-    localStorage.setItem("users", updatedUsersJSON);
+    localStorage.setItem("users", storedUsersJSON);
+
   };
-
   reader.readAsDataURL(file);
+
+
+  let storedUsersJSON = localStorage.getItem("users");
+  let storedUsers = JSON.parse(storedUsersJSON);
+  let user = storedUsers.find(
+    (u) => u.email === email && u.password === password
+  );
+  console.log(storedUsersJSON);
+  let userJSON = JSON.stringify(user);
+  localStorage.setItem("connectedUser", userJSON);
+
+
+
+
 }
 
 export function SendLoginForm() {
@@ -282,7 +305,7 @@ export function SendLoginForm() {
   form.addEventListener("click", SubmitLoginForm);
 
   //fix this
-  document.querySelector("#showPass").addEventListener("click", () => {
+  document.querySelector("#showPassLogIn").addEventListener("click", () => {
     let pass = document.querySelector("#floatingPassword");
     if (pass.type === "password") {
       pass.type = "text";
@@ -302,18 +325,17 @@ function SubmitLoginForm() {
     let user = storedUsers.find(
       (u) => u.email === email && u.password === password
     );
-
+    console.log(user);
     let userJSON = JSON.stringify(user);
 
     localStorage.setItem("connectedUser", userJSON);
 
     if (user) {
       if (password === `admin1234admin`) {
-        location.assign("./managerProfile.html");
         alert(`You are connected as an admin`);
+        // location.assign("./managerProfile.html");
       }
-      let add = document.getElementById(`addItem`);
-
+      // let add = document.getElementById(`addItem`);
       return;
     } else {
       alert("Incorrect email or password.");
@@ -385,7 +407,6 @@ export function AddSuit() {
       AddSuitsToStore();
     };
 
-    reader.readAsDataURL(file);
   });
 }
 
@@ -442,7 +463,6 @@ export function AddFood() {
       AddFoodsToStore();
     };
 
-    reader.readAsDataURL(file);
   });
 }
 
@@ -514,7 +534,6 @@ export function AddShip() {
       AddFlightToStore();
     };
 
-    reader.readAsDataURL(file);
   });
 }
 
@@ -658,5 +677,84 @@ function UpDatecart() {
 }
 
 export function UpdateInformation() {
-  document.querySelector('click').addEventListener();
+  //כפתור שמראה את הסיסמא
+  document.querySelector("#showPassUpdate").addEventListener("click", () => {
+    let pass = document.querySelector("#passwordUpdate");
+    if (pass.type === "password") {
+      pass.type = "text";
+    } else {
+      pass.type = "password";
+    }
+  });
+  document.querySelector('#UpdateInformationForm').addEventListener('submit', (event) => {
+    event.preventDefault(); // Отменяем стандартное поведение отправки формы
+
+    // Получаем значения из полей формы
+    let firstName = document.getElementById("firstNameUpdate").value;
+    let lastName = document.getElementById("lastNameUpdate").value;
+    let birthDate = document.getElementById("BirthDateUpdate").value;
+    let email = document.getElementById("emailUpdate").value;
+    let password = document.getElementById("passwordUpdate").value;
+    let city = document.getElementById("cityUpdate").value;
+    let street = document.getElementById("streetUpdate").value;
+    let number = document.getElementById("houseUpdate").value;
+
+    let connectedUser = JSON.parse(localStorage.getItem("connectedUser"));
+
+    if (firstName) {
+      connectedUser.firstName = firstName;
+    }
+    if (lastName) {
+      connectedUser.lastName = lastName;
+    }
+    if (birthDate) {
+      connectedUser.birthDate = birthDate;
+    }
+    if (email) {
+      connectedUser.email = email;
+    }
+    if (password) {
+      connectedUser.password = password;
+    }
+    if (city) {
+      connectedUser.city = city;
+    }
+    if (street) {
+      connectedUser.street = street;
+    }
+    if (number) {
+      connectedUser.number = number;
+    }
+
+    localStorage.setItem("connectedUser", JSON.stringify(connectedUser));
+
+    const users = JSON.parse(localStorage.getItem("users"));
+    const updatedUsers = users.map((user) =>
+      user.id === connectedUser.id ? connectedUser : user
+    );
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    alert("Данные успешно обновлены!");
+  });
+}
+
+export function LogIn_LogOut() {
+  let user = JSON.parse(localStorage.getItem('connectedUser'));
+  console.log();
+  if (user) {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('signup').style.display = 'none';
+    document.getElementById('logout').style.display = 'inline-block';
+  }
+  else {
+    document.getElementById('logout').style.display = 'none';
+  }
+}
+
+export function LogOut() {
+  console.log('logout');
+  document.getElementById('login').style.display = 'inline-block';
+  document.getElementById('signup').style.display = 'inline-block';
+  document.getElementById('logout').style.display = 'none';
+  localStorage.setItem("connectedUser", JSON.stringify(null));
 }
