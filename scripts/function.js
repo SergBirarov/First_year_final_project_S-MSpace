@@ -12,11 +12,113 @@ storedUsers[0] = new User(
     `Hell st`,
     `25`
 )
-var storedSuits;
+// let user = new User(``, ``, ``, ``, ``, ``, ``, ``, ``, ``);
+// localStorage.setItem("connectedUser", JSON.stringify(user));
+
+
+var storedSuits = JSON.parse(localStorage.getItem(`suits`));
 var storedFoods = JSON.parse(localStorage.getItem(`foods`));
 var storedFlights = JSON.parse(localStorage.getItem(`flights`));
-var stackedFlights = new Array();
-var stackedFoods = new Array();
+
+storedFlights = [
+    {
+        flightNumber: `165-56A`,
+        departureDate: `26/07/2023`,
+        arrivalDate: `26/08/2025`,
+        classType: `Heavy`,
+        image: `/Media/Assets/Ecom/products/prod1.jpg`,
+        price: `12,500`,
+    },
+    {
+        flightNumber: `187-96A`,
+        departureDate: `26/09/2023`,
+        arrivalDate: `26/09/2024`,
+        classType: `Medium`,
+        image: `/Media/Assets/Ecom/products/prod2.jpg`,
+        price: `11,500`,
+    },
+    {
+        flightNumber: `787-96B`,
+        departureDate: `26/10/2023`,
+        arrivalDate: `26/09/2024`,
+        classType: `Light`,
+        image: `/Media/Assets/Ecom/products/prod3.jpg`,
+        price: `64,500`,
+    },
+    {
+        flightNumber: `T77-96B`,
+        departureDate: `26/10/2029`,
+        arrivalDate: `26/09/2032`,
+        classType: `Heavy`,
+        image: `/Media/Assets/Ecom/products/prod4.jpg`,
+        price: `164,500`,
+    },
+];
+
+storedFoods = [
+    {
+        foodName: `Minced Brains`,
+        foodType: `meat`,
+        kosherStatus: `no`,
+        hypoallergenicStatus: `yes`,
+        foodImage: `/Media/Assets/Ecom/products/food1.png`,
+        foodPrice: `32.50`,
+    },
+    {
+        foodName: `Ass Bits`,
+        foodType: `meat`,
+        kosherStatus: `Yes`,
+        hypoallergenicStatus: `No`,
+        foodImage: `/Media/Assets/Ecom/products/food2.png`,
+        foodPrice: `19.90`,
+    },
+    {
+        foodName: `Breast Milk`,
+        foodType: `Dairy`,
+        kosherStatus: `Yes`,
+        hypoallergenicStatus: `No`,
+        foodImage: `/Media/Assets/Ecom/products/food3.png`,
+        foodPrice: `312.30`,
+    },
+    {
+        foodName: `Shepareds Pie`,
+        foodType: `meat`,
+        kosherStatus: `No`,
+        hypoallergenicStatus: `Yes`,
+        foodImage: `/Media/Assets/Ecom/products/food4.png`,
+        foodPrice: `99.90`,
+    }
+];
+storedSuits = [
+    {
+        brandName: `Wolf$Gangs`,
+        size: `S/36`,
+        color: `White/Silver`,
+        image: `/Media/Assets/Ecom/products/suit1.jpg`,
+        price: `360.90`
+    },
+    {
+        brandName: `Wolf$Gangs`,
+        size: `M/42`,
+        color: `Orange`,
+        image: `/Media/Assets/Ecom/products/suit2.jpg`,
+        price: `422.90`
+    },
+    {
+        brandName: `Suits-BaAm`,
+        size: `L/46`,
+        color: `White/Silver`,
+        image: `/Media/Assets/Ecom/products/suit3.jpg`,
+        price: `180.90`
+    },
+    {
+        brandName: `AlaIster`,
+        size: `XL/56`,
+        color: `White/Silver`,
+        image: `/Media/Assets/Ecom/products/suit4.jpg`,
+        price: `1360.90`
+    }
+];
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 
@@ -147,6 +249,7 @@ export function BuildStore() {
     AddFlightToStore();
     AddFoodsToStore();
 }
+
 export function UserTable() {
 
 
@@ -269,15 +372,15 @@ export function SendLoginForm() {
     let form = document.querySelector("#submit_login");
     form.addEventListener("click", SubmitLoginForm);
 
-    document.querySelector('#showPass').addEventListener('click', () => {
-        let pass = document.querySelector('#floatingPassword');
-        if (pass.type === "password") {
-            pass.type = "text";
-        } else {
-            pass.type = "password";
-        }
+    // document.querySelector('#showPass').addEventListener('click', () => {
+    //     let pass = document.querySelector('#floatingPassword');
+    //     if (pass.type === "password") {
+    //         pass.type = "text";
+    //     } else {
+    //         pass.type = "password";
+    //     }
 
-    });
+    // });
 
 
 }
@@ -288,13 +391,14 @@ function SubmitLoginForm() {
     let storedUsersJSON = localStorage.getItem("users");
 
     if (storedUsersJSON) {
+        console.log(storedUsersJSON);
         let storedUsers = JSON.parse(storedUsersJSON);
         // Check if the email already exists in localStorage
         let user = storedUsers.find((u) => u.email === email && u.password === password);
-
+        console.log(user);
         // Convert the updated suits array to a JSON string
         let userJSON = JSON.stringify(user);
-
+        console.log(userJSON);
         // Store the JSON string in localStorage
         localStorage.setItem("connectedUser", userJSON);
 
@@ -546,6 +650,10 @@ function AddFlightToStore() {
 function AddFoodsToStore() {
     let str = ``;
 
+<<<<<<< Updated upstream
+=======
+    let count = 4;
+>>>>>>> Stashed changes
     if (storedFoods) {
         storedFoods.forEach((element) => {
             str += `
@@ -571,3 +679,20 @@ function AddToCart(index) {
 
 }
 
+<<<<<<< Updated upstream
+=======
+function handleAddToCart(event) {
+    if (event.target.classList.contains("prodBut")) {
+        const productCard = event.target.closest(".card");
+        const productIndex = productCard.dataset.productIndex;
+        const product = stackedFlights[productIndex];
+
+        AddToCart(product);
+    }
+}
+
+
+function AddToCart(product) {
+    console.log(product);
+}
+>>>>>>> Stashed changes
