@@ -1,5 +1,5 @@
 import { User } from "./models/User.js";
-
+var cartTable = document.getElementById("cartTable");
 //Arrays for Users:
 //admin
 var storedUsers = [new User(
@@ -602,10 +602,18 @@ function UpDatecart() {
   let cart = JSON.parse(localStorage.getItem('cart'))
 
   for (let i = 0; i < cart.length; i++) {
-    str += `${cart[i].name}, ${cart[i].image}, ${cart[i].price}`
 
+    str += `
+        <tr>
+        <td>${cart[i].id}</td>
+        <td>${cart[i].image}</td>
+        <td>${cart[i].category}</td>
+        <td>${cart[i].price}</td>
+        <td><button class="btn-sm btn-danger">Remove</button></td>
+    `;
   }
 
+  cartTable.innerHTML += str;
   // innerHTML = str;
 
   console.log(str);
