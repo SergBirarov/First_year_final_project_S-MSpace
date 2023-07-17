@@ -11,16 +11,13 @@ storedUsers[0] = new User(
   `Hell`,
   `Hell st`,
   `25`
-)
-// let user = new User(``, ``, ``, ``, ``, ``, ``, ``, ``, ``);
-// localStorage.setItem("connectedUser", JSON.stringify(user));
+);
 
+// var storedSuits = JSON.parse(localStorage.getItem(`suits`));
+// var storedFoods = JSON.parse(localStorage.getItem(`foods`));
+// var storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
-var storedSuits = JSON.parse(localStorage.getItem(`suits`));
-var storedFoods = JSON.parse(localStorage.getItem(`foods`));
-var storedFlights = JSON.parse(localStorage.getItem(`flights`));
-
-storedFlights = [
+var storedFlights = [
   {
     flightNumber: `165-56A`,
     departureDate: `26/07/2023`,
@@ -55,7 +52,9 @@ storedFlights = [
   },
 ];
 
-storedFoods = [
+localStorage.setItem(`flights`, JSON.stringify(storedFlights));
+
+var storedFoods = [
   {
     foodName: `Minced Brains`,
     foodType: `meat`,
@@ -87,38 +86,44 @@ storedFoods = [
     hypoallergenicStatus: `Yes`,
     foodImage: `/Media/Assets/Ecom/products/food4.png`,
     foodPrice: `99.90`,
-  }
+  },
 ];
-storedSuits = [
+
+localStorage.setItem(`foods`, JSON.stringify(storedFoods));
+
+var storedSuits = [
   {
     brandName: `Wolf$Gangs`,
     size: `S/36`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit1.jpg`,
-    price: `360.90`
+    price: `360.90`,
   },
   {
     brandName: `Wolf$Gangs`,
     size: `M/42`,
     color: `Orange`,
     image: `/Media/Assets/Ecom/products/suit2.jpg`,
-    price: `422.90`
+    price: `422.90`,
   },
   {
     brandName: `Suits-BaAm`,
     size: `L/46`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit3.jpg`,
-    price: `180.90`
+    price: `180.90`,
   },
   {
     brandName: `AlaIster`,
     size: `XL/56`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit4.jpg`,
-    price: `1360.90`
-  }
+    price: `1360.90`,
+  },
 ];
+
+localStorage.setItem(`suits`, JSON.stringify(storedSuits));
+
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 var productGridSuit = document.getElementById("suitSec");
@@ -290,7 +295,6 @@ export function BuildStore() {
   AddFoodsToStore();
   AddSuitsToStore();
 }
-
 export function UserTable() {
   // let manager = `<tr>
   //               <td><img src="${storedUsers[0].image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
@@ -670,261 +674,6 @@ export function AddShip() {
 
     // Read the file as a data URL (base64 encoded)
     reader.readAsDataURL(file);
-  })
-}
-
-export function SendLoginForm() {
-  let form = document.querySelector("#submit_login");
-  form.addEventListener("click", SubmitLoginForm);
-
-  // document.querySelector('#showPass').addEventListener('click', () => {
-  //     let pass = document.querySelector('#floatingPassword');
-  //     if (pass.type === "password") {
-  //         pass.type = "text";
-  //     } else {
-  //         pass.type = "password";
-  //     }
-
-  // });
-
-
-}
-function SubmitLoginForm() {
-  let email = document.getElementById("floatingEmail").value;
-  let password = document.getElementById("floatingPassword").value;
-  // Retrieve the stored user data from localStorage
-  let storedUsersJSON = localStorage.getItem("users");
-
-  if (storedUsersJSON) {
-    console.log(storedUsersJSON);
-    let storedUsers = JSON.parse(storedUsersJSON);
-    // Check if the email already exists in localStorage
-    let user = storedUsers.find((u) => u.email === email && u.password === password);
-    console.log(user);
-    // Convert the updated suits array to a JSON string
-    let userJSON = JSON.stringify(user);
-    console.log(userJSON);
-    // Store the JSON string in localStorage
-    localStorage.setItem("connectedUser", userJSON);
-
-    if (user) {
-      if (password === `admin1234admin`) {
-        location.assign("./managerProfile.html");
-        alert(`You are connected as an admin`);
-      }
-      let add = document.getElementById(`addItem`);
-      // alert("connect");
-      // document.querySelector("#incorrectPassword").style.visibility = "hidden";
-      return;
-    } else {
-      // document.querySelector("#incorrectPassword").style.visibility = "visible";
-      alert("Incorrect email or password.");
-    }
-  } else {
-    alert("No registered users.");
-  }
-}
-export function AddSuit() {
-  document.querySelector("#addSuit").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent the form from submitting
-
-    // Retrieve the input values
-    let brandName = document.getElementById("addSuitName").value;
-    let size = document.getElementById("addSuitSize").value;
-    let color = document.getElementById("addSuitColor").value;
-    let imageInput = document.getElementById("addSuitImage");
-    let price = document.getElementById("addSuitPrice").value;
-
-    // Check if any of the fields are empty
-    if (
-      !brandName ||
-      size === "Choose a size" ||
-      color === "Choose a color" ||
-      !imageInput.files[0] ||
-      !price
-    ) {
-      alert("Please fill in all the required fields.");
-      return;
-    }
-
-    // Create a new FileReader instance
-    let reader = new FileReader();
-
-    // Set up an event listener for when the file is loaded
-    reader.onload = function (event) {
-      // The file content will be available in event.target.result
-      let imageContent = event.target.result;
-
-      // Create a suit object with the image content
-      let suit = {
-        brandName: brandName,
-        size: size,
-        color: color,
-        image: imageContent,
-        price: price,
-      };
-
-      // Retrieve the existing suits array from localStorage or create a new one
-      let storedSuitsJSON = localStorage.getItem("suits");
-      let storedSuits = storedSuitsJSON ? JSON.parse(storedSuitsJSON) : [];
-
-      // Add the new suit object to the stored suits array
-      storedSuits.push(suit);
-
-      // Convert the updated suits array to a JSON string
-      let updatedSuitsJSON = JSON.stringify(storedSuits);
-
-      // Store the JSON string in localStorage
-      localStorage.setItem("suits", updatedSuitsJSON);
-
-      // Clear the form fields
-      document.getElementById("addSuit").reset();
-
-      // Optionally, display a success message
-      alert("Suit added successfully!");
-    };
-
-  });
-}
-export function AddFood() {
-  document.querySelector("#addFood").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
-
-    // Retrieve input values
-    let foodName = document.getElementById("addFoodName").value;
-    let foodType = document.querySelector('input[name="meat_dairy"]:checked').value;
-    let kosherStatus = document.querySelector('input[name="kosher_noKosher"]:checked').value;
-    let hypoallergenicStatus = document.querySelector('input[name="hypoallergenic_no"]:checked').value;
-    let foodImageInput = document.getElementById("addFoodImage");
-    let foodPrice = document.getElementById("addFoodPrice").value;
-
-    // Validate the input values (optional)
-    if (foodName === "" || foodPrice === "") {
-      alert("Please fill in all the fields.");
-      return;
-    }
-
-    let file = foodImageInput.files[0];
-
-    // Create a FileReader instance
-    let reader = new FileReader();
-
-    // Set up an event listener for when the file is loaded
-    reader.onload = function (event) {
-      // The file content will be available in event.target.result
-      let foodImage = event.target.result;
-
-      // Create a food object
-      let food = {
-        foodName: foodName,
-        foodType: foodType ? "meat" : "dairy",
-        kosherStatus: kosherStatus ? "yes" : "no",
-        hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
-        foodImage: foodImage,
-        foodPrice: foodPrice,
-      };
-
-      // Retrieve the stored food array from localStorage
-      let storedFoodsJSON = localStorage.getItem("foods");
-      let storedFoods = storedFoodsJSON ? JSON.parse(storedFoodsJSON) : [];
-
-      // Add the new food object to the stored foods array
-      storedFoods.push(food);
-
-      // Convert the updated foods array to a JSON string
-      let updatedFoodsJSON = JSON.stringify(storedFoods);
-
-      // Store the JSON string in localStorage
-      localStorage.setItem("foods", updatedFoodsJSON);
-
-      // Clear the form fields
-      document.getElementById("addFood").reset();
-
-      // Optionally, display a success message
-      alert("Food item added successfully!");
-
-      // Assuming AddFoodsToStore() is defined elsewhere
-      AddFoodsToStore();
-    };
-
-    // Read the file as a data URL
-    reader.readAsDataURL(file);
-  });
-}
-
-export function AddShip() {
-  document.querySelector("#addFlight").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
-
-    // Retrieve input values
-    let flightNumber = document.getElementById("addFlightNumber").value;
-    let departureDate = document.getElementById("addDepartureDate").value;
-    let arrivalDate = document.getElementById("addArrivalDate").value;
-    let classType = document.getElementById("addShipSize").value;
-    let imageInput = document.getElementById("addShipImage");
-    let price = document.getElementById("addShipPrice").value;
-
-    // Validate the input values (optional)
-    if (
-      flightNumber === "" ||
-      departureDate === "" ||
-      arrivalDate === "" ||
-      classType === "Choose a class" ||
-      price === ""
-    ) {
-      alert("Please fill in all the fields.");
-      return;
-    }
-    if (departureDate > arrivalDate) {
-      alert("Illegal date");
-      return;
-    }
-
-    // Get the selected file from the image input
-    let file = imageInput.files[0];
-
-    // Create a new FileReader instance
-    let reader = new FileReader();
-
-    // Set up an event listener for when the file is loaded
-    reader.onload = function (event) {
-      // The file content will be available in event.target.result
-      let image = event.target.result;
-
-      // Create a flight object
-      let flight = {
-        flightNumber: flightNumber,
-        departureDate: departureDate,
-        arrivalDate: arrivalDate,
-        classType: classType,
-        image: image,
-        price: price,
-      };
-
-      // Retrieve the stored flights array from localStorage
-      let storedFlightsJSON = localStorage.getItem("flights");
-      storedFlights = storedFlightsJSON ? JSON.parse(storedFlightsJSON) : [];
-
-      // Add the new flight object to the stored flights array
-      storedFlights.push(flight);
-
-      // Convert the updated flights array to a JSON string
-      let updatedFlightsJSON = JSON.stringify(storedFlights);
-
-      // Store the JSON string in localStorage
-      localStorage.setItem("flights", updatedFlightsJSON);
-
-      // Clear the form fields
-      document.getElementById("addFlight").reset();
-
-      // Optionally, display a success message
-      alert("Flight added successfully!");
-
-      AddFlightToStore();
-    };
-
-    // Read the file as a data URL (base64 encoded)
-    reader.readAsDataURL(file);
   });
 }
 
@@ -967,21 +716,6 @@ function AddFoodsToStore() {
             <p><span class="fw-bold">Price: </span>${storedFoods[i].foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
             <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food" id="foodToCart-${i}">Add to Cart</button>
             </div>`;
-    let count = 4;
-    if (storedFoods) {
-      storedFoods.forEach((element) => {
-        str += `
-            <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="${element.foodImage}" alt="Product 5">
-            <h3 class="fw-bold">${element.foodName}</h3>
-            <p><span class="fw-bold">Dairy/Meat: </span>${element.foodType}</p>
-            <p><span class="fw-bold">Kosher Status: </span>${element.kosherStatus}</p>
-            <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${element.hypoallergenicStatus}</p>
-            <p><span class="fw-bold">Price: </span>${element.foodPrice}</p>
-            <button class="prodBut btn btn-info">buy</button>
-          </div>`;
-      });
-    }
 
   }
 
@@ -1009,17 +743,3 @@ function AddSuitsToStore() {
   productGridSuit.innerHTML = str;
 }
 
-function handleAddToCart(event) {
-    if (event.target.classList.contains("prodBut")) {
-        const productCard = event.target.closest(".card");
-        const productIndex = productCard.dataset.productIndex;
-        const product = stackedFlights[productIndex];
-
-        AddToCart(product);
-    }
-}
-
-
-function AddToCart(product) {
-    console.log(product);
-}
