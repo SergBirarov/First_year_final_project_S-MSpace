@@ -138,6 +138,9 @@
               <input type="file" class="form-control" id="image">
               <!-- לוגו של מצלמה -->
               <i class="input-group-text fas fa-camera fa-5x"></i>
+              <div id="imageHelp" class="form-text text-white-50 none">
+                Only jpeg or jpg
+              </div>
             </div>
 
             <div class="input-group mb-3">
@@ -161,7 +164,7 @@
             <div class="input-group mb-3">
               <input id="city" type="text" class="form-control" placeholder="City">
               <input id="street" type="text" class="form-control" placeholder="Street">
-              <input id="houseNumber" type="text" class="form-control" placeholder="House">
+              <input id="houseNumber" type="number" min="1" class="form-control" placeholder="House">
             </div>
 
             <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Send</button>

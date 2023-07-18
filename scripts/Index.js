@@ -16,14 +16,14 @@ import { SecondSortStore } from "./function.js";
 
 
 function Main() {
-    
+
     if (window.location.href.includes("/store")) {
         BuildStore();
         AddSuit();
         AddFood();
         AddShip();
-        document.getElementById('price-filter').addEventListener('click',SortStore);
-        document.getElementById('second-filter').addEventListener('click',SecondSortStore);
+        document.getElementById('price-filter').addEventListener('click', SortStore);
+        document.getElementById('second-filter').addEventListener('click', SecondSortStore);
     };
     if (window.location.href.includes("/managerProfile")) {
 

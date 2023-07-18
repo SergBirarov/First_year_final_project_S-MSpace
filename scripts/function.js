@@ -207,11 +207,12 @@ export function SendregistrationForm() {
 function CheckPassword(password) {
   let inCorrect = true
   let isSpecial = false
+  let isCapLatters = false
   let isLatters = false
   let isNumber = false
   let passwordValue = password.value
 
-  if (Number(passwordValue.length) < 8 || Number(passwordValue.length) > 21) {
+  if (Number(passwordValue.length) < 7 || Number(passwordValue.length) > 12) {
     inCorrect = true;
   }
 
@@ -220,8 +221,11 @@ function CheckPassword(password) {
     if (specialCharacters.includes(element)) {
       isSpecial = true;
     }
-    if (element >= 'a' && element <= 'z' || element >= 'A' && element <= 'Z') {
+    if (element >= 'a' && element <= 'z') {
       isLatters = true;
+    }
+    if (element >= 'A' && element <= 'Z') {
+      isCapLatters = true;
     }
     if (element >= '0' && element <= '9') {
       isNumber = true;
@@ -231,7 +235,7 @@ function CheckPassword(password) {
 
 
 
-  if (isLatters && isSpecial && isNumber) {
+  if (isLatters && isSpecial && isNumber && isCapLatters) {
     inCorrect = false
   }
 
@@ -247,46 +251,24 @@ function CheckPassword(password) {
 }
 export function SubmitRegistrationForm(event) {
   event.preventDefault();
+  // username
   let username = document.getElementById("regUsername");
-  let password = document.getElementById("regPassword");
-  let password2 = document.getElementById("regPasswordSecond");
-  if (password.value != password2.value) {
-    password2.style.border = "2px solid red";
-    document.getElementById('PasswordSecond').classList.remove('none')
-    return
-  }
-  else {
-    password2.style.border = "2px solid green";
-    document.getElementById('PasswordSecond').classList.add('none')
-  }
-  let imageInput = document.getElementById("image");
-  let firstName = document.getElementById("firstName");
-  let lastName = document.getElementById("lastName");
-  let email = document.getElementById("email");
-  let birthDate = document.getElementById("birthDate");
-  let city = document.getElementById("city");
-  let street = document.getElementById("street");
-  let number = document.getElementById("houseNumber");
-
-  username.style.border = !username.value ? "2px solid red" : "2px solid green"
-  imageInput.style.border = !imageInput.value ? "2px solid red" : "2px solid green"
-  firstName.style.border = !firstName.value ? "2px solid red" : "2px solid green"
-  lastName.style.border = !lastName.value ? "2px solid red" : "2px solid green"
-  email.style.border = !email.value ? "2px solid red" : "2px solid green"
-  birthDate.style.border = !birthDate.value ? "2px solid red" : "2px solid green"
-  city.style.border = !city.value ? "2px solid red" : "2px solid green"
-  street.style.border = !street.value ? "2px solid red" : "2px solid green"
-  if (!number.value) {
-    let numberValue = number.value;
-    for (let element of numberValue) {
-      if (!(element >= 'א' && element <= 'ת')) {
-        number.style.border = "2px solid red";
+  if (username.value || username.value.length > 60) {
+    let usernameValue = username.value;
+    for (let element of usernameValue) {
+      if (element >= 'א' && element <= 'ת') {
+        username.style.border = "2px solid red";
         return;
       }
+      else {
+        username.style.border = "2px solid green";
+      }
     }
-    number.style.border = !number.value ? "2px solid red" : "2px solid green"
+  } else {
+    username.style.border = "2px solid red";
   }
-
+  // password
+  let password = document.getElementById("regPassword");
   if (!password.value) {
     password.style.border = "2px solid red"
   }
@@ -294,7 +276,120 @@ export function SubmitRegistrationForm(event) {
     if (CheckPassword(password)) {
       return
     }
+    password.style.border = "2px solid green"
   }
+  // password2
+  let password2 = document.getElementById("regPasswordSecond");
+  if (password2.value && (password.value == password2.value)) {
+    password2.style.border = "2px solid green";
+    document.getElementById('PasswordSecond').classList.add('none')
+  }
+  else {
+    password2.style.border = "2px solid red";
+    document.getElementById('PasswordSecond').classList.remove('none')
+    return
+  }
+
+
+  // imageInput
+  let imageInput = document.getElementById("image");
+  if (imageInput.value) {
+    if (!(imageInput.value.includes('.jpeg') || imageInput.value.includes('.jpg'))) {
+      imageInput.style.border = "2px solid red";
+      document.getElementById('imageHelp').classList.remove('none')
+      return;
+    }
+    else {
+      imageInput.style.border = "2px solid green";
+      document.getElementById('imageHelp').classList.add('none')
+    }
+  }
+
+  // firstName
+  let firstName = document.getElementById("firstName");
+  if (firstName.value) {
+    let firstNameValue = firstName.value;
+    for (let element of firstNameValue) {
+      if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+        firstName.style.border = "2px solid red";
+        return;
+      }
+      else {
+        firstName.style.border = "2px solid green";
+      }
+    }
+  } else {
+    firstName.style.border = "2px solid red";
+  }
+  // lastName
+  let lastName = document.getElementById("lastName");
+  if (lastName.value) {
+    let lastNameValue = lastName.value;
+    for (let element of lastNameValue) {
+      if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+        lastName.style.border = "2px solid red";
+        return;
+      }
+      else {
+        lastName.style.border = "2px solid green";
+      }
+    }
+  } else {
+    lastName.style.border = "2px solid red";
+  }
+  // email
+  let email = document.getElementById("email");
+  email.style.border = !email.value ? "2px solid red" : "2px solid green"
+
+  // birthDate
+  let birthDate = document.getElementById("birthDate");
+  let birthDateValue = new Date(birthDate.value);
+  let currentDate = new Date();
+  if (birthDate.value && (currentDate.getFullYear() - birthDateValue.getFullYear() < 120 || birthDateValue > currentDate)) {
+    birthDate.style.border = "2px solid green";
+  }
+  else {
+    birthDate.style.border = "2px solid red";
+    return
+  }
+  // city
+  let city = document.getElementById("city");
+  if (city.value) {
+    let cityValue = city.value;
+    for (let element of cityValue) {
+      if ((element < 'א' && element > 'ת')) {
+        city.style.border = "2px solid red";
+        return;
+      }
+      else {
+        city.style.border = "2px solid green";
+      }
+    }
+  }
+  else {
+    city.style.border = "2px solid red";
+  }
+  // street
+  let street = document.getElementById("street");
+  if (street.value) {
+    let streetValue = street.value;
+    for (let element of streetValue) {
+      if ((element < 'א' && element > 'ת')) {
+        street.style.border = "2px solid red";
+        return;
+      }
+      else {
+        street.style.border = "2px solid green";
+      }
+    }
+  }
+  else {
+    street.style.border = "2px solid red";
+  }
+  //number
+  let number = document.getElementById("houseNumber");
+  number.style.border = !number.value ? "2px solid red" : "2px solid green"
+
   if (
     username.value === "" ||
     password.value === "" ||
@@ -309,6 +404,7 @@ export function SubmitRegistrationForm(event) {
   ) {
     return;
   }
+
   let file = imageInput.files[0];
 
   let reader = new FileReader();
@@ -328,6 +424,7 @@ export function SubmitRegistrationForm(event) {
           return;
         }
         else {
+          email.style.border = "2px solid green"
           document.getElementById('emailHelp').classList.add('none');
         }
       }
@@ -559,8 +656,8 @@ export function AddShip() {
       alert("Please fill in all the fields.");
       return;
     }
-    var date = moment();
-    var currentDate = date.format('YYYY/DD/MM');
+    let date = moment();
+    let currentDate = date.format('YYYY/DD/MM');
 
     if (departureDate > arrivalDate || departureDate < currentDate) {
       alert("Invalid date");
@@ -628,34 +725,21 @@ export function SortStore() {
 function SortFlights() {
   storedFlights;
   storedFlights.sort(sortByPrice);
-
-  // Step 4: Replace the original order of elements with the sorted order
   const parentElement = storedFlights[0].parentNode;
-  storedFlights.forEach(element => {
-    console.log(element.price);
-  });
   localStorage.setItem('flights', JSON.stringify(storedFlights));
   AddFlightToStore();
 }
 function SortSuits() {
   storedSuits;
   storedSuits.sort(sortByPrice);
-
   const parentElement = storedSuits[0].parentNode;
-  storedSuits.forEach(element => {
-    console.log(element.price);
-  });
   localStorage.setItem('suits', JSON.stringify(storedSuits));
   AddSuitsToStore();
 }
 function SortFoods() {
   storedFoods;
   storedFoods.sort(sortByPrice);
-
   const parentElement = storedFoods[0].parentNode;
-  storedFoods.forEach(element => {
-    console.log(element.price);
-  });
   localStorage.setItem('foods', JSON.stringify(storedFoods));
   AddFoodsToStore();
 }
@@ -927,7 +1011,7 @@ export function UpdateInformation() {
 export function LogIn_LogOut() {
   let user;
   let userJSON = localStorage.getItem('connectedUser')
-  if (userJSON != null) {
+  if (userJSON) {
     user = JSON.parse(localStorage.getItem('connectedUser'));
   }
   if (user) {
