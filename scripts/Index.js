@@ -27,7 +27,7 @@ function Main() {
     };
     if (window.location.href.includes("/managerProfile")) {
 
-        // UserTable();
+        UserTable();
         UpdateInformation();
     };
 

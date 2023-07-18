@@ -88,22 +88,21 @@
                         <a class="nav-link" href="#">Secret Game Room</a>
                     </li>
                 </ul>
-                <form class="d-flex p-2">
+                <form class="d-flex p-2" id="userBoard">
                     <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
-                        In</button>
-                    <button class="link m-1" id="signup" type="button" data-bs-toggle="modal"
-                        data-bs-target="#signUp">Sign
-                        Up</button>
-                    <button class="link m-1" id="logout" type="button" data-bs-toggle="modal"
-                        data-bs-target="#logout">Log
-                        Out</button>
-                    <button class="btn btn-primary disabled" id="addItem" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i
-                            data-feather="plus"></i></button>
-                    <button class="btn btn-primary disabled" id="cart" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
-                            data-feather="shopping-cart"></i></button>
-                </form>
+                      In</button>
+                    <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
+                      Up</button>
+                    <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log
+                      Out</button>
+                    <button class="link m-1" id="adminProfile"  style="display: none;" type="button" data-bs-target="#adminProfile"><a href="/managerProfile.html">Dashboard</a></button>
+                    <button class="link m-1" id="userProfile" style="display: none;" type="button" data-bs-target="#userProfile" ><a href="/managerProfile.html">Dashboard</a></button>
+                    <button class="btn btn-primary " style="display: none;" id="addItem" type="button" data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
+                    <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
+                      data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+                        data-feather="shopping-cart"></i></button>
+                  </form>
             </div>
         </div>
     </nav>
