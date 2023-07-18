@@ -345,10 +345,7 @@ function SubmitLoginForm() {
   }
 }
 
-
-
 //adding products to localstorage through user input
-
 export function AddSuit() {
   document.querySelector("#addSuit").addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent the form from submitting
@@ -538,8 +535,61 @@ export function AddShip() {
 }
 
 
-
+function sortByDataPrice(a, b) {
+  const priceA = parseInt(a.price);
+  const priceB = parseInt(b.price);
+  let filter = document.getElementById('price-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return priceA - priceB;
+    case 'high-to-low':
+      return priceB - priceA;
+    default:
+      return;
+  }
+}
 //adding the products to the store
+export function SortStore() {
+  SortFlights();
+  SortFoods();
+  SortSuits();
+  
+}
+function SortFlights() {
+  storedFlights;
+  storedFlights.sort(sortByDataPrice);
+
+  // Step 4: Replace the original order of elements with the sorted order
+  const parentElement = storedFlights[0].parentNode;
+  storedFlights.forEach(element => {
+    console.log(element.price);
+  });
+  localStorage.setItem('flights', JSON.stringify(storedFlights));
+  AddFlightToStore();
+}
+function SortFoods() {
+  storedSuits;
+  storedSuits.sort(sortByDataPrice);
+
+  const parentElement = storedSuits[0].parentNode;
+  storedSuits.forEach(element => {
+    console.log(element.price);
+  });
+  localStorage.setItem('suits', JSON.stringify(storedSuits));
+  AddSuitsToStore();
+}
+function SortSuits() {
+  storedFoods;
+  storedFoods.sort(sortByDataPrice);
+
+  const parentElement = storedFoods[0].parentNode;
+  storedFoods.forEach(element => {
+    console.log(element.price);
+  });
+  localStorage.setItem('foods', JSON.stringify(storedFoods));
+  AddFoodsToStore();
+}
+
 
 //להוסיף עוד נתונים על פי הפרמטרים החדשים (id, category)
 function AddFlightToStore() {

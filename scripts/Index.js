@@ -9,18 +9,19 @@ import { UserTable } from "./function.js";
 import { UpdateInformation } from "./function.js";
 import { LogIn_LogOut } from "./function.js";
 import { LogOut } from "./function.js";
+import { SortStore } from "./function.js";
 
 
 
 
 function Main() {
-
-
+    
     if (window.location.href.includes("/store")) {
         BuildStore();
         AddSuit();
         AddFood();
         AddShip();
+        document.getElementById('price-filter').addEventListener('click',SortStore);;
     };
     if (window.location.href.includes("/managerProfile")) {
 
