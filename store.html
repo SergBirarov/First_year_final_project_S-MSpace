@@ -262,9 +262,9 @@
 
                       <select id="addShipSize" class="form-select mb-3">
                         <option selected>Choose a class</option>
-                        <option value="Light">Light</option>
-                        <option value="medium">medium</option>
-                        <option value="Heavy">Heavy</option>
+                        <option value="1 Light">Light</option>
+                        <option value="2 Medium">Medium</option>
+                        <option value="3 Heavy">Heavy</option>
                       </select>
 
                       <div class="input-group mb-3">
@@ -354,8 +354,10 @@
                         <input id="addSuitName" type="text" class="form-control" placeholder="Brand Name">
                       </div>
 
-
-                      <select id="addSuitSize" class="form-select mb-3">
+                      <div class="input-group mb-3 col-md-4">
+                        <input id="addSuitSize" type="number" class="form-control" placeholder="Size" value="40" min="40" max="64">
+                      </div>
+                      <!-- <select id="addSuitSize" class="form-select mb-3">
                         <option selected>Choose a size</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -364,7 +366,7 @@
                         <option value="XL">XL</option>
                         <option value="XXL">XXL</option>
                         <option value="XXXL">XXXL</option>
-                      </select>
+                      </select> -->
 
                       <select id="addSuitColor" class="form-select mb-3">
                         <option selected>Choose a color</option>
@@ -467,11 +469,10 @@
             <option value="high-to-low">High to Low</option>
           </select>
 
-          <select id="Ship class">
-            <option value="">Sort by class</option>
-            <option value="highest-rated">Heavy</option>
-            <option value="middle-rated">Mid</option>
-            <option value="lowest-rated">Light</option>
+          <select id="second-filter">
+            <option value="">Sort by Class Dairy/Meat Size</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
           </select>
         </div>
       </div>

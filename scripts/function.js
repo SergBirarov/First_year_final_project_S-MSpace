@@ -23,7 +23,7 @@ var storedFlights = [
     name: `165-56A`,
     departureDate: `26/07/2023`,
     arrivalDate: `26/08/2025`,
-    classType: `Heavy`,
+    classType: `3 Heavy`,
     image: `/Media/Assets/Ecom/products/prod1.jpg`,
     price: `12,500`,
   },
@@ -33,7 +33,7 @@ var storedFlights = [
     name: `187-96A`,
     departureDate: `26/09/2023`,
     arrivalDate: `26/09/2024`,
-    classType: `Medium`,
+    classType: `2 Medium`,
     image: `/Media/Assets/Ecom/products/prod2.jpg`,
     price: `11,500`,
   },
@@ -43,7 +43,7 @@ var storedFlights = [
     name: `787-96B`,
     departureDate: `26/10/2023`,
     arrivalDate: `26/09/2024`,
-    classType: `Light`,
+    classType: `1 Light`,
     image: `/Media/Assets/Ecom/products/prod3.jpg`,
     price: `64,500`,
   },
@@ -53,7 +53,7 @@ var storedFlights = [
     name: `T77-96B`,
     departureDate: `26/10/2029`,
     arrivalDate: `26/09/2032`,
-    classType: `Heavy`,
+    classType: `3 Heavy`,
     image: `/Media/Assets/Ecom/products/prod4.jpg`,
     price: `164,500`,
   },
@@ -62,7 +62,6 @@ var storedFoods = [
   {
     category: 'food',
     id: `2346`,
-    name: `Minced Brains`,
     name: `Minced Brains`,
     foodType: `meat`,
     kosherStatus: `no`,
@@ -108,7 +107,7 @@ var storedSuits = [
     category: 'suit',
     id: `3546`,
     name: `Wolf$Gangs`,
-    size: `S/36`,
+    size: `36`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit1.jpg`,
     price: `360.90`,
@@ -117,7 +116,7 @@ var storedSuits = [
     category: 'suit',
     id: `3568`,
     name: `Wolf$Gangs`,
-    size: `M/42`,
+    size: `42`,
     color: `Orange`,
     image: `/Media/Assets/Ecom/products/suit2.jpg`,
     price: `422.90`,
@@ -126,7 +125,7 @@ var storedSuits = [
     category: 'suit',
     id: `3965`,
     name: `Suits-BaAm`,
-    size: `L/46`,
+    size: `46`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit3.jpg`,
     price: `180.90`,
@@ -135,7 +134,7 @@ var storedSuits = [
     category: 'suit',
     id: `3967`,
     name: `AlaIster`,
-    size: `XL/56`,
+    size: `56`,
     color: `White/Silver`,
     image: `/Media/Assets/Ecom/products/suit4.jpg`,
     price: `1360.90`,
@@ -362,7 +361,6 @@ export function AddSuit() {
     // Check if any of the fields are empty
     if (
       !brandName ||
-      size === "Choose a size" ||
       color === "Choose a color" ||
       !imageInput.files[0] ||
       !price ||
@@ -535,7 +533,7 @@ export function AddShip() {
 }
 
 
-function sortByDataPrice(a, b) {
+function sortByPrice(a, b) {
   const priceA = parseInt(a.price);
   const priceB = parseInt(b.price);
   let filter = document.getElementById('price-filter').value;
@@ -553,11 +551,11 @@ export function SortStore() {
   SortFlights();
   SortFoods();
   SortSuits();
-  
+
 }
 function SortFlights() {
   storedFlights;
-  storedFlights.sort(sortByDataPrice);
+  storedFlights.sort(sortByPrice);
 
   // Step 4: Replace the original order of elements with the sorted order
   const parentElement = storedFlights[0].parentNode;
@@ -567,9 +565,9 @@ function SortFlights() {
   localStorage.setItem('flights', JSON.stringify(storedFlights));
   AddFlightToStore();
 }
-function SortFoods() {
+function SortSuits() {
   storedSuits;
-  storedSuits.sort(sortByDataPrice);
+  storedSuits.sort(sortByPrice);
 
   const parentElement = storedSuits[0].parentNode;
   storedSuits.forEach(element => {
@@ -578,9 +576,9 @@ function SortFoods() {
   localStorage.setItem('suits', JSON.stringify(storedSuits));
   AddSuitsToStore();
 }
-function SortSuits() {
+function SortFoods() {
   storedFoods;
-  storedFoods.sort(sortByDataPrice);
+  storedFoods.sort(sortByPrice);
 
   const parentElement = storedFoods[0].parentNode;
   storedFoods.forEach(element => {
@@ -589,6 +587,72 @@ function SortSuits() {
   localStorage.setItem('foods', JSON.stringify(storedFoods));
   AddFoodsToStore();
 }
+export function SecondSortStore() {
+  SecondSortFlights();
+  SecondSortSuits();
+  SecondSortFoods();
+}
+function sortSuitsBySize(a, b) {
+  const sizeA = parseInt(a.size);
+  const sizeB = parseInt(b.size);
+  let filter = document.getElementById('second-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return sizeA - sizeB;
+    case 'high-to-low':
+      return sizeB - sizeA;
+    default:
+      return;
+  }
+
+}
+function SortFlightsByClass(a, b) {
+  let flightSizeA = parseInt(a.classType[0]);
+  let flightSizeB = parseInt(b.classType[0]);
+  let filter = document.getElementById('second-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return flightSizeA - flightSizeB;
+    case 'high-to-low':
+      return flightSizeB - flightSizeA;
+    default:
+      return;
+  }
+
+}
+function SortFoodsByMeat(a, b) {
+  const foodTypeA = parseInt(a.foodType.length);
+  const foodTypeB = parseInt(b.foodType.length);
+  let filter = document.getElementById('second-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return foodTypeA - foodTypeB;
+    case 'high-to-low':
+      return foodTypeB - foodTypeA;
+    default:
+      return;
+  }
+
+}
+function SecondSortFlights() {
+  storedFlights.sort(SortFlightsByClass);
+  const parentElement = storedFlights[0].parentNode;
+  localStorage.setItem('flights', JSON.stringify(storedFlights));
+  AddFlightToStore();
+}
+function SecondSortSuits() {
+  storedSuits.sort(sortSuitsBySize);
+  const parentElement = storedSuits[0].parentNode;
+  localStorage.setItem('suits', JSON.stringify(storedSuits));
+  AddSuitsToStore();
+}
+function SecondSortFoods() {
+  storedFoods.sort(SortFoodsByMeat);
+  const parentElement = storedFoods[0].parentNode;
+  localStorage.setItem('foods', JSON.stringify(storedFoods));
+  AddFoodsToStore();
+}
+
 
 
 //להוסיף עוד נתונים על פי הפרמטרים החדשים (id, category)

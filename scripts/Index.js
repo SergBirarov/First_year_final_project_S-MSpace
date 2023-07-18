@@ -10,6 +10,7 @@ import { UpdateInformation } from "./function.js";
 import { LogIn_LogOut } from "./function.js";
 import { LogOut } from "./function.js";
 import { SortStore } from "./function.js";
+import { SecondSortStore } from "./function.js";
 
 
 
@@ -21,7 +22,8 @@ function Main() {
         AddSuit();
         AddFood();
         AddShip();
-        document.getElementById('price-filter').addEventListener('click',SortStore);;
+        document.getElementById('price-filter').addEventListener('click',SortStore);
+        document.getElementById('second-filter').addEventListener('click',SecondSortStore);
     };
     if (window.location.href.includes("/managerProfile")) {
 
