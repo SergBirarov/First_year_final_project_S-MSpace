@@ -31,12 +31,12 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item none">
             <a class="nav-link" href="#about">Services</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item none">
             <a class="nav-link" href="#team">Team</a>
           </li>
           <li class="nav-item">
@@ -51,9 +51,9 @@
             In</button>
           <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
             Up</button>
-          <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log
+          <button class="link m-1" id="logout" type="button" data-bs-target="#logout">Log
             Out</button>
-          
+
           <button class="btn btn-primary " style="display: none;" id="addItem" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
           <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
@@ -322,7 +322,7 @@
                         <input type="radio" class="btn-check" name="hypoallergenic_no" id="addNoHypoallergenic">
                         <label class="btn btn-secondary" for="addNoHypoallergenic">No Hypoallergenic</label>
                       </div>
-                      
+
                       <div class="input-group mb-3">
                         <input type="file" class="form-control" id="addFoodImage">
                         <span class="input-group-text">Food's Image</span>
@@ -357,7 +357,8 @@
                       </div>
 
                       <div class="input-group mb-3 col-md-4">
-                        <input id="addSuitSize" type="number" class="form-control" placeholder="Size" value="40" min="40" max="64">
+                        <input id="addSuitSize" type="number" class="form-control" placeholder="Size" value="40"
+                          min="40" max="64">
                       </div>
 
                       <select id="addSuitColor" class="form-select mb-3">
@@ -380,7 +381,7 @@
                         <span class="input-group-text">$</span>
                         <input id="addSuitPrice" type="number" min="0" class="form-control">
                         <span class="input-group-text">.00</span>
-                      </div> 
+                      </div>
 
                       <button id="SuitSubmit" class="btn btn-light btn-outline-dark w-50" type="submit">Send</button>
                     </form>

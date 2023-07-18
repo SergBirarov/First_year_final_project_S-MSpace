@@ -457,7 +457,7 @@ export function SubmitRegistrationForm(event) {
     );
     console.log(user);
     let userJSON = JSON.stringify(user);
-    localStorage.setItem("connectedUser", userJSON);
+    sessionStorage.setItem("connectedUser", userJSON);
     window.location.assign('./managerProfile.html')
 
   };
@@ -496,7 +496,7 @@ function SubmitLoginForm() {
     console.log(user);
     let userJSON = JSON.stringify(user);
 
-    localStorage.setItem("connectedUser", userJSON);
+    sessionStorage.setItem("connectedUser", userJSON);
 
     if (user) {
       if (password === `admin1234admin`) {
@@ -969,7 +969,7 @@ export function UpdateInformation() {
     let street = document.getElementById("streetUpdate").value;
     let number = document.getElementById("houseUpdate").value;
 
-    let connectedUser = JSON.parse(localStorage.getItem("connectedUser"));
+    let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
 
     if (firstName) {
       connectedUser.firstName = firstName;
@@ -996,7 +996,7 @@ export function UpdateInformation() {
       connectedUser.number = number;
     }
 
-    localStorage.setItem("connectedUser", JSON.stringify(connectedUser));
+    sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
 
     const users = JSON.parse(localStorage.getItem("users"));
     const updatedUsers = users.map((user) =>
@@ -1010,9 +1010,9 @@ export function UpdateInformation() {
 
 export function LogIn_LogOut() {
   let user;
-  let userJSON = localStorage.getItem('connectedUser')
+  let userJSON = sessionStorage.getItem('connectedUser')
   if (userJSON) {
-    user = JSON.parse(localStorage.getItem('connectedUser'));
+    user = JSON.parse(userJSON);
   }
   if (user) {
     document.getElementById('login').style.display = 'none';
@@ -1020,6 +1020,8 @@ export function LogIn_LogOut() {
     document.getElementById('logout').style.display = 'inline-block';
   }
   else {
+    document.getElementById('login').style.display = 'inline-block';
+    document.getElementById('signup').style.display = 'inline-block';
     document.getElementById('logout').style.display = 'none';
   }
 }
@@ -1029,5 +1031,5 @@ export function LogOut() {
   document.getElementById('login').style.display = 'inline-block';
   document.getElementById('signup').style.display = 'inline-block';
   document.getElementById('logout').style.display = 'none';
-  localStorage.setItem("connectedUser", JSON.stringify(null));
+  sessionStorage.setItem("connectedUser", JSON.stringify(null));
 }
