@@ -249,6 +249,16 @@ export function SubmitRegistrationForm(event) {
   event.preventDefault();
   let username = document.getElementById("regUsername");
   let password = document.getElementById("regPassword");
+  let password2 = document.getElementById("regPasswordSecond");
+  if (password.value != password2.value) {
+    password2.style.border = "2px solid red";
+    document.getElementById('PasswordSecond').classList.remove('none')
+    return
+  }
+  else {
+    password2.style.border = "2px solid green";
+    document.getElementById('PasswordSecond').classList.add('none')
+  }
   let imageInput = document.getElementById("image");
   let firstName = document.getElementById("firstName");
   let lastName = document.getElementById("lastName");
@@ -266,7 +276,16 @@ export function SubmitRegistrationForm(event) {
   birthDate.style.border = !birthDate.value ? "2px solid red" : "2px solid green"
   city.style.border = !city.value ? "2px solid red" : "2px solid green"
   street.style.border = !street.value ? "2px solid red" : "2px solid green"
-  number.style.border = !number.value ? "2px solid red" : "2px solid green"
+  if (!number.value) {
+    let numberValue = number.value;
+    for (let element of numberValue) {
+      if (!(element >= 'א' && element <= 'ת')) {
+        number.style.border = "2px solid red";
+        return;
+      }
+    }
+    number.style.border = !number.value ? "2px solid red" : "2px solid green"
+  }
 
   if (!password.value) {
     password.style.border = "2px solid red"
