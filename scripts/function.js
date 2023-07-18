@@ -108,7 +108,7 @@ var storedSuits = [
     id: `3546`,
     name: `Wolf$Gangs`,
     size: `36`,
-    color: `White/Silver`,
+    color: `White`,
     image: `/Media/Assets/Ecom/products/suit1.jpg`,
     price: `360.90`,
   },
@@ -126,7 +126,7 @@ var storedSuits = [
     id: `3965`,
     name: `Suits-BaAm`,
     size: `46`,
-    color: `White/Silver`,
+    color: `White`,
     image: `/Media/Assets/Ecom/products/suit3.jpg`,
     price: `180.90`,
   },
@@ -135,7 +135,7 @@ var storedSuits = [
     id: `3967`,
     name: `AlaIster`,
     size: `56`,
-    color: `White/Silver`,
+    color: `White`,
     image: `/Media/Assets/Ecom/products/suit4.jpg`,
     price: `1360.90`,
   },
@@ -204,41 +204,92 @@ export function SendregistrationForm() {
     }
   });
 }
+function CheckPassword(password) {
+  let inCorrect = true
+  let isSpecial = false
+  let isLatters = false
+  let isNumber = false
+  let passwordValue = password.value
 
+  if (Number(passwordValue.length) < 8 || Number(passwordValue.length) > 21) {
+    inCorrect = true;
+  }
+
+  for (let element of passwordValue) {
+    let specialCharacters = ['@', '!', '#', '$', '&']
+    if (specialCharacters.includes(element)) {
+      isSpecial = true;
+    }
+    if (element >= 'a' && element <= 'z' || element >= 'A' && element <= 'Z') {
+      isLatters = true;
+    }
+    if (element >= '0' && element <= '9') {
+      isNumber = true;
+    }
+
+  };
+
+
+
+  if (isLatters && isSpecial && isNumber) {
+    inCorrect = false
+  }
+
+  if (inCorrect) {
+    document.getElementById('passwordHelp').classList.remove('none');
+    password.style.border = "2px solid red"
+  }
+  else {
+    document.getElementById('passwordHelp').classList.add('none');
+    password.style.border = "2px solid green"
+  }
+  return inCorrect
+}
 export function SubmitRegistrationForm(event) {
   event.preventDefault();
-  let username = document.getElementById("regUsername").value;
-  let password = document.getElementById("regPassword").value;
+  let username = document.getElementById("regUsername");
+  let password = document.getElementById("regPassword");
   let imageInput = document.getElementById("image");
-  let firstName = document.getElementById("firstName").value;
-  let lastName = document.getElementById("lastName").value;
-  let email = document.getElementById("email").value;
-  let birthDate = document.getElementById("birthDate").value;
-  let city = document.getElementById("city").value;
-  let street = document.getElementById("street").value;
-  let number = document.getElementById("houseNumber").value;
+  let firstName = document.getElementById("firstName");
+  let lastName = document.getElementById("lastName");
+  let email = document.getElementById("email");
+  let birthDate = document.getElementById("birthDate");
+  let city = document.getElementById("city");
+  let street = document.getElementById("street");
+  let number = document.getElementById("houseNumber");
 
+  username.style.border = !username.value ? "2px solid red" : "2px solid green"
+  imageInput.style.border = !imageInput.value ? "2px solid red" : "2px solid green"
+  firstName.style.border = !firstName.value ? "2px solid red" : "2px solid green"
+  lastName.style.border = !lastName.value ? "2px solid red" : "2px solid green"
+  email.style.border = !email.value ? "2px solid red" : "2px solid green"
+  birthDate.style.border = !birthDate.value ? "2px solid red" : "2px solid green"
+  city.style.border = !city.value ? "2px solid red" : "2px solid green"
+  street.style.border = !street.value ? "2px solid red" : "2px solid green"
+  number.style.border = !number.value ? "2px solid red" : "2px solid green"
+
+  if (!password.value) {
+    password.style.border = "2px solid red"
+  }
+  else {
+    if (CheckPassword(password)) {
+      return
+    }
+  }
   if (
-    username === "" ||
-    password === "" ||
-    firstName === "" ||
-    lastName === "" ||
-    email === "" ||
-    birthDate === "" ||
-    city === "" ||
-    street === "" ||
-    number === ""
+    username.value === "" ||
+    password.value === "" ||
+    imageInput.value === "" ||
+    firstName.value === "" ||
+    lastName.value === "" ||
+    email.value === "" ||
+    birthDate.value === "" ||
+    city.value === "" ||
+    street.value === "" ||
+    number.value === ""
   ) {
-    alert("Please fill in all the required fields.");
     return;
   }
-
-  if (password.length < 8 || password.length > 21) {
-    console.log('incorrect pass');
-    document.getElementById('passwordHelp').classList.add('none');;
-    return;
-  }
-
   let file = imageInput.files[0];
 
   let reader = new FileReader();
@@ -250,12 +301,15 @@ export function SubmitRegistrationForm(event) {
 
     if (storedUsersJSON) {
       storedUsers = JSON.parse(storedUsersJSON);
-      console.log(storedUsers);
 
       for (let i = 0; i < storedUsers.length; i++) {
-        if (storedUsers[i].email === email) {
-          alert("Email already exists. Please choose a different email.");
+        if (storedUsers[i].email === email.value) {
+          document.getElementById('emailHelp').classList.remove('none');
+          email.style.border = "2px solid red"
           return;
+        }
+        else {
+          document.getElementById('emailHelp').classList.add('none');
         }
       }
     } else {
@@ -263,17 +317,18 @@ export function SubmitRegistrationForm(event) {
     }
 
     let newUser = {
-      username: username,
-      password: password,
+      username: username.value,
+      password: password.value,
       image: imageContent,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      birthDate: birthDate,
-      city: city,
-      street: street,
-      number: number,
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      birthDate: birthDate.value,
+      city: city.value,
+      street: street.value,
+      number: number.value,
     };
+    console.log(newUser);
 
     storedUsers.push(newUser);
 
@@ -281,21 +336,19 @@ export function SubmitRegistrationForm(event) {
 
     localStorage.setItem("users", storedUsersJSON);
 
+    let user = storedUsers.find(
+      (u) => u.email === email.value && u.password === password.value
+    );
+    console.log(user);
+    let userJSON = JSON.stringify(user);
+    localStorage.setItem("connectedUser", userJSON);
+    window.location.assign('./managerProfile.html')
+
   };
-  reader.readAsDataURL(file);
+  if (file) {
+    reader.readAsDataURL(file);
 
-
-  let storedUsersJSON = localStorage.getItem("users");
-  let storedUsers = JSON.parse(storedUsersJSON);
-  let user = storedUsers.find(
-    (u) => u.email === email && u.password === password
-  );
-  console.log(storedUsersJSON);
-  let userJSON = JSON.stringify(user);
-  localStorage.setItem("connectedUser", userJSON);
-
-
-
+  }
 
 }
 
@@ -853,8 +906,11 @@ export function UpdateInformation() {
 }
 
 export function LogIn_LogOut() {
-  let user = JSON.parse(localStorage.getItem('connectedUser'));
-  console.log();
+  let user;
+  let userJSON = localStorage.getItem('connectedUser')
+  if (userJSON != null) {
+    user = JSON.parse(localStorage.getItem('connectedUser'));
+  }
   if (user) {
     document.getElementById('login').style.display = 'none';
     document.getElementById('signup').style.display = 'none';

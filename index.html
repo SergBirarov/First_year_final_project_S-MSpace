@@ -123,12 +123,13 @@
               </button><!-- תמונה של עין -->
               <div id="passwordHelp" class="form-text text-white-50 none">
                 Your password must be 8-20 characters long, contain letters and numbers, and must not
-                contain spaces, special characters, or emoji.
+                contain spaces, or emoji.
               </div>
             </div>
 
             <div class="input-group mb-3">
               <input type="file" class="form-control" id="image">
+              <!-- לוגו של מצלמה -->
               <i class="input-group-text fas fa-camera fa-5x"></i>
             </div>
 
@@ -139,6 +140,9 @@
 
             <div class="input-group mb-3">
               <input class="form-control" type="email" id="email" placeholder="Email">
+              <div id="emailHelp" class="form-text text-white-50 none ">
+                Email already exists. Please choose a different email.
+              </div>
             </div>
 
 
@@ -153,7 +157,7 @@
               <input id="houseNumber" type="text" class="form-control" placeholder="House">
             </div>
 
-            <button class="btn btn-primary mb-3" type="submit">שליחה</button>
+            <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Send</button>
           </form>
         </div>
       </div>
