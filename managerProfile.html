@@ -46,15 +46,14 @@
             <a class="nav-link" href="/Game/game.HTML">Secret Game Room</a>
           </li>
         </ul>
-        <form class="d-flex p-2">
+        <form class="d-flex p-2" id="userBoard">
           <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
             In</button>
           <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
             Up</button>
-          <button class="link m-1" id="logout" type="button" data-bs-target="#logout">Log
+          <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log
             Out</button>
-          <button class="btn btn-primary " id="addItem" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
+
           <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
               data-feather="shopping-cart"></i></button>
@@ -227,26 +226,25 @@
                       <div class="card bg-body-secondary">
                         <div class="card-body position-relative">
                           <div class="position-absolute end-0 top-0 p-3">
-                            <span class="badge bg-primary">Pro</span>
+                            <span class="badge bg-primary">Admin</span>
                           </div>
                           <div class="text-center mt-3">
-                            <div class="user-profile-img d-inline-flex mx-auto">
-                              <img src="/Media/Assets/team-3.jpg" alt="" id="profilePicProfile"
-                                class="rounded-circle img-fluid wid-70">
+                            <div class="user-profile-img d-inline-flex mx-auto" id="adminProfile">
+                              <img src="/Media/Assets/team-3.jpg" alt="" class="rounded-circle img-fluid wid-70">
                             </div>
-                            <h5 class="mb-0">Ken</h5>
+                            <h5 class="mb-0"><span class="profileTabName"></span></h5>
                             <hr class="my-3">
                             <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                               <i data-feather="mail"></i>
-                              <p class="mb-0">nomail@gmail.com</p>
+                              <p class="mb-0"><span class="profileTabMail"></span></p>
                             </div>
                             <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                               <i data-feather="phone"></i>
-                              <p class="mb-0">0501231234</p>
+                              <p class="mb-0"><span class="profileTabPhone"></span></p>
                             </div>
                             <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                               <i data-feather="map-pin"></i>
-                              <p class="mb-0">Hell</p>
+                              <p class="mb-0"><span class="profileTabAddress"></span></p>
                             </div>
                           </div>
                         </div>
@@ -263,11 +261,13 @@
                               <div class="row bg-body-secondary">
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Full Name</p>
-                                  <span class="mb-0" id="adminName"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="adminName"></span>
+                                  </p>
                                 </div>
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Phone</p>
-                                  <span class="mb-0" id="adminPhone"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="adminPhone"></span>
+                                  </p>
                                 </div>
                               </div>
                             </li>
@@ -275,11 +275,13 @@
                               <div class="row bg-body-secondary">
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Email</p>
-                                  <span class="mb-0" id="adminMail"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="adminMail"></span>
+                                  </p>
                                 </div>
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Address</p>
-                                  <span class="mb-0" id="adminAddress"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="adminAddress"></span>
+                                  </p>
                                 </div>
                               </div>
                             </li>
@@ -300,8 +302,7 @@
                           <div class="row">
                             <div class="col-sm-12 text-center mb-3">
                               <div class="user-upload wid-75">
-                                <img src="/Media/Assets/team-3.jpg" id="profilePicProfile" alt=""
-                                  class="img-fluid align-content-center">
+                                <img src="/Media/Assets/team-3.jpg" alt="" class="img-fluid">
                                 <label for="uplfile" class="img-avatar-upload">
                                   <i data-feather="camera" class="f-24 mb-1"></i>
                                   <span>Upload</span>
@@ -319,7 +320,7 @@
                           <h5>Update Information</h5>
                         </div>
                         <div class="card-body">
-                          <form id="UpdateInformationForm">
+                          <form>
                             <div class="mb-3">
                               <label for="firstName" class="form-label">First Name</label>
                               <input type="text" class="form-control" id="firstNameUpdate">
