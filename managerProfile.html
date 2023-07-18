@@ -47,16 +47,21 @@
           </li>
         </ul>
         <form class="d-flex p-2" id="userBoard">
-          <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
-            In</button>
-          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
-            Up</button>
-          <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log
-            Out</button>
-
-          <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
-              data-feather="shopping-cart"></i></button>
+          <ul class="navbar-nav navbar-nav-responsive me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log In</button>
+            </li>
+            <li class="nav-item">
+              <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</button>
+            </li>
+            <li class="nav-item">
+              <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log Out</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"><i data-feather="shopping-cart"></i></button>
+            </li>
+          </ul>
         </form>
       </div>
     </div>
@@ -163,13 +168,13 @@
   <!--Modal-sign up end-->
 
   <!--shopping cart start-->
-  <div class="offcanvas offcanvas-end w-25 bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+  <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
     <div class="offcanvas-header">
       <h5 id="offcanvasRightLabel" class="display-5 text-white-50">Shopping Cart</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body text-white-50">
-      <h3>Your Desired Items</h3>
+      <h3>Your Cart</h3>
       <div class="table-responsive bg-dark-subtle">
         <table class="table table-bordered bg-dark-subtle">
           <thead class="">
@@ -226,61 +231,61 @@
                       <div class="card bg-body-secondary">
                         <div class="card-body position-relative">
                           <div class="position-absolute end-0 top-0 p-3">
-                            <span class="badge bg-primary">Admin</span>
+                            <span class="badge bg-primary"><span id="userBadge"></span></span>
                           </div>
                           <div class="text-center mt-3">
-                            <div class="user-profile-img d-inline-flex mx-auto" id="adminProfile">
-                              <img src="/Media/Assets/team-3.jpg" alt="" class="rounded-circle img-fluid wid-70">
+                            <div class="user-profile-img d-inline-flex mx-auto" id="userProfileTab">
+                              
                             </div>
-                            <h5 class="mb-0"><span class="profileTabName"></span></h5>
+                            <h5 class="mb-0"><span id="profileTabName"></span></h5>
                             <hr class="my-3">
                             <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                               <i data-feather="mail"></i>
-                              <p class="mb-0"><span class="profileTabMail"></span></p>
+                              <p class="mb-0"><span id="profileTabMail"></span></p>
                             </div>
                             <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                              <i data-feather="phone"></i>
-                              <p class="mb-0"><span class="profileTabPhone"></span></p>
+                              <i data-feather="user"></i>
+                              <p class="mb-0"><span id="profileTabUserName"></span></p>
                             </div>
                             <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                               <i data-feather="map-pin"></i>
-                              <p class="mb-0"><span class="profileTabAddress"></span></p>
+                              <p class="mb-0"><span id="profileTabAddress"></span></p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-8 col-xxl-9">
-                      <div class="card bg-body-secondary">
+                      <div class="card bg-body">
                         <div class="card-header">
                           <h5>Personal Details</h5>
                         </div>
                         <div class="card-body">
                           <ul class="list-group list-group-flush bg-body-secondary">
                             <li class="list-group-item px-0 pt-0">
-                              <div class="row bg-body-secondary">
+                              <div class="row bg-body">
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Full Name</p>
-                                  <p class="mb-0"> <span class="mb-0" id="adminName"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="profileName"></span>
                                   </p>
                                 </div>
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Phone</p>
-                                  <p class="mb-0"> <span class="mb-0" id="adminPhone"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="profilePhone"></span>
                                   </p>
                                 </div>
                               </div>
                             </li>
-                            <li class="list-group-item px-0 pt-0 bg-body-secondary">
-                              <div class="row bg-body-secondary">
+                            <li class="list-group-item px-0 pt-0 bg-body">
+                              <div class="row bg-body">
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Email</p>
-                                  <p class="mb-0"> <span class="mb-0" id="adminMail"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="profileMail"></span>
                                   </p>
                                 </div>
                                 <div class="col-md-6">
                                   <p class="mb-1 text-muted">Address</p>
-                                  <p class="mb-0"> <span class="mb-0" id="adminAddress"></span>
+                                  <p class="mb-0"> <span class="mb-0" id="profileAddress"></span>
                                   </p>
                                 </div>
                               </div>
@@ -301,8 +306,7 @@
                         <div class="card-body">
                           <div class="row">
                             <div class="col-sm-12 text-center mb-3">
-                              <div class="user-upload wid-75">
-                                <img src="/Media/Assets/team-3.jpg" alt="" class="img-fluid">
+                              <div class="user-upload wid-75" id="uploadPic">
                                 <label for="uplfile" class="img-avatar-upload">
                                   <i data-feather="camera" class="f-24 mb-1"></i>
                                   <span>Upload</span>
@@ -369,25 +373,15 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
+                          <th>User Name</th>
                           <th>Full Name</th>
-                          <th>Email</th>
-                          <th>Phone</th>
+                          <th>Birth Date</th>
                           <th>Address</th>
+                          <th>Email</th>
+                          <th>Remove User</th>
                         </tr>
                       </thead>
                       <tbody id="userTable">
-                        <!-- <tr>
-                          <td>1</td>
-                          <td>John Doe</td>
-                          <td>johndoe@example.com</td>
-                          <td>Admin</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Jane Smith</td>
-                          <td>janesmith@example.com</td>
-                          <td>User</td>
-                        </tr> -->
                       </tbody>
                     </table>
                   </div>

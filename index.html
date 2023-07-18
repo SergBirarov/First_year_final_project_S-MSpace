@@ -76,19 +76,24 @@
 
           </div>
 
-          <form class="loginform">
+          <form class="loginform needs-validation" novalidate>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
-                aria-describedby="emailHelp">
-              <label for="floatingInput">Email address</label>
+              <span class="input-group-text p-0" id="inputGroupPrepend">
+                <span><i data-feather="mail"></i></span>
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                  aria-describedby="emailHelp">
             </div>
 
-            <div class="mb-3 form-floating">
+            <div class="mb-3 form-floating has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPassLogIn"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
-              <button id="showPassLogIn" class="btn btn-outline-secondary" type="button">
-                <span><i data-feather="eye"></i></span>
-              </button><!-- תמונה של עין -->
+              <div class="invalid-feedback">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not
+                contain spaces, or emoji.
+               </div>
             </div>
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
@@ -111,38 +116,60 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
           <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
-          <form id="registrationForm" class="loginform">
-            <div class="input-group mb-3">
-              <input id="regUsername" type="text" class="form-control" placeholder="Username">
-            </div>
-
-            <div class="input-group mb-3">
-              <input id="regPassword" type="Password" class="form-control" placeholder="Password"
-                aria-labelledby="passwordHelpBlock">
-              <button id="showPass" class="btn btn-outline-secondary" type="button">
-                <span><i data-feather="eye"></i></span>
-              </button><!-- תמונה של עין -->
-              <div id="passwordHelp" class="form-text text-white-50 none">
-                Your password must be 7-12 characters long, contain letters and numbers, and must not
-                contain spaces, or emoji.
+          <form id="registrationForm" class="loginform needs-validation" novalidate>
+            <!--username-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input id="regUsername" type="text" class="form-control" placeholder="Username"
+                aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+              <div class="valid-feedback">
+                Looks Good!
               </div>
             </div>
-            <div class="input-group mb-3">
-              <input id="regPasswordSecond" type="Password" class="form-control mb-3" placeholder="Password">
-              <div id="PasswordSecond" class="form-text text-white-50 none">
+            <!--password-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPass1"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
+              <input id="regPassword" type="Password" class="form-control" placeholder=" Password"
+                aria-labelledby="passwordHelpBlock">
+              <div class="invalid-feedback">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not
+                contain spaces, or emoji. </div>
+            </div>
+            <!--validate password-->>
+
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPass2"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
+              <input id="regPasswordSecond" type="Password" class="form-control" placeholder="Validate Password">
+              <div class="invalid-feedback">
                 The passwords are not equal.
               </div>
             </div>
+            <!--photo-->>
 
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="image">
-              <!-- לוגו של מצלמה -->
-              <i class="input-group-text fas fa-camera fa-5x"></i>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">
+                <span><i data-feather="camera"></i></span>
+                <input type="file" class="form-control" id="image">
+                <div class="valid-feedback">
+                  Looks Good!
+                </div>
             </div>
 
-            <div class="input-group mb-3">
-              <input id="firstName" type="text" class="form-control" placeholder="First Name">
-              <input id="lastName" type="text" class="form-control" placeholder="Last Name">
+            <div class="input-group mb-3 has-validation"">
+              <input id=" firstName" type="text" class="form-control" placeholder="First Name" value="Mark" required>
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name" value="Otto" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
 
             <div class="input-group mb-3">
@@ -164,7 +191,7 @@
               <input id="houseNumber" type="text" class="form-control" placeholder="House">
             </div>
 
-            <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Send</button>
+            <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Sign Up</button>
           </form>
         </div>
       </div>
@@ -173,7 +200,7 @@
   <!--Modal-sign up end-->
 
   <!--shopping cart start-->
-  <div class="offcanvas offcanvas-end w-25 bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+  <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
     <div class="offcanvas-header">
       <h5 id="offcanvasRightLabel" class="display-5 text-white-50">Shopping Cart</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>

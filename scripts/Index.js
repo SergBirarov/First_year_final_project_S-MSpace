@@ -11,6 +11,8 @@ import { LogIn_LogOut } from "./function.js";
 import { LogOut } from "./function.js";
 import { SortStore } from "./function.js";
 import { SecondSortStore } from "./function.js";
+import { UserProfile } from "./function.js";
+
 
 
 
@@ -28,6 +30,7 @@ function Main() {
     if (window.location.href.includes("/managerProfile")) {
 
         UserTable();
+        UserProfile();
         UpdateInformation();
     };
 

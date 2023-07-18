@@ -14,6 +14,18 @@ var storedUsers = [new User(
   `Hell st`,
   `25`
 )];
+storedUsers[1] = new User(
+  `username`,
+  `a123456789`,
+  `/Media/Assets/team-3.jpg`,
+  `שמואל`,
+  `שמואלי`,
+  `Regina@Phalange.com`,
+  `1996-11-25`,
+  `עיר`,
+  `רחוב`,
+  `25`
+)
 var cart = new Array();
 // arrays for hardcoded products
 var storedFlights = [
@@ -66,9 +78,8 @@ var storedFoods = [
     foodType: `meat`,
     kosherStatus: `no`,
     hypoallergenicStatus: `yes`,
-    foodImage: `/Media/Assets/Ecom/products/food1.png`,
     price: `32.50`,
-    img: `/Media/Assets/Ecom/products/food1.png`,
+    image: `/Media/Assets/Ecom/products/food1.png`,
     price: `32.50`,
   },
   {
@@ -78,7 +89,7 @@ var storedFoods = [
     foodType: `meat`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    foodImage: `/Media/Assets/Ecom/products/food2.png`,
+    image: `/Media/Assets/Ecom/products/food2.png`,
     price: `19.90`,
   },
   {
@@ -88,7 +99,7 @@ var storedFoods = [
     foodType: `Dairy`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    foodImage: `/Media/Assets/Ecom/products/food3.png`,
+    image: `/Media/Assets/Ecom/products/food3.png`,
     price: `312.30`,
   },
   {
@@ -98,7 +109,7 @@ var storedFoods = [
     foodType: `meat`,
     kosherStatus: `No`,
     hypoallergenicStatus: `Yes`,
-    foodImage: `/Media/Assets/Ecom/products/food4.png`,
+    image: `/Media/Assets/Ecom/products/food4.png`,
     price: `99.90`,
   },
 ];
@@ -178,16 +189,38 @@ export function UserTable() {
   if (storedUsers) {
     storedUsers.forEach((element) => {
       users = `<tr>
-            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
-            <td>${element.username}</td>
+            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
             <td>${element.lastName} ${element.firstName}</td>
             <td>${element.birthDate}</td>
             <td>${element.street} ${element.number}, ${element.city}</td>
             <td>${element.email}</td>
+            <td ><button class="btn btn-sm btn-danger">Remove</button></td>
           </tr>`;
       userTable.innerHTML += users;
     });
   }
+}
+
+export function UserProfile(){
+ 
+  let user;
+  let userJSON = localStorage.getItem('connectedUser');
+  user = JSON.parse(localStorage.getItem('connectedUser'));
+  document.getElementById("userProfileTab").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+  `;
+  document.getElementById("uploadPic").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+  `;
+  document.getElementById("userBadge").innerHTML = user.password === `admin1234admin` ? `Admin`: `User`;
+
+  document.getElementById("profileTabName").innerHTML = `${user.firstName} ${user.lastName}`;
+  document.getElementById("profileTabMail").innerHTML = `${user.email}`;
+  document.getElementById("profileTabUserName").innerHTML = `${user.username}`;
+  document.getElementById("profileTabAddress").innerHTML = `${user.city}`;
+
+  document.getElementById("profileName").innerHTML = `${user.firstName} ${user.lastName}`;
+  document.getElementById("profilePhone").innerHTML = `${user.phone}`;
+  document.getElementById("profileMail").innerHTML = `${user.email}`;
+  document.getElementById("profileAddress").innerHTML = `${user.city},${user.street} ${user.number}`;
 }
 
 export function SendregistrationForm() {
@@ -195,8 +228,16 @@ export function SendregistrationForm() {
   form.addEventListener("submit", SubmitRegistrationForm);
 
   //כפתור שמראה את הסיסמא
-  document.querySelector("#showPass").addEventListener("click", () => {
+  document.querySelector("#showPass1").addEventListener("click", () => {
     let pass = document.querySelector("#regPassword");
+    if (pass.type === "password") {
+      pass.type = "text";
+    } else {
+      pass.type = "password";
+    }
+  });
+  document.querySelector("#showPass2").addEventListener("click", () => {
+    let pass = document.querySelector("#regPasswordSecond");
     if (pass.type === "password") {
       pass.type = "text";
     } else {
@@ -733,18 +774,23 @@ function AddFlightToStore() {
 
   let str = ``;
   for (let i = 0; i < storedFlights.length; i++) {
-    str += `<div class="card col-lg-3 m-2 mx-auto" >
-        <img src="${storedFlights[i].image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${storedFlights[i].name}
-        </h3>
-        <p class="small p fw-bold">
-        Price: <span>${storedFlights[i].price}</span>
-        </p>
-        <p class="small p fw-bold">
-        Take off: <span>${storedFlights[i].departureDate}</span>
-        </p>
-        <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
-        </div>`;
+    str += `
+    <div class="col-md-3">
+        <div class="card" data-id-number="1-12345" data-category="Electronics">
+          <img src="${storedFlights[i].image}" class="prod" alt="Product Image 1">
+          <div class="card-body">
+            <h5 class="card-title">${storedFlights[i].name}</h5>
+            <p class="card-text">
+              <span>ID Number: ${storedFlights[i].id}</span><br>
+              <span>Category: ${storedFlights[i].category}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedFlights[i].price}</span><br>
+              <span class="text-danger">Discount Price: $${Number(storedFlights[i].price * 0.70)}</span><br>
+              <span class="text-muted">Discount until: 2023-07-31</span>
+            </p>
+            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
+          </div>
+        </div>
+      </div>`
   }
   productGridF.innerHTML = str;
 
@@ -761,19 +807,26 @@ function AddFoodsToStore() {
 
   for (let i = 0; i < storedFoods.length; i++) {
     str += `
-    <div class="card col-lg-3 m-2 mx-auto">
-  <img src="${storedFoods[i].img}" class="card-img-top" alt="Product ${i + 1}">
-  <div class="card-body">
-    <h5 class="card-title fw-bold">${storedFoods[i].name}</h5>
-    <p class="card-text"><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
-    <p class="card-text"><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
-    <p class="card-text"><span class="fw-bold">Hypoallergenic Ingredients: </span>${storedFoods[i].hypoallergenicStatus}</p>
-    <p class="card-text">Price: $${storedFoods[i].price}</p>
-    <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
-  </div>
-</div>
 
-  `;
+    <div class="col-md-3">
+        <div class="card">
+          <img src="${storedFoods[i].image}" class="card-img-top" alt="Product Image 1">
+          <div class="card-body">
+            <h5 class="card-title">${storedFoods[i].name}</h5>
+            <p class="card-text">
+            <span>ID: ${storedFoods[i].id}</span><br>
+              <span>Dairy/Meat: ${storedFoods[i].foodType}</span><br>
+              <span>Kosher Status: ${storedFoods[i].kosherStatus}</span><br>
+              <span>Hypoallergenic: ${storedFoods[i].hypoallergenicStatus}</span><br>
+              <span>Price: $${storedFoods[i].price}</span><br>
+              <span class="text-decoration-line-through">Original Price: $120</span><br>
+              <span class="text-danger">Discount Price: -$20</span><br>
+              <span class="text-muted">Discount until: 2023-07-31</span>
+            </p>
+            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+          </div>
+        </div>
+      </div>`;
 
   }
   productGridFood.innerHTML = str;
@@ -790,18 +843,23 @@ function AddSuitsToStore() {
 
   for (let i = 0; i < storedSuits.length; i++) {
     str += `
-    <div class="card col-lg-3 m-2 mx-auto">
-  <img src="${storedSuits[i].image}" class="card-img-top" alt="Product ${i + 1}">
-  <div class="card-body">
-    <h5 class="card-title fw-bold">${storedSuits[i].name}</h5>
-    <p class="card-text">Size: ${storedSuits[i].size}</p>
-    <p class="card-text">Color: ${storedSuits[i].color}</p>
-    <p class="card-text">Price: $${storedSuits[i].price}</p>
-    <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
-  </div>
-</div>
-
-        `;
+    <div class="col-md-3">
+        <div class="card" >
+          <img src="${storedSuits[i].image}" class="card-img-top" alt="Space Suit Image">
+          <div class="card-body">
+            <h5 class="card-title">${storedSuits[i].name}</h5>
+            <p class="card-text">
+              <span>Size:${storedSuits[i].size}</span><br>
+              <span>Color: ${storedSuits[i].color}</span><br>
+              <span>Price: $${Number(storedSuits[i].price)*0.70}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedSuits[i].price}</span><br>
+              <span class="text-danger">Discount Price: -70%</span><br>
+              <span class="text-muted">Discount until: 2023-07-31</span>
+            </p>
+            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
+          </div>
+        </div>
+      </div>`;
   }
 
   productGridSuit.innerHTML = str;
@@ -849,7 +907,7 @@ function UpDatecart() {
     str += `
         <tr>
         <td>${cart[i].id}</td>
-        <td>${cart[i].image}</td>
+        <td><img src="${cart[i].image}" class="card-img-top" alt=""></td>
         <td>${cart[i].category}</td>
         <td>${cart[i].price}</td>
         <td><button class="btn-sm btn-danger">Remove</button></td>

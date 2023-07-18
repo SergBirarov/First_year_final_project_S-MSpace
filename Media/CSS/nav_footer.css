@@ -16,10 +16,10 @@
 }
   
   /*modals*/
-  #loginCon{
-    width: 400px;
-    height: 600px;
-    background-color: #233142;
+  #loginCon, #signUpCon{
+    width: 200vw;
+    height: 100%;
+    background-color: var(--bs-dark);
   
 }
   
@@ -27,34 +27,26 @@
     padding: 1em;
 }
   
-#submit_login, #sign_up_from_login
+#submit_login, #sign_up_from_login, #sendregistrationForm
 {
     font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 300;
     font-size: 15px;
-    letter-spacing: 1px;
     border-radius: 25px;
     transition: 0.3s;
     color: #fff;
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
     border: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 1em;
-    margin-right: 20px;
+    margin: auto;
 }
 
 
-#signUpCon
-{
-    width: 400px;
-    height: 600px;
-    background-color: #233142;
-}
+
 
 .loginform{
-    width: 80%;
+    padding: 2rem;
     margin: auto;
-    height: 550px;
 }
   
 .input-group
@@ -83,4 +75,14 @@
     color: var(--bs-secondary);
     font-weight: 400;
     font-size: 20px;
+}
+
+#offcanvasRight{
+    width: 50%;
+}
+
+@media (max-width: 767px) {
+    #offcanvasRight {
+        width: 100%;
+    }
 }
