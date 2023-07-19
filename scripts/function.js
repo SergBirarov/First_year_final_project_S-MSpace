@@ -713,13 +713,13 @@ export function AddShip() {
 
     // Retrieve input values
     let flightNumber = document.getElementById("addFlightNumber").value;
-    let departureDate = document.getElementById("addDepartureDate").value;
-    let arrivalDate = document.getElementById("addArrivalDate").value;
     let classType = document.getElementById("addShipSize").value;
     let imageInput = document.getElementById("addShipImage");
     let price = document.getElementById("addShipPrice").value;
     let shipId = document.getElementById("addShipId").value;
     let shipCategory = document.getElementById("addShipCategory").value;
+    let departureDate = document.getElementById("addDepartureDate");
+    let arrivalDate = document.getElementById("addArrivalDate");
 
     if (
       flightNumber === "" ||
@@ -733,12 +733,14 @@ export function AddShip() {
       alert("Please fill in all the fields.");
       return;
     }
-    let date = moment();
-    let currentDate = date.format('YYYY/DD/MM');
 
-    if (departureDate > arrivalDate || departureDate < currentDate) {
-      alert("Invalid date");
-      return;
+    let departureDateValue = new Date(departureDate.value);
+    let arrivalDateValue = new Date(arrivalDate.value);
+    let currentDate = new Date();
+
+    if (departureDateValue >= currentDate && arrivalDateValue > departureDateValue) {
+      departureDate.style.border = "2px solid red";
+      return
     }
 
     let file = imageInput.files[0];
