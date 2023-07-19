@@ -277,7 +277,7 @@ function CheckPassword(password) {
   }
 
   for (let element of passwordValue) {
-    let specialCharacters = ["@", "!", "#", "$", "&"];
+    let specialCharacters = ["@", "!", "#", "$", "&", "%", "^", "*"];
     if (specialCharacters.includes(element)) {
       isSpecial = true;
     }
@@ -608,7 +608,7 @@ export function AddSuit() {
   document.querySelector("#addSuit").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let brandName = document.getElementById("addSuitName").value;
+    let brandName = document.getElementById("addSuitName");
     let size = document.getElementById("addSuitSize").value;
     let color = document.getElementById("addSuitColor").value;
     let imageInput = document.getElementById("addSuitImage");
@@ -617,7 +617,7 @@ export function AddSuit() {
     let category = document.getElementById("addSuitCategory").value;
 
     if (
-      !brandName ||
+      !brandName.value ||
       color === "Choose a color" ||
       !imageInput.files[0] ||
       !price ||
@@ -626,6 +626,17 @@ export function AddSuit() {
     ) {
       alert("Please fill in all the required fields.");
       return;
+    }
+    let specialCharacters = ["@", "!", "#", "$", "&", "%", "^", "*"];
+    let brandNameValue = brandName.value
+    for (let element of brandNameValue) {
+      if (specialCharacters.includes(element)) {
+        brandName.style.border = "2px solid red";
+        return;
+      }
+      else {
+        brandName.style.border = "2px solid green";
+      }
     }
 
     let file = imageInput.files[0];
@@ -637,7 +648,7 @@ export function AddSuit() {
       let suit = {
         category: category,
         id: id,
-        name: brandName,
+        name: brandName.value,
         size: size,
         color: color,
         image: imageContent,
@@ -668,26 +679,30 @@ export function AddFood() {
   document.querySelector("#addFood").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let foodName = document.getElementById("addFoodName").value;
-    let foodType = document.querySelector(
-      'input[name="meat_dairy"]:checked'
-    ).value;
-    let kosherStatus = document.querySelector(
-      'input[name="kosher_noKosher"]:checked'
-    ).value;
-    let hypoallergenicStatus = document.querySelector(
-      'input[name="hypoallergenic_no"]:checked'
-    ).value;
+    let foodName = document.getElementById("addFoodName");
+    let foodType = document.querySelector('input[name="meat_dairy"]:checked').value;
+    let kosherStatus = document.querySelector('input[name="kosher_noKosher"]:checked').value;
+    let hypoallergenicStatus = document.querySelector('input[name="hypoallergenic_no"]:checked').value;
     let foodImageInput = document.getElementById("addFoodImage");
     let foodPrice = document.getElementById("addFoodPrice").value;
     let foodId = document.getElementById("addFoodId").value;
     let foodCategory = document.getElementById("addFoodCategory").value;
 
-    if (!foodName || !foodPrice || !foodId || !foodCategory) {
+    if (!foodName.value || !foodPrice || !foodId || !foodCategory) {
       alert("Please fill in all the fields.");
       return;
     }
-
+    let specialCharacters = ["@", "!", "#", "$", "&", "%", "^", "*"];
+    let foodNameValue = foodName.value
+    for (let element of foodNameValue) {
+      if (specialCharacters.includes(element)) {
+        foodName.style.border = "2px solid red";
+        return;
+      }
+      else {
+        foodName.style.border = "2px solid green";
+      }
+    }
     let file = foodImageInput.files[0];
 
     let reader = new FileReader();
@@ -698,7 +713,7 @@ export function AddFood() {
       let food = {
         id: foodId,
         category: foodCategory,
-        name: foodName,
+        name: foodName.value,
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
         hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
@@ -731,7 +746,7 @@ export function AddShip() {
   document.querySelector("#addFlight").addEventListener("submit", (event) => {
     event.preventDefault();
 
-    let flightNumber = document.getElementById("addFlightNumber").value;
+    let flightNumber = document.getElementById("addFlightNumber");
     let classType = document.getElementById("addShipSize").value;
     let imageInput = document.getElementById("addShipImage");
     let price = document.getElementById("addShipPrice").value;
@@ -741,9 +756,9 @@ export function AddShip() {
     let arrivalDate = document.getElementById("addArrivalDate");
 
     if (
-      flightNumber === "" ||
-      departureDate === "" ||
-      arrivalDate === "" ||
+      flightNumber.value === "" ||
+      departureDate.value === "" ||
+      arrivalDate.value === "" ||
       classType === "Choose a class" ||
       price === "" ||
       !shipId ||
@@ -752,7 +767,17 @@ export function AddShip() {
       alert("Please fill in all the fields.");
       return;
     }
-
+    let flightNumberValue = flightNumber.value
+    let specialCharacters = ["@", "!", "#", "$", "&", "%", "^", "*"];
+    for (let element of flightNumberValue) {
+      if (specialCharacters.includes(element)) {
+        flightNumber.style.border = "2px solid red";
+        return;
+      }
+      else {
+        flightNumber.style.border = "2px solid green";
+      }
+    }
     let departureDateValue = new Date(departureDate.value);
     let arrivalDateValue = new Date(arrivalDate.value);
     let currentDate = new Date();
@@ -780,7 +805,7 @@ export function AddShip() {
       let flight = {
         id: shipId,
         category: shipCategory,
-        name: flightNumber,
+        name: flightNumber.value,
         departureDate: departureDate,
         arrivalDate: arrivalDate,
         classType: classType,
