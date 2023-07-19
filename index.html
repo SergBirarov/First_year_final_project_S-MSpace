@@ -98,17 +98,20 @@
                   aria-describedby="emailHelp">
             </div>
 
-            <div class="input-group mb-3 has-validation">
-              <span class="input-group-text p-0" id="inputGroupPrepend">
-                <button id="showPassLogIn" class="btn btn-outline-secondary border-0" type="button">
-                  <span><i data-feather="eye"></i></span>
-                </button>
-              </span>
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" aria-labelledby="passwordHelp">
-              <div id="passwordHelp" class="invalid-feedback">
+            <div class="mb-3 form-floating has-validation">
+              <div class="input-group">
+                <span class="input-group-text p-0" id="inputGroupPrepend">
+                  <button id="showPassLogIn" class="btn btn-outline-secondary border-0" type="button">
+                    <span><i data-feather="eye"></i></span>
+                  </button>
+                </span>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              </div>
+              <div class="invalid-feedback">
                 Your password must be 7-12 characters long, contain letters and numbers, and must not contain spaces or emoji.
               </div>
             </div>
+            
             
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>

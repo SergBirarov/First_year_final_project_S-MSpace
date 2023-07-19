@@ -28,3 +28,9 @@ body{
 }
 
 
+@media (max-width: 767px){
+  .card{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}

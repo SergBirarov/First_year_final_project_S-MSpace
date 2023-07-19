@@ -960,7 +960,7 @@ function AddFlightToStore() {
   for (let i = 0; i < storedFlights.length; i++) {
     str += `
     <div class="col-md-3">
-        <div class="card card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
+        <div class="card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
           <img src="${
             storedFlights[i].image
           }" class="card-img-top product-image" alt="Product Image 1">
@@ -1000,7 +1000,7 @@ function AddFoodsToStore() {
     str += `
 
     <div class="col-md-3">
-        <div class="card card h-100 d-flex flex-column">
+        <div class="card h-100 d-flex flex-column">
           <img src="${
             storedFoods[i].image
           }" class="card-img-top product-image" alt="Product Image 1">
@@ -1043,7 +1043,7 @@ function AddSuitsToStore() {
   for (let i = 0; i < storedSuits.length; i++) {
     str += `
     <div class="col-md-3">
-        <div class="card card h-100 d-flex flex-column">
+        <div class="card h-100 d-flex flex-column">
           <img src="${
             storedSuits[i].image
           }" class="card-img-top product-image" alt="Space Suit Image">
@@ -1389,9 +1389,7 @@ export function LogOut() {
   document.getElementById("login").style.display = "inline-block";
   document.getElementById("signup").style.display = "inline-block";
   document.getElementById("logout").style.display = "none";
-  // if (window.location.href.includes("/store")) {
-  //   document.getElementById("addItem").classList.add("none");
-  // }
+ 
   if (window.location.href.includes("/managerProfile")) {
     document.getElementById("update-tab").classList.add("disabled");
     document.getElementById("manage-tab").classList.add("disabled");

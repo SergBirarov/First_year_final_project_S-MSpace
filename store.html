@@ -103,15 +103,19 @@
             </div>
 
             <div class="mb-3 form-floating has-validation">
-              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPassLogIn"
-                  class="btn btn-outline-secondary border-0" type="button">
-                  <span><i data-feather="eye"></i></span>
-                </button></span>
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <div class="invalid-feedback">
-                Your password must be 7-12 characters long, contain letters and numbers, and must not
-                contain spaces, or emoji.
+              <div class="input-group">
+                <span class="input-group-text p-0" id="inputGroupPrepend">
+                  <button id="showPassLogIn" class="btn btn-outline-secondary border-0" type="button">
+                    <span><i data-feather="eye"></i></span>
+                  </button>
+                </span>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
               </div>
+              <div class="invalid-feedback">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not contain spaces or emoji.
+              </div>
+            </div>
+            
             </div>
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
@@ -336,7 +340,7 @@
                     <div class="section-title">
                       <h2 class="text-black-50 text-center p-2">Add Food Item</h2>
                     </div>
-                    <form id="addFood">
+                    <form id="addFood" class="w-75 mx-auto">
 
                       <div class="input-group mb-3">
                         <input id="addFoodCategory" type="text" class="form-control" value="Food" placeholder="Id"
@@ -517,7 +521,7 @@
         </div>
       </div>
 
-      <h1 class="display-5">Space Ships</h1>
+      <h1 class="display-5 m-5">Space Ships</h1>
       <div class="product-grid gap-2" id="storeGrid">
         <div id="flightsSec" class="row row-gap-4">
           <div class="container">
@@ -525,14 +529,14 @@
           <!--Content inserted from js-->
         </div>
 
-        <h1 class="display-5">Space Nutrition Packs</h1>
+        <h1 class="display-5 m-5">Space Nutrition Packs</h1>
         <div id="foodSec" class="row row-gap-4">
           <div class="container">
           </div>
           <!--Content inserted from js-->
         </div>
 
-        <h1 class="display-5">Space Suits</h1>
+        <h1 class="display-5 m-5">Space Suits</h1>
 
         <div id="suitSec" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
           <div class="row row-gap-4">
