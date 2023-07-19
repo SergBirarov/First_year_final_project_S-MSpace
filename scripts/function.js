@@ -788,10 +788,10 @@ export function AddShip() {
       return
     }
     if (arrivalDateValue > departureDateValue) {
-      arrivalDateValue.style.border = "2px solid green";
+      arrivalDate.style.border = "2px solid green";
     }
     else {
-      arrivalDateValue.style.border = "2px solid red";
+      arrivalDate.style.border = "2px solid red";
       return
     }
 
