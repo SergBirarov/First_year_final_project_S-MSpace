@@ -188,7 +188,7 @@ export function UserTable() {
     let str = "";
     for (let i = 0; i < storedUsers.length; i++) {
       let element = storedUsers[i];
-      let data = "";
+      let data = "<td></td>";
       if (i > 0) {
         data = `<td id="user${i}"> <button class="btn btn-sm btn-danger removeProfile" data-ind="${i}" ><i data-ind="${i}" data-feather="trash-2"> Remove</i></button>
          <button class="btn btn-sm btn-info editProfile" data-ind="${i}" ><span><i data-ind="${i}" data-feather="edit-3">Edit</i></span></button></td>`;
@@ -920,9 +920,8 @@ function AddFlightToStore() {
     str += `
     <div class="col-md-3">
         <div class="card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
-          <img src="${
-            storedFlights[i].image
-          }" class="card-img-top product-image" alt="Product Image 1">
+          <img src="${storedFlights[i].image
+      }" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFlights[i].name}</h5>
             <p class="card-text">
@@ -955,9 +954,8 @@ function AddFoodsToStore() {
 
     <div class="col-md-3">
         <div class="card h-100 d-flex flex-column">
-          <img src="${
-            storedFoods[i].image
-          }" class="card-img-top product-image" alt="Product Image 1">
+          <img src="${storedFoods[i].image
+      }" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFoods[i].name}</h5>
             <p class="card-text">
@@ -991,9 +989,8 @@ function AddSuitsToStore() {
     str += `
     <div class="col-md-3">
         <div class="card h-100 d-flex flex-column">
-          <img src="${
-            storedSuits[i].image
-          }" class="card-img-top product-image" alt="Space Suit Image">
+          <img src="${storedSuits[i].image
+      }" class="card-img-top product-image" alt="Space Suit Image">
           <div class="card-body">
             <h5 class="card-title">${storedSuits[i].name}</h5>
             <p class="card-text">
@@ -1301,6 +1298,7 @@ export function UpdateInformation() {
 export function LogIn_LogOut() {
   let user;
   let userJSON = sessionStorage.getItem("connectedUser");
+
   if (userJSON && userJSON != "null" && userJSON != "undefined") {
     user = JSON.parse(userJSON);
   }
@@ -1311,10 +1309,10 @@ export function LogIn_LogOut() {
     document.getElementById("profileRed").style.display = "inline-block";
     if (window.location.href.includes("/store")) {
       if (user.password === `admin1234admin`) {
-        document.getElementById("addItem").style.display = "inline-block";
+        document.getElementById("addItem").classList.remove('none');
       }
       else {
-        document.getElementById("addItem").style.display = "none";
+        document.getElementById("addItem").classList.add('none');
 
       }
     }
@@ -1331,7 +1329,8 @@ export function LogOut() {
   document.getElementById("login").style.display = "inline-block";
   document.getElementById("signup").style.display = "inline-block";
   document.getElementById("logout").style.display = "none";
- 
+  document.getElementById('addItem').classList.add('none');
+
   if (window.location.href.includes("/managerProfile")) {
     document.getElementById("update-tab").classList.add("disabled");
     document.getElementById("manage-tab").classList.add("disabled");

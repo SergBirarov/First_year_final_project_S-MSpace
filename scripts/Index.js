@@ -51,13 +51,10 @@ function Main() {
         };
 
     };
-
+    
     SendregistrationForm();
     SendLoginForm();
     document.getElementById('logout').addEventListener('click', LogOut)
-
-    
-
     LogIn_LogOut();
 
 
