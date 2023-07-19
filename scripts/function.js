@@ -193,7 +193,7 @@ export function UserTable() {
       let element = storedUsers[i];
       let data = `<td></td>`;
       if (i > 0) {
-        data = `<td> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}">Remove</button></td>`
+        data = `<td> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}">Remove</button> <button class="btn btn-sm btn-danger" data-ind="${i}">Edit</button></td>`
       }
       users = `<tr>
             <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
