@@ -11,14 +11,16 @@ body{
   }
   
 
-
-
-.prod{
-    width: 100%;
-    /* height: 50%; */
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
+.card{
+    height: 100%;
 }
+
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
 
 #spaceship-tab, #spacefood-tab, #spacesuits-tab{
     border-bottom-right-radius: 0;

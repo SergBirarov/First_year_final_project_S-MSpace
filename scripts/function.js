@@ -185,15 +185,16 @@ export function BuildStore() {
 //user info table
 export function UserTable() {
   let userTable = document.getElementById("userTable");
-  let users = ``;
-  storedUsers = JSON.parse(localStorage.getItem('users'));
+  let users = "";
+  let storedUsers = JSON.parse(localStorage.getItem('users'));
   if (storedUsers) {
     let str = '';
     for (let i = 0; i < storedUsers.length; i++) {
       let element = storedUsers[i];
-      let data = `<td></td>`;
+      let data = '';
       if (i > 0) {
-        data = `<td> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}">Remove</button> <button class="btn btn-sm btn-danger" data-ind="${i}">Edit</button></td>`
+        data = `<td id="user${i}"> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}"><i data-feather="trash-2"> Remove</i></button>
+         <button class="btn btn-sm btn-info editProfile" data-ind="${i}"><span><i data-feather="edit-3">Edit</i></span></button></td>`;
       }
       users = `<tr>
             <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
@@ -203,16 +204,21 @@ export function UserTable() {
             <td>${element.email}</td>
             ${data}
           </tr>`;
-      str += users
+      str += users;
     }
 
     userTable.innerHTML = str;
+    let editBtn = document.querySelectorAll('.editProfile');
+    editBtn.forEach(element => {
+      element.addEventListener('click', AdminEdit);
+    });
     let removeBtn = document.querySelectorAll('.RemoveProfile');
     removeBtn.forEach(element => {
       element.addEventListener('click', RemoveProfile);
     });
   }
 }
+
 function RemoveProfile(event) {
   let index = Number(event.target.dataset.ind)
   storedUsers = JSON.parse(localStorage.getItem('users'))
@@ -921,8 +927,8 @@ function AddFlightToStore() {
   for (let i = 0; i < storedFlights.length; i++) {
     str += `
     <div class="col-md-3">
-        <div class="card" data-id-number="1-12345" data-category="Electronics">
-          <img src="${storedFlights[i].image}" class="prod" alt="Product Image 1">
+        <div class="card card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
+          <img src="${storedFlights[i].image}" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFlights[i].name}</h5>
             <p class="card-text">
@@ -953,8 +959,8 @@ function AddFoodsToStore() {
     str += `
 
     <div class="col-md-3">
-        <div class="card">
-          <img src="${storedFoods[i].image}" class="card-img-top" alt="Product Image 1">
+        <div class="card card h-100 d-flex flex-column">
+          <img src="${storedFoods[i].image}" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFoods[i].name}</h5>
             <p class="card-text">
@@ -987,8 +993,8 @@ function AddSuitsToStore() {
   for (let i = 0; i < storedSuits.length; i++) {
     str += `
     <div class="col-md-3">
-        <div class="card" >
-          <img src="${storedSuits[i].image}" class="card-img-top" alt="Space Suit Image">
+        <div class="card card h-100 d-flex flex-column">
+          <img src="${storedSuits[i].image}" class="card-img-top product-image" alt="Space Suit Image">
           <div class="card-body">
             <h5 class="card-title">${storedSuits[i].name}</h5>
             <p class="card-text">
@@ -1089,6 +1095,46 @@ function RemoveItem(event) {
   sessionStorage.setItem('cart', JSON.stringify(cart))
   UpDatecart();
 }
+
+function AdminEdit(event) {
+  let index = Number(event.target.dataset.ind);
+  let td = document.getElementById(`user${index}`);
+  let storedUsers = JSON.parse(localStorage.getItem('users'));
+
+  td.innerHTML += `
+    <div>
+      <h2>Edit User Details</h2>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" value="${storedUsers[index].firstName}"><br>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" value="${storedUsers[index].lastName}"><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" value="${storedUsers[index].email}"><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" value="${storedUsers[index].password}"><br>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" value="${storedUsers[index].username}"><br>
+
+      <button id="saveBtn">Save</button>
+    </div>`;
+
+  document.getElementById('saveBtn').addEventListener('click', function () {
+    storedUsers[index].firstName = document.getElementById('firstName').value;
+    storedUsers[index].lastName = document.getElementById('lastName').value;
+    storedUsers[index].email = document.getElementById('email').value;
+    storedUsers[index].password = document.getElementById('password').value;
+    storedUsers[index].username = document.getElementById('username').value;
+
+    localStorage.setItem('users', JSON.stringify(storedUsers));
+
+    UserTable();
+  });
+}
+
 
 export function UpdateInformation() {
   //כפתור שמראה את הסיסמא
@@ -1249,11 +1295,14 @@ export function LogIn_LogOut() {
     document.getElementById('login').style.display = 'none';
     document.getElementById('signup').style.display = 'none';
     document.getElementById('logout').style.display = 'inline-block';
+    document.getElementById('profileRed').style.display = 'inline-block';
+
   }
   else {
     document.getElementById('login').style.display = 'inline-block';
     document.getElementById('signup').style.display = 'inline-block';
     document.getElementById('logout').style.display = 'none';
+    document.getElementById('profileRed').style.display = 'none';
   }
 }
 
