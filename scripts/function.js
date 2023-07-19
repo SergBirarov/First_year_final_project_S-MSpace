@@ -20,7 +20,31 @@ storedUsers[1] = new User(
   `/Media/Assets/team-3.jpg`,
   `שמואל`,
   `שמואלי`,
-  `Regina@Phalange.com`,
+  `3Regina@Phalange.com`,
+  `1996-11-25`,
+  `עיר`,
+  `רחוב`,
+  `25`
+)
+storedUsers[2] = new User(
+  `dasdasd`,
+  `a123456789`,
+  `/Media/Assets/team-3.jpg`,
+  `wwwwwwwwwww`,
+  `שמואלי`,
+  `1Regina@Phalange.com`,
+  `1996-11-25`,
+  `עיר`,
+  `רחוב`,
+  `25`
+)
+storedUsers[3] = new User(
+  `fghdfgh`,
+  `a123456789`,
+  `/Media/Assets/team-3.jpg`,
+  `qqqqqq`,
+  `שמואלי`,
+  `2Regina@Phalange.com`,
   `1996-11-25`,
   `עיר`,
   `רחוב`,
@@ -193,8 +217,8 @@ export function UserTable() {
       let element = storedUsers[i];
       let data = '';
       if (i > 0) {
-        data = `<td id="user${i}"> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}"><i data-feather="trash-2"> Remove</i></button>
-         <button class="btn btn-sm btn-info editProfile" data-ind="${i}"><span><i data-feather="edit-3">Edit</i></span></button></td>`;
+        data = `<td id="user${i}"> <button class="btn btn-sm btn-danger removeProfile" data-ind="${i}" ><i data-ind="${i}" data-feather="trash-2"> Remove</i></button>
+         <button class="btn btn-sm btn-info editProfile" data-ind="${i}" ><span><i data-ind="${i}" data-feather="edit-3">Edit</i></span></button></td>`;
       }
       users = `<tr>
             <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
@@ -212,7 +236,7 @@ export function UserTable() {
     editBtn.forEach(element => {
       element.addEventListener('click', AdminEdit);
     });
-    let removeBtn = document.querySelectorAll('.RemoveProfile');
+    let removeBtn = document.querySelectorAll('.removeProfile');
     removeBtn.forEach(element => {
       element.addEventListener('click', RemoveProfile);
     });
@@ -220,7 +244,7 @@ export function UserTable() {
 }
 
 function RemoveProfile(event) {
-  let index = Number(event.target.dataset.ind)
+  let index = event.target.dataset.ind
   storedUsers = JSON.parse(localStorage.getItem('users'))
   storedUsers.splice(index, 1);
   localStorage.setItem('users', JSON.stringify(storedUsers))
@@ -919,7 +943,6 @@ function SecondSortFoods() {
   AddFoodsToStore();
 }
 
-//להוסיף עוד נתונים על פי הפרמטרים החדשים (id, category)
 function AddFlightToStore() {
   storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
@@ -1098,36 +1121,36 @@ function RemoveItem(event) {
 
 function AdminEdit(event) {
   let index = Number(event.target.dataset.ind);
-  let td = document.getElementById(`user${index}`);
+  const td = document.getElementById(`user${index}`);
   let storedUsers = JSON.parse(localStorage.getItem('users'));
 
   td.innerHTML += `
     <div>
       <h2>Edit User Details</h2>
       <label for="firstName">First Name:</label>
-      <input type="text" id="firstName" value="${storedUsers[index].firstName}"><br>
+      <input type="text" id="EditFirstName" value="${storedUsers[index].firstName}"><br>
 
       <label for="lastName">Last Name:</label>
-      <input type="text" id="lastName" value="${storedUsers[index].lastName}"><br>
+      <input type="text" id="EditLastName" value="${storedUsers[index].lastName}"><br>
 
       <label for="email">Email:</label>
-      <input type="email" id="email" value="${storedUsers[index].email}"><br>
+      <input type="email" id="EditEmail" value="${storedUsers[index].email}"><br>
 
       <label for="password">Password:</label>
-      <input type="password" id="password" value="${storedUsers[index].password}"><br>
+      <input type="password" id="EditPassword" value="${storedUsers[index].password}"><br>
 
       <label for="username">Username:</label>
-      <input type="text" id="username" value="${storedUsers[index].username}"><br>
+      <input type="text" id="EditUsername" value="${storedUsers[index].username}"><br>
 
       <button id="saveBtn">Save</button>
     </div>`;
 
   document.getElementById('saveBtn').addEventListener('click', function () {
-    storedUsers[index].firstName = document.getElementById('firstName').value;
-    storedUsers[index].lastName = document.getElementById('lastName').value;
-    storedUsers[index].email = document.getElementById('email').value;
-    storedUsers[index].password = document.getElementById('password').value;
-    storedUsers[index].username = document.getElementById('username').value;
+    storedUsers[index].firstName = document.getElementById('EditFirstName').value;
+    storedUsers[index].lastName = document.getElementById('EditLastName').value;
+    storedUsers[index].email = document.getElementById('EditEmail').value;
+    storedUsers[index].password = document.getElementById('EditPassword').value;
+    storedUsers[index].username = document.getElementById('EditUsername').value;
 
     localStorage.setItem('users', JSON.stringify(storedUsers));
 
@@ -1147,9 +1170,8 @@ export function UpdateInformation() {
     }
   });
   document.querySelector('#UpdateInformationForm').addEventListener('submit', (event) => {
-    event.preventDefault(); // Отменяем стандартное поведение отправки формы
+    event.preventDefault();
 
-    // Получаем значения из полей формы
     let firstName = document.getElementById("firstNameUpdate");
     if (firstName.value) {
       let firstNameValue = firstName.value;
