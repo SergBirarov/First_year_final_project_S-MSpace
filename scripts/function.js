@@ -407,9 +407,13 @@ export function SubmitRegistrationForm(event) {
   }
   // email
   let email = document.getElementById("email");
-  if (email.value) {
+  if (email.value && email.value.endsWith('.com')) {
     let emailValue = email.value;
+    let count = 0;
     for (let element of emailValue) {
+      if (element == "@") {
+        count++
+      }
       if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
         email.style.border = "2px solid green";
       }
@@ -418,9 +422,14 @@ export function SubmitRegistrationForm(event) {
         return;
       }
     }
+    if (count != 1) {
+      email.style.border = "2px solid red";
+      return;
+    }
   }
   else {
     email.style.border = "2px solid red";
+    return
   }
 
   // birthDate
@@ -646,7 +655,9 @@ export function AddSuit() {
       alert("Suit added successfully!");
       AddSuitsToStore();
     };
-
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   });
 }
 
@@ -702,7 +713,9 @@ export function AddFood() {
 
       AddFoodsToStore();
     };
-
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   });
 }
 
@@ -737,10 +750,21 @@ export function AddShip() {
     let arrivalDateValue = new Date(arrivalDate.value);
     let currentDate = new Date();
 
-    if (departureDateValue >= currentDate && arrivalDateValue > departureDateValue) {
+    if (departureDateValue >= currentDate) {
+      departureDate.style.border = "2px solid green";
+    }
+    else {
       departureDate.style.border = "2px solid red";
       return
     }
+    if (arrivalDateValue > departureDateValue) {
+      arrivalDateValue.style.border = "2px solid green";
+    }
+    else {
+      arrivalDateValue.style.border = "2px solid red";
+      return
+    }
+
 
     let file = imageInput.files[0];
 
@@ -775,7 +799,9 @@ export function AddShip() {
 
       AddFlightToStore();
     };
-
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   });
 }
 
