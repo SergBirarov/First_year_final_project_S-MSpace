@@ -1143,12 +1143,114 @@ function AdminEdit(event) {
     </div>`;
 
   document.getElementById("saveBtn").addEventListener("click", function () {
-    storedUsers[index].firstName =
-      document.getElementById("EditFirstName").value;
-    storedUsers[index].lastName = document.getElementById("EditLastName").value;
-    storedUsers[index].email = document.getElementById("EditEmail").value;
-    storedUsers[index].password = document.getElementById("EditPassword").value;
-    storedUsers[index].username = document.getElementById("EditUsername").value;
+
+    let firstName = document.getElementById("EditFirstName");
+    if (firstName.value) {
+      let firstNameValue = firstName.value;
+      for (let element of firstNameValue) {
+        if (
+          !(
+            (element >= "א" && element <= "ת") ||
+            (element >= "a" && element <= "z") ||
+            (element >= "A" && element <= "Z") ||
+            (element >= "а" && element <= "я") ||
+            (element >= "А" && element <= "Я")
+          )
+        ) {
+          firstName.style.border = "2px solid red";
+          return;
+        } else {
+          firstName.style.border = "2px solid green";
+        }
+      }
+    } else {
+      firstName.style.border = "2px solid red";
+    }
+
+    let lastName = document.getElementById("EditLastName");
+    if (lastName.value) {
+      let lastNameValue = lastName.value;
+      for (let element of lastNameValue) {
+        if (
+          !(
+            (element >= "א" && element <= "ת") ||
+            (element >= "a" && element <= "z") ||
+            (element >= "A" && element <= "Z") ||
+            (element >= "а" && element <= "я") ||
+            (element >= "А" && element <= "Я")
+          )
+        ) {
+          lastName.style.border = "2px solid red";
+          return;
+        } else {
+          lastName.style.border = "2px solid green";
+        }
+      }
+    } else {
+      lastName.style.border = "2px solid red";
+    }
+
+    let email = document.getElementById("EditEmail");
+    if (email.value && email.value.endsWith(".com")) {
+      let emailValue = email.value;
+      let count = 0;
+      for (let element of emailValue) {
+        if (element == "@") {
+          count++;
+        }
+        if (
+          (element >= "a" && element <= "z") ||
+          (element >= "A" && element <= "Z") ||
+          element == "@" ||
+          element == "." ||
+          (element >= "0" && element <= "9")
+        ) {
+          email.style.border = "2px solid green";
+        } else {
+          email.style.border = "2px solid red";
+          return;
+        }
+      }
+      if (count != 1) {
+        email.style.border = "2px solid red";
+        return;
+      }
+    } else {
+      email.style.border = "2px solid red";
+      return;
+    }
+
+    let password = document.getElementById("EditPassword");
+    if (!password.value) {
+      password.style.border = "2px solid red";
+    } else {
+      if (CheckPassword(password)) {
+        password.style.border = "2px solid red";
+        return;
+      }
+      password.style.border = "2px solid green";
+    }
+
+    let username = document.getElementById("EditUsername");
+    if (username.value || username.value.length > 60) {
+      let usernameValue = username.value;
+      for (let element of usernameValue) {
+        if (element >= "א" && element <= "ת") {
+          username.style.border = "2px solid red";
+          return;
+        } else {
+          username.style.border = "2px solid green";
+        }
+      }
+    } else {
+      username.style.border = "2px solid red";
+    }
+
+    storedUsers[index].firstName = firstName.value;
+    storedUsers[index].lastName = lastName.value;
+    storedUsers[index].email = email.value;
+    storedUsers[index].password = password.value;
+    storedUsers[index].username = username.value;
 
     localStorage.setItem("users", JSON.stringify(storedUsers));
 
