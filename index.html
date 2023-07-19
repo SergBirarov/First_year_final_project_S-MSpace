@@ -22,7 +22,7 @@
 <body>
 
   <!--start of nav bar-->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-5">
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark fs-5">
     <div class="container ">
       <a class="navbar-brand" href="/index.html"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
@@ -67,11 +67,6 @@
                   data-feather="shopping-cart"></i></button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-primary" id="addItem" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i
-                  data-feather="plus"></i></button>
-            </li>
-            <li class="nav-item">
               <button class="link" id="profileRed" type="button" data-bs-target="#profileRed"><a href="/managerProfile.html"><span><i data-feather="user"></i></a></span>
               </button>
             </li>
@@ -98,22 +93,23 @@
           <form class="loginform needs-validation" novalidate>
             <div class="form-floating mb-3">
               <span class="input-group-text p-0" id="inputGroupPrepend">
-                <span><i data-feather="mail"></i></span>
+                <span id="mailLogin"><i data-feather="mail" ></i></span>
                 <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
                   aria-describedby="emailHelp">
             </div>
 
-            <div class="mb-3 form-floating has-validation">
-              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPassLogIn"
-                  class="btn btn-outline-secondary border-0" type="button">
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend">
+                <button id="showPassLogIn" class="btn btn-outline-secondary border-0" type="button">
                   <span><i data-feather="eye"></i></span>
-                </button></span>
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <div class="invalid-feedback">
-                Your password must be 7-12 characters long, contain letters and numbers, and must not
-                contain spaces, or emoji.
+                </button>
+              </span>
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" aria-labelledby="passwordHelp">
+              <div id="passwordHelp" class="invalid-feedback">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not contain spaces or emoji.
               </div>
             </div>
+            
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
               <button class="btn btn-primary" data-bs-target="#signUp" data-bs-toggle="modal" data-bs-dismiss="modal"
@@ -219,28 +215,31 @@
     </div>
     <div class="offcanvas-body text-white-50">
       <h3>Your Desired Items</h3>
-      <div class="table-responsive bg-dark-subtle">
-        <table class="table table-bordered bg-dark-subtle">
-          <thead class="">
+      <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+          <thead>
             <tr>
-              <th>Item Number</th>
-              <th>Picture</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Remove</th>
+              <th scope="col">Item Number</th>
+              <th scope="col">Picture</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Remove</th>
             </tr>
           </thead>
           <tbody id="cartTable">
-
+  
           </tbody>
         </table>
       </div>
       <div class="container" id="total">
-
+  
+      </div>
+      <div class="container">
+        <button class="btn btn-xl btn-success float-end align-bottom"><span><i data-feather="shopping-bag" class="m-2"></i></span class="fw-bold p-3">Proceed To Check Out</button>
       </div>
     </div>
   </div>
-  <!--shopping cart end-->
+  
 
   
 
@@ -455,4 +454,4 @@
   </script>
 </body>
 
-</html>
+</html>`

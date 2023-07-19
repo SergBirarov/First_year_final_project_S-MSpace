@@ -9,6 +9,7 @@
 }
 
 
+
   
 #footer{
     padding: 0;
@@ -49,11 +50,15 @@
     margin: auto;
 }
   
+#mailLogin{
+    padding: 6px,12px;
+}
 .input-group
 {
-    width: 80%;
     margin: auto;
 }
+
+
 #login, #signup, #logout, #profileRed{
     padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
     font-size: var(--bs-nav-link-font-size);
@@ -89,4 +94,13 @@
     #offcanvasRight, #offcanvasLeft {
         width: 100%;
     }
+
+    .table-responsive {
+        font-size: 0.9rem;
+        overflow-x: auto;
+      }
+    
+      .table-responsive .table {
+        margin-bottom: 0;
+      }
 }

@@ -2,18 +2,20 @@ import { User } from "./models/User.js";
 var cartTable = document.getElementById("cartTable");
 //Arrays for Users:
 //admin
-var storedUsers = [new User(
-  `admin`,
-  `admin1234admin`,
-  `/Media/Assets/team-3.jpg`,
-  `Regina`,
-  `Phalange`,
-  `Regina@Phalange.com`,
-  `1996-11-25`,
-  `Hell`,
-  `Hell st`,
-  `25`
-)];
+var storedUsers = [
+  new User(
+    `admin`,
+    `admin1234admin`,
+    `/Media/Assets/team-3.jpg`,
+    `Regina`,
+    `Phalange`,
+    `Regina@Phalange.com`,
+    `1996-11-25`,
+    `Hell`,
+    `Hell st`,
+    `25`
+  ),
+];
 storedUsers[1] = new User(
   `username`,
   `a123456789`,
@@ -25,36 +27,36 @@ storedUsers[1] = new User(
   `עיר`,
   `רחוב`,
   `25`
-)
-storedUsers[2] = new User(
-  `dasdasd`,
-  `a123456789`,
-  `/Media/Assets/team-3.jpg`,
-  `wwwwwwwwwww`,
-  `שמואלי`,
-  `1Regina@Phalange.com`,
-  `1996-11-25`,
-  `עיר`,
-  `רחוב`,
-  `25`
-)
-storedUsers[3] = new User(
-  `fghdfgh`,
-  `a123456789`,
-  `/Media/Assets/team-3.jpg`,
-  `qqqqqq`,
-  `שמואלי`,
-  `2Regina@Phalange.com`,
-  `1996-11-25`,
-  `עיר`,
-  `רחוב`,
-  `25`
-)
+);
+// storedUsers[2] = new User(
+//   `dasdasd`,
+//   `a123456789`,
+//   `/Media/Assets/team-3.jpg`,
+//   `wwwwwwwwwww`,
+//   `שמואלי`,
+//   `1Regina@Phalange.com`,
+//   `1996-11-25`,
+//   `עיר`,
+//   `רחוב`,
+//   `25`
+// )
+// storedUsers[3] = new User(
+//   `fghdfgh`,
+//   `a123456789`,
+//   `/Media/Assets/team-3.jpg`,
+//   `qqqqqq`,
+//   `שמואלי`,
+//   `2Regina@Phalange.com`,
+//   `1996-11-25`,
+//   `עיר`,
+//   `רחוב`,
+//   `25`
+// )
 var cart = new Array();
 // arrays for hardcoded products
 var storedFlights = [
   {
-    category: 'flight',
+    category: "flight",
     id: `1254`,
     name: `165-56A`,
     departureDate: `26/07/2023`,
@@ -64,7 +66,7 @@ var storedFlights = [
     price: `12500`,
   },
   {
-    category: 'flight',
+    category: "flight",
     id: `1258`,
     name: `187-96A`,
     departureDate: `26/09/2023`,
@@ -74,7 +76,7 @@ var storedFlights = [
     price: `11500`,
   },
   {
-    category: 'flight',
+    category: "flight",
     id: `1248`,
     name: `787-96B`,
     departureDate: `26/10/2023`,
@@ -84,7 +86,7 @@ var storedFlights = [
     price: `64500`,
   },
   {
-    category: 'flight',
+    category: "flight",
     id: `1206`,
     name: `T77-96B`,
     departureDate: `26/10/2029`,
@@ -96,7 +98,7 @@ var storedFlights = [
 ];
 var storedFoods = [
   {
-    category: 'food',
+    category: "food",
     id: `2346`,
     name: `Minced Brains`,
     foodType: `meat`,
@@ -107,7 +109,7 @@ var storedFoods = [
     price: `32.50`,
   },
   {
-    category: 'food',
+    category: "food",
     id: `2467`,
     name: `Ass Bits`,
     foodType: `meat`,
@@ -117,7 +119,7 @@ var storedFoods = [
     price: `19.90`,
   },
   {
-    category: 'food',
+    category: "food",
     id: `2345`,
     name: `Breast Milk`,
     foodType: `Dairy`,
@@ -127,7 +129,7 @@ var storedFoods = [
     price: `312.30`,
   },
   {
-    category: 'food',
+    category: "food",
     id: `2867`,
     name: `Shepareds Pie`,
     foodType: `meat`,
@@ -139,7 +141,7 @@ var storedFoods = [
 ];
 var storedSuits = [
   {
-    category: 'suit',
+    category: "suit",
     id: `3546`,
     name: `Wolf$Gangs`,
     size: `36`,
@@ -148,7 +150,7 @@ var storedSuits = [
     price: `360.90`,
   },
   {
-    category: 'suit',
+    category: "suit",
     id: `3568`,
     name: `Wolf$Gangs`,
     size: `42`,
@@ -157,7 +159,7 @@ var storedSuits = [
     price: `422.90`,
   },
   {
-    category: 'suit',
+    category: "suit",
     id: `3965`,
     name: `Suits-BaAm`,
     size: `46`,
@@ -166,7 +168,7 @@ var storedSuits = [
     price: `180.90`,
   },
   {
-    category: 'suit',
+    category: "suit",
     id: `3967`,
     name: `AlaIster`,
     size: `56`,
@@ -175,29 +177,26 @@ var storedSuits = [
     price: `1360.90`,
   },
 ];
-if (!(sessionStorage.getItem('cart'))) {
-  sessionStorage.setItem('cart', JSON.stringify(cart))
+if (!sessionStorage.getItem("cart")) {
+  sessionStorage.setItem("cart", JSON.stringify(cart));
 }
-if (!(localStorage.getItem('users'))) {
-  localStorage.setItem('users', JSON.stringify(storedUsers))
+if (!localStorage.getItem("users")) {
+  localStorage.setItem("users", JSON.stringify(storedUsers));
 }
-if (!(localStorage.getItem('flights'))) {
-  localStorage.setItem('flights', JSON.stringify(storedFlights))
+if (!localStorage.getItem("flights")) {
+  localStorage.setItem("flights", JSON.stringify(storedFlights));
 }
-if (!(localStorage.getItem('foods'))) {
-  localStorage.setItem('foods', JSON.stringify(storedFoods))
+if (!localStorage.getItem("foods")) {
+  localStorage.setItem("foods", JSON.stringify(storedFoods));
 }
-if (!(localStorage.getItem('suits'))) {
-  localStorage.setItem('suits', JSON.stringify(storedSuits))
+if (!localStorage.getItem("suits")) {
+  localStorage.setItem("suits", JSON.stringify(storedSuits));
 }
 
 //html elements for prod and users
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 var productGridSuit = document.getElementById("suitSec");
-
-// localStorage.setItem(`users`, JSON.stringify(storedUsers));
-// storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
 //startup building page with hardcoded elements
 export function BuildStore() {
@@ -210,12 +209,12 @@ export function BuildStore() {
 export function UserTable() {
   let userTable = document.getElementById("userTable");
   let users = "";
-  let storedUsers = JSON.parse(localStorage.getItem('users'));
+  let storedUsers = JSON.parse(localStorage.getItem("users"));
   if (storedUsers) {
-    let str = '';
+    let str = "";
     for (let i = 0; i < storedUsers.length; i++) {
       let element = storedUsers[i];
-      let data = '';
+      let data = "";
       if (i > 0) {
         data = `<td id="user${i}"> <button class="btn btn-sm btn-danger removeProfile" data-ind="${i}" ><i data-ind="${i}" data-feather="trash-2"> Remove</i></button>
          <button class="btn btn-sm btn-info editProfile" data-ind="${i}" ><span><i data-ind="${i}" data-feather="edit-3">Edit</i></span></button></td>`;
@@ -232,47 +231,62 @@ export function UserTable() {
     }
 
     userTable.innerHTML = str;
-    let editBtn = document.querySelectorAll('.editProfile');
-    editBtn.forEach(element => {
-      element.addEventListener('click', AdminEdit);
+    let editBtn = document.querySelectorAll(".editProfile");
+    editBtn.forEach((element) => {
+      element.addEventListener("click", AdminEdit);
     });
-    let removeBtn = document.querySelectorAll('.removeProfile');
-    removeBtn.forEach(element => {
-      element.addEventListener('click', RemoveProfile);
+    let removeBtn = document.querySelectorAll(".removeProfile");
+    removeBtn.forEach((element) => {
+      element.addEventListener("click", RemoveProfile);
     });
   }
 }
 
 function RemoveProfile(event) {
-  let index = event.target.dataset.ind
-  storedUsers = JSON.parse(localStorage.getItem('users'))
+  let index = event.target.dataset.ind;
+  storedUsers = JSON.parse(localStorage.getItem("users"));
   storedUsers.splice(index, 1);
-  localStorage.setItem('users', JSON.stringify(storedUsers))
+  localStorage.setItem("users", JSON.stringify(storedUsers));
   UserTable();
 }
+
+
 export function UserProfile() {
-
   let user;
-  let userJSON = sessionStorage.getItem('connectedUser');
-  if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+  let userJSON = sessionStorage.getItem("connectedUser");
+  if (userJSON && userJSON != "null" && userJSON != "undefined") {
     user = JSON.parse(userJSON);
-    document.getElementById("userProfileTab").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    document.getElementById(
+      "userProfileTab"
+    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
   `;
-    document.getElementById("uploadPic").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    document.getElementById(
+      "uploadPic"
+    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
   `;
-    document.getElementById("userBadge").innerHTML = user.password === `admin1234admin` ? `Admin` : `User`;
+    document.getElementById("userBadge").innerHTML =
+      user.password === `admin1234admin` ? `Admin` : `User`;
 
-    document.getElementById("profileTabName").innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById(
+      "profileTabName"
+    ).innerHTML = `${user.firstName} ${user.lastName}`;
     document.getElementById("profileTabMail").innerHTML = `${user.email}`;
-    document.getElementById("profileTabUserName").innerHTML = `${user.username}`;
+    document.getElementById(
+      "profileTabUserName"
+    ).innerHTML = `${user.username}`;
     document.getElementById("profileTabAddress").innerHTML = `${user.city}`;
 
-    document.getElementById("profileName").innerHTML = `${user.firstName} ${user.lastName}`;
-    document.getElementById("profilePhone").innerHTML = `${user.phone ? `'${user.phone}` : 'Have not phone'}`;
+    document.getElementById(
+      "profileName"
+    ).innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("profilePhone").innerHTML = `${
+      user.phone ? `'${user.phone}` : "Have not phone"
+    }`;
     document.getElementById("profileMail").innerHTML = `${user.email}`;
-    document.getElementById("profileAddress").innerHTML = `${user.city},${user.street} ${user.number}`;
+    document.getElementById(
+      "profileAddress"
+    ).innerHTML = `${user.city},${user.street} ${user.number}`;
   }
-
 }
 
 export function SendregistrationForm() {
@@ -288,59 +302,49 @@ export function SendregistrationForm() {
       pass.type = "password";
     }
   });
-  // document.querySelector("#showPass2").addEventListener("click", () => {
-  //   let pass = document.querySelector("#regPasswordSecond");
-  //   if (pass.type === "password") {
-  //     pass.type = "text";
-  //   } else {
-  //     pass.type = "password";
-  //   }
-  // });
 }
+
+
 function CheckPassword(password) {
-  let inCorrect = true
-  let isSpecial = false
-  let isCapLatters = false
-  let isLatters = false
-  let isNumber = false
-  let passwordValue = password.value
+  let inCorrect = true;
+  let isSpecial = false;
+  let isCapLatters = false;
+  let isLatters = false;
+  let isNumber = false;
+  let passwordValue = password.value;
 
   if (Number(passwordValue.length) < 7 || Number(passwordValue.length) > 12) {
     inCorrect = true;
   }
 
   for (let element of passwordValue) {
-    let specialCharacters = ['@', '!', '#', '$', '&']
+    let specialCharacters = ["@", "!", "#", "$", "&"];
     if (specialCharacters.includes(element)) {
       isSpecial = true;
     }
-    if (element >= 'a' && element <= 'z') {
+    if (element >= "a" && element <= "z") {
       isLatters = true;
     }
-    if (element >= 'A' && element <= 'Z') {
+    if (element >= "A" && element <= "Z") {
       isCapLatters = true;
     }
-    if (element >= '0' && element <= '9') {
+    if (element >= "0" && element <= "9") {
       isNumber = true;
     }
-
-  };
-
-
+  }
 
   if (isLatters && isSpecial && isNumber && isCapLatters) {
-    inCorrect = false
+    inCorrect = false;
   }
 
   if (inCorrect) {
-    document.getElementById('passwordHelp').classList.remove('none');
-    password.style.border = "2px solid red"
+    document.getElementById("passwordHelp").classList.remove("none");
+    password.style.border = "2px solid red";
+  } else {
+    document.getElementById("passwordHelp").classList.add("none");
+    password.style.border = "2px solid green";
   }
-  else {
-    document.getElementById('passwordHelp').classList.add('none');
-    password.style.border = "2px solid green"
-  }
-  return inCorrect
+  return inCorrect;
 }
 export function SubmitRegistrationForm(event) {
   event.preventDefault();
@@ -350,11 +354,10 @@ export function SubmitRegistrationForm(event) {
   if (username.value || username.value.length > 60) {
     let usernameValue = username.value;
     for (let element of usernameValue) {
-      if (element >= 'א' && element <= 'ת') {
+      if (element >= "א" && element <= "ת") {
         username.style.border = "2px solid red";
         return;
-      }
-      else {
+      } else {
         username.style.border = "2px solid green";
       }
     }
@@ -365,38 +368,37 @@ export function SubmitRegistrationForm(event) {
   // password
   let password = document.getElementById("regPassword");
   if (!password.value) {
-    password.style.border = "2px solid red"
-  }
-  else {
+    password.style.border = "2px solid red";
+  } else {
     if (CheckPassword(password)) {
-      return
+      return;
     }
-    password.style.border = "2px solid green"
+    password.style.border = "2px solid green";
   }
 
   // password2
   let password2 = document.getElementById("regPasswordSecond");
-  if (password2.value && (password.value == password2.value)) {
+  if (password2.value && password.value == password2.value) {
     password2.style.border = "2px solid green";
-    document.getElementById('PasswordSecond').classList.add('none')
-  }
-  else {
+    document.getElementById("PasswordSecond").classList.add("none");
+  } else {
     password2.style.border = "2px solid red";
-    document.getElementById('PasswordSecond').classList.remove('none')
+    document.getElementById("PasswordSecond").classList.remove("none");
     //return
   }
-
 
   // imageInput
   let imageInput = document.getElementById("image");
   if (imageInput.value) {
-    if (imageInput.value.includes('.jpeg') || imageInput.value.includes('.jpg')) {
+    if (
+      imageInput.value.includes(".jpeg") ||
+      imageInput.value.includes(".jpg")
+    ) {
       imageInput.style.border = "2px solid green";
-      document.getElementById('imageHelp').classList.add('none')
-    }
-    else {
+      document.getElementById("imageHelp").classList.add("none");
+    } else {
       imageInput.style.border = "2px solid red";
-      document.getElementById('imageHelp').classList.remove('none')
+      document.getElementById("imageHelp").classList.remove("none");
       return;
     }
   } else {
@@ -408,11 +410,18 @@ export function SubmitRegistrationForm(event) {
   if (firstName.value) {
     let firstNameValue = firstName.value;
     for (let element of firstNameValue) {
-      if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+      if (
+        !(
+          (element >= "א" && element <= "ת") ||
+          (element >= "a" && element <= "z") ||
+          (element >= "A" && element <= "Z") ||
+          (element >= "а" && element <= "я") ||
+          (element >= "А" && element <= "Я")
+        )
+      ) {
         firstName.style.border = "2px solid red";
         return;
-      }
-      else {
+      } else {
         firstName.style.border = "2px solid green";
       }
     }
@@ -424,11 +433,18 @@ export function SubmitRegistrationForm(event) {
   if (lastName.value) {
     let lastNameValue = lastName.value;
     for (let element of lastNameValue) {
-      if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+      if (
+        !(
+          (element >= "א" && element <= "ת") ||
+          (element >= "a" && element <= "z") ||
+          (element >= "A" && element <= "Z") ||
+          (element >= "а" && element <= "я") ||
+          (element >= "А" && element <= "Я")
+        )
+      ) {
         lastName.style.border = "2px solid red";
         return;
-      }
-      else {
+      } else {
         lastName.style.border = "2px solid green";
       }
     }
@@ -437,17 +453,22 @@ export function SubmitRegistrationForm(event) {
   }
   // email
   let email = document.getElementById("email");
-  if (email.value && email.value.endsWith('.com')) {
+  if (email.value && email.value.endsWith(".com")) {
     let emailValue = email.value;
     let count = 0;
     for (let element of emailValue) {
       if (element == "@") {
-        count++
+        count++;
       }
-      if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
+      if (
+        (element >= "a" && element <= "z") ||
+        (element >= "A" && element <= "Z") ||
+        element == "@" ||
+        element == "." ||
+        (element >= "0" && element <= "9")
+      ) {
         email.style.border = "2px solid green";
-      }
-      else {
+      } else {
         email.style.border = "2px solid red";
         return;
       }
@@ -456,10 +477,9 @@ export function SubmitRegistrationForm(event) {
       email.style.border = "2px solid red";
       return;
     }
-  }
-  else {
+  } else {
     email.style.border = "2px solid red";
-    return
+    return;
   }
 
   // birthDate
@@ -467,12 +487,14 @@ export function SubmitRegistrationForm(event) {
   let birthDateValue = new Date(birthDate.value);
   let currentDate = new Date();
   if (birthDate.value) {
-    if ((currentDate.getFullYear() - birthDateValue.getFullYear() < 120 && birthDateValue < currentDate)) {
+    if (
+      currentDate.getFullYear() - birthDateValue.getFullYear() < 120 &&
+      birthDateValue < currentDate
+    ) {
       birthDate.style.border = "2px solid green";
-    }
-    else {
+    } else {
       birthDate.style.border = "2px solid red";
-      return
+      return;
     }
   } else {
     birthDate.style.border = "2px solid red";
@@ -483,16 +505,14 @@ export function SubmitRegistrationForm(event) {
   if (city.value) {
     let cityValue = city.value;
     for (let element of cityValue) {
-      if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+      if (!((element >= "א" && element <= "ת") || element == " ")) {
         city.style.border = "2px solid red";
         return;
-      }
-      else {
+      } else {
         city.style.border = "2px solid green";
       }
     }
-  }
-  else {
+  } else {
     city.style.border = "2px solid red";
   }
   // street
@@ -500,21 +520,19 @@ export function SubmitRegistrationForm(event) {
   if (street.value) {
     let streetValue = street.value;
     for (let element of streetValue) {
-      if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+      if (!((element >= "א" && element <= "ת") || element == " ")) {
         street.style.border = "2px solid red";
         return;
-      }
-      else {
+      } else {
         street.style.border = "2px solid green";
       }
     }
-  }
-  else {
+  } else {
     street.style.border = "2px solid red";
   }
   //number
   let number = document.getElementById("houseNumber");
-  number.style.border = !number.value ? "2px solid red" : "2px solid green"
+  number.style.border = !number.value ? "2px solid red" : "2px solid green";
 
   if (
     username.value === "" ||
@@ -545,13 +563,12 @@ export function SubmitRegistrationForm(event) {
 
       for (let i = 0; i < storedUsers.length; i++) {
         if (storedUsers[i].email === email.value) {
-          document.getElementById('emailHelp').classList.remove('none');
-          email.style.border = "2px solid red"
+          document.getElementById("emailHelp").classList.remove("none");
+          email.style.border = "2px solid red";
           return;
-        }
-        else {
-          email.style.border = "2px solid green"
-          document.getElementById('emailHelp').classList.add('none');
+        } else {
+          email.style.border = "2px solid green";
+          document.getElementById("emailHelp").classList.add("none");
         }
       }
     } else {
@@ -582,7 +599,7 @@ export function SubmitRegistrationForm(event) {
     );
     let userJSON = JSON.stringify(user);
     sessionStorage.setItem("connectedUser", userJSON);
-    window.location.assign('./managerProfile.html')
+    window.location.assign("./managerProfile.html");
   };
   if (file) {
     reader.readAsDataURL(file);
@@ -593,7 +610,6 @@ export function SendLoginForm() {
   let form = document.querySelector("#submit_login");
   form.addEventListener("click", SubmitLoginForm);
 
-  //fix this
   document.querySelector("#showPassLogIn").addEventListener("click", () => {
     let pass = document.querySelector("#floatingPassword");
     if (pass.type === "password") {
@@ -620,8 +636,8 @@ function SubmitLoginForm(event) {
       sessionStorage.setItem("connectedUser", userJSON);
       window.location.assign("./managerProfile.html");
     } else {
-      email.style.border = "2px solid red"
-      password.style.border = "2px solid red"
+      email.style.border = "2px solid red";
+      password.style.border = "2px solid red";
     }
   } else {
     alert("No registered users.");
@@ -631,9 +647,8 @@ function SubmitLoginForm(event) {
 //adding products to localstorage through user input
 export function AddSuit() {
   document.querySelector("#addSuit").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent the form from submitting
+    event.preventDefault(); 
 
-    // Retrieve the input values
     let brandName = document.getElementById("addSuitName").value;
     let size = document.getElementById("addSuitSize").value;
     let color = document.getElementById("addSuitColor").value;
@@ -642,7 +657,6 @@ export function AddSuit() {
     let id = document.getElementById("addSuitId").value;
     let category = document.getElementById("addSuitCategory").value;
 
-    // Check if any of the fields are empty
     if (
       !brandName ||
       color === "Choose a color" ||
@@ -693,13 +707,18 @@ export function AddSuit() {
 
 export function AddFood() {
   document.querySelector("#addFood").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
 
-    // Retrieve input values
     let foodName = document.getElementById("addFoodName").value;
-    let foodType = document.querySelector('input[name="meat_dairy"]:checked').value;
-    let kosherStatus = document.querySelector('input[name="kosher_noKosher"]:checked').value;
-    let hypoallergenicStatus = document.querySelector('input[name="hypoallergenic_no"]:checked').value;
+    let foodType = document.querySelector(
+      'input[name="meat_dairy"]:checked'
+    ).value;
+    let kosherStatus = document.querySelector(
+      'input[name="kosher_noKosher"]:checked'
+    ).value;
+    let hypoallergenicStatus = document.querySelector(
+      'input[name="hypoallergenic_no"]:checked'
+    ).value;
     let foodImageInput = document.getElementById("addFoodImage");
     let foodPrice = document.getElementById("addFoodPrice").value;
     let foodId = document.getElementById("addFoodId").value;
@@ -751,9 +770,8 @@ export function AddFood() {
 
 export function AddShip() {
   document.querySelector("#addFlight").addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
 
-    // Retrieve input values
     let flightNumber = document.getElementById("addFlightNumber").value;
     let classType = document.getElementById("addShipSize").value;
     let imageInput = document.getElementById("addShipImage");
@@ -782,19 +800,16 @@ export function AddShip() {
 
     if (departureDateValue >= currentDate) {
       departureDate.style.border = "2px solid green";
-    }
-    else {
+    } else {
       departureDate.style.border = "2px solid red";
-      return
+      return;
     }
     if (arrivalDateValue > departureDateValue) {
       arrivalDateValue.style.border = "2px solid green";
-    }
-    else {
+    } else {
       arrivalDateValue.style.border = "2px solid red";
-      return
+      return;
     }
-
 
     let file = imageInput.files[0];
 
@@ -835,15 +850,14 @@ export function AddShip() {
   });
 }
 
-
 function sortByPrice(a, b) {
   const priceA = parseInt(a.price);
   const priceB = parseInt(b.price);
-  let filter = document.getElementById('price-filter').value;
+  let filter = document.getElementById("price-filter").value;
   switch (filter) {
-    case 'low-to-high':
+    case "low-to-high":
       return priceA - priceB;
-    case 'high-to-low':
+    case "high-to-low":
       return priceB - priceA;
     default:
       return;
@@ -854,27 +868,26 @@ export function SortStore() {
   SortFlights();
   SortFoods();
   SortSuits();
-
 }
 function SortFlights() {
   storedFlights;
   storedFlights.sort(sortByPrice);
   const parentElement = storedFlights[0].parentNode;
-  localStorage.setItem('flights', JSON.stringify(storedFlights));
+  localStorage.setItem("flights", JSON.stringify(storedFlights));
   AddFlightToStore();
 }
 function SortSuits() {
   storedSuits;
   storedSuits.sort(sortByPrice);
   const parentElement = storedSuits[0].parentNode;
-  localStorage.setItem('suits', JSON.stringify(storedSuits));
+  localStorage.setItem("suits", JSON.stringify(storedSuits));
   AddSuitsToStore();
 }
 function SortFoods() {
   storedFoods;
   storedFoods.sort(sortByPrice);
   const parentElement = storedFoods[0].parentNode;
-  localStorage.setItem('foods', JSON.stringify(storedFoods));
+  localStorage.setItem("foods", JSON.stringify(storedFoods));
   AddFoodsToStore();
 }
 export function SecondSortStore() {
@@ -885,61 +898,58 @@ export function SecondSortStore() {
 function sortSuitsBySize(a, b) {
   const sizeA = parseInt(a.size);
   const sizeB = parseInt(b.size);
-  let filter = document.getElementById('second-filter').value;
+  let filter = document.getElementById("second-filter").value;
   switch (filter) {
-    case 'low-to-high':
+    case "low-to-high":
       return sizeA - sizeB;
-    case 'high-to-low':
+    case "high-to-low":
       return sizeB - sizeA;
     default:
       return;
   }
-
 }
 function SortFlightsByClass(a, b) {
   let flightSizeA = parseInt(a.classType[0]);
   let flightSizeB = parseInt(b.classType[0]);
-  let filter = document.getElementById('second-filter').value;
+  let filter = document.getElementById("second-filter").value;
   switch (filter) {
-    case 'low-to-high':
+    case "low-to-high":
       return flightSizeA - flightSizeB;
-    case 'high-to-low':
+    case "high-to-low":
       return flightSizeB - flightSizeA;
     default:
       return;
   }
-
 }
 function SortFoodsByMeat(a, b) {
   const foodTypeA = parseInt(a.foodType.length);
   const foodTypeB = parseInt(b.foodType.length);
-  let filter = document.getElementById('second-filter').value;
+  let filter = document.getElementById("second-filter").value;
   switch (filter) {
-    case 'low-to-high':
+    case "low-to-high":
       return foodTypeA - foodTypeB;
-    case 'high-to-low':
+    case "high-to-low":
       return foodTypeB - foodTypeA;
     default:
       return;
   }
-
 }
 function SecondSortFlights() {
   storedFlights.sort(SortFlightsByClass);
   const parentElement = storedFlights[0].parentNode;
-  localStorage.setItem('flights', JSON.stringify(storedFlights));
+  localStorage.setItem("flights", JSON.stringify(storedFlights));
   AddFlightToStore();
 }
 function SecondSortSuits() {
   storedSuits.sort(sortSuitsBySize);
   const parentElement = storedSuits[0].parentNode;
-  localStorage.setItem('suits', JSON.stringify(storedSuits));
+  localStorage.setItem("suits", JSON.stringify(storedSuits));
   AddSuitsToStore();
 }
 function SecondSortFoods() {
   storedFoods.sort(SortFoodsByMeat);
   const parentElement = storedFoods[0].parentNode;
-  localStorage.setItem('foods', JSON.stringify(storedFoods));
+  localStorage.setItem("foods", JSON.stringify(storedFoods));
   AddFoodsToStore();
 }
 
@@ -951,26 +961,34 @@ function AddFlightToStore() {
     str += `
     <div class="col-md-3">
         <div class="card card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
-          <img src="${storedFlights[i].image}" class="card-img-top product-image" alt="Product Image 1">
+          <img src="${
+            storedFlights[i].image
+          }" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFlights[i].name}</h5>
             <p class="card-text">
               <span>ID Number: ${storedFlights[i].id}</span><br>
               <span>Category: ${storedFlights[i].category}</span><br>
-              <span class="text-decoration-line-through">Original Price: $${storedFlights[i].price}</span><br>
-              <span class="text-danger">Discount Price: $${(Number(storedFlights[i].price) * 0.70).toFixed(2)}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${
+                storedFlights[i].price
+              }</span><br>
+              <span class="text-danger">Discount Price: $${(
+                Number(storedFlights[i].price) * 0.7
+              ).toFixed(2)}</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedFlights[i].price) * 0.70).toFixed(2)}" data-prod="flight">Add to Cart</button>
+            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(
+      Number(storedFlights[i].price) * 0.7
+    ).toFixed(2)}" data-prod="flight">Add to Cart</button>
           </div>
         </div>
-      </div>`
+      </div>`;
   }
   productGridF.innerHTML = str;
 
-  let flightToCart = document.querySelectorAll('.flightToCart');
+  let flightToCart = document.querySelectorAll(".flightToCart");
   for (let i = 0; i < flightToCart.length; i++) {
-    flightToCart[i].addEventListener('click', AddFlightToCart);
+    flightToCart[i].addEventListener("click", AddFlightToCart);
   }
 }
 
@@ -983,29 +1001,38 @@ function AddFoodsToStore() {
 
     <div class="col-md-3">
         <div class="card card h-100 d-flex flex-column">
-          <img src="${storedFoods[i].image}" class="card-img-top product-image" alt="Product Image 1">
+          <img src="${
+            storedFoods[i].image
+          }" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFoods[i].name}</h5>
             <p class="card-text">
             <span>ID: ${storedFoods[i].id}</span><br>
               <span>Dairy/Meat: ${storedFoods[i].foodType}</span><br>
               <span>Kosher Status: ${storedFoods[i].kosherStatus}</span><br>
-              <span>Hypoallergenic: ${storedFoods[i].hypoallergenicStatus}</span><br>
-              <span class="text-decoration-line-through">Original Price: $${storedFoods[i].price}</span><br>
-              <span class="text-danger">Discount Price: ${(Number(storedFoods[i].price) * 0.8).toFixed(2)}</span><br>
+              <span>Hypoallergenic: ${
+                storedFoods[i].hypoallergenicStatus
+              }</span><br>
+              <span class="text-decoration-line-through">Original Price: $${
+                storedFoods[i].price
+              }</span><br>
+              <span class="text-danger">Discount Price: ${(
+                Number(storedFoods[i].price) * 0.8
+              ).toFixed(2)}</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedFoods[i].price) * 0.8).toFixed(2)} data-prod="food">Add to Cart</button>
+            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(
+      Number(storedFoods[i].price) * 0.8
+    ).toFixed(2)} data-prod="food">Add to Cart</button>
           </div>
         </div>
       </div>`;
-
   }
   productGridFood.innerHTML = str;
 
-  let foodToCart = document.querySelectorAll('.foodToCart');
+  let foodToCart = document.querySelectorAll(".foodToCart");
   for (let i = 0; i < foodToCart.length; i++) {
-    foodToCart[i].addEventListener('click', AddFoodToCart);
+    foodToCart[i].addEventListener("click", AddFoodToCart);
   }
 }
 
@@ -1017,72 +1044,78 @@ function AddSuitsToStore() {
     str += `
     <div class="col-md-3">
         <div class="card card h-100 d-flex flex-column">
-          <img src="${storedSuits[i].image}" class="card-img-top product-image" alt="Space Suit Image">
+          <img src="${
+            storedSuits[i].image
+          }" class="card-img-top product-image" alt="Space Suit Image">
           <div class="card-body">
             <h5 class="card-title">${storedSuits[i].name}</h5>
             <p class="card-text">
               <span>Size:${storedSuits[i].size}</span><br>
               <span>Color: ${storedSuits[i].color}</span><br>
-              <span class="text-decoration-line-through">Original Price: $${storedSuits[i].price}</span><br>
-              <span class="text-danger">Discount Price: ${(Number(storedSuits[i].price) * 0.7)}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${
+                storedSuits[i].price
+              }</span><br>
+              <span class="text-danger">Discount Price: ${
+                Number(storedSuits[i].price) * 0.7
+              }</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedSuits[i].price) * 0.7).toFixed(2)}"  data-prod="suit">Add to Cart</button>
+            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(
+      Number(storedSuits[i].price) * 0.7
+    ).toFixed(2)}"  data-prod="suit">Add to Cart</button>
           </div>
         </div>
       </div>`;
   }
 
   productGridSuit.innerHTML = str;
-  let suitToCart = document.querySelectorAll('.suitToCart');
+  let suitToCart = document.querySelectorAll(".suitToCart");
   for (let i = 0; i < suitToCart.length; i++) {
-    suitToCart[i].addEventListener('click', AddSuitToCart);
+    suitToCart[i].addEventListener("click", AddSuitToCart);
   }
 }
 
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
-  let discount = Number(event.target.dataset.discount)
+  let discount = Number(event.target.dataset.discount);
   if (discount) {
     storedFlights[flightIndex].price = Number(discount);
   }
-  let cart = JSON.parse(sessionStorage.getItem('cart'))
-  cart.push(storedFlights[flightIndex])
-  sessionStorage.setItem('cart', JSON.stringify(cart));
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
+  cart.push(storedFlights[flightIndex]);
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   UpDatecart();
-
 }
 
 function AddFoodToCart(event) {
   let foodIndex = Number(event.target.dataset.ind);
-  let discount = Number(event.target.dataset.discount)
+  let discount = Number(event.target.dataset.discount);
   if (discount) {
     storedFoods[foodIndex].price = Number(discount);
   }
-  let cart = JSON.parse(sessionStorage.getItem('cart'))
-  cart.push(storedFoods[foodIndex])
-  sessionStorage.setItem('cart', JSON.stringify(cart));
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
+  cart.push(storedFoods[foodIndex]);
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   UpDatecart();
 }
 
 function AddSuitToCart(event) {
   let suitIndex = Number(event.target.dataset.ind);
-  let discount = Number(event.target.dataset.discount)
+  let discount = Number(event.target.dataset.discount);
   if (discount) {
     storedSuits[suitIndex].price = Number(discount);
   }
-  let cart = JSON.parse(sessionStorage.getItem('cart'))
-  cart.push(storedSuits[suitIndex])
-  sessionStorage.setItem('cart', JSON.stringify(cart));
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
+  cart.push(storedSuits[suitIndex]);
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   UpDatecart();
 }
 
 export function UpDatecart() {
   let str = "";
-  let cart = JSON.parse(sessionStorage.getItem('cart'))
+  let cart = JSON.parse(sessionStorage.getItem("cart"));
 
   for (let i = 0; i < cart.length; i++) {
-
     str += `
         <tr>
         <td>${cart[i].id}</td>
@@ -1094,39 +1127,39 @@ export function UpDatecart() {
   }
 
   cartTable.innerHTML = str;
-  let removeItem = document.querySelectorAll('.removeItem')
-  removeItem.forEach(element => {
-    element.addEventListener('click', RemoveItem);
+  let removeItem = document.querySelectorAll(".removeItem");
+  removeItem.forEach((element) => {
+    element.addEventListener("click", RemoveItem);
   });
   CartPrice();
 }
 
 function CartPrice() {
   let total = 0;
-  cart = JSON.parse(sessionStorage.getItem('cart'));
-  cart.forEach(element => {
-    total += Number(element.price)
+  cart = JSON.parse(sessionStorage.getItem("cart"));
+  cart.forEach((element) => {
+    total += Number(element.price);
   });
 
-  document.getElementById('total').innerHTML = "Total: $" + total;
+  document.getElementById("total").innerHTML = "Total: $" + total;
 }
 
 function RemoveItem(event) {
-  let index = Number(event.target.dataset.ind)
-  cart = JSON.parse(sessionStorage.getItem('cart'))
+  let index = Number(event.target.dataset.ind);
+  cart = JSON.parse(sessionStorage.getItem("cart"));
   cart.splice(index, 1);
-  sessionStorage.setItem('cart', JSON.stringify(cart))
+  sessionStorage.setItem("cart", JSON.stringify(cart));
   UpDatecart();
 }
 
 function AdminEdit(event) {
   let index = Number(event.target.dataset.ind);
   const td = document.getElementById(`user${index}`);
-  let storedUsers = JSON.parse(localStorage.getItem('users'));
+  let storedUsers = JSON.parse(localStorage.getItem("users"));
 
   td.innerHTML += `
-    <div>
-      <h2>Edit User Details</h2>
+    <div class="container text-center p-2">
+      <h2 class="heading-5" >Edit User Details</h2>
       <label for="firstName">First Name:</label>
       <input type="text" id="EditFirstName" value="${storedUsers[index].firstName}"><br>
 
@@ -1142,22 +1175,22 @@ function AdminEdit(event) {
       <label for="username">Username:</label>
       <input type="text" id="EditUsername" value="${storedUsers[index].username}"><br>
 
-      <button id="saveBtn">Save</button>
+      <button id="saveBtn" class="btn btn-info btn-md">Save</button>
     </div>`;
 
-  document.getElementById('saveBtn').addEventListener('click', function () {
-    storedUsers[index].firstName = document.getElementById('EditFirstName').value;
-    storedUsers[index].lastName = document.getElementById('EditLastName').value;
-    storedUsers[index].email = document.getElementById('EditEmail').value;
-    storedUsers[index].password = document.getElementById('EditPassword').value;
-    storedUsers[index].username = document.getElementById('EditUsername').value;
+  document.getElementById("saveBtn").addEventListener("click", function () {
+    storedUsers[index].firstName =
+      document.getElementById("EditFirstName").value;
+    storedUsers[index].lastName = document.getElementById("EditLastName").value;
+    storedUsers[index].email = document.getElementById("EditEmail").value;
+    storedUsers[index].password = document.getElementById("EditPassword").value;
+    storedUsers[index].username = document.getElementById("EditUsername").value;
 
-    localStorage.setItem('users', JSON.stringify(storedUsers));
+    localStorage.setItem("users", JSON.stringify(storedUsers));
 
     UserTable();
   });
 }
-
 
 export function UpdateInformation() {
   //כפתור שמראה את הסיסמא
@@ -1169,176 +1202,199 @@ export function UpdateInformation() {
       pass.type = "password";
     }
   });
-  document.querySelector('#UpdateInformationForm').addEventListener('submit', (event) => {
-    event.preventDefault();
+  document.querySelector("#UpdateInformationForm").addEventListener("submit", (event) => {
+      event.preventDefault();
 
-    let firstName = document.getElementById("firstNameUpdate");
-    if (firstName.value) {
-      let firstNameValue = firstName.value;
-      for (let element of firstNameValue) {
-        if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
-          firstName.style.border = "2px solid red";
+      let firstName = document.getElementById("firstNameUpdate");
+      if (firstName.value) {
+        let firstNameValue = firstName.value;
+        for (let element of firstNameValue) {
+          if (
+            !(
+              (element >= "א" && element <= "ת") ||
+              (element >= "a" && element <= "z") ||
+              (element >= "A" && element <= "Z") ||
+              (element >= "а" && element <= "я") ||
+              (element >= "А" && element <= "Я")
+            )
+          ) {
+            firstName.style.border = "2px solid red";
+            return;
+          } else {
+            firstName.style.border = "2px solid green";
+          }
+        }
+      }
+
+      let lastName = document.getElementById("lastNameUpdate");
+      if (lastName.value) {
+        let lastNameValue = lastName.value;
+        for (let element of lastNameValue) {
+          if (
+            !(
+              (element >= "א" && element <= "ת") ||
+              (element >= "a" && element <= "z") ||
+              (element >= "A" && element <= "Z") ||
+              (element >= "а" && element <= "я") ||
+              (element >= "А" && element <= "Я")
+            )
+          ) {
+            lastName.style.border = "2px solid red";
+            return;
+          } else {
+            lastName.style.border = "2px solid green";
+          }
+        }
+      }
+
+      let birthDate = document.getElementById("BirthDateUpdate");
+      let birthDateValue = new Date(birthDate.value);
+      let currentDate = new Date();
+      if (birthDate.value) {
+        if (
+          currentDate.getFullYear() - birthDateValue.getFullYear() < 120 &&
+          birthDateValue < currentDate
+        ) {
+          birthDate.style.border = "2px solid green";
+        } else {
+          birthDate.style.border = "2px solid red";
           return;
         }
-        else {
-          firstName.style.border = "2px solid green";
-        }
       }
-    }
 
-    let lastName = document.getElementById("lastNameUpdate");
-    if (lastName.value) {
-      let lastNameValue = lastName.value;
-      for (let element of lastNameValue) {
-        if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
-          lastName.style.border = "2px solid red";
-          return;
-        }
-        else {
-          lastName.style.border = "2px solid green";
+      let email = document.getElementById("emailUpdate");
+      if (email.value) {
+        let emailValue = email.value;
+        for (let element of emailValue) {
+          if (
+            (element >= "a" && element <= "z") ||
+            (element >= "A" && element <= "Z") ||
+            element == "@" ||
+            element == "." ||
+            (element >= "0" && element <= "9")
+          ) {
+            email.style.border = "2px solid green";
+          } else {
+            email.style.border = "2px solid red";
+            return;
+          }
         }
       }
-    }
 
-    let birthDate = document.getElementById("BirthDateUpdate");
-    let birthDateValue = new Date(birthDate.value);
-    let currentDate = new Date();
-    if (birthDate.value) {
-      if ((currentDate.getFullYear() - birthDateValue.getFullYear() < 120 && birthDateValue < currentDate)) {
-        birthDate.style.border = "2px solid green";
-      }
-      else {
-        birthDate.style.border = "2px solid red";
-        return
-      }
-    }
-
-    let email = document.getElementById("emailUpdate");
-    if (email.value) {
-      let emailValue = email.value;
-      for (let element of emailValue) {
-        if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
-          email.style.border = "2px solid green";
-        }
-        else {
-          email.style.border = "2px solid red";
+      let password = document.getElementById("passwordUpdate");
+      if (password.value) {
+        if (CheckPassword(password)) {
+          password.style.border = "2px solid red";
           return;
         }
       }
-    }
 
-
-    let password = document.getElementById("passwordUpdate");
-    if (password.value) {
-      if (CheckPassword(password)) {
-        password.style.border = "2px solid red";
-        return
-      }
-    }
-
-
-    let city = document.getElementById("cityUpdate");
-    if (city.value) {
-      let cityValue = city.value;
-      for (let element of cityValue) {
-        if (!((element >= 'א' && element <= 'ת') || element == " ")) {
-          city.style.border = "2px solid red";
-          return;
-        }
-        else {
-          city.style.border = "2px solid green";
+      let city = document.getElementById("cityUpdate");
+      if (city.value) {
+        let cityValue = city.value;
+        for (let element of cityValue) {
+          if (!((element >= "א" && element <= "ת") || element == " ")) {
+            city.style.border = "2px solid red";
+            return;
+          } else {
+            city.style.border = "2px solid green";
+          }
         }
       }
-    }
 
-
-    let street = document.getElementById("streetUpdate");
-    if (street.value) {
-      let streetValue = street.value;
-      for (let element of streetValue) {
-        if (!((element >= 'א' && element <= 'ת') || element == " ")) {
-          street.style.border = "2px solid red";
-          return;
-        }
-        else {
-          street.style.border = "2px solid green";
+      let street = document.getElementById("streetUpdate");
+      if (street.value) {
+        let streetValue = street.value;
+        for (let element of streetValue) {
+          if (!((element >= "א" && element <= "ת") || element == " ")) {
+            street.style.border = "2px solid red";
+            return;
+          } else {
+            street.style.border = "2px solid green";
+          }
         }
       }
-    }
 
-    let number = document.getElementById("numberUpdate");
-    number.style.border = !number.value ? "2px solid red" : "2px solid green"
+      let number = document.getElementById("numberUpdate");
+      number.style.border = !number.value ? "2px solid red" : "2px solid green";
 
-    let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
+      let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
 
-    if (firstName.value) {
-      connectedUser.firstName = firstName.value;
-    }
-    if (lastName.value) {
-      connectedUser.lastName = lastName.value;
-    }
-    if (birthDate.value) {
-      connectedUser.birthDate = birthDate.value;
-    }
-    if (email.value) {
-      connectedUser.email = email.value;
-    }
-    if (password.value) {
-      connectedUser.password = password.value;
-    }
-    if (city.value) {
-      connectedUser.city = city.value;
-    }
-    if (street.value) {
-      connectedUser.street = street.value;
-    }
-    if (number.value) {
-      connectedUser.number = number.value;
-    }
+      if (firstName.value) {
+        connectedUser.firstName = firstName.value;
+      }
+      if (lastName.value) {
+        connectedUser.lastName = lastName.value;
+      }
+      if (birthDate.value) {
+        connectedUser.birthDate = birthDate.value;
+      }
+      if (email.value) {
+        connectedUser.email = email.value;
+      }
+      if (password.value) {
+        connectedUser.password = password.value;
+      }
+      if (city.value) {
+        connectedUser.city = city.value;
+      }
+      if (street.value) {
+        connectedUser.street = street.value;
+      }
+      if (number.value) {
+        connectedUser.number = number.value;
+      }
 
-    sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
+      sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
 
-    let users = JSON.parse(localStorage.getItem("users"));
-    let updatedUsers = users.map((user) =>
-      user.username === connectedUser.username ? connectedUser : user
-    );
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-    window.location.assign('./managerProfile.html')
-  });
+      let users = JSON.parse(localStorage.getItem("users"));
+      let updatedUsers = users.map((user) =>
+        user.username === connectedUser.username ? connectedUser : user
+      );
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+      window.location.assign("./managerProfile.html");
+    });
 }
 
 export function LogIn_LogOut() {
   let user;
-  let userJSON = sessionStorage.getItem('connectedUser')
-  if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+  let userJSON = sessionStorage.getItem("connectedUser");
+  if (userJSON && userJSON != "null" && userJSON != "undefined") {
     user = JSON.parse(userJSON);
   }
   if (user) {
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('signup').style.display = 'none';
-    document.getElementById('logout').style.display = 'inline-block';
-    document.getElementById('profileRed').style.display = 'inline-block';
+    document.getElementById("login").style.display = "none";
+    document.getElementById("signup").style.display = "none";
+    document.getElementById("logout").style.display = "inline-block";
+    document.getElementById("profileRed").style.display = "inline-block";
+    if (window.location.href.includes("/store")) {
+      if(user.password === `admin1234admin`){
+        document.getElementById("addItem").style.display = "inline-block";
+      }
+      else{
+        document.getElementById("addItem").style.display = "none";
 
-  }
-  else {
-    document.getElementById('login').style.display = 'inline-block';
-    document.getElementById('signup').style.display = 'inline-block';
-    document.getElementById('logout').style.display = 'none';
-    document.getElementById('profileRed').style.display = 'none';
+      }
+    }
+  } else {
+    document.getElementById("login").style.display = "inline-block";
+    document.getElementById("signup").style.display = "inline-block";
+    document.getElementById("logout").style.display = "none";
+    document.getElementById("profileRed").style.display = "none";
   }
 }
 
 export function LogOut() {
-  console.log('logout');
-  document.getElementById('login').style.display = 'inline-block';
-  document.getElementById('signup').style.display = 'inline-block';
-  document.getElementById('logout').style.display = 'none';
-  if (window.location.href.includes("/store")) {
-    document.getElementById('addItem').classList.add('none');
-  }
+  console.log("logout");
+  document.getElementById("login").style.display = "inline-block";
+  document.getElementById("signup").style.display = "inline-block";
+  document.getElementById("logout").style.display = "none";
+  // if (window.location.href.includes("/store")) {
+  //   document.getElementById("addItem").classList.add("none");
+  // }
   if (window.location.href.includes("/managerProfile")) {
-    document.getElementById('update-tab').classList.add('disabled');
-    document.getElementById('manage-tab').classList.add('disabled');
+    document.getElementById("update-tab").classList.add("disabled");
+    document.getElementById("manage-tab").classList.add("disabled");
   }
   sessionStorage.setItem("connectedUser", JSON.stringify(null));
   window.location.reload();

@@ -21,7 +21,7 @@
 
 <body>
   <!--start of nav bar-->
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-5">
+  <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark fs-5">
     <div class="container ">
       <a class="navbar-brand" href="/index.html"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
@@ -73,7 +73,6 @@
             <li class="nav-item">
               <button class="link" id="profileRed" type="button" data-bs-target="#profileRed"><a href="/managerProfile.html"><span><i data-feather="user"></i></a></span>
               </button>
-              <button class="btn btn-sm btn-info" data-ind="${i}"><span><i data-feather="edit-3"></i></span></button></td>
             </li>
           </ul>
         </form>
@@ -219,31 +218,34 @@
     </div>
     <div class="offcanvas-body text-white-50">
       <h3>Your Desired Items</h3>
-      <div class="table-responsive bg-dark-subtle">
-        <table class="table table-bordered bg-dark-subtle">
-          <thead class="">
+      <div class="table-responsive">
+        <table class="table table-bordered table-dark">
+          <thead>
             <tr>
-              <th>Item Number</th>
-              <th>Picture</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Remove</th>
+              <th scope="col">Item Number</th>
+              <th scope="col">Picture</th>
+              <th scope="col">Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Remove</th>
             </tr>
           </thead>
           <tbody id="cartTable">
-
+  
           </tbody>
         </table>
       </div>
-      <div class="container" id="total"> Total: $0
-
+      <div class="container" id="total">
+  
+      </div>
+      <div class="container">
+        <button class="btn btn-xl btn-success float-end align-bottom"><span><i data-feather="shopping-bag" class="m-2"></i></span class="fw-bold p-3">Proceed To Check Out</button>
       </div>
     </div>
   </div>
   <!--shopping cart end-->
 
   <!--Adding new item of canvas start-->
-  <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft"
+  <div class="offcanvas offcanvas-start  bg-dark" tabindex="-1" id="offcanvasLeft"
     aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <h5 id="offcanvasLeftLabel" class="fs-2 text-white-50">Add New Item to Store</h5>

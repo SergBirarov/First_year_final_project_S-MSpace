@@ -14,9 +14,6 @@ import { UserProfile } from "./function.js";
 import { UpDatecart } from "./function.js";
 
 
-
-
-
 function Main() {
 
     if (window.location.href.includes("/store")) {
