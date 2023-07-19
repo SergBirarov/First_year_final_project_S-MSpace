@@ -4,13 +4,16 @@
   "name": "S&M Space",
   "url": "https://flourishing-gnome-816c93.netlify.app",
   "tests": [{
-    "id": "51084bf6-3759-456a-a419-a614ea49208c",
-    "name": "Untitled",
-    "commands": []
-  }, {
     "id": "7096d624-1093-45e6-88a9-4e3b857073cc",
-    "name": "Add Item to Cart",
+    "name": "Registration ",
     "commands": [{
+      "id": "8bf98b24-5675-4e00-862c-952a95aa4d8b",
+      "comment": "",
+      "command": "executeScript",
+      "target": "Target: return Math.floor(Math.random() * 100) + 1",
+      "targets": [],
+      "value": "yourVariable"
+    }, {
       "id": "b63d8c5d-c4b2-4408-8363-b1f69ca99181",
       "comment": "",
       "command": "open",
@@ -103,13 +106,6 @@
       ],
       "value": ""
     }, {
-      "id": "35b43a7c-3030-4b04-a3d0-87dd95eecafb",
-      "comment": "",
-      "command": "//type",
-      "target": "id=image",
-      "targets": [],
-      "value": "C:\\Users\\misha\\OneDrive\\Desktop\\HTML\\James-WEBB-Final-Project\\Media\\Assets\\heroGIF.gif"
-    }, {
       "id": "783d500f-ab7a-46d3-8b29-f0ea92f30337",
       "comment": "",
       "command": "click",
@@ -173,7 +169,7 @@
         ["xpath=//form[@id='registrationForm']/div[6]/input", "xpath:idRelative"],
         ["xpath=//div[6]/input", "xpath:position"]
       ],
-      "value": "maidl@.com"
+      "value": "maidl${yourVariable}@.com"
     }, {
       "id": "424b4e06-18f9-4de2-9767-4ffdcae555be",
       "comment": "",
@@ -292,6 +288,13 @@
       ],
       "value": "5"
     }, {
+      "id": "35b43a7c-3030-4b04-a3d0-87dd95eecafb",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=image",
+      "targets": [],
+      "value": "exampleUser${KEY_ENTER}"
+    }, {
       "id": "b8db18e3-2f07-472a-b99b-462be684a70c",
       "comment": "",
       "command": "click",
@@ -318,6 +321,116 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "694df7c7-734f-46e8-8d05-fc451cf15fd5",
+    "name": "LogOut + LogIn",
+    "commands": [{
+      "id": "7b229f29-69c8-4257-8190-1b25e0ce9e99",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6449055c-9554-4177-9920-082a1781c8f2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1734x1032",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0332e914-858a-4c67-85cf-536820e475e8",
+      "comment": "",
+      "command": "click",
+      "target": "id=login",
+      "targets": [
+        ["id=login", "id"],
+        ["css=#login", "css:finder"],
+        ["xpath=//button[@id='login']", "xpath:attributes"],
+        ["xpath=//form[@id='userBoard']/ul/li/button", "xpath:idRelative"],
+        ["xpath=//li/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f71ac590-45c6-4253-bdf6-09a0544e03e9",
+      "comment": "",
+      "command": "click",
+      "target": "id=floatingEmail",
+      "targets": [
+        ["id=floatingEmail", "id"],
+        ["css=#floatingEmail", "css:finder"],
+        ["xpath=//input[@id='floatingEmail']", "xpath:attributes"],
+        ["xpath=//span[@id='inputGroupPrepend']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8406c725-9640-4bfd-a6ff-861f5243e5d5",
+      "comment": "",
+      "command": "type",
+      "target": "id=floatingEmail",
+      "targets": [
+        ["id=floatingEmail", "id"],
+        ["css=#floatingEmail", "css:finder"],
+        ["xpath=//input[@id='floatingEmail']", "xpath:attributes"],
+        ["xpath=//span[@id='inputGroupPrepend']/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Regina@Phalange.com"
+    }, {
+      "id": "2a48f634-9eac-442e-927c-2c580497965c",
+      "comment": "",
+      "command": "click",
+      "target": "id=floatingPassword",
+      "targets": [
+        ["id=floatingPassword", "id"],
+        ["css=#floatingPassword", "css:finder"],
+        ["xpath=//input[@id='floatingPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='loginCon']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b248860-2213-406f-a2dc-68723c65cb46",
+      "comment": "",
+      "command": "type",
+      "target": "id=floatingPassword",
+      "targets": [
+        ["id=floatingPassword", "id"],
+        ["css=#floatingPassword", "css:finder"],
+        ["xpath=//input[@id='floatingPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='loginCon']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "admin1234admin"
+    }, {
+      "id": "d175b746-3451-4d0f-bcbe-e0f274cea463",
+      "comment": "",
+      "command": "click",
+      "target": "id=submit_login",
+      "targets": [
+        ["id=submit_login", "id"],
+        ["css=#submit_login", "css:finder"],
+        ["xpath=//button[@id='submit_login']", "xpath:attributes"],
+        ["xpath=//div[@id='loginCon']/div/form/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b2e295b-27a4-4747-b282-74d75945772c",
+      "comment": "",
+      "command": "click",
+      "target": "id=logout",
+      "targets": [
+        ["id=logout", "id"],
+        ["css=#logout", "css:finder"],
+        ["xpath=//button[@id='logout']", "xpath:attributes"],
+        ["xpath=//form[@id='userBoard']/ul/li[3]/button", "xpath:idRelative"],
+        ["xpath=//li[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "bdbc257a-9d1e-4f0f-86e5-262c532fa4ab",
@@ -325,7 +438,7 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["51084bf6-3759-456a-a419-a614ea49208c"]
+    "tests": []
   }],
   "urls": ["https://flourishing-gnome-816c93.netlify.app/"],
   "plugins": []
