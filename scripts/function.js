@@ -37,7 +37,7 @@ var storedFlights = [
     arrivalDate: `26/08/2025`,
     classType: `3 Heavy`,
     image: `/Media/Assets/Ecom/products/prod1.jpg`,
-    price: `12,500`,
+    price: `12500`,
   },
   {
     category: 'flight',
@@ -47,7 +47,7 @@ var storedFlights = [
     arrivalDate: `26/09/2024`,
     classType: `2 Medium`,
     image: `/Media/Assets/Ecom/products/prod2.jpg`,
-    price: `11,500`,
+    price: `11500`,
   },
   {
     category: 'flight',
@@ -57,7 +57,7 @@ var storedFlights = [
     arrivalDate: `26/09/2024`,
     classType: `1 Light`,
     image: `/Media/Assets/Ecom/products/prod3.jpg`,
-    price: `64,500`,
+    price: `64500`,
   },
   {
     category: 'flight',
@@ -67,7 +67,7 @@ var storedFlights = [
     arrivalDate: `26/09/2032`,
     classType: `3 Heavy`,
     image: `/Media/Assets/Ecom/products/prod4.jpg`,
-    price: `164,500`,
+    price: `164500`,
   },
 ];
 var storedFoods = [
@@ -929,10 +929,10 @@ function AddFlightToStore() {
               <span>ID Number: ${storedFlights[i].id}</span><br>
               <span>Category: ${storedFlights[i].category}</span><br>
               <span class="text-decoration-line-through">Original Price: $${storedFlights[i].price}</span><br>
-              <span class="text-danger">Discount Price: $${Number(storedFlights[i].price * 0.70)}</span><br>
+              <span class="text-danger">Discount Price: $${(Number(storedFlights[i].price) * 0.70).toFixed(2)}</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
+            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedFlights[i].price) * 0.70).toFixed(2)}" data-prod="flight">Add to Cart</button>
           </div>
         </div>
       </div>`
@@ -943,7 +943,6 @@ function AddFlightToStore() {
   for (let i = 0; i < flightToCart.length; i++) {
     flightToCart[i].addEventListener('click', AddFlightToCart);
   }
-
 }
 
 function AddFoodsToStore() {
@@ -963,12 +962,11 @@ function AddFoodsToStore() {
               <span>Dairy/Meat: ${storedFoods[i].foodType}</span><br>
               <span>Kosher Status: ${storedFoods[i].kosherStatus}</span><br>
               <span>Hypoallergenic: ${storedFoods[i].hypoallergenicStatus}</span><br>
-              <span>Price: $${storedFoods[i].price}</span><br>
-              <span class="text-decoration-line-through">Original Price: $120</span><br>
-              <span class="text-danger">Discount Price: -$20</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedFoods[i].price}</span><br>
+              <span class="text-danger">Discount Price: ${(Number(storedFoods[i].price) * 0.8).toFixed(2)}</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedFoods[i].price) * 0.8).toFixed(2)} data-prod="food">Add to Cart</button>
           </div>
         </div>
       </div>`;
@@ -996,12 +994,11 @@ function AddSuitsToStore() {
             <p class="card-text">
               <span>Size:${storedSuits[i].size}</span><br>
               <span>Color: ${storedSuits[i].color}</span><br>
-              <span>Price: $${Number(storedSuits[i].price) * 0.70}</span><br>
               <span class="text-decoration-line-through">Original Price: $${storedSuits[i].price}</span><br>
-              <span class="text-danger">Discount Price: -70%</span><br>
+              <span class="text-danger">Discount Price: ${(Number(storedSuits[i].price) * 0.7)}</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
+            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedSuits[i].price) * 0.7).toFixed(2)}"  data-prod="suit">Add to Cart</button>
           </div>
         </div>
       </div>`;
@@ -1016,14 +1013,23 @@ function AddSuitsToStore() {
 
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
-  cart = JSON.parse(sessionStorage.getItem('cart'))
+  let discount = Number(event.target.dataset.discount)
+  if (discount) {
+    storedFlights[flightIndex].price = Number(discount);
+  }
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
   cart.push(storedFlights[flightIndex])
   sessionStorage.setItem('cart', JSON.stringify(cart));
   UpDatecart();
+
 }
 
 function AddFoodToCart(event) {
   let foodIndex = Number(event.target.dataset.ind);
+  let discount = Number(event.target.dataset.discount)
+  if (discount) {
+    storedFoods[foodIndex].price = Number(discount);
+  }
   let cart = JSON.parse(sessionStorage.getItem('cart'))
   cart.push(storedFoods[foodIndex])
   sessionStorage.setItem('cart', JSON.stringify(cart));
@@ -1032,6 +1038,10 @@ function AddFoodToCart(event) {
 
 function AddSuitToCart(event) {
   let suitIndex = Number(event.target.dataset.ind);
+  let discount = Number(event.target.dataset.discount)
+  if (discount) {
+    storedSuits[suitIndex].price = Number(discount);
+  }
   let cart = JSON.parse(sessionStorage.getItem('cart'))
   cart.push(storedSuits[suitIndex])
   sessionStorage.setItem('cart', JSON.stringify(cart));
@@ -1059,8 +1069,17 @@ export function UpDatecart() {
   removeItem.forEach(element => {
     element.addEventListener('click', RemoveItem);
   });
-  // innerHTML = str;
+  CartPrice();
+}
 
+function CartPrice() {
+  let total = 0;
+  cart = JSON.parse(sessionStorage.getItem('cart'));
+  cart.forEach(element => {
+    total += Number(element.price)
+  });
+
+  document.getElementById('total').innerHTML = "Total: $" + total;
 }
 
 function RemoveItem(event) {
