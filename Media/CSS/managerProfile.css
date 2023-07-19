@@ -56,4 +56,22 @@
     opacity: 1;
   }
   
-
+  .table-responsive {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .table {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .table-bordered th,
+  .table-bordered td {
+    vertical-align: middle;
+  }
+  
+  .img-fluid.rounded-circle {
+    width: 40px;
+    height: 40px;
+  }

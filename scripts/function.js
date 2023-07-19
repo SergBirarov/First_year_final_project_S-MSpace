@@ -14,44 +14,18 @@ var storedUsers = [
     `Hell`,
     `Hell st`,
     `25`
-  ),
-];
-storedUsers[1] = new User(
-  `username`,
-  `a123456789`,
-  `/Media/Assets/team-3.jpg`,
-  `שמואל`,
-  `שמואלי`,
-  `3Regina@Phalange.com`,
-  `1996-11-25`,
-  `עיר`,
-  `רחוב`,
-  `25`
-);
-// storedUsers[2] = new User(
-//   `dasdasd`,
-//   `a123456789`,
-//   `/Media/Assets/team-3.jpg`,
-//   `wwwwwwwwwww`,
-//   `שמואלי`,
-//   `1Regina@Phalange.com`,
-//   `1996-11-25`,
-//   `עיר`,
-//   `רחוב`,
-//   `25`
-// )
-// storedUsers[3] = new User(
-//   `fghdfgh`,
-//   `a123456789`,
-//   `/Media/Assets/team-3.jpg`,
-//   `qqqqqq`,
-//   `שמואלי`,
-//   `2Regina@Phalange.com`,
-//   `1996-11-25`,
-//   `עיר`,
-//   `רחוב`,
-//   `25`
-// )
+  ), new User(
+    `username`,
+    `a123456789`,
+    `/Media/Assets/team-3.jpg`,
+    `שמואל`,
+    `שמואלי`,
+    `3Regina@Phalange.com`,
+    `1996-11-25`,
+    `עיר`,
+    `רחוב`,
+    `25`
+  )]
 var cart = new Array();
 // arrays for hardcoded products
 var storedFlights = [
@@ -220,7 +194,7 @@ export function UserTable() {
          <button class="btn btn-sm btn-info editProfile" data-ind="${i}" ><span><i data-ind="${i}" data-feather="edit-3">Edit</i></span></button></td>`;
       }
       users = `<tr>
-            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
+            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="class="img-fluid rounded-circle me-2""> <span>${element.username}</span></td>
             <td>${element.lastName} ${element.firstName}</td>
             <td>${element.birthDate}</td>
             <td>${element.street} ${element.number}, ${element.city}</td>
@@ -258,33 +232,19 @@ export function UserProfile() {
     user = JSON.parse(userJSON);
     document.getElementById(
       "userProfileTab"
-    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid"></img>
   `;
-    document.getElementById(
-      "uploadPic"
-    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    document.getElementById("uploadPic").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid "></img>
   `;
-    document.getElementById("userBadge").innerHTML =
-      user.password === `admin1234admin` ? `Admin` : `User`;
-
-    document.getElementById(
-      "profileTabName"
-    ).innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("userBadge").innerHTML = user.password === `admin1234admin` ? `Admin` : `User`;
+    document.getElementById("profileTabName").innerHTML = `${user.firstName} ${user.lastName}`;
     document.getElementById("profileTabMail").innerHTML = `${user.email}`;
-    document.getElementById(
-      "profileTabUserName"
-    ).innerHTML = `${user.username}`;
+    document.getElementById("profileTabUserName").innerHTML = `${user.username}`;
     document.getElementById("profileTabAddress").innerHTML = `${user.city}`;
-
-    document.getElementById(
-      "profileName"
-    ).innerHTML = `${user.firstName} ${user.lastName}`;
-    document.getElementById("profilePhone").innerHTML = `${user.phone ? `'${user.phone}` : "Have not phone"
-      }`;
+    document.getElementById("profileName").innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("profilePhone").innerHTML = `${user.phone ? `'${user.phone}` : "Update your Info To view Number"}`;
     document.getElementById("profileMail").innerHTML = `${user.email}`;
-    document.getElementById(
-      "profileAddress"
-    ).innerHTML = `${user.city},${user.street} ${user.number}`;
+    document.getElementById("profileAddress").innerHTML = `${user.city},${user.street} ${user.number}`;
   }
 }
 

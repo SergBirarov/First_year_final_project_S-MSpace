@@ -16,6 +16,8 @@ import { UpDatecart } from "./function.js";
 
 function Main() {
 
+
+
     if (window.location.href.includes("/store")) {
         BuildStore();
         AddSuit();
@@ -53,6 +55,8 @@ function Main() {
     SendregistrationForm();
     SendLoginForm();
     document.getElementById('logout').addEventListener('click', LogOut)
+
+    
 
     LogIn_LogOut();
 
