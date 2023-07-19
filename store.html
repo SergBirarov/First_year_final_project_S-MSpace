@@ -47,18 +47,35 @@
           </li>
         </ul>
         <form class="d-flex p-2" id="userBoard">
-          <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
-            In</button>
-          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
-            Up</button>
-          <button class="link m-1" id="logout" type="button" data-bs-target="#logout">Log
-            Out</button>
-
-          <button class="btn btn-primary none" id="addItem" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
-          <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
-              data-feather="shopping-cart"></i></button>
+          <ul class="navbar-nav navbar-nav-responsive me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
+                In</button>
+            </li>
+            <li class="nav-item">
+              <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
+                Up</button>
+            </li>
+            <li class="nav-item">
+              <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log
+                Out</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+                  data-feather="shopping-cart"></i></button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-primary" id="addItem" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i
+                  data-feather="plus"></i></button>
+            </li>
+            <li class="nav-item">
+              <button class="link" id="profileRed" type="button" data-bs-target="#profileRed"><a href="/managerProfile.html"><span><i data-feather="user"></i></a></span>
+              </button>
+              <button class="btn btn-sm btn-info" data-ind="${i}"><span><i data-feather="edit-3"></i></span></button></td>
+            </li>
+          </ul>
         </form>
       </div>
     </div>
@@ -503,14 +520,14 @@
 
       <h1 class="display-5">Space Ships</h1>
       <div class="product-grid gap-2" id="storeGrid">
-        <div id="flightsSec" class="row p-3">
+        <div id="flightsSec" class="row row-gap-4">
           <div class="container">
           </div>
           <!--Content inserted from js-->
         </div>
 
         <h1 class="display-5">Space Nutrition Packs</h1>
-        <div id="foodSec" class="row p-3">
+        <div id="foodSec" class="row row-gap-4">
           <div class="container">
           </div>
           <!--Content inserted from js-->
@@ -519,7 +536,7 @@
         <h1 class="display-5">Space Suits</h1>
 
         <div id="suitSec" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-          <div class="row p-3">
+          <div class="row row-gap-4">
             <div class="container">
             </div>
 
