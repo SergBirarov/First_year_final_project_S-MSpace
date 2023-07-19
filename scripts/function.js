@@ -279,9 +279,8 @@ export function UserProfile() {
     document.getElementById(
       "profileName"
     ).innerHTML = `${user.firstName} ${user.lastName}`;
-    document.getElementById("profilePhone").innerHTML = `${
-      user.phone ? `'${user.phone}` : "Have not phone"
-    }`;
+    document.getElementById("profilePhone").innerHTML = `${user.phone ? `'${user.phone}` : "Have not phone"
+      }`;
     document.getElementById("profileMail").innerHTML = `${user.email}`;
     document.getElementById(
       "profileAddress"
@@ -647,7 +646,7 @@ function SubmitLoginForm(event) {
 //adding products to localstorage through user input
 export function AddSuit() {
   document.querySelector("#addSuit").addEventListener("submit", (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     let brandName = document.getElementById("addSuitName").value;
     let size = document.getElementById("addSuitSize").value;
@@ -707,7 +706,7 @@ export function AddSuit() {
 
 export function AddFood() {
   document.querySelector("#addFood").addEventListener("submit", (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     let foodName = document.getElementById("addFoodName").value;
     let foodType = document.querySelector(
@@ -770,7 +769,7 @@ export function AddFood() {
 
 export function AddShip() {
   document.querySelector("#addFlight").addEventListener("submit", (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     let flightNumber = document.getElementById("addFlightNumber").value;
     let classType = document.getElementById("addShipSize").value;
@@ -961,25 +960,18 @@ function AddFlightToStore() {
     str += `
     <div class="col-md-3">
         <div class="card card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
-          <img src="${
-            storedFlights[i].image
-          }" class="card-img-top product-image" alt="Product Image 1">
+          <img src="${storedFlights[i].image}" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFlights[i].name}</h5>
             <p class="card-text">
               <span>ID Number: ${storedFlights[i].id}</span><br>
               <span>Category: ${storedFlights[i].category}</span><br>
-              <span class="text-decoration-line-through">Original Price: $${
-                storedFlights[i].price
-              }</span><br>
-              <span class="text-danger">Discount Price: $${(
-                Number(storedFlights[i].price) * 0.7
-              ).toFixed(2)}</span><br>
+              <span class="">Price: $${(Number(storedFlights[i].price) * 0.7).toFixed(2)}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedFlights[i].price}</span><br>
+              <span class="text-danger">Discount: -30%</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(
-      Number(storedFlights[i].price) * 0.7
-    ).toFixed(2)}" data-prod="flight">Add to Cart</button>
+            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedFlights[i].price) * 0.7).toFixed(2)}" data-prod="flight">Add to Cart</button>
           </div>
         </div>
       </div>`;
@@ -1001,29 +993,20 @@ function AddFoodsToStore() {
 
     <div class="col-md-3">
         <div class="card card h-100 d-flex flex-column">
-          <img src="${
-            storedFoods[i].image
-          }" class="card-img-top product-image" alt="Product Image 1">
+          <img src="${storedFoods[i].image}" class="card-img-top product-image" alt="Product Image 1">
           <div class="card-body">
             <h5 class="card-title">${storedFoods[i].name}</h5>
             <p class="card-text">
             <span>ID: ${storedFoods[i].id}</span><br>
               <span>Dairy/Meat: ${storedFoods[i].foodType}</span><br>
               <span>Kosher Status: ${storedFoods[i].kosherStatus}</span><br>
-              <span>Hypoallergenic: ${
-                storedFoods[i].hypoallergenicStatus
-              }</span><br>
-              <span class="text-decoration-line-through">Original Price: $${
-                storedFoods[i].price
-              }</span><br>
-              <span class="text-danger">Discount Price: ${(
-                Number(storedFoods[i].price) * 0.8
-              ).toFixed(2)}</span><br>
+              <span>Hypoallergenic: ${storedFoods[i].hypoallergenicStatus}</span><br>
+              <span class="">Price: ${(Number(storedFoods[i].price) * 0.8).toFixed(2)}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedFoods[i].price}</span><br>
+              <span class="text-danger">Discount: -20%</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(
-      Number(storedFoods[i].price) * 0.8
-    ).toFixed(2)} data-prod="food">Add to Cart</button>
+            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedFoods[i].price) * 0.8).toFixed(2)} data-prod="food">Add to Cart</button>
           </div>
         </div>
       </div>`;
@@ -1044,25 +1027,18 @@ function AddSuitsToStore() {
     str += `
     <div class="col-md-3">
         <div class="card card h-100 d-flex flex-column">
-          <img src="${
-            storedSuits[i].image
-          }" class="card-img-top product-image" alt="Space Suit Image">
+          <img src="${storedSuits[i].image}" class="card-img-top product-image" alt="Space Suit Image">
           <div class="card-body">
             <h5 class="card-title">${storedSuits[i].name}</h5>
             <p class="card-text">
               <span>Size:${storedSuits[i].size}</span><br>
               <span>Color: ${storedSuits[i].color}</span><br>
-              <span class="text-decoration-line-through">Original Price: $${
-                storedSuits[i].price
-              }</span><br>
-              <span class="text-danger">Discount Price: ${
-                Number(storedSuits[i].price) * 0.7
-              }</span><br>
+              <span class="">Price: $${(Number(storedSuits[i].price) * 0.7).toFixed(2)}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedSuits[i].price}</span><br>
+              <span class="text-danger">Discount: -30%</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
             </p>
-            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(
-      Number(storedSuits[i].price) * 0.7
-    ).toFixed(2)}"  data-prod="suit">Add to Cart</button>
+            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-discount="${(Number(storedSuits[i].price) * 0.7).toFixed(2)}"  data-prod="suit">Add to Cart</button>
           </div>
         </div>
       </div>`;
@@ -1203,157 +1179,157 @@ export function UpdateInformation() {
     }
   });
   document.querySelector("#UpdateInformationForm").addEventListener("submit", (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
-      let firstName = document.getElementById("firstNameUpdate");
-      if (firstName.value) {
-        let firstNameValue = firstName.value;
-        for (let element of firstNameValue) {
-          if (
-            !(
-              (element >= "א" && element <= "ת") ||
-              (element >= "a" && element <= "z") ||
-              (element >= "A" && element <= "Z") ||
-              (element >= "а" && element <= "я") ||
-              (element >= "А" && element <= "Я")
-            )
-          ) {
-            firstName.style.border = "2px solid red";
-            return;
-          } else {
-            firstName.style.border = "2px solid green";
-          }
-        }
-      }
-
-      let lastName = document.getElementById("lastNameUpdate");
-      if (lastName.value) {
-        let lastNameValue = lastName.value;
-        for (let element of lastNameValue) {
-          if (
-            !(
-              (element >= "א" && element <= "ת") ||
-              (element >= "a" && element <= "z") ||
-              (element >= "A" && element <= "Z") ||
-              (element >= "а" && element <= "я") ||
-              (element >= "А" && element <= "Я")
-            )
-          ) {
-            lastName.style.border = "2px solid red";
-            return;
-          } else {
-            lastName.style.border = "2px solid green";
-          }
-        }
-      }
-
-      let birthDate = document.getElementById("BirthDateUpdate");
-      let birthDateValue = new Date(birthDate.value);
-      let currentDate = new Date();
-      if (birthDate.value) {
+    let firstName = document.getElementById("firstNameUpdate");
+    if (firstName.value) {
+      let firstNameValue = firstName.value;
+      for (let element of firstNameValue) {
         if (
-          currentDate.getFullYear() - birthDateValue.getFullYear() < 120 &&
-          birthDateValue < currentDate
-        ) {
-          birthDate.style.border = "2px solid green";
-        } else {
-          birthDate.style.border = "2px solid red";
-          return;
-        }
-      }
-
-      let email = document.getElementById("emailUpdate");
-      if (email.value) {
-        let emailValue = email.value;
-        for (let element of emailValue) {
-          if (
+          !(
+            (element >= "א" && element <= "ת") ||
             (element >= "a" && element <= "z") ||
             (element >= "A" && element <= "Z") ||
-            element == "@" ||
-            element == "." ||
-            (element >= "0" && element <= "9")
-          ) {
-            email.style.border = "2px solid green";
-          } else {
-            email.style.border = "2px solid red";
-            return;
-          }
+            (element >= "а" && element <= "я") ||
+            (element >= "А" && element <= "Я")
+          )
+        ) {
+          firstName.style.border = "2px solid red";
+          return;
+        } else {
+          firstName.style.border = "2px solid green";
         }
       }
+    }
 
-      let password = document.getElementById("passwordUpdate");
-      if (password.value) {
-        if (CheckPassword(password)) {
-          password.style.border = "2px solid red";
+    let lastName = document.getElementById("lastNameUpdate");
+    if (lastName.value) {
+      let lastNameValue = lastName.value;
+      for (let element of lastNameValue) {
+        if (
+          !(
+            (element >= "א" && element <= "ת") ||
+            (element >= "a" && element <= "z") ||
+            (element >= "A" && element <= "Z") ||
+            (element >= "а" && element <= "я") ||
+            (element >= "А" && element <= "Я")
+          )
+        ) {
+          lastName.style.border = "2px solid red";
+          return;
+        } else {
+          lastName.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let birthDate = document.getElementById("BirthDateUpdate");
+    let birthDateValue = new Date(birthDate.value);
+    let currentDate = new Date();
+    if (birthDate.value) {
+      if (
+        currentDate.getFullYear() - birthDateValue.getFullYear() < 120 &&
+        birthDateValue < currentDate
+      ) {
+        birthDate.style.border = "2px solid green";
+      } else {
+        birthDate.style.border = "2px solid red";
+        return;
+      }
+    }
+
+    let email = document.getElementById("emailUpdate");
+    if (email.value) {
+      let emailValue = email.value;
+      for (let element of emailValue) {
+        if (
+          (element >= "a" && element <= "z") ||
+          (element >= "A" && element <= "Z") ||
+          element == "@" ||
+          element == "." ||
+          (element >= "0" && element <= "9")
+        ) {
+          email.style.border = "2px solid green";
+        } else {
+          email.style.border = "2px solid red";
           return;
         }
       }
+    }
 
-      let city = document.getElementById("cityUpdate");
-      if (city.value) {
-        let cityValue = city.value;
-        for (let element of cityValue) {
-          if (!((element >= "א" && element <= "ת") || element == " ")) {
-            city.style.border = "2px solid red";
-            return;
-          } else {
-            city.style.border = "2px solid green";
-          }
+    let password = document.getElementById("passwordUpdate");
+    if (password.value) {
+      if (CheckPassword(password)) {
+        password.style.border = "2px solid red";
+        return;
+      }
+    }
+
+    let city = document.getElementById("cityUpdate");
+    if (city.value) {
+      let cityValue = city.value;
+      for (let element of cityValue) {
+        if (!((element >= "א" && element <= "ת") || element == " ")) {
+          city.style.border = "2px solid red";
+          return;
+        } else {
+          city.style.border = "2px solid green";
         }
       }
+    }
 
-      let street = document.getElementById("streetUpdate");
-      if (street.value) {
-        let streetValue = street.value;
-        for (let element of streetValue) {
-          if (!((element >= "א" && element <= "ת") || element == " ")) {
-            street.style.border = "2px solid red";
-            return;
-          } else {
-            street.style.border = "2px solid green";
-          }
+    let street = document.getElementById("streetUpdate");
+    if (street.value) {
+      let streetValue = street.value;
+      for (let element of streetValue) {
+        if (!((element >= "א" && element <= "ת") || element == " ")) {
+          street.style.border = "2px solid red";
+          return;
+        } else {
+          street.style.border = "2px solid green";
         }
       }
+    }
 
-      let number = document.getElementById("numberUpdate");
-      number.style.border = !number.value ? "2px solid red" : "2px solid green";
+    let number = document.getElementById("numberUpdate");
+    number.style.border = !number.value ? "2px solid red" : "2px solid green";
 
-      let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
+    let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
 
-      if (firstName.value) {
-        connectedUser.firstName = firstName.value;
-      }
-      if (lastName.value) {
-        connectedUser.lastName = lastName.value;
-      }
-      if (birthDate.value) {
-        connectedUser.birthDate = birthDate.value;
-      }
-      if (email.value) {
-        connectedUser.email = email.value;
-      }
-      if (password.value) {
-        connectedUser.password = password.value;
-      }
-      if (city.value) {
-        connectedUser.city = city.value;
-      }
-      if (street.value) {
-        connectedUser.street = street.value;
-      }
-      if (number.value) {
-        connectedUser.number = number.value;
-      }
+    if (firstName.value) {
+      connectedUser.firstName = firstName.value;
+    }
+    if (lastName.value) {
+      connectedUser.lastName = lastName.value;
+    }
+    if (birthDate.value) {
+      connectedUser.birthDate = birthDate.value;
+    }
+    if (email.value) {
+      connectedUser.email = email.value;
+    }
+    if (password.value) {
+      connectedUser.password = password.value;
+    }
+    if (city.value) {
+      connectedUser.city = city.value;
+    }
+    if (street.value) {
+      connectedUser.street = street.value;
+    }
+    if (number.value) {
+      connectedUser.number = number.value;
+    }
 
-      sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
+    sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
 
-      let users = JSON.parse(localStorage.getItem("users"));
-      let updatedUsers = users.map((user) =>
-        user.username === connectedUser.username ? connectedUser : user
-      );
-      localStorage.setItem("users", JSON.stringify(updatedUsers));
-      window.location.assign("./managerProfile.html");
-    });
+    let users = JSON.parse(localStorage.getItem("users"));
+    let updatedUsers = users.map((user) =>
+      user.username === connectedUser.username ? connectedUser : user
+    );
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    window.location.assign("./managerProfile.html");
+  });
 }
 
 export function LogIn_LogOut() {
@@ -1368,10 +1344,10 @@ export function LogIn_LogOut() {
     document.getElementById("logout").style.display = "inline-block";
     document.getElementById("profileRed").style.display = "inline-block";
     if (window.location.href.includes("/store")) {
-      if(user.password === `admin1234admin`){
+      if (user.password === `admin1234admin`) {
         document.getElementById("addItem").style.display = "inline-block";
       }
-      else{
+      else {
         document.getElementById("addItem").style.display = "none";
 
       }

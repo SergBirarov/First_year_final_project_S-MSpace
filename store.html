@@ -67,11 +67,11 @@
             </li>
             <li class="nav-item">
               <button class="btn btn-primary" id="addItem" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i
-                  data-feather="plus"></i></button>
+                data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i data-feather="plus"></i></button>
             </li>
             <li class="nav-item">
-              <button class="link" id="profileRed" type="button" data-bs-target="#profileRed"><a href="/managerProfile.html"><span><i data-feather="user"></i></a></span>
+              <button class="link" id="profileRed" type="button" data-bs-target="#profileRed"><a
+                  href="/managerProfile.html"><span><i data-feather="user"></i></a></span>
               </button>
             </li>
           </ul>
@@ -180,7 +180,7 @@
 
             <div class="input-group mb-3 has-validation">
               <input id="firstName" type="text" class="form-control" placeholder="First Name" required>
-              <input id="lastName" type="text" class="form-control" placeholder="Last Name" required> 
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
             </div>
 
             <div class="input-group mb-3">
@@ -230,15 +230,16 @@
             </tr>
           </thead>
           <tbody id="cartTable">
-  
+
           </tbody>
         </table>
       </div>
       <div class="container" id="total">
-  
+
       </div>
       <div class="container">
-        <button class="btn btn-xl btn-success float-end align-bottom"><span><i data-feather="shopping-bag" class="m-2"></i></span class="fw-bold p-3">Proceed To Check Out</button>
+        <button class="btn btn-xl btn-success float-end align-bottom"><span><i data-feather="shopping-bag"
+              class="m-2"></i></span class="fw-bold p-3">Proceed To Check Out</button>
       </div>
     </div>
   </div>
@@ -293,7 +294,7 @@
                       </div>
 
                       <div class="input-group mb-3">
-                        <input id="addShipId" type="text" class="form-control" placeholder="Id">
+                        <input id="addShipId" type="number" class="form-control" placeholder="Id">
                       </div>
 
                       <div class="input-group mb-3">
@@ -339,12 +340,11 @@
                     <form id="addFood">
 
                       <div class="input-group mb-3">
-                        <input id="addFoodCategory" type="text" class="form-control" value="Food" placeholder="Id"
-                          disabled>
+                        <input id="addFoodCategory" type="text" class="form-control" value="Food" disabled>
                       </div>
 
                       <div class="input-group mb-3">
-                        <input id="addFoodId" type="text" class="form-control" placeholder="Id">
+                        <input id="addFoodId" type="number" class="form-control" placeholder="Id">
                       </div>
 
                       <div class="input-group mb-3">
@@ -406,8 +406,7 @@
                       </div>
 
                       <div class="input-group mb-3 col-md-4">
-                        <input id="addSuitSize" type="number" class="form-control" placeholder="Size" value="40"
-                          min="40" max="64">
+                        <input id="addSuitSize" type="number" class="form-control" placeholder="Size" min="40" max="64">
                       </div>
 
                       <select id="addSuitColor" class="form-select mb-3">
