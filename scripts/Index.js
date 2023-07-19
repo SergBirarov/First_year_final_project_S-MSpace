@@ -11,6 +11,7 @@ import { LogOut } from "./function.js";
 import { SortStore } from "./function.js";
 import { SecondSortStore } from "./function.js";
 import { UserProfile } from "./function.js";
+import { UpDatecart } from "./function.js";
 
 
 
@@ -23,6 +24,7 @@ function Main() {
         AddSuit();
         AddFood();
         AddShip();
+        UpDatecart()
         document.getElementById('price-filter').addEventListener('click', SortStore);
         document.getElementById('second-filter').addEventListener('click', SecondSortStore);
 

@@ -151,8 +151,8 @@ var storedSuits = [
     price: `1360.90`,
   },
 ];
-if (!(localStorage.getItem('cart'))) {
-  localStorage.setItem('cart', JSON.stringify(cart))
+if (!(sessionStorage.getItem('cart'))) {
+  sessionStorage.setItem('cart', JSON.stringify(cart))
 }
 if (!(localStorage.getItem('users'))) {
   localStorage.setItem('users', JSON.stringify(storedUsers))
@@ -215,7 +215,6 @@ export function UserTable() {
 }
 function RemoveProfile(event) {
   let index = Number(event.target.dataset.ind)
-  console.log(index);
   storedUsers = JSON.parse(localStorage.getItem('users'))
   storedUsers.splice(index, 1);
   localStorage.setItem('users', JSON.stringify(storedUsers))
@@ -989,38 +988,33 @@ function AddSuitsToStore() {
   }
 }
 
-
-function UserCart(product) {
-
-}
-
 function AddFlightToCart(event) {
   let flightIndex = Number(event.target.dataset.ind);
-  cart = JSON.parse(localStorage.getItem('cart'))
+  cart = JSON.parse(sessionStorage.getItem('cart'))
   cart.push(storedFlights[flightIndex])
-  localStorage.setItem('cart', JSON.stringify(cart));
+  sessionStorage.setItem('cart', JSON.stringify(cart));
   UpDatecart();
 }
 
 function AddFoodToCart(event) {
   let foodIndex = Number(event.target.dataset.ind);
-  let cart = JSON.parse(localStorage.getItem('cart'))
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
   cart.push(storedFoods[foodIndex])
-  localStorage.setItem('cart', JSON.stringify(cart));
+  sessionStorage.setItem('cart', JSON.stringify(cart));
   UpDatecart();
 }
 
 function AddSuitToCart(event) {
   let suitIndex = Number(event.target.dataset.ind);
-  let cart = JSON.parse(localStorage.getItem('cart'))
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
   cart.push(storedSuits[suitIndex])
-  localStorage.setItem('cart', JSON.stringify(cart));
+  sessionStorage.setItem('cart', JSON.stringify(cart));
   UpDatecart();
 }
 
-function UpDatecart() {
+export function UpDatecart() {
   let str = "";
-  let cart = JSON.parse(localStorage.getItem('cart'))
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
 
   for (let i = 0; i < cart.length; i++) {
 
@@ -1030,13 +1024,25 @@ function UpDatecart() {
         <td><img src="${cart[i].image}" class="card-img-top" alt=""></td>
         <td>${cart[i].category}</td>
         <td>${cart[i].price}</td>
-        <td><button class="btn-sm btn-danger">Remove</button></td>
+        <td><button class="btn-sm btn-danger removeItem" data-ind="${i}">Remove</button></td>
     `;
   }
 
-  cartTable.innerHTML += str;
+  cartTable.innerHTML = str;
+  let removeItem = document.querySelectorAll('.removeItem')
+  removeItem.forEach(element => {
+    element.addEventListener('click', RemoveItem);
+  });
   // innerHTML = str;
 
+}
+
+function RemoveItem(event) {
+  let index = Number(event.target.dataset.ind)
+  cart = JSON.parse(sessionStorage.getItem('cart'))
+  cart.splice(index, 1);
+  sessionStorage.setItem('cart', JSON.stringify(cart))
+  UpDatecart();
 }
 
 export function UpdateInformation() {
