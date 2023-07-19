@@ -90,6 +90,7 @@
     width: 50%;
 }
 
+
 @media (max-width: 767px) {
     #offcanvasRight, #offcanvasLeft {
         width: 100%;

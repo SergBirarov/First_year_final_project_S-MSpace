@@ -220,7 +220,7 @@ export function UserTable() {
          <button class="btn btn-sm btn-info editProfile" data-ind="${i}" ><span><i data-ind="${i}" data-feather="edit-3">Edit</i></span></button></td>`;
       }
       users = `<tr>
-            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
+            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="class="img-fluid rounded-circle me-2""> <span>${element.username}</span></td>
             <td>${element.lastName} ${element.firstName}</td>
             <td>${element.birthDate}</td>
             <td>${element.street} ${element.number}, ${element.city}</td>
@@ -258,11 +258,11 @@ export function UserProfile() {
     user = JSON.parse(userJSON);
     document.getElementById(
       "userProfileTab"
-    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid"></img>
   `;
     document.getElementById(
       "uploadPic"
-    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    ).innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid "></img>
   `;
     document.getElementById("userBadge").innerHTML =
       user.password === `admin1234admin` ? `Admin` : `User`;
@@ -280,7 +280,7 @@ export function UserProfile() {
       "profileName"
     ).innerHTML = `${user.firstName} ${user.lastName}`;
     document.getElementById("profilePhone").innerHTML = `${
-      user.phone ? `'${user.phone}` : "Have not phone"
+      user.phone ? `'${user.phone}` : "Update your Info To view Number"
     }`;
     document.getElementById("profileMail").innerHTML = `${user.email}`;
     document.getElementById(
