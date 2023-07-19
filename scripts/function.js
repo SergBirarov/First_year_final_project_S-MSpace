@@ -1434,6 +1434,7 @@ export function LogIn_LogOut() {
     document.getElementById("signup").style.display = "none";
     document.getElementById("logout").style.display = "inline-block";
     document.getElementById("profileRed").style.display = "inline-block";
+    AddFeatured();
     if (window.location.href.includes("/store")) {
       if (user.password === `admin1234admin`) {
         document.getElementById("addItem").classList.remove('none');
@@ -1456,7 +1457,7 @@ export function LogOut() {
   document.getElementById("login").style.display = "inline-block";
   document.getElementById("signup").style.display = "inline-block";
   document.getElementById("logout").style.display = "none";
-  document.getElementById('addItem').classList.add('none');
+  // document.getElementById('addItem').classList.add('none');
 
   if (window.location.href.includes("/managerProfile")) {
     document.getElementById("update-tab").classList.add("disabled");
@@ -1464,4 +1465,82 @@ export function LogOut() {
   }
   sessionStorage.setItem("connectedUser", JSON.stringify(null));
   window.location.reload();
+}
+
+
+function AddFeatured(){
+  let sec = document.getElementById("addFeat");
+  sec.innerHTML+=
+  `
+  <div class="container">
+  <div class="section-header">
+    <h2 class="display-4">Featured Sales</h2>
+    <p>Check out these amazing products on sale!</p>
+  </div>
+
+  <div class="row">
+    <!-- Product 1 -->
+    <div class="col-lg-4">
+    <div class="card h-100 d-flex flex-column">
+      <img src="${storedSuits[0].image
+  }" class="card-img-top product-image" alt="Space Suit Image">
+      <div class="card-body">
+        <h5 class="card-title">${storedSuits[0].name}</h5>
+        <p class="card-text">
+          <span>Size:${storedSuits[0].size}</span><br>
+          <span>Color: ${storedSuits[0].color}</span><br>
+          <span class="">Price: $${(Number(storedSuits[0].price) * 0.7).toFixed(2)}</span><br>
+          <span class="text-decoration-line-through">Original Price: $${storedSuits[0].price}</span><br>
+          <span class="text-danger">Discount: -30%</span><br>
+          <span class="text-muted">Discount until: 2023-07-31</span>
+        </p>
+        <button class="suitToCart btn btn-primary prodBut" data-ind="${0}" data-discount="${(Number(storedSuits[0].price) * 0.7).toFixed(2)}"  data-prod="suit">Add to Cart</button>
+      </div>
+    </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="col-lg-4">
+    <div class="card h-100 d-flex flex-column" data-id-number="1-12345" data-category="Electronics">
+      <img src="${storedFlights[0].image
+  }" class="card-img-top product-image" alt="Product Image 1">
+      <div class="card-body">
+        <h5 class="card-title">${storedFlights[0].name}</h5>
+        <p class="card-text">
+          <span>ID Number: ${storedFlights[0].id}</span><br>
+          <span>Category: ${storedFlights[0].category}</span><br>
+          <span class="">Price: $${(Number(storedFlights[0].price) * 0.7).toFixed(2)}</span><br>
+          <span class="text-decoration-line-through">Original Price: $${storedFlights[0].price}</span><br>
+          <span class="text-danger">Discount: -30%</span><br>
+          <span class="text-muted">Discount until: 2023-07-31</span>
+        </p>
+        <button class="flightToCart btn btn-primary prodBut" data-ind="${0}" data-discount="${(Number(storedFlights[0].price) * 0.7).toFixed(2)}" data-prod="flight">Add to Cart</button>
+      </div>
+    </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="col-lg-4">
+    <div class="card h-100 d-flex flex-column">
+      <img src="${storedFoods[0].image
+  }" class="card-img-top product-image" alt="Product Image 1">
+      <div class="card-body">
+        <h5 class="card-title">${storedFoods[0].name}</h5>
+        <p class="card-text">
+        <span>ID: ${storedFoods[0].id}</span><br>
+          <span>Dairy/Meat: ${storedFoods[0].foodType}</span><br>
+          <span>Kosher Status: ${storedFoods[0].kosherStatus}</span><br>
+          <span>Hypoallergenic: ${storedFoods[0].hypoallergenicStatus}</span><br>
+          <span class="">Price: ${(Number(storedFoods[0].price) * 0.8).toFixed(2)}</span><br>
+          <span class="text-decoration-line-through">Original Price: $${storedFoods[0].price}</span><br>
+          <span class="text-danger">Discount: -20%</span><br>
+          <span class="text-muted">Discount until: 2023-07-31</span>
+        </p>
+        <button class="foodToCart btn btn-primary prodBut" data-ind="${0}" data-discount="${(Number(storedFoods[0].price) * 0.8).toFixed(2)} data-prod="food">Add to Cart</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+  `
 }

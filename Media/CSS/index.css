@@ -89,13 +89,15 @@
   color: #fff;
   transition: 0.3s;
   text-decoration: none;
+  cursor: default;
+
 }
 
 
 
-.icon-box:hover {
+/* .icon-box:hover {
   background: #455d7a;
-}
+} */
 
 .icon-box:hover .title a,
 .icon-box:hover .icon {
@@ -231,4 +233,8 @@
 
 .product-grid p {
   margin: 0;
+}
+
+.card{
+  width: 100%;
 }
