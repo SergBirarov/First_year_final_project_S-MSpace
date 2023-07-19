@@ -25,11 +25,30 @@ function Main() {
         AddShip();
         document.getElementById('price-filter').addEventListener('click', SortStore);
         document.getElementById('second-filter').addEventListener('click', SecondSortStore);
-    };
+
+        let userJSON = sessionStorage.getItem('connectedUser');
+        if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+            let user = JSON.parse(userJSON);
+            if (user.password === "admin1234admin") {
+                document.getElementById('addItem').classList.remove('none');
+            }
+        };
+    }
     if (window.location.href.includes("/managerProfile")) {
         UserTable();
         UserProfile();
         UpdateInformation();
+
+        let userJSON = sessionStorage.getItem('connectedUser');
+        if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+            document.getElementById('update-tab').classList.remove('disabled');
+
+            let user = JSON.parse(userJSON);
+            if (user.password === "admin1234admin") {
+                document.getElementById('manage-tab').classList.remove('disabled');
+            }
+        };
+
     };
 
     SendregistrationForm();

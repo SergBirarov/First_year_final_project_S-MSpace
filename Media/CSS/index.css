@@ -206,11 +206,19 @@
 }
 
 /*Sing up*/
-#ilegalPassword {
-  display: none;
+
+.none {
+  display: none !important;
 }
 
+#passwordHelp {
+  color: #6c757d;
+}
 
+#regPasswordSecond {
+  width: 100%;
+  border-radius: 5px;
+}
 
 /*Team start*/
 
@@ -223,8 +231,4 @@
 
 .product-grid p {
   margin: 0;
-}
-
-.none {
-  display: none !important;
 }

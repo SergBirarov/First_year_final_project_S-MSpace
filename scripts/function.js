@@ -201,26 +201,29 @@ export function UserTable() {
   }
 }
 
-export function UserProfile(){
- 
+export function UserProfile() {
+
   let user;
-  let userJSON = localStorage.getItem('connectedUser');
-  user = JSON.parse(localStorage.getItem('connectedUser'));
-  document.getElementById("userProfileTab").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+  let userJSON = sessionStorage.getItem('connectedUser');
+  if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+    user = JSON.parse(userJSON);
+    document.getElementById("userProfileTab").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
   `;
-  document.getElementById("uploadPic").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+    document.getElementById("uploadPic").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
   `;
-  document.getElementById("userBadge").innerHTML = user.password === `admin1234admin` ? `Admin`: `User`;
+    document.getElementById("userBadge").innerHTML = user.password === `admin1234admin` ? `Admin` : `User`;
 
-  document.getElementById("profileTabName").innerHTML = `${user.firstName} ${user.lastName}`;
-  document.getElementById("profileTabMail").innerHTML = `${user.email}`;
-  document.getElementById("profileTabUserName").innerHTML = `${user.username}`;
-  document.getElementById("profileTabAddress").innerHTML = `${user.city}`;
+    document.getElementById("profileTabName").innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("profileTabMail").innerHTML = `${user.email}`;
+    document.getElementById("profileTabUserName").innerHTML = `${user.username}`;
+    document.getElementById("profileTabAddress").innerHTML = `${user.city}`;
 
-  document.getElementById("profileName").innerHTML = `${user.firstName} ${user.lastName}`;
-  document.getElementById("profilePhone").innerHTML = `${user.phone}`;
-  document.getElementById("profileMail").innerHTML = `${user.email}`;
-  document.getElementById("profileAddress").innerHTML = `${user.city},${user.street} ${user.number}`;
+    document.getElementById("profileName").innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("profilePhone").innerHTML = `${user.phone ? `'${user.phone}` : 'Have not phone'}`;
+    document.getElementById("profileMail").innerHTML = `${user.email}`;
+    document.getElementById("profileAddress").innerHTML = `${user.city},${user.street} ${user.number}`;
+  }
+
 }
 
 export function SendregistrationForm() {
@@ -236,14 +239,14 @@ export function SendregistrationForm() {
       pass.type = "password";
     }
   });
-  document.querySelector("#showPass2").addEventListener("click", () => {
-    let pass = document.querySelector("#regPasswordSecond");
-    if (pass.type === "password") {
-      pass.type = "text";
-    } else {
-      pass.type = "password";
-    }
-  });
+  // document.querySelector("#showPass2").addEventListener("click", () => {
+  //   let pass = document.querySelector("#regPasswordSecond");
+  //   if (pass.type === "password") {
+  //     pass.type = "text";
+  //   } else {
+  //     pass.type = "password";
+  //   }
+  // });
 }
 function CheckPassword(password) {
   let inCorrect = true
@@ -292,6 +295,7 @@ function CheckPassword(password) {
 }
 export function SubmitRegistrationForm(event) {
   event.preventDefault();
+
   // username
   let username = document.getElementById("regUsername");
   if (username.value || username.value.length > 60) {
@@ -308,8 +312,10 @@ export function SubmitRegistrationForm(event) {
   } else {
     username.style.border = "2px solid red";
   }
+
   // password
   let password = document.getElementById("regPassword");
+
   if (!password.value) {
     password.style.border = "2px solid red"
   }
@@ -328,22 +334,24 @@ export function SubmitRegistrationForm(event) {
   else {
     password2.style.border = "2px solid red";
     document.getElementById('PasswordSecond').classList.remove('none')
-    return
+    //return
   }
 
 
   // imageInput
   let imageInput = document.getElementById("image");
   if (imageInput.value) {
-    if (!(imageInput.value.includes('.jpeg') || imageInput.value.includes('.jpg'))) {
+    if (imageInput.value.includes('.jpeg') || imageInput.value.includes('.jpg')) {
+      imageInput.style.border = "2px solid green";
+      document.getElementById('imageHelp').classList.add('none')
+    }
+    else {
       imageInput.style.border = "2px solid red";
       document.getElementById('imageHelp').classList.remove('none')
       return;
     }
-    else {
-      imageInput.style.border = "2px solid green";
-      document.getElementById('imageHelp').classList.add('none')
-    }
+  } else {
+    imageInput.style.border = "2px solid red";
   }
 
   // firstName
@@ -380,25 +388,45 @@ export function SubmitRegistrationForm(event) {
   }
   // email
   let email = document.getElementById("email");
-  email.style.border = !email.value ? "2px solid red" : "2px solid green"
+  if (email.value) {
+    let emailValue = email.value;
+    for (let element of emailValue) {
+      if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
+        email.style.border = "2px solid green";
+      }
+      else {
+        email.style.border = "2px solid red";
+        return;
+      }
+    }
+  }
+  else {
+    email.style.border = "2px solid red";
+  }
 
   // birthDate
   let birthDate = document.getElementById("birthDate");
   let birthDateValue = new Date(birthDate.value);
   let currentDate = new Date();
-  if (birthDate.value && (currentDate.getFullYear() - birthDateValue.getFullYear() < 120 || birthDateValue > currentDate)) {
-    birthDate.style.border = "2px solid green";
-  }
-  else {
+  if (birthDate.value) {
+    if ((currentDate.getFullYear() - birthDateValue.getFullYear() < 120 && birthDateValue < currentDate)) {
+      birthDate.style.border = "2px solid green";
+    }
+    else {
+      birthDate.style.border = "2px solid red";
+      return
+    }
+  } else {
     birthDate.style.border = "2px solid red";
-    return
+
   }
+
   // city
   let city = document.getElementById("city");
   if (city.value) {
     let cityValue = city.value;
     for (let element of cityValue) {
-      if ((element < 'א' && element > 'ת')) {
+      if (!((element >= 'א' && element <= 'ת') || element == " ")) {
         city.style.border = "2px solid red";
         return;
       }
@@ -415,7 +443,7 @@ export function SubmitRegistrationForm(event) {
   if (street.value) {
     let streetValue = street.value;
     for (let element of streetValue) {
-      if ((element < 'א' && element > 'ת')) {
+      if (!((element >= 'א' && element <= 'ת') || element == " ")) {
         street.style.border = "2px solid red";
         return;
       }
@@ -485,7 +513,6 @@ export function SubmitRegistrationForm(event) {
       street: street.value,
       number: number.value,
     };
-    console.log(newUser);
 
     storedUsers.push(newUser);
 
@@ -496,7 +523,6 @@ export function SubmitRegistrationForm(event) {
     let user = storedUsers.find(
       (u) => u.email === email.value && u.password === password.value
     );
-    console.log(user);
     let userJSON = JSON.stringify(user);
     sessionStorage.setItem("connectedUser", userJSON);
     window.location.assign('./managerProfile.html')
@@ -524,30 +550,24 @@ export function SendLoginForm() {
   });
 }
 
-function SubmitLoginForm() {
-  let email = document.getElementById("floatingEmail").value;
-  let password = document.getElementById("floatingPassword").value;
+function SubmitLoginForm(event) {
+  event.preventDefault();
+  let email = document.getElementById("floatingEmail");
+  let password = document.getElementById("floatingPassword");
   let storedUsersJSON = localStorage.getItem("users");
 
   if (storedUsersJSON) {
     let storedUsers = JSON.parse(storedUsersJSON);
     let user = storedUsers.find(
-      (u) => u.email === email && u.password === password
+      (u) => u.email === email.value && u.password === password.value
     );
-    console.log(user);
-    let userJSON = JSON.stringify(user);
-
-    sessionStorage.setItem("connectedUser", userJSON);
-
     if (user) {
-      if (password === `admin1234admin`) {
-        alert(`You are connected as an admin`);
-        // location.assign("./managerProfile.html");
-      }
-      // let add = document.getElementById(`addItem`);
-      return;
+      let userJSON = JSON.stringify(user);
+      sessionStorage.setItem("connectedUser", userJSON);
+      window.location.assign("./managerProfile.html");
     } else {
-      alert("Incorrect email or password.");
+      email.style.border = "2px solid red"
+      password.style.border = "2px solid red"
     }
   } else {
     alert("No registered users.");
@@ -935,7 +955,7 @@ function AddSuitsToStore() {
             <p class="card-text">
               <span>Size:${storedSuits[i].size}</span><br>
               <span>Color: ${storedSuits[i].color}</span><br>
-              <span>Price: $${Number(storedSuits[i].price)*0.70}</span><br>
+              <span>Price: $${Number(storedSuits[i].price) * 0.70}</span><br>
               <span class="text-decoration-line-through">Original Price: $${storedSuits[i].price}</span><br>
               <span class="text-danger">Discount Price: -70%</span><br>
               <span class="text-muted">Discount until: 2023-07-31</span>
@@ -1001,7 +1021,6 @@ function UpDatecart() {
   cartTable.innerHTML += str;
   // innerHTML = str;
 
-  console.log(str);
 }
 
 export function UpdateInformation() {
@@ -1069,7 +1088,7 @@ export function UpdateInformation() {
 export function LogIn_LogOut() {
   let user;
   let userJSON = sessionStorage.getItem('connectedUser')
-  if (userJSON) {
+  if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
     user = JSON.parse(userJSON);
   }
   if (user) {
@@ -1089,5 +1108,13 @@ export function LogOut() {
   document.getElementById('login').style.display = 'inline-block';
   document.getElementById('signup').style.display = 'inline-block';
   document.getElementById('logout').style.display = 'none';
+  if (window.location.href.includes("/store")) {
+    document.getElementById('addItem').classList.add('none');
+  }
+  if (window.location.href.includes("/managerProfile")) {
+    document.getElementById('update-tab').classList.add('disabled');
+    document.getElementById('manage-tab').classList.add('disabled');
+  }
   sessionStorage.setItem("connectedUser", JSON.stringify(null));
+  window.location.reload();
 }

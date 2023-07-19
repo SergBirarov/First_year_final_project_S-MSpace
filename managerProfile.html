@@ -31,14 +31,14 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#about">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#team">Team</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="/store.html">Store</a>
           </li>
@@ -49,17 +49,21 @@
         <form class="d-flex p-2" id="userBoard">
           <ul class="navbar-nav navbar-nav-responsive me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log In</button>
+              <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
+                In</button>
             </li>
             <li class="nav-item">
-              <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</button>
+              <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
+                Up</button>
             </li>
             <li class="nav-item">
-              <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log Out</button>
+              <button class="link m-1" id="logout" type="button" style="display: none;" data-bs-target="#logout">Log
+                Out</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"><i data-feather="shopping-cart"></i></button>
+              <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+                  data-feather="shopping-cart"></i></button>
             </li>
           </ul>
         </form>
@@ -81,19 +85,24 @@
 
           </div>
 
-          <form class="loginform">
+          <form class="loginform needs-validation" novalidate>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
-                aria-describedby="emailHelp">
-              <label for="floatingInput">Email address</label>
+              <span class="input-group-text p-0" id="inputGroupPrepend">
+                <span><i data-feather="mail"></i></span>
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                  aria-describedby="emailHelp">
             </div>
 
-            <div class="mb-3 form-floating">
+            <div class="mb-3 form-floating has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPassLogIn"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
-              <button id="showPassLogIn" class="btn btn-outline-secondary" type="button">
-                <span><i data-feather="eye"></i></span>
-              </button><!-- תמונה של עין -->
+              <div class="invalid-feedback">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not
+                contain spaces, or emoji.
+              </div>
             </div>
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
@@ -116,35 +125,60 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
           <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
-          <form id="registrationForm" class="loginform">
-            <div class="input-group mb-3">
-              <input id="regUsername" type="text" class="form-control" placeholder="Username">
-            </div>
 
-            <div class="input-group mb-3">
-              <input id="regPassword" type="Password" class="form-control" placeholder="Password"
-                aria-labelledby="passwordHelpBlock">
-              <button id="showPass" class="btn btn-outline-secondary" type="button">
-                <span><i data-feather="eye"></i></span>
-              </button><!-- תמונה של עין -->
-              <div style="display: none;" id="passwordHelpBlock" class="form-text text-white-50">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not
-                contain spaces, special characters, or emoji.
+          <form id="registrationForm" class="loginform needs-validation" novalidate>
+
+            <!--username-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input id="regUsername" type="text" class="form-control" placeholder="Username"
+                aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+              <div class="valid-feedback">
+                Looks Good!
               </div>
             </div>
 
+            <!--password-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPass1"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
+              <input id="regPassword" type="Password" class="form-control" placeholder="Password"
+                aria-labelledby="passwordHelpBlockq">
+              <div id="passwordHelp" class="invalid-feedbackq none">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not
+                contain spaces, or emoji. </div>
+            </div>
             <div class="input-group mb-3">
-              <input type="file" class="form-control" id="image">
-              <i class="input-group-text fas fa-camera fa-5x"></i>
+              <input id="regPasswordSecond" type="Password" class="form-control" placeholder="Password">
+              <div id="PasswordSecond" class="form-text text-white-50 none">
+                The passwords are not equal.
+              </div>
+            </div>
+            <!--photo-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">
+                <span><i data-feather="camera"></i></span>
+                <input type="file" class="form-control" id="image">
+                <div class="none" id="imageHelp">
+                  Only Jpeg or Jpg
+                </div>
             </div>
 
-            <div class="input-group mb-3">
-              <input id="firstName" type="text" class="form-control" placeholder="First Name">
-              <input id="lastName" type="text" class="form-control" placeholder="Last Name">
+            <div class="input-group mb-3 has-validation">
+              <input id="firstName" type="text" class="form-control" placeholder="First Name" required>
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
             </div>
 
             <div class="input-group mb-3">
               <input class="form-control" type="email" id="email" placeholder="Email">
+              <div id="emailHelp" class="form-text text-white-50 none ">
+                Email already exists. Please choose a different email.
+              </div>
             </div>
 
 
@@ -156,10 +190,10 @@
             <div class="input-group mb-3">
               <input id="city" type="text" class="form-control" placeholder="City">
               <input id="street" type="text" class="form-control" placeholder="Street">
-              <input id="houseNumber" type="text" class="form-control" placeholder="House">
+              <input id="houseNumber" type="number" min="1" class="form-control" placeholder="House">
             </div>
 
-            <button class="btn btn-primary mb-3" type="submit">שליחה</button>
+            <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Sign Up</button>
           </form>
         </div>
       </div>
@@ -212,12 +246,12 @@
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a href="#update" role="tab" id="update-tab" data-bs-toggle="tab" class="nav-link">
+                  <a href="#update" role="tab" id="update-tab" data-bs-toggle="tab" class="nav-link disabled">
                     <i data-feather="info" class="icon"></i><span class="tabtext">Update Information</span>
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a href="#manage" role="tab" id="manage-tab" data-bs-toggle="tab" class="nav-link">
+                  <a href="#manage" role="tab" id="manage-tab" data-bs-toggle="tab" class="nav-link disabled">
                     <i data-feather="list" class="icon"></i><span class="tabtext">Manage Users</span>
                   </a>
                 </li>
@@ -235,7 +269,7 @@
                           </div>
                           <div class="text-center mt-3">
                             <div class="user-profile-img d-inline-flex mx-auto" id="userProfileTab">
-                              
+
                             </div>
                             <h5 class="mb-0"><span id="profileTabName"></span></h5>
                             <hr class="my-3">
@@ -324,7 +358,7 @@
                           <h5>Update Information</h5>
                         </div>
                         <div class="card-body">
-                          <form>
+                          <form id="UpdateInformationForm">
                             <div class="mb-3">
                               <label for="firstName" class="form-label">First Name</label>
                               <input type="text" class="form-control" id="firstNameUpdate">

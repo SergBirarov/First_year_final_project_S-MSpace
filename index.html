@@ -94,7 +94,7 @@
               <div class="invalid-feedback">
                 Your password must be 7-12 characters long, contain letters and numbers, and must not
                 contain spaces, or emoji.
-               </div>
+              </div>
             </div>
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
@@ -117,7 +117,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
           <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
+
           <form id="registrationForm" class="loginform needs-validation" novalidate>
+
             <!--username-->>
             <div class="input-group mb-3 has-validation">
               <span class="input-group-text" id="inputGroupPrepend">@</span>
@@ -130,15 +132,16 @@
                 Looks Good!
               </div>
             </div>
+
             <!--password-->>
             <div class="input-group mb-3 has-validation">
               <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPass1"
                   class="btn btn-outline-secondary border-0" type="button">
                   <span><i data-feather="eye"></i></span>
                 </button></span>
-              <input id="regPassword" type="Password" class="form-control" placeholder=" Password"
-                aria-labelledby="passwordHelpBlock">
-              <div class="invalid-feedback">
+              <input id="regPassword" type="Password" class="form-control" placeholder="Password"
+                aria-labelledby="passwordHelpBlockq">
+              <div id="passwordHelp" class="invalid-feedbackq none">
                 Your password must be 7-12 characters long, contain letters and numbers, and must not
                 contain spaces, or emoji. </div>
             </div>
@@ -149,19 +152,18 @@
               </div>
             </div>
             <!--photo-->>
-
             <div class="input-group mb-3 has-validation">
               <span class="input-group-text" id="inputGroupPrepend">
                 <span><i data-feather="camera"></i></span>
                 <input type="file" class="form-control" id="image">
-                <div class="valid-feedback">
-                  Looks Good!
+                <div class="none" id="imageHelp">
+                  Only Jpeg or Jpg
                 </div>
             </div>
 
-            <div class="input-group mb-3 has-validation"">
-              <input id=" firstName" type="text" class="form-control" placeholder="First Name" value="Mark" required>
-              <input id="lastName" type="text" class="form-control" placeholder="Last Name" value="Otto" required>
+            <div class="input-group mb-3 has-validation">
+              <input id="firstName" type="text" class="form-control" placeholder="First Name" required>
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -184,7 +186,7 @@
               <input id="city" type="text" class="form-control" placeholder="City">
               <input id="street" type="text" class="form-control" placeholder="Street">
               <input id="houseNumber" type="number" min="1" class="form-control" placeholder="House">
-            </div>
+            </div>  
 
             <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Sign Up</button>
           </form>
@@ -225,8 +227,8 @@
   </div>
   <!--shopping cart end-->
 
-  <!--Adding new item of canvas start-->
-  <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft"
+  <!-- Adding new item of canvas start-->
+  <!-- <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft"
     aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <h5 id="offcanvasLeftLabel" class="fs-2 text-white-50">Add New Item to Store</h5>
@@ -351,7 +353,6 @@
                         <input type="radio" class="btn-check" name="hypoallergenic_no" id="addNoHypoallergenic">
                         <label class="btn btn-secondary" for="addNoHypoallergenic">No Hypoallergenic</label>
                       </div>
-                      <!-- עד כאן -->
                       <div class="input-group mb-3">
                         <input type="file" class="form-control" id="addFoodImage">
                         <span class="input-group-text">Food's Image</span>
@@ -389,7 +390,7 @@
                         <input id="addSuitSize" type="number" class="form-control" placeholder="Size" value="40"
                           min="40" max="64">
                       </div>
-                      <!-- <select id="addSuitSize" class="form-select mb-3">
+                      <select id="addSuitSize" class="form-select mb-3">
                         <option selected>Choose a size</option>
                         <option value="XS">XS</option>
                         <option value="S">S</option>
@@ -398,7 +399,7 @@
                         <option value="XL">XL</option>
                         <option value="XXL">XXL</option>
                         <option value="XXXL">XXXL</option>
-                      </select> -->
+                      </select>
 
                       <select id="addSuitColor" class="form-select mb-3">
                         <option selected>Choose a color</option>
@@ -434,8 +435,9 @@
 
 
     </div>
-  </div>
-  <!--Adding new item of canvas end-->
+  </div> -->
+  <!--Adding new item of canvas end -->
+
   <!--Hero start-->
   <section class="hero-section">
     <div class="container">
