@@ -77,12 +77,12 @@
     font-size: 20px;
 }
 
-#offcanvasRight{
+#offcanvasRight, #offcanvasLeft{
     width: 50%;
 }
 
 @media (max-width: 767px) {
-    #offcanvasRight {
+    #offcanvasRight, #offcanvasLeft {
         width: 100%;
     }
 }
