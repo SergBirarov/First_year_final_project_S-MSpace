@@ -186,21 +186,41 @@ export function BuildStore() {
 export function UserTable() {
   let userTable = document.getElementById("userTable");
   let users = ``;
+  storedUsers = JSON.parse(localStorage.getItem('users'));
   if (storedUsers) {
-    storedUsers.forEach((element) => {
+    let str = '';
+    for (let i = 0; i < storedUsers.length; i++) {
+      let element = storedUsers[i];
+      let data = `<td></td>`;
+      if (i > 0) {
+        data = `<td> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}">Remove</button></td>`
+      }
       users = `<tr>
             <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
             <td>${element.lastName} ${element.firstName}</td>
             <td>${element.birthDate}</td>
             <td>${element.street} ${element.number}, ${element.city}</td>
             <td>${element.email}</td>
-            <td ><button class="btn btn-sm btn-danger">Remove</button></td>
+            ${data}
           </tr>`;
-      userTable.innerHTML += users;
+      str += users
+    }
+
+    userTable.innerHTML = str;
+    let removeBtn = document.querySelectorAll('.RemoveProfile');
+    removeBtn.forEach(element => {
+      element.addEventListener('click', RemoveProfile);
     });
   }
 }
-
+function RemoveProfile(event) {
+  let index = Number(event.target.dataset.ind)
+  console.log(index);
+  storedUsers = JSON.parse(localStorage.getItem('users'))
+  storedUsers.splice(index, 1);
+  localStorage.setItem('users', JSON.stringify(storedUsers))
+  UserTable();
+}
 export function UserProfile() {
 
   let user;
@@ -315,7 +335,6 @@ export function SubmitRegistrationForm(event) {
 
   // password
   let password = document.getElementById("regPassword");
-
   if (!password.value) {
     password.style.border = "2px solid red"
   }
@@ -325,6 +344,7 @@ export function SubmitRegistrationForm(event) {
     }
     password.style.border = "2px solid green"
   }
+
   // password2
   let password2 = document.getElementById("regPasswordSecond");
   if (password2.value && (password.value == password2.value)) {
@@ -418,7 +438,6 @@ export function SubmitRegistrationForm(event) {
     }
   } else {
     birthDate.style.border = "2px solid red";
-
   }
 
   // city
@@ -526,13 +545,10 @@ export function SubmitRegistrationForm(event) {
     let userJSON = JSON.stringify(user);
     sessionStorage.setItem("connectedUser", userJSON);
     window.location.assign('./managerProfile.html')
-
   };
   if (file) {
     reader.readAsDataURL(file);
-
   }
-
 }
 
 export function SendLoginForm() {
@@ -870,8 +886,6 @@ function SecondSortFoods() {
   AddFoodsToStore();
 }
 
-
-
 //להוסיף עוד נתונים על פי הפרמטרים החדשים (id, category)
 function AddFlightToStore() {
   storedFlights = JSON.parse(localStorage.getItem(`flights`));
@@ -1037,51 +1051,138 @@ export function UpdateInformation() {
     event.preventDefault(); // Отменяем стандартное поведение отправки формы
 
     // Получаем значения из полей формы
-    let firstName = document.getElementById("firstNameUpdate").value;
-    let lastName = document.getElementById("lastNameUpdate").value;
-    let birthDate = document.getElementById("BirthDateUpdate").value;
-    let email = document.getElementById("emailUpdate").value;
-    let password = document.getElementById("passwordUpdate").value;
-    let city = document.getElementById("cityUpdate").value;
-    let street = document.getElementById("streetUpdate").value;
-    let number = document.getElementById("houseUpdate").value;
+    let firstName = document.getElementById("firstNameUpdate");
+    if (firstName.value) {
+      let firstNameValue = firstName.value;
+      for (let element of firstNameValue) {
+        if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+          firstName.style.border = "2px solid red";
+          return;
+        }
+        else {
+          firstName.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let lastName = document.getElementById("lastNameUpdate");
+    if (lastName.value) {
+      let lastNameValue = lastName.value;
+      for (let element of lastNameValue) {
+        if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+          lastName.style.border = "2px solid red";
+          return;
+        }
+        else {
+          lastName.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let birthDate = document.getElementById("BirthDateUpdate");
+    let birthDateValue = new Date(birthDate.value);
+    let currentDate = new Date();
+    if (birthDate.value) {
+      if ((currentDate.getFullYear() - birthDateValue.getFullYear() < 120 && birthDateValue < currentDate)) {
+        birthDate.style.border = "2px solid green";
+      }
+      else {
+        birthDate.style.border = "2px solid red";
+        return
+      }
+    }
+
+    let email = document.getElementById("emailUpdate");
+    if (email.value) {
+      let emailValue = email.value;
+      for (let element of emailValue) {
+        if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
+          email.style.border = "2px solid green";
+        }
+        else {
+          email.style.border = "2px solid red";
+          return;
+        }
+      }
+    }
+
+
+    let password = document.getElementById("passwordUpdate");
+    if (password.value) {
+      if (CheckPassword(password)) {
+        password.style.border = "2px solid red";
+        return
+      }
+    }
+
+
+    let city = document.getElementById("cityUpdate");
+    if (city.value) {
+      let cityValue = city.value;
+      for (let element of cityValue) {
+        if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+          city.style.border = "2px solid red";
+          return;
+        }
+        else {
+          city.style.border = "2px solid green";
+        }
+      }
+    }
+
+
+    let street = document.getElementById("streetUpdate");
+    if (street.value) {
+      let streetValue = street.value;
+      for (let element of streetValue) {
+        if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+          street.style.border = "2px solid red";
+          return;
+        }
+        else {
+          street.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let number = document.getElementById("numberUpdate");
+    number.style.border = !number.value ? "2px solid red" : "2px solid green"
 
     let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
 
-    if (firstName) {
-      connectedUser.firstName = firstName;
+    if (firstName.value) {
+      connectedUser.firstName = firstName.value;
     }
-    if (lastName) {
-      connectedUser.lastName = lastName;
+    if (lastName.value) {
+      connectedUser.lastName = lastName.value;
     }
-    if (birthDate) {
-      connectedUser.birthDate = birthDate;
+    if (birthDate.value) {
+      connectedUser.birthDate = birthDate.value;
     }
-    if (email) {
-      connectedUser.email = email;
+    if (email.value) {
+      connectedUser.email = email.value;
     }
-    if (password) {
-      connectedUser.password = password;
+    if (password.value) {
+      connectedUser.password = password.value;
     }
-    if (city) {
-      connectedUser.city = city;
+    if (city.value) {
+      connectedUser.city = city.value;
     }
-    if (street) {
-      connectedUser.street = street;
+    if (street.value) {
+      connectedUser.street = street.value;
     }
-    if (number) {
-      connectedUser.number = number;
+    if (number.value) {
+      connectedUser.number = number.value;
     }
 
     sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
 
-    const users = JSON.parse(localStorage.getItem("users"));
-    const updatedUsers = users.map((user) =>
-      user.id === connectedUser.id ? connectedUser : user
+    let users = JSON.parse(localStorage.getItem("users"));
+    let updatedUsers = users.map((user) =>
+      user.username === connectedUser.username ? connectedUser : user
     );
     localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    alert("Данные успешно обновлены!");
+    window.location.assign('./managerProfile.html')
   });
 }
 
