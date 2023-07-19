@@ -21,14 +21,15 @@
 
 <body>
 
+  <!--start of nav bar-->
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark fs-5">
     <div class="container ">
-      <a class="navbar-brand"  href="#"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
+      <a class="navbar-brand" href="/index.html"><img src="/Media/Assets/S&M_LOGO.png" alt="" id="logo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
         aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse " id="navbar">
+      <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -43,25 +44,26 @@
             <a class="nav-link" href="/store.html">Store</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Secret Game Room</a>
+            <a class="nav-link" href="/Game/game.HTML">Secret Game Room</a>
           </li>
         </ul>
-        <form class="d-flex p-2">
-          <button class="link m-1" id="login" type="button" data-bs-toggle="modal"
-            data-bs-target="#logIn">Log
+        <form class="d-flex p-2" id="userBoard">
+          <button class="link m-1" id="login" type="button" data-bs-toggle="modal" data-bs-target="#logIn">Log
             In</button>
-          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal"
-            data-bs-target="#signUp">Sign Up</button>
-            <!-- <button class="btn btn-primary disabled" id="addItem" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft"
-            aria-controls="offcanvasLeft"><i data-feather="plus"></i></button> -->
-            <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight"><i data-feather="shopping-cart"></i></button>
+          <button class="link m-1" id="signup" type="button" data-bs-toggle="modal" data-bs-target="#signUp">Sign
+            Up</button>
+          <button class="link m-1" id="logout" type="button" data-bs-target="#logout">Log
+            Out</button>
+
+          <button class="btn btn-primary" id="cart" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+              data-feather="shopping-cart"></i></button>
         </form>
       </div>
     </div>
   </nav>
   <!--End of nav bar-->
-  
+
   <!--Modal-log in-->
   <div class="modal fade" id="logIn" aria-hidden="true" aria-labelledby="login1" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
@@ -75,16 +77,24 @@
 
           </div>
 
-          <form class="loginform">
+          <form class="loginform needs-validation" novalidate>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
-                aria-describedby="emailHelp">
-              <label for="floatingInput">Email address</label>
+              <span class="input-group-text p-0" id="inputGroupPrepend">
+                <span><i data-feather="mail"></i></span>
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                  aria-describedby="emailHelp">
             </div>
 
-            <div class="mb-3 form-floating">
+            <div class="mb-3 form-floating has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPassLogIn"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
+              <div class="invalid-feedback">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not
+                contain spaces, or emoji.
+              </div>
             </div>
             <div class="modal-footer d-flex">
               <button type="submit" class="btn btn-primary" id="submit_login">Submit</button>
@@ -98,6 +108,7 @@
     </div>
   </div>
   <!--Modal-log in end-->
+
   <!--Modal-sign up-->
   <div class="modal fade" id="signUp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="signUp" aria-hidden="true">
@@ -106,35 +117,63 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body">
           <h5 class="moad-title display-5 text-center text-white-50 p-2">Sign-Up Here</h5>
-          <form id="registrationForm" class="loginform">
-            <div class="input-group mb-3">
-              <input id="regUsername" type="text" class="form-control" placeholder="Username">
+
+          <form id="registrationForm" class="loginform needs-validation" novalidate>
+
+            <!--username-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input id="regUsername" type="text" class="form-control" placeholder="Username"
+                aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+              <div class="valid-feedback">
+                Looks Good!
+              </div>
             </div>
 
-            <div class="input-group mb-3">
+            <!--password-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text p-0" id="inputGroupPrepend"><button id="showPass1"
+                  class="btn btn-outline-secondary border-0" type="button">
+                  <span><i data-feather="eye"></i></span>
+                </button></span>
               <input id="regPassword" type="Password" class="form-control" placeholder="Password"
-                aria-labelledby="passwordHelpBlock">
-              <button id="showPass" class="btn btn-outline-secondary" type="button">
-                <span><i data-feather="eye"></i></span>
-              </button><!-- תמונה של עין -->
-              <div id="passwordHelpBlock" class="form-text text-white-50">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not
-                contain spaces, special characters, or emoji.
+                aria-labelledby="passwordHelpBlockq">
+              <div id="passwordHelp" class="invalid-feedbackq none">
+                Your password must be 7-12 characters long, contain letters and numbers, and must not
+                contain spaces, or emoji. </div>
+            </div>
+            <div class="input-group mb-3">
+              <input id="regPasswordSecond" type="Password" class="form-control" placeholder="Password">
+              <div id="PasswordSecond" class="form-text text-white-50 none">
+                The passwords are not equal.
+              </div>
+            </div>
+            <!--photo-->>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">
+                <span><i data-feather="camera"></i></span>
+                <input type="file" class="form-control" id="image">
+                <div class="none" id="imageHelp">
+                  Only Jpeg or Jpg
+                </div>
+            </div>
+
+            <div class="input-group mb-3 has-validation">
+              <input id="firstName" type="text" class="form-control" placeholder="First Name" required>
+              <input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
+              <div class="valid-feedback">
+                Looks good!
               </div>
             </div>
 
             <div class="input-group mb-3">
-              <input type="file" class="form-control" id="image">
-              <i class="input-group-text fas fa-camera fa-5x"></i>
-            </div>
-
-            <div class="input-group mb-3">
-              <input id="firstName" type="text" class="form-control" placeholder="First Name">
-              <input id="lastName" type="text" class="form-control" placeholder="Last Name">
-            </div>
-
-            <div class="input-group mb-3">
               <input class="form-control" type="email" id="email" placeholder="Email">
+              <div id="emailHelp" class="form-text text-white-50 none ">
+                Email already exists. Please choose a different email.
+              </div>
             </div>
 
 
@@ -146,48 +185,259 @@
             <div class="input-group mb-3">
               <input id="city" type="text" class="form-control" placeholder="City">
               <input id="street" type="text" class="form-control" placeholder="Street">
-              <input id="houseNumber" type="text" class="form-control" placeholder="House">
-            </div>
+              <input id="houseNumber" type="number" min="1" class="form-control" placeholder="House">
+            </div>  
 
-            <button class="btn btn-primary mb-3" type="submit">שליחה</button>
+            <button id="sendregistrationForm" class="btn btn-primary mb-3" type="submit">Sign Up</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  </div>
+  <!--Modal-sign up end-->
 
-<!--Modal-sign up end-->
-
-<!--shopping cart start-->
-<div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel" class="display-5">Shopping Cart</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <h3>Your Desired Items</h3>
-    <div class="table-responsive">
-      <table class="table table-bordered" >
-          <thead>
+  <!--shopping cart start-->
+  <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRight">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasRightLabel" class="display-5 text-white-50">Shopping Cart</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body text-white-50">
+      <h3>Your Desired Items</h3>
+      <div class="table-responsive bg-dark-subtle">
+        <table class="table table-bordered bg-dark-subtle">
+          <thead class="">
             <tr>
               <th>Item Number</th>
               <th>Picture</th>
               <th>Description</th>
               <th>Price</th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody id="cartTable">
-            
+
           </tbody>
         </table>
+      </div>
+      <div class="container" id="total">
+
+      </div>
+    </div>
   </div>
-  <div class="container" id="total">
-    
-  </div>
-  </div>
-</div>
-<!--shopping cart end-->
+  <!--shopping cart end-->
+
+  <!-- Adding new item of canvas start-->
+  <!-- <div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvasLeft"
+    aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasLeftLabel" class="fs-2 text-white-50">Add New Item to Store</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body ">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="lead text-white-50">Input all Designated Fields</p>
+            <div class="card bg-dark-subtle">
+              <div class="card-header pb-0 ">
+                <ul class="nav nav-pills profile-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <a href="#spaceship" role="tab" id="spaceship-tab" data-bs-toggle="tab" aria-selected="true"
+                      class="nav-link active bg-light text-black">
+                      <i data-feather="rocket" class="icon"></i><span class="tabtext">Spaceship</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a href="#spacefood" role="tab" id="spacefood-tab" data-bs-toggle="tab"
+                      class="nav-link bg-light text-black">
+                      <i data-feather="coffee" class="icon"></i><span class="tabtext">Space Food</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a href="#spacesuits" role="tab" id="spacesuits-tab" data-bs-toggle="tab"
+                      class="nav-link bg-light text-black">
+                      <i data-feather="user-check" class="icon"></i><span class="tabtext">Space Suits</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="spaceship" role="tabpanel" aria-labelledby="spaceship-tab">
+                    <div class="section-title">
+                      <h2 class="text-black-50 text-center p-2">Add Space Ship</h2>
+                    </div>
+                    <form id="addFlight" class="w-75 mx-auto">
+
+                      <div class="input-group mb-3">
+                        <input id="addFlightCategory" type="text" class="form-control" value="Flight" placeholder="Id"
+                          disabled>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addFlightId" type="text" class="form-control" placeholder="Id">
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addFlightNumber" type="text" class="form-control" placeholder="Flight Number">
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Departure Date</span>
+                        <input class="form-control" type="date" id="addDepartureDate">
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Arrival Date</span>
+                        <input class="form-control" type="date" id="addArrivalDate">
+                      </div>
+
+                      <select id="addShipSize" class="form-select mb-3">
+                        <option selected>Choose a class</option>
+                        <option value="1 Light">Light</option>
+                        <option value="2 Medium">Medium</option>
+                        <option value="3 Heavy">Heavy</option>
+                      </select>
+
+                      <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="addShipImage">
+                        <span class="input-group-text">Ships's Image</span>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input id="addShipPrice" type="number" class="form-control">
+                        <span class="input-group-text">.00</span>
+                      </div>
+
+                      <button id="ShipSubmit" class="btn btn-primary mb-3 btn btn-light btn-outline-dark w-50"
+                        type="submit">Send</button>
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="spacefood" role="tabpanel" aria-labelledby="spacefood-tab">
+                    <div class="section-title">
+                      <h2 class="text-black-50 text-center p-2">Add Food Item</h2>
+                    </div>
+                    <form id="addFood">
+
+                      <div class="input-group mb-3">
+                        <input id="addFoodCategory" type="text" class="form-control" value="Food" placeholder="Id"
+                          disabled>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addFoodId" type="text" class="form-control" placeholder="Id">
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addFoodName" type="text" class="form-control" placeholder="Food Name">
+                      </div>
+                      <div class="input-group mb-3">
+                        <input type="radio" class="btn-check" name="meat_dairy" id="addMeat" checked>
+                        <label class="btn btn-secondary" for="addMeat">Meat</label>
+                        <input type="radio" class="btn-check" name="meat_dairy" id="addDairy">
+                        <label class="btn btn-secondary" for="addDairy">Dairy</label>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input type="radio" class="btn-check" name="kosher_noKosher" id="addKosher" checked>
+                        <label class="btn btn-secondary" for="addKosher">Kosher</label>
+                        <input type="radio" class="btn-check" name="kosher_noKosher" id="addNoKosher">
+                        <label class="btn btn-secondary" for="addNoKosher">No Kosher</label>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input type="radio" class="btn-check" name="hypoallergenic_no" id="addHypoallergenic" checked>
+                        <label class="btn btn-secondary" for="addHypoallergenic">Hypoallergenic</label>
+                        <input type="radio" class="btn-check" name="hypoallergenic_no" id="addNoHypoallergenic">
+                        <label class="btn btn-secondary" for="addNoHypoallergenic">No Hypoallergenic</label>
+                      </div>
+                      <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="addFoodImage">
+                        <span class="input-group-text">Food's Image</span>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input id="addFoodPrice" type="number" class="form-control">
+                        <span class="input-group-text">.00</span>
+                      </div>
+
+                      <button id="FoodSubmit" class="btn btn-light btn-outline-dark w-50" type="submit">Send</button>
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="spacesuits" role="tabpanel" aria-labelledby="spacesuits-tab">
+                    <div class="section-title">
+                      <h2 class="text-black-50 text-center p-2">Add Space Suit</h2>
+                    </div>
+                    <form id="addSuit" class="w-75 mx-auto">
+
+                      <div class="input-group mb-3">
+                        <input id="addSuitCategory" type="text" class="form-control" value="Suit" placeholder="Id"
+                          disabled>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input id="addSuitId" type="text" class="form-control" placeholder="Id">
+                      </div>
+
+                      <div class="input-group mb-3 col-md-4">
+                        <input id="addSuitName" type="text" class="form-control" placeholder="Brand Name">
+                      </div>
+
+                      <div class="input-group mb-3 col-md-4">
+                        <input id="addSuitSize" type="number" class="form-control" placeholder="Size" value="40"
+                          min="40" max="64">
+                      </div>
+                      <select id="addSuitSize" class="form-select mb-3">
+                        <option selected>Choose a size</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                        <option value="XXXL">XXXL</option>
+                      </select>
+
+                      <select id="addSuitColor" class="form-select mb-3">
+                        <option selected>Choose a color</option>
+                        <option value="Red">Red</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Violet">Violet</option>
+                        <option value="White">White</option>
+                      </select>
+
+                      <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="addSuitImage">
+                        <span class="input-group-text">Ships's Image</span>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">$</span>
+                        <input id="addSuitPrice" type="number" class="form-control">
+                        <span class="input-group-text">.00</span>
+                      </div>
+
+                      <button id="SuitSubmit" class="btn btn-light btn-outline-dark w-50" type="submit">Send</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div> -->
+  <!--Adding new item of canvas end -->
+
   <!--Hero start-->
   <section class="hero-section">
     <div class="container">
@@ -269,7 +519,7 @@
             <h2 class="display-4">About The Proccess</h2>
           </div>
           <div class="col-lg-6">
-            
+
             <img src="/Media/Assets/aboutUs.png" class="img-fluid rounded-4 mb-4" alt="">
             <p>Before embarking on your space travel adventure, meticulous preparations are carried out to ensure
               your safety and comfort. Our <a href="#team">team</a> of expert engineers meticulously inspects and
@@ -394,9 +644,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace();
-    </script>
+  <script>
+    feather.replace();
+  </script>
 </body>
 
 </html>

@@ -1,97 +1,85 @@
 function Main() {
 
-    // Назначение обработчика события клика по кнопке старт
-    document.getElementById("startButton").addEventListener("click", startGame);
+    let start = document.getElementById("startButton");
 
-    // Переменные для счетчика и кнопки старт
-    var score = -1;
-    var isGameStarted = false;
+    start.addEventListener("click", startGame);
 
-    // Функция для обработки нажатия на кнопку старт
+
     function startGame() {
         isGameStarted = true;
         document.getElementById("startButton").style.display = "none";
+        let sec = 0
+        let timer = setInterval(() => {
+            document.getElementById("time").innerHTML = 'Time: ' + sec;
+            sec++;
+        }, 1000);
+
     }
 
-    // Функция для увеличения счетчика
     function increaseScore() {
         score++;
         document.getElementById("score").textContent = "Score: " + score;
     }
 
-    // Получение ссылки на холст и его контекст
     var canvas = document.getElementById("gameCanvas");
     var context = canvas.getContext("2d");
 
-    // Переменные для игры
-    var birdX = 50; // начальная позиция птицы по оси X
-    var birdY = canvas.height / 2; // начальная позиция птицы по оси Y
-    var birdDY = 0; // скорость птицы по оси Y
-    var gravity = 0.2; // гравитация
-    var jumpStrength = 4; // сила прыжка
-    var gap = 150; // промежуток между верхней и нижней трубой
-    var pipeWidth = 50; // ширина трубы
-    // var pipeGap = 200; // расстояние между трубами
-    var pipeX = canvas.width; // начальная позиция трубы по оси X
-    var pipeY = generatePipeY(); // начальная позиция трубы по оси Y
-    var pipeSpeed = 2; // скорость движения труб
+    var score = -1;
+    var isGameStarted = false;
 
-    // Функция для генерации случайной позиции трубы по оси Y
+    var birdX = 50;
+    var birdY = canvas.height / 2;
+    var birdDY = 0;
+    var gravity = 0.2;
+    var jumpStrength = 4;
+    var gap = 150;
+    var pipeWidth = 50;
+    var pipeX = canvas.width;
+    var pipeY = generatePipeY();
+    var pipeSpeed = 2;
+
+
     function generatePipeY() {
         increaseScore();
-
         return Math.random() * (canvas.height - gap * 2) + gap;
     }
 
-    // Функция для обновления игровых объектов
     function update() {
-        // Обновление позиции птицы
         birdY += birdDY;
         birdDY += gravity;
 
-        // Обновление позиции трубы
         pipeX -= pipeSpeed;
 
         if (birdY < 0 || birdY > canvas.height) {
-            location.reload(); // перезагрузка страницы
+            location.reload();
         }
-        // Проверка столкновения птицы с трубой
         if (birdX + pipeWidth > pipeX && birdX < pipeX + pipeWidth && (birdY < pipeY || birdY > pipeY + gap)) {
-            // Птица столкнулась с трубой, игра окончена
-            // alert("Game Over");
-            location.reload(); // перезагрузка страницы
+            location.reload();
         }
-        // Проверка, если труба вышла за пределы экрана, генерируем новую трубу
         if (pipeX + pipeWidth < 0) {
             pipeX = canvas.width;
             pipeY = generatePipeY();
         }
     }
 
-    // Функция для отрисовки игровых объектов
     function draw() {
-        // Очистка холста
         context.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Отрисовка птицы
-        var birdImage = new Image();
+        let birdImage = new Image();
         birdImage.src = "Assets/astronaut.png";
         context.drawImage(birdImage, birdX, birdY, 50, 50);
 
-        // Отрисовка верхней трубы
-        var pipeTopImage = new Image();
+        let pipeTopImage = new Image();
         pipeTopImage.src = "Assets/spaceBattery1.png";
         context.drawImage(pipeTopImage, pipeX, pipeY - pipeTopImage.height, pipeWidth, pipeTopImage.height);
 
-        // Отрисовка нижней трубы
-        var pipeBottomImage = new Image();
+        let pipeBottomImage = new Image();
         pipeBottomImage.src = "Assets/spaceBattery2.png";
         context.drawImage(pipeBottomImage, pipeX, pipeY + gap, pipeWidth, canvas.height - pipeY - gap);
     }
 
-    // Функция для обработки нажатия клавиши пробел
     function handleKeyPress(event) {
-        if (event.keyCode === 32) { // код клавиши пробел
+        if (event.keyCode === 32) {
             if (!isGameStarted) {
                 isGameStarted = true;
                 document.getElementById("startButton").style.display = "none";
@@ -100,19 +88,16 @@ function Main() {
         }
     }
 
-    // Назначение обработчика события нажатия клавиши пробел
     document.addEventListener("keydown", handleKeyPress);
 
-    // Главный игровой цикл
     function gameLoop() {
         if (isGameStarted) {
-            update(); // обновление игры
-            draw(); // отрисовка игры
+            update();
+            draw();
         }
         requestAnimationFrame(gameLoop); // рекурсивный вызов игрового цикла
     }
 
-    // Запуск игрового цикла
     gameLoop();
 
 

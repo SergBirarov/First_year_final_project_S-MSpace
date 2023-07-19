@@ -1,5 +1,16 @@
 export class User {
 
+    username = "";
+    password = "";
+    image = "";
+    firstName = "";
+    lastName = "";
+    email = "";
+    birthDate = "";
+    city = "";
+    street = "";
+    number = "";
+
     constructor(_username, _password, _image, _firstName, _lastName, _email, _birthDate, _city, _street, _number) {
         this.username = _username;
         this.password = _password;
@@ -11,9 +22,7 @@ export class User {
         this.city = _city;
         this.street = _street;
         this.number = _number;
-        // card = "";
     }
-
 
 
     GetBirthDate() {

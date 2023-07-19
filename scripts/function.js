@@ -1,6 +1,8 @@
 import { User } from "./models/User.js";
-var storedUsers = new Array();
-storedUsers[0] = new User(
+var cartTable = document.getElementById("cartTable");
+//Arrays for Users:
+//admin
+var storedUsers = [new User(
   `admin`,
   `admin1234admin`,
   `/Media/Assets/team-3.jpg`,
@@ -11,317 +13,236 @@ storedUsers[0] = new User(
   `Hell`,
   `Hell st`,
   `25`
-);
-
-// var storedSuits = JSON.parse(localStorage.getItem(`suits`));
-// var storedFoods = JSON.parse(localStorage.getItem(`foods`));
-// var storedFlights = JSON.parse(localStorage.getItem(`flights`));
-
+)];
+storedUsers[1] = new User(
+  `username`,
+  `a123456789`,
+  `/Media/Assets/team-3.jpg`,
+  `שמואל`,
+  `שמואלי`,
+  `Regina@Phalange.com`,
+  `1996-11-25`,
+  `עיר`,
+  `רחוב`,
+  `25`
+)
+var cart = new Array();
+// arrays for hardcoded products
 var storedFlights = [
   {
-    flightNumber: `165-56A`,
+    category: 'flight',
+    id: `1254`,
+    name: `165-56A`,
     departureDate: `26/07/2023`,
     arrivalDate: `26/08/2025`,
-    classType: `Heavy`,
+    classType: `3 Heavy`,
     image: `/Media/Assets/Ecom/products/prod1.jpg`,
     price: `12,500`,
   },
   {
-    flightNumber: `187-96A`,
+    category: 'flight',
+    id: `1258`,
+    name: `187-96A`,
     departureDate: `26/09/2023`,
     arrivalDate: `26/09/2024`,
-    classType: `Medium`,
+    classType: `2 Medium`,
     image: `/Media/Assets/Ecom/products/prod2.jpg`,
     price: `11,500`,
   },
   {
-    flightNumber: `787-96B`,
+    category: 'flight',
+    id: `1248`,
+    name: `787-96B`,
     departureDate: `26/10/2023`,
     arrivalDate: `26/09/2024`,
-    classType: `Light`,
+    classType: `1 Light`,
     image: `/Media/Assets/Ecom/products/prod3.jpg`,
     price: `64,500`,
   },
   {
-    flightNumber: `T77-96B`,
+    category: 'flight',
+    id: `1206`,
+    name: `T77-96B`,
     departureDate: `26/10/2029`,
     arrivalDate: `26/09/2032`,
-    classType: `Heavy`,
+    classType: `3 Heavy`,
     image: `/Media/Assets/Ecom/products/prod4.jpg`,
     price: `164,500`,
   },
 ];
-
-localStorage.setItem(`flights`, JSON.stringify(storedFlights));
-
 var storedFoods = [
   {
-    foodName: `Minced Brains`,
+    category: 'food',
+    id: `2346`,
+    name: `Minced Brains`,
     foodType: `meat`,
     kosherStatus: `no`,
     hypoallergenicStatus: `yes`,
-    foodImage: `/Media/Assets/Ecom/products/food1.png`,
-    foodPrice: `32.50`,
+    price: `32.50`,
+    image: `/Media/Assets/Ecom/products/food1.png`,
+    price: `32.50`,
   },
   {
-    foodName: `Ass Bits`,
+    category: 'food',
+    id: `2467`,
+    name: `Ass Bits`,
     foodType: `meat`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    foodImage: `/Media/Assets/Ecom/products/food2.png`,
-    foodPrice: `19.90`,
+    image: `/Media/Assets/Ecom/products/food2.png`,
+    price: `19.90`,
   },
   {
-    foodName: `Breast Milk`,
+    category: 'food',
+    id: `2345`,
+    name: `Breast Milk`,
     foodType: `Dairy`,
     kosherStatus: `Yes`,
     hypoallergenicStatus: `No`,
-    foodImage: `/Media/Assets/Ecom/products/food3.png`,
-    foodPrice: `312.30`,
+    image: `/Media/Assets/Ecom/products/food3.png`,
+    price: `312.30`,
   },
   {
-    foodName: `Shepareds Pie`,
+    category: 'food',
+    id: `2867`,
+    name: `Shepareds Pie`,
     foodType: `meat`,
     kosherStatus: `No`,
     hypoallergenicStatus: `Yes`,
-    foodImage: `/Media/Assets/Ecom/products/food4.png`,
-    foodPrice: `99.90`,
+    image: `/Media/Assets/Ecom/products/food4.png`,
+    price: `99.90`,
   },
 ];
-
-localStorage.setItem(`foods`, JSON.stringify(storedFoods));
-
 var storedSuits = [
   {
-    brandName: `Wolf$Gangs`,
-    size: `S/36`,
-    color: `White/Silver`,
+    category: 'suit',
+    id: `3546`,
+    name: `Wolf$Gangs`,
+    size: `36`,
+    color: `White`,
     image: `/Media/Assets/Ecom/products/suit1.jpg`,
     price: `360.90`,
   },
   {
-    brandName: `Wolf$Gangs`,
-    size: `M/42`,
+    category: 'suit',
+    id: `3568`,
+    name: `Wolf$Gangs`,
+    size: `42`,
     color: `Orange`,
     image: `/Media/Assets/Ecom/products/suit2.jpg`,
     price: `422.90`,
   },
   {
-    brandName: `Suits-BaAm`,
-    size: `L/46`,
-    color: `White/Silver`,
+    category: 'suit',
+    id: `3965`,
+    name: `Suits-BaAm`,
+    size: `46`,
+    color: `White`,
     image: `/Media/Assets/Ecom/products/suit3.jpg`,
     price: `180.90`,
   },
   {
-    brandName: `AlaIster`,
-    size: `XL/56`,
-    color: `White/Silver`,
+    category: 'suit',
+    id: `3967`,
+    name: `AlaIster`,
+    size: `56`,
+    color: `White`,
     image: `/Media/Assets/Ecom/products/suit4.jpg`,
     price: `1360.90`,
   },
 ];
+if (!(sessionStorage.getItem('cart'))) {
+  sessionStorage.setItem('cart', JSON.stringify(cart))
+}
+if (!(localStorage.getItem('users'))) {
+  localStorage.setItem('users', JSON.stringify(storedUsers))
+}
+if (!(localStorage.getItem('flights'))) {
+  localStorage.setItem('flights', JSON.stringify(storedFlights))
+}
+if (!(localStorage.getItem('foods'))) {
+  localStorage.setItem('foods', JSON.stringify(storedFoods))
+}
+if (!(localStorage.getItem('suits'))) {
+  localStorage.setItem('suits', JSON.stringify(storedSuits))
+}
 
-localStorage.setItem(`suits`, JSON.stringify(storedSuits));
-
+//html elements for prod and users
 var productGridF = document.getElementById("flightsSec");
 var productGridFood = document.getElementById("foodSec");
 var productGridSuit = document.getElementById("suitSec");
 
-var userTable = document.getElementById("userTable");
-localStorage.setItem(`users`, JSON.stringify(storedUsers));
-storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
+// localStorage.setItem(`users`, JSON.stringify(storedUsers));
+// storedUsers.push(JSON.parse(localStorage.getItem(`users`)));
 
+//startup building page with hardcoded elements
 export function BuildStore() {
-  // stackedFlights = [
-  //     {
-  //         flightNumber: `165-56A`,
-  //         departureDate: `26/07/2023`,
-  //         arrivalDate: `26/08/2025`,
-  //         classType: `Heavy`,
-  //         image: `/Media/Assets/Ecom/products/prod1.jpg`,
-  //         price: `12,500`,
-  //     },
-  //     {
-  //         flightNumber: `187-96A`,
-  //         departureDate: `26/09/2023`,
-  //         arrivalDate: `26/09/2024`,
-  //         classType: `Medium`,
-  //         image: `/Media/Assets/Ecom/products/prod2.jpg`,
-  //         price: `11,500`,
-  //     },
-  //     {
-  //         flightNumber: `787-96B`,
-  //         departureDate: `26/10/2023`,
-  //         arrivalDate: `26/09/2024`,
-  //         classType: `Light`,
-  //         image: `/Media/Assets/Ecom/products/prod3.jpg`,
-  //         price: `64,500`,
-  //     },
-  //     {
-  //         flightNumber: `T77-96B`,
-  //         departureDate: `26/10/2029`,
-  //         arrivalDate: `26/09/2032`,
-  //         classType: `Heavy`,
-  //         image: `/Media/Assets/Ecom/products/prod4.jpg`,
-  //         price: `164,500`,
-  //     },
-  // ];
-
-  // let str = ``;
-
-  // for (let i = 0; i < stackedFlights.length; i++) {
-
-  //     str += `
-  //     <div class="card col-lg-3 m-2 mx-auto text-center" >
-  //     <img src="${stackedFlights[i].image}" class="prod" alt="Product 1">
-  //     <h3 class="fs-4">${stackedFlights[i].flightNumber}
-  //     </h3>
-  //     <p class=" fw-bold mb-0">
-  //       Price: <span>${stackedFlights[i].price}</span>
-  //     </p>
-  //     <p class=" fw-bold mb-0">
-  //       Take off: <span>${stackedFlights[i].departureDate}</span>
-  //     </p>
-  //     <button class="btn btn-primary prodBut">Add to Cart</button>
-
-  //     </div>`;
-  // };
-
-  // let addBut = document.querySelectorAll(".prodBut");
-  // console.log(addBut);
-  // addBut.forEach(element => {
-  //     element.addEventListener(`click`, AddToCart);
-  // });
-  // productGridF.innerHTML += str;
-
-  // stackedFoods = [
-  //     {
-  //         foodName: `Minced Brains`,
-  //         foodType: `meat`,
-  //         kosherStatus: `no`,
-  //         hypoallergenicStatus: `yes`,
-  //         foodImage: `/Media/Assets/Ecom/products/food1.png`,
-  //         foodPrice: `32.50`,
-  //     },
-  //     {
-  //         foodName: `Ass Bits`,
-  //         foodType: `meat`,
-  //         kosherStatus: `Yes`,
-  //         hypoallergenicStatus: `No`,
-  //         foodImage: `/Media/Assets/Ecom/products/food2.png`,
-  //         foodPrice: `19.90`,
-  //     },
-  //     {
-  //         foodName: `Breast Milk`,
-  //         foodType: `Dairy`,
-  //         kosherStatus: `Yes`,
-  //         hypoallergenicStatus: `No`,
-  //         foodImage: `/Media/Assets/Ecom/products/food3.png`,
-  //         foodPrice: `312.30`,
-  //     },
-  //     {
-  //         foodName: `Shepareds Pie`,
-  //         foodType: `meat`,
-  //         kosherStatus: `No`,
-  //         hypoallergenicStatus: `Yes`,
-  //         foodImage: `/Media/Assets/Ecom/products/food4.png`,
-  //         foodPrice: `99.90`,
-  //     }
-  // ];
-  // let foods = ``;
-  // for (let i = 0; i < stackedFoods.length; i++) {
-  //     foods += `
-  // <div class="card col-lg-3 m-2 mx-auto text-center">
-  // <img class="prod" src="${stackedFoods[i].foodImage}" alt="Product 5">
-  // <h3 class="fw-bold">${stackedFoods[i].foodName}</h3>
-  // <p><span class="fw-bold">Dairy/Meat: </span>${stackedFoods[i].foodType}</p>
-  // <p><span class="fw-bold">Kosher Status: </span>${stackedFoods[i].kosherStatus}</p>
-  // <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${stackedFoods[i].hypoallergenicStatus}</p>
-  // <p><span class="fw-bold">Price: </span>${stackedFoods[i].foodPrice}</p>
-  // <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
-
-  // </div>
-  // `
-  // };
-  // productGridFood.innerHTML += foods;
-  // stackedSuits = [
-  //     {
-  //         brandName: `Wolf$Gangs`,
-  //         size: `S/36`,
-  //         color: `White/Silver`,
-  //         image: `/Media/Assets/Ecom/products/suit1.jpg`,
-  //         price: `360.90`
-  //     },
-  //     {
-  //         brandName: `Wolf$Gangs`,
-  //         size: `M/42`,
-  //         color: `Orange`,
-  //         image: `/Media/Assets/Ecom/products/suit2.jpg`,
-  //         price: `422.90`
-  //     },
-  //     {
-  //         brandName: `Suits-BaAm`,
-  //         size: `L/46`,
-  //         color: `White/Silver`,
-  //         image: `/Media/Assets/Ecom/products/suit3.jpg`,
-  //         price: `180.90`
-  //     },
-  //     {
-  //         brandName: `AlaIster`,
-  //         size: `XL/56`,
-  //         color: `White/Silver`,
-  //         image: `/Media/Assets/Ecom/products/suit4.jpg`,
-  //         price: `1360.90`
-  //     }
-  // ]
-  // let suits = ``;
-  // for (let i = 0; i < stackedSuits.length; i++) {
-  //     suits += `
-  // <div class="card col-lg-3 m-2 mx-auto text-center">
-  // <img class="prod" src ="${stackedSuits[i].image}" alt="">
-  // <h3 class = "fw-bold">${stackedSuits[i].brandName}</h3>
-  // <p class="fw-bold">Size: <span>${stackedSuits[i].size}</span></p>
-  // <p class="fw-bold">color: <span>${stackedSuits[i].color}</span></p>
-  // <p class="fw-bold">Price: <span>${stackedSuits[i].price}</span></p>
-  // <button class="btn btn-primary prodBut">Add to Cart</button>
-
-  // </div>
-  // `;
-  // };
-
-  // productGridSuit.innerHTML += suits;
   AddFlightToStore();
   AddFoodsToStore();
   AddSuitsToStore();
 }
+
+//user info table
 export function UserTable() {
-  // let manager = `<tr>
-  //               <td><img src="${storedUsers[0].image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
-  //               <td>${storedUsers[0].username}</td>
-  //               <td>${storedUsers[0].lastName} ${storedUsers[0].firstName}</td>
-  //               <td>${storedUsers[0].birthDate}</td>
-  //               <td>${storedUsers[0].street} ${storedUsers[0].number}, ${storedUsers[0].city}</td>
-  //               <td>${storedUsers[0].email}</td>
-  //             </tr>`;
-
   let userTable = document.getElementById("userTable");
-
-  // userTable.innerHTML += manager;
   let users = ``;
+  storedUsers = JSON.parse(localStorage.getItem('users'));
   if (storedUsers) {
-    storedUsers.forEach((element) => {
+    let str = '';
+    for (let i = 0; i < storedUsers.length; i++) {
+      let element = storedUsers[i];
+      let data = `<td></td>`;
+      if (i > 0) {
+        data = `<td> <button class="btn btn-sm btn-danger RemoveProfile" data-ind="${i}">Remove</button> <button class="btn btn-sm btn-danger" data-ind="${i}">Edit</button></td>`
+      }
       users = `<tr>
-            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"></td>
-            <td>${element.username}</td>
+            <td><img src="${element.image}" id="profilePicProfile" alt="User Image" class="img-fluid align-content-center"> ${element.username}</td>
             <td>${element.lastName} ${element.firstName}</td>
             <td>${element.birthDate}</td>
             <td>${element.street} ${element.number}, ${element.city}</td>
             <td>${element.email}</td>
+            ${data}
           </tr>`;
-      userTable.innerHTML += users;
+      str += users
+    }
+
+    userTable.innerHTML = str;
+    let removeBtn = document.querySelectorAll('.RemoveProfile');
+    removeBtn.forEach(element => {
+      element.addEventListener('click', RemoveProfile);
     });
   }
+}
+function RemoveProfile(event) {
+  let index = Number(event.target.dataset.ind)
+  storedUsers = JSON.parse(localStorage.getItem('users'))
+  storedUsers.splice(index, 1);
+  localStorage.setItem('users', JSON.stringify(storedUsers))
+  UserTable();
+}
+export function UserProfile() {
+
+  let user;
+  let userJSON = sessionStorage.getItem('connectedUser');
+  if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+    user = JSON.parse(userJSON);
+    document.getElementById("userProfileTab").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+  `;
+    document.getElementById("uploadPic").innerHTML = `<img src="${user.image}" alt="" class="rounded-circle img-fluid wid-70"></img>
+  `;
+    document.getElementById("userBadge").innerHTML = user.password === `admin1234admin` ? `Admin` : `User`;
+
+    document.getElementById("profileTabName").innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("profileTabMail").innerHTML = `${user.email}`;
+    document.getElementById("profileTabUserName").innerHTML = `${user.username}`;
+    document.getElementById("profileTabAddress").innerHTML = `${user.city}`;
+
+    document.getElementById("profileName").innerHTML = `${user.firstName} ${user.lastName}`;
+    document.getElementById("profilePhone").innerHTML = `${user.phone ? `'${user.phone}` : 'Have not phone'}`;
+    document.getElementById("profileMail").innerHTML = `${user.email}`;
+    document.getElementById("profileAddress").innerHTML = `${user.city},${user.street} ${user.number}`;
+  }
+
 }
 
 export function SendregistrationForm() {
@@ -329,7 +250,7 @@ export function SendregistrationForm() {
   form.addEventListener("submit", SubmitRegistrationForm);
 
   //כפתור שמראה את הסיסמא
-  document.querySelector("#showPass").addEventListener("click", () => {
+  document.querySelector("#showPass1").addEventListener("click", () => {
     let pass = document.querySelector("#regPassword");
     if (pass.type === "password") {
       pass.type = "text";
@@ -337,93 +258,304 @@ export function SendregistrationForm() {
       pass.type = "password";
     }
   });
+  // document.querySelector("#showPass2").addEventListener("click", () => {
+  //   let pass = document.querySelector("#regPasswordSecond");
+  //   if (pass.type === "password") {
+  //     pass.type = "text";
+  //   } else {
+  //     pass.type = "password";
+  //   }
+  // });
+}
+function CheckPassword(password) {
+  let inCorrect = true
+  let isSpecial = false
+  let isCapLatters = false
+  let isLatters = false
+  let isNumber = false
+  let passwordValue = password.value
+
+  if (Number(passwordValue.length) < 7 || Number(passwordValue.length) > 12) {
+    inCorrect = true;
+  }
+
+  for (let element of passwordValue) {
+    let specialCharacters = ['@', '!', '#', '$', '&']
+    if (specialCharacters.includes(element)) {
+      isSpecial = true;
+    }
+    if (element >= 'a' && element <= 'z') {
+      isLatters = true;
+    }
+    if (element >= 'A' && element <= 'Z') {
+      isCapLatters = true;
+    }
+    if (element >= '0' && element <= '9') {
+      isNumber = true;
+    }
+
+  };
+
+
+
+  if (isLatters && isSpecial && isNumber && isCapLatters) {
+    inCorrect = false
+  }
+
+  if (inCorrect) {
+    document.getElementById('passwordHelp').classList.remove('none');
+    password.style.border = "2px solid red"
+  }
+  else {
+    document.getElementById('passwordHelp').classList.add('none');
+    password.style.border = "2px solid green"
+  }
+  return inCorrect
 }
 export function SubmitRegistrationForm(event) {
   event.preventDefault();
-  let username = document.getElementById("regUsername").value;
-  let password = document.getElementById("regPassword").value;
+
+  // username
+  let username = document.getElementById("regUsername");
+  if (username.value || username.value.length > 60) {
+    let usernameValue = username.value;
+    for (let element of usernameValue) {
+      if (element >= 'א' && element <= 'ת') {
+        username.style.border = "2px solid red";
+        return;
+      }
+      else {
+        username.style.border = "2px solid green";
+      }
+    }
+  } else {
+    username.style.border = "2px solid red";
+  }
+
+  // password
+  let password = document.getElementById("regPassword");
+  if (!password.value) {
+    password.style.border = "2px solid red"
+  }
+  else {
+    if (CheckPassword(password)) {
+      return
+    }
+    password.style.border = "2px solid green"
+  }
+
+  // password2
+  let password2 = document.getElementById("regPasswordSecond");
+  if (password2.value && (password.value == password2.value)) {
+    password2.style.border = "2px solid green";
+    document.getElementById('PasswordSecond').classList.add('none')
+  }
+  else {
+    password2.style.border = "2px solid red";
+    document.getElementById('PasswordSecond').classList.remove('none')
+    //return
+  }
+
+
+  // imageInput
   let imageInput = document.getElementById("image");
-  let firstName = document.getElementById("firstName").value;
-  let lastName = document.getElementById("lastName").value;
-  let email = document.getElementById("email").value;
-  let birthDate = document.getElementById("birthDate").value;
-  let city = document.getElementById("city").value;
-  let street = document.getElementById("street").value;
-  let number = document.getElementById("houseNumber").value;
+  if (imageInput.value) {
+    if (imageInput.value.includes('.jpeg') || imageInput.value.includes('.jpg')) {
+      imageInput.style.border = "2px solid green";
+      document.getElementById('imageHelp').classList.add('none')
+    }
+    else {
+      imageInput.style.border = "2px solid red";
+      document.getElementById('imageHelp').classList.remove('none')
+      return;
+    }
+  } else {
+    imageInput.style.border = "2px solid red";
+  }
+
+  // firstName
+  let firstName = document.getElementById("firstName");
+  if (firstName.value) {
+    let firstNameValue = firstName.value;
+    for (let element of firstNameValue) {
+      if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+        firstName.style.border = "2px solid red";
+        return;
+      }
+      else {
+        firstName.style.border = "2px solid green";
+      }
+    }
+  } else {
+    firstName.style.border = "2px solid red";
+  }
+  // lastName
+  let lastName = document.getElementById("lastName");
+  if (lastName.value) {
+    let lastNameValue = lastName.value;
+    for (let element of lastNameValue) {
+      if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+        lastName.style.border = "2px solid red";
+        return;
+      }
+      else {
+        lastName.style.border = "2px solid green";
+      }
+    }
+  } else {
+    lastName.style.border = "2px solid red";
+  }
+  // email
+  let email = document.getElementById("email");
+  if (email.value) {
+    let emailValue = email.value;
+    for (let element of emailValue) {
+      if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
+        email.style.border = "2px solid green";
+      }
+      else {
+        email.style.border = "2px solid red";
+        return;
+      }
+    }
+  }
+  else {
+    email.style.border = "2px solid red";
+  }
+
+  // birthDate
+  let birthDate = document.getElementById("birthDate");
+  let birthDateValue = new Date(birthDate.value);
+  let currentDate = new Date();
+  if (birthDate.value) {
+    if ((currentDate.getFullYear() - birthDateValue.getFullYear() < 120 && birthDateValue < currentDate)) {
+      birthDate.style.border = "2px solid green";
+    }
+    else {
+      birthDate.style.border = "2px solid red";
+      return
+    }
+  } else {
+    birthDate.style.border = "2px solid red";
+  }
+
+  // city
+  let city = document.getElementById("city");
+  if (city.value) {
+    let cityValue = city.value;
+    for (let element of cityValue) {
+      if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+        city.style.border = "2px solid red";
+        return;
+      }
+      else {
+        city.style.border = "2px solid green";
+      }
+    }
+  }
+  else {
+    city.style.border = "2px solid red";
+  }
+  // street
+  let street = document.getElementById("street");
+  if (street.value) {
+    let streetValue = street.value;
+    for (let element of streetValue) {
+      if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+        street.style.border = "2px solid red";
+        return;
+      }
+      else {
+        street.style.border = "2px solid green";
+      }
+    }
+  }
+  else {
+    street.style.border = "2px solid red";
+  }
+  //number
+  let number = document.getElementById("houseNumber");
+  number.style.border = !number.value ? "2px solid red" : "2px solid green"
 
   if (
-    username === "" ||
-    password === "" ||
-    firstName === "" ||
-    lastName === "" ||
-    email === "" ||
-    birthDate === "" ||
-    city === "" ||
-    street === "" ||
-    number === ""
+    username.value === "" ||
+    password.value === "" ||
+    imageInput.value === "" ||
+    firstName.value === "" ||
+    lastName.value === "" ||
+    email.value === "" ||
+    birthDate.value === "" ||
+    city.value === "" ||
+    street.value === "" ||
+    number.value === ""
   ) {
-    alert("Please fill in all the required fields.");
     return;
   }
 
-  // Get the selected file from the input
   let file = imageInput.files[0];
 
-  // Create a new FileReader instance
   let reader = new FileReader();
 
-  // Set up an event listener for when the file is loaded
   reader.onload = function (event) {
-    // The file content will be available in event.target.result
     let imageContent = event.target.result;
 
-    // Retrieve the stored user data from localStorage
     let storedUsersJSON = localStorage.getItem("users");
 
-    // Check if the email already exists in localStorage
     if (storedUsersJSON) {
-      let storedUsers = JSON.parse(storedUsersJSON);
+      storedUsers = JSON.parse(storedUsersJSON);
+
       for (let i = 0; i < storedUsers.length; i++) {
-        if (storedUsers[i].email === email) {
-          alert("Email already exists. Please choose a different email.");
+        if (storedUsers[i].email === email.value) {
+          document.getElementById('emailHelp').classList.remove('none');
+          email.style.border = "2px solid red"
           return;
+        }
+        else {
+          email.style.border = "2px solid green"
+          document.getElementById('emailHelp').classList.add('none');
         }
       }
     } else {
-      var storedUsers = [];
+      storedUsers = [];
     }
 
     let newUser = {
-      username: username,
-      password: password,
+      username: username.value,
+      password: password.value,
       image: imageContent,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      birthDate: birthDate,
-      city: city,
-      street: street,
-      number: number,
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      birthDate: birthDate.value,
+      city: city.value,
+      street: street.value,
+      number: number.value,
     };
 
-    // Add the newUser object to the storedUsers array
     storedUsers.push(newUser);
 
-    // Convert the storedUsers array to a JSON string
-    let updatedUsersJSON = JSON.stringify(storedUsers);
+    storedUsersJSON = JSON.stringify(storedUsers);
 
-    // Store the JSON string in localStorage
-    localStorage.setItem("users", updatedUsersJSON);
+    localStorage.setItem("users", storedUsersJSON);
+
+    let user = storedUsers.find(
+      (u) => u.email === email.value && u.password === password.value
+    );
+    let userJSON = JSON.stringify(user);
+    sessionStorage.setItem("connectedUser", userJSON);
+    window.location.assign('./managerProfile.html')
   };
-
-  // Read the file as a data URL (base64 encoded)
-  reader.readAsDataURL(file);
+  if (file) {
+    reader.readAsDataURL(file);
+  }
 }
+
 export function SendLoginForm() {
   let form = document.querySelector("#submit_login");
   form.addEventListener("click", SubmitLoginForm);
 
-  document.querySelector("#showPass").addEventListener("click", () => {
+  //fix this
+  document.querySelector("#showPassLogIn").addEventListener("click", () => {
     let pass = document.querySelector("#floatingPassword");
     if (pass.type === "password") {
       pass.type = "text";
@@ -432,42 +564,32 @@ export function SendLoginForm() {
     }
   });
 }
-function SubmitLoginForm() {
-  let email = document.getElementById("floatingEmail").value;
-  let password = document.getElementById("floatingPassword").value;
-  // Retrieve the stored user data from localStorage
+
+function SubmitLoginForm(event) {
+  event.preventDefault();
+  let email = document.getElementById("floatingEmail");
+  let password = document.getElementById("floatingPassword");
   let storedUsersJSON = localStorage.getItem("users");
 
   if (storedUsersJSON) {
     let storedUsers = JSON.parse(storedUsersJSON);
-    // Check if the email already exists in localStorage
     let user = storedUsers.find(
-      (u) => u.email === email && u.password === password
+      (u) => u.email === email.value && u.password === password.value
     );
-
-    // Convert the updated suits array to a JSON string
-    let userJSON = JSON.stringify(user);
-
-    // Store the JSON string in localStorage
-    localStorage.setItem("connectedUser", userJSON);
-
     if (user) {
-      if (password === `admin1234admin`) {
-        location.assign("./managerProfile.html");
-        alert(`You are connected as an admin`);
-      }
-      let add = document.getElementById(`addItem`);
-      // alert("connect");
-      // document.querySelector("#incorrectPassword").style.visibility = "hidden";
-      return;
+      let userJSON = JSON.stringify(user);
+      sessionStorage.setItem("connectedUser", userJSON);
+      window.location.assign("./managerProfile.html");
     } else {
-      // document.querySelector("#incorrectPassword").style.visibility = "visible";
-      alert("Incorrect email or password.");
+      email.style.border = "2px solid red"
+      password.style.border = "2px solid red"
     }
   } else {
     alert("No registered users.");
   }
 }
+
+//adding products to localstorage through user input
 export function AddSuit() {
   document.querySelector("#addSuit").addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent the form from submitting
@@ -478,118 +600,102 @@ export function AddSuit() {
     let color = document.getElementById("addSuitColor").value;
     let imageInput = document.getElementById("addSuitImage");
     let price = document.getElementById("addSuitPrice").value;
+    let id = document.getElementById("addSuitId").value;
+    let category = document.getElementById("addSuitCategory").value;
 
     // Check if any of the fields are empty
     if (
       !brandName ||
-      size === "Choose a size" ||
       color === "Choose a color" ||
       !imageInput.files[0] ||
-      !price
+      !price ||
+      !id ||
+      !category
     ) {
       alert("Please fill in all the required fields.");
       return;
     }
 
     let file = imageInput.files[0];
-    // Create a new FileReader instance
     let reader = new FileReader();
 
-    // Set up an event listener for when the file is loaded
     reader.onload = function (event) {
-      // The file content will be available in event.target.result
       let imageContent = event.target.result;
 
-      // Create a suit object with the image content
       let suit = {
-        brandName: brandName,
+        category: category,
+        id: id,
+        name: brandName,
         size: size,
         color: color,
         image: imageContent,
         price: price,
       };
 
-      // Retrieve the existing suits array from localStorage or create a new one
       let storedSuitsJSON = localStorage.getItem("suits");
       let storedSuits = storedSuitsJSON ? JSON.parse(storedSuitsJSON) : [];
 
-      // Add the new suit object to the stored suits array
       storedSuits.push(suit);
 
-      // Convert the updated suits array to a JSON string
       let updatedSuitsJSON = JSON.stringify(storedSuits);
 
-      // Store the JSON string in localStorage
       localStorage.setItem("suits", updatedSuitsJSON);
 
-      // Clear the form fields
       document.getElementById("addSuit").reset();
 
-      // Optionally, display a success message
       alert("Suit added successfully!");
       AddSuitsToStore();
     };
 
-    reader.readAsDataURL(file);
   });
 }
+
 export function AddFood() {
   document.querySelector("#addFood").addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent form submission
 
     // Retrieve input values
     let foodName = document.getElementById("addFoodName").value;
-    let foodType = document.querySelector(
-      'input[name="meat_dairy"]:checked'
-    ).value;
-    let kosherStatus = document.querySelector(
-      'input[name="kosher_noKosher"]:checked'
-    ).value;
-    let hypoallergenicStatus = document.querySelector(
-      'input[name="hypoallergenic_no"]:checked'
-    ).value;
+    let foodType = document.querySelector('input[name="meat_dairy"]:checked').value;
+    let kosherStatus = document.querySelector('input[name="kosher_noKosher"]:checked').value;
+    let hypoallergenicStatus = document.querySelector('input[name="hypoallergenic_no"]:checked').value;
     let foodImageInput = document.getElementById("addFoodImage");
     let foodPrice = document.getElementById("addFoodPrice").value;
+    let foodId = document.getElementById("addFoodId").value;
+    let foodCategory = document.getElementById("addFoodCategory").value;
 
-    // Validate the input values (optional)
-    if (foodName === "" || foodPrice === "") {
+    if (!foodName || !foodPrice || !foodId || !foodCategory) {
       alert("Please fill in all the fields.");
       return;
     }
 
     let file = foodImageInput.files[0];
 
-    // Create a FileReader instance
     let reader = new FileReader();
 
-    // Set up an event listener for when the file is loaded
     reader.onload = function (event) {
-      // The file content will be available in event.target.result
-      let foodImage = event.target.result;
+      let img = event.target.result;
 
-      // Create a food object
       let food = {
-        foodName: foodName,
+        id: foodId,
+        category: foodCategory,
+        name: foodName,
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
         hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
         foodImage: foodImage,
-        foodPrice: foodPrice,
+        price: foodPrice,
       };
 
-      // Retrieve the stored food array from localStorage
       let storedFoodsJSON = localStorage.getItem("foods");
       let storedFoods = storedFoodsJSON ? JSON.parse(storedFoodsJSON) : [];
 
-      // Add the new food object to the stored foods array
       storedFoods.push(food);
 
-      // Convert the updated foods array to a JSON string
       let updatedFoodsJSON = JSON.stringify(storedFoods);
 
       localStorage.setItem("foods", updatedFoodsJSON);
 
-      // Clear the form fields
       document.getElementById("addFood").reset();
 
       alert("Food item added successfully!");
@@ -597,7 +703,6 @@ export function AddFood() {
       AddFoodsToStore();
     };
 
-    reader.readAsDataURL(file);
   });
 }
 
@@ -607,42 +712,47 @@ export function AddShip() {
 
     // Retrieve input values
     let flightNumber = document.getElementById("addFlightNumber").value;
-    let departureDate = document.getElementById("addDepartureDate").value;
-    let arrivalDate = document.getElementById("addArrivalDate").value;
     let classType = document.getElementById("addShipSize").value;
     let imageInput = document.getElementById("addShipImage");
     let price = document.getElementById("addShipPrice").value;
+    let shipId = document.getElementById("addShipId").value;
+    let shipCategory = document.getElementById("addShipCategory").value;
+    let departureDate = document.getElementById("addDepartureDate");
+    let arrivalDate = document.getElementById("addArrivalDate");
 
-    // Validate the input values (optional)
     if (
       flightNumber === "" ||
       departureDate === "" ||
       arrivalDate === "" ||
       classType === "Choose a class" ||
-      price === ""
+      price === "" ||
+      !shipId ||
+      !shipCategory
     ) {
       alert("Please fill in all the fields.");
       return;
     }
-    if (departureDate > arrivalDate) {
-      alert("Invalid date");
-      return;
+
+    let departureDateValue = new Date(departureDate.value);
+    let arrivalDateValue = new Date(arrivalDate.value);
+    let currentDate = new Date();
+
+    if (departureDateValue >= currentDate && arrivalDateValue > departureDateValue) {
+      departureDate.style.border = "2px solid red";
+      return
     }
 
-    // Get the selected file from the image input
     let file = imageInput.files[0];
 
-    // Create a new FileReader instance
     let reader = new FileReader();
 
-    // Set up an event listener for when the file is loaded
     reader.onload = function (event) {
-      // The file content will be available in event.target.result
       let image = event.target.result;
 
-      // Create a flight object
       let flight = {
-        flightNumber: flightNumber,
+        id: shipId,
+        category: shipCategory,
+        name: flightNumber,
         departureDate: departureDate,
         arrivalDate: arrivalDate,
         classType: classType,
@@ -650,55 +760,164 @@ export function AddShip() {
         price: price,
       };
 
-      // Retrieve the stored flights array from localStorage
       let storedFlightsJSON = localStorage.getItem("flights");
       storedFlights = storedFlightsJSON ? JSON.parse(storedFlightsJSON) : [];
 
-      // Add the new flight object to the stored flights array
       storedFlights.push(flight);
 
-      // Convert the updated flights array to a JSON string
       let updatedFlightsJSON = JSON.stringify(storedFlights);
 
-      // Store the JSON string in localStorage
       localStorage.setItem("flights", updatedFlightsJSON);
 
-      // Clear the form fields
       document.getElementById("addFlight").reset();
 
-      // Optionally, display a success message
       alert("Flight added successfully!");
 
       AddFlightToStore();
     };
 
-    // Read the file as a data URL (base64 encoded)
-    reader.readAsDataURL(file);
   });
 }
 
-function AddFlightToStore() {
-  let str = ``;
-  storedFlights = JSON.parse(localStorage.getItem(`flights`));
 
-  for (let i = 0; i < storedFlights.length; i++) {
-    str += `<div class="card col-lg-3 m-2 mx-auto" >
-        <img src="${storedFlights[i].image}" class="prod" alt="Product 1">
-        <h3 class="fs-4">${storedFlights[i].flightNumber}
-        </h3>
-        <p class="small p fw-bold">
-        Price: <span>${storedFlights[i].price}</span>
-        </p>
-        <p class="small p fw-bold">
-        Take off: <span>${storedFlights[i].departureDate}</span>
-        </p>
-        <button class="btn btn-primary prodBut data-ind="${i}" data-prod="flight" id="flightToCart-${i}">Add to Cart</button>
-        </div>`;
+function sortByPrice(a, b) {
+  const priceA = parseInt(a.price);
+  const priceB = parseInt(b.price);
+  let filter = document.getElementById('price-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return priceA - priceB;
+    case 'high-to-low':
+      return priceB - priceA;
+    default:
+      return;
+  }
+}
+//adding the products to the store
+export function SortStore() {
+  SortFlights();
+  SortFoods();
+  SortSuits();
 
+}
+function SortFlights() {
+  storedFlights;
+  storedFlights.sort(sortByPrice);
+  const parentElement = storedFlights[0].parentNode;
+  localStorage.setItem('flights', JSON.stringify(storedFlights));
+  AddFlightToStore();
+}
+function SortSuits() {
+  storedSuits;
+  storedSuits.sort(sortByPrice);
+  const parentElement = storedSuits[0].parentNode;
+  localStorage.setItem('suits', JSON.stringify(storedSuits));
+  AddSuitsToStore();
+}
+function SortFoods() {
+  storedFoods;
+  storedFoods.sort(sortByPrice);
+  const parentElement = storedFoods[0].parentNode;
+  localStorage.setItem('foods', JSON.stringify(storedFoods));
+  AddFoodsToStore();
+}
+export function SecondSortStore() {
+  SecondSortFlights();
+  SecondSortSuits();
+  SecondSortFoods();
+}
+function sortSuitsBySize(a, b) {
+  const sizeA = parseInt(a.size);
+  const sizeB = parseInt(b.size);
+  let filter = document.getElementById('second-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return sizeA - sizeB;
+    case 'high-to-low':
+      return sizeB - sizeA;
+    default:
+      return;
   }
 
+}
+function SortFlightsByClass(a, b) {
+  let flightSizeA = parseInt(a.classType[0]);
+  let flightSizeB = parseInt(b.classType[0]);
+  let filter = document.getElementById('second-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return flightSizeA - flightSizeB;
+    case 'high-to-low':
+      return flightSizeB - flightSizeA;
+    default:
+      return;
+  }
+
+}
+function SortFoodsByMeat(a, b) {
+  const foodTypeA = parseInt(a.foodType.length);
+  const foodTypeB = parseInt(b.foodType.length);
+  let filter = document.getElementById('second-filter').value;
+  switch (filter) {
+    case 'low-to-high':
+      return foodTypeA - foodTypeB;
+    case 'high-to-low':
+      return foodTypeB - foodTypeA;
+    default:
+      return;
+  }
+
+}
+function SecondSortFlights() {
+  storedFlights.sort(SortFlightsByClass);
+  const parentElement = storedFlights[0].parentNode;
+  localStorage.setItem('flights', JSON.stringify(storedFlights));
+  AddFlightToStore();
+}
+function SecondSortSuits() {
+  storedSuits.sort(sortSuitsBySize);
+  const parentElement = storedSuits[0].parentNode;
+  localStorage.setItem('suits', JSON.stringify(storedSuits));
+  AddSuitsToStore();
+}
+function SecondSortFoods() {
+  storedFoods.sort(SortFoodsByMeat);
+  const parentElement = storedFoods[0].parentNode;
+  localStorage.setItem('foods', JSON.stringify(storedFoods));
+  AddFoodsToStore();
+}
+
+//להוסיף עוד נתונים על פי הפרמטרים החדשים (id, category)
+function AddFlightToStore() {
+  storedFlights = JSON.parse(localStorage.getItem(`flights`));
+
+  let str = ``;
+  for (let i = 0; i < storedFlights.length; i++) {
+    str += `
+    <div class="col-md-3">
+        <div class="card" data-id-number="1-12345" data-category="Electronics">
+          <img src="${storedFlights[i].image}" class="prod" alt="Product Image 1">
+          <div class="card-body">
+            <h5 class="card-title">${storedFlights[i].name}</h5>
+            <p class="card-text">
+              <span>ID Number: ${storedFlights[i].id}</span><br>
+              <span>Category: ${storedFlights[i].category}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedFlights[i].price}</span><br>
+              <span class="text-danger">Discount Price: $${Number(storedFlights[i].price * 0.70)}</span><br>
+              <span class="text-muted">Discount until: 2023-07-31</span>
+            </p>
+            <button class="flightToCart btn btn-primary prodBut" data-ind="${i}" data-prod="flight">Add to Cart</button>
+          </div>
+        </div>
+      </div>`
+  }
   productGridF.innerHTML = str;
-  // const addButton = document.getElementById(`addToCart`);
+
+  let flightToCart = document.querySelectorAll('.flightToCart');
+  for (let i = 0; i < flightToCart.length; i++) {
+    flightToCart[i].addEventListener('click', AddFlightToCart);
+  }
+
 }
 
 function AddFoodsToStore() {
@@ -707,19 +926,34 @@ function AddFoodsToStore() {
 
   for (let i = 0; i < storedFoods.length; i++) {
     str += `
-        <div class="card col-lg-3 m-2 mx-auto">
-            <img class="prod" src="${storedFoods[i].foodImage}" alt="Product 5">
-            <h3 class="fw-bold">${storedFoods[i].foodName}</h3>
-            <p><span class="fw-bold">Dairy/Meat: </span>${storedFoods[i].foodType}</p>
-            <p><span class="fw-bold">Kosher Status: </span>${storedFoods[i].kosherStatus}</p>
-            <p><span class="fw-bold">Hypoallregnic Ingedients: </span>${storedFoods[i].hypoallergenicStatus}</p>
-            <p><span class="fw-bold">Price: </span>${storedFoods[i].foodPrice}<span><i data-feather="dollar-sign"></i></span></p>
-            <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="food" id="foodToCart-${i}">Add to Cart</button>
-            </div>`;
+
+    <div class="col-md-3">
+        <div class="card">
+          <img src="${storedFoods[i].image}" class="card-img-top" alt="Product Image 1">
+          <div class="card-body">
+            <h5 class="card-title">${storedFoods[i].name}</h5>
+            <p class="card-text">
+            <span>ID: ${storedFoods[i].id}</span><br>
+              <span>Dairy/Meat: ${storedFoods[i].foodType}</span><br>
+              <span>Kosher Status: ${storedFoods[i].kosherStatus}</span><br>
+              <span>Hypoallergenic: ${storedFoods[i].hypoallergenicStatus}</span><br>
+              <span>Price: $${storedFoods[i].price}</span><br>
+              <span class="text-decoration-line-through">Original Price: $120</span><br>
+              <span class="text-danger">Discount Price: -$20</span><br>
+              <span class="text-muted">Discount until: 2023-07-31</span>
+            </p>
+            <button class="foodToCart btn btn-primary prodBut" data-ind="${i}" data-prod="food">Add to Cart</button>
+          </div>
+        </div>
+      </div>`;
 
   }
-
   productGridFood.innerHTML = str;
+
+  let foodToCart = document.querySelectorAll('.foodToCart');
+  for (let i = 0; i < foodToCart.length; i++) {
+    foodToCart[i].addEventListener('click', AddFoodToCart);
+  }
 }
 
 function AddSuitsToStore() {
@@ -728,18 +962,268 @@ function AddSuitsToStore() {
 
   for (let i = 0; i < storedSuits.length; i++) {
     str += `
-        <div class="card col-lg-3 m-2 mx-auto text-center">
-        <img class="prod" src ="${storedSuits[i].image}" alt="">
-        <h3 class = "fw-bold">${storedSuits[i].brandName}</h3>
-        <p class="fw-bold">Size: <span>${storedSuits[i].size}</span></p>
-        <p class="fw-bold">color: <span>${storedSuits[i].color}</span></p>
-        <p class="fw-bold">Price: <span>${storedSuits[i].price}</span></p>
-        <button class="btn btn-primary prodBut" data-ind="${i}" data-prod="suit" id="suitToCart-${i}">Add to Cart</button>
+    <div class="col-md-3">
+        <div class="card" >
+          <img src="${storedSuits[i].image}" class="card-img-top" alt="Space Suit Image">
+          <div class="card-body">
+            <h5 class="card-title">${storedSuits[i].name}</h5>
+            <p class="card-text">
+              <span>Size:${storedSuits[i].size}</span><br>
+              <span>Color: ${storedSuits[i].color}</span><br>
+              <span>Price: $${Number(storedSuits[i].price) * 0.70}</span><br>
+              <span class="text-decoration-line-through">Original Price: $${storedSuits[i].price}</span><br>
+              <span class="text-danger">Discount Price: -70%</span><br>
+              <span class="text-muted">Discount until: 2023-07-31</span>
+            </p>
+            <button class="suitToCart btn btn-primary prodBut" data-ind="${i}" data-prod="suit">Add to Cart</button>
+          </div>
         </div>
-        `;
-
+      </div>`;
   }
 
   productGridSuit.innerHTML = str;
+  let suitToCart = document.querySelectorAll('.suitToCart');
+  for (let i = 0; i < suitToCart.length; i++) {
+    suitToCart[i].addEventListener('click', AddSuitToCart);
+  }
 }
 
+function AddFlightToCart(event) {
+  let flightIndex = Number(event.target.dataset.ind);
+  cart = JSON.parse(sessionStorage.getItem('cart'))
+  cart.push(storedFlights[flightIndex])
+  sessionStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function AddFoodToCart(event) {
+  let foodIndex = Number(event.target.dataset.ind);
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
+  cart.push(storedFoods[foodIndex])
+  sessionStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+function AddSuitToCart(event) {
+  let suitIndex = Number(event.target.dataset.ind);
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
+  cart.push(storedSuits[suitIndex])
+  sessionStorage.setItem('cart', JSON.stringify(cart));
+  UpDatecart();
+}
+
+export function UpDatecart() {
+  let str = "";
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
+
+  for (let i = 0; i < cart.length; i++) {
+
+    str += `
+        <tr>
+        <td>${cart[i].id}</td>
+        <td><img src="${cart[i].image}" class="card-img-top" alt=""></td>
+        <td>${cart[i].category}</td>
+        <td>${cart[i].price}</td>
+        <td><button class="btn-sm btn-danger removeItem" data-ind="${i}">Remove</button></td>
+    `;
+  }
+
+  cartTable.innerHTML = str;
+  let removeItem = document.querySelectorAll('.removeItem')
+  removeItem.forEach(element => {
+    element.addEventListener('click', RemoveItem);
+  });
+  // innerHTML = str;
+
+}
+
+function RemoveItem(event) {
+  let index = Number(event.target.dataset.ind)
+  cart = JSON.parse(sessionStorage.getItem('cart'))
+  cart.splice(index, 1);
+  sessionStorage.setItem('cart', JSON.stringify(cart))
+  UpDatecart();
+}
+
+export function UpdateInformation() {
+  //כפתור שמראה את הסיסמא
+  document.querySelector("#showPassUpdate").addEventListener("click", () => {
+    let pass = document.querySelector("#passwordUpdate");
+    if (pass.type === "password") {
+      pass.type = "text";
+    } else {
+      pass.type = "password";
+    }
+  });
+  document.querySelector('#UpdateInformationForm').addEventListener('submit', (event) => {
+    event.preventDefault(); // Отменяем стандартное поведение отправки формы
+
+    // Получаем значения из полей формы
+    let firstName = document.getElementById("firstNameUpdate");
+    if (firstName.value) {
+      let firstNameValue = firstName.value;
+      for (let element of firstNameValue) {
+        if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+          firstName.style.border = "2px solid red";
+          return;
+        }
+        else {
+          firstName.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let lastName = document.getElementById("lastNameUpdate");
+    if (lastName.value) {
+      let lastNameValue = lastName.value;
+      for (let element of lastNameValue) {
+        if (!(element >= 'א' && element <= 'ת' || (element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || (element >= 'а' && element <= 'я') || (element >= 'А' && element <= 'Я'))) {
+          lastName.style.border = "2px solid red";
+          return;
+        }
+        else {
+          lastName.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let birthDate = document.getElementById("BirthDateUpdate");
+    let birthDateValue = new Date(birthDate.value);
+    let currentDate = new Date();
+    if (birthDate.value) {
+      if ((currentDate.getFullYear() - birthDateValue.getFullYear() < 120 && birthDateValue < currentDate)) {
+        birthDate.style.border = "2px solid green";
+      }
+      else {
+        birthDate.style.border = "2px solid red";
+        return
+      }
+    }
+
+    let email = document.getElementById("emailUpdate");
+    if (email.value) {
+      let emailValue = email.value;
+      for (let element of emailValue) {
+        if ((element >= 'a' && element <= 'z') || (element >= 'A' && element <= 'Z') || element == "@" || element == "." || (element >= '0' && element <= '9')) {
+          email.style.border = "2px solid green";
+        }
+        else {
+          email.style.border = "2px solid red";
+          return;
+        }
+      }
+    }
+
+
+    let password = document.getElementById("passwordUpdate");
+    if (password.value) {
+      if (CheckPassword(password)) {
+        password.style.border = "2px solid red";
+        return
+      }
+    }
+
+
+    let city = document.getElementById("cityUpdate");
+    if (city.value) {
+      let cityValue = city.value;
+      for (let element of cityValue) {
+        if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+          city.style.border = "2px solid red";
+          return;
+        }
+        else {
+          city.style.border = "2px solid green";
+        }
+      }
+    }
+
+
+    let street = document.getElementById("streetUpdate");
+    if (street.value) {
+      let streetValue = street.value;
+      for (let element of streetValue) {
+        if (!((element >= 'א' && element <= 'ת') || element == " ")) {
+          street.style.border = "2px solid red";
+          return;
+        }
+        else {
+          street.style.border = "2px solid green";
+        }
+      }
+    }
+
+    let number = document.getElementById("numberUpdate");
+    number.style.border = !number.value ? "2px solid red" : "2px solid green"
+
+    let connectedUser = JSON.parse(sessionStorage.getItem("connectedUser"));
+
+    if (firstName.value) {
+      connectedUser.firstName = firstName.value;
+    }
+    if (lastName.value) {
+      connectedUser.lastName = lastName.value;
+    }
+    if (birthDate.value) {
+      connectedUser.birthDate = birthDate.value;
+    }
+    if (email.value) {
+      connectedUser.email = email.value;
+    }
+    if (password.value) {
+      connectedUser.password = password.value;
+    }
+    if (city.value) {
+      connectedUser.city = city.value;
+    }
+    if (street.value) {
+      connectedUser.street = street.value;
+    }
+    if (number.value) {
+      connectedUser.number = number.value;
+    }
+
+    sessionStorage.setItem("connectedUser", JSON.stringify(connectedUser));
+
+    let users = JSON.parse(localStorage.getItem("users"));
+    let updatedUsers = users.map((user) =>
+      user.username === connectedUser.username ? connectedUser : user
+    );
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    window.location.assign('./managerProfile.html')
+  });
+}
+
+export function LogIn_LogOut() {
+  let user;
+  let userJSON = sessionStorage.getItem('connectedUser')
+  if (userJSON && userJSON != 'null' && userJSON != 'undefined') {
+    user = JSON.parse(userJSON);
+  }
+  if (user) {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('signup').style.display = 'none';
+    document.getElementById('logout').style.display = 'inline-block';
+  }
+  else {
+    document.getElementById('login').style.display = 'inline-block';
+    document.getElementById('signup').style.display = 'inline-block';
+    document.getElementById('logout').style.display = 'none';
+  }
+}
+
+export function LogOut() {
+  console.log('logout');
+  document.getElementById('login').style.display = 'inline-block';
+  document.getElementById('signup').style.display = 'inline-block';
+  document.getElementById('logout').style.display = 'none';
+  if (window.location.href.includes("/store")) {
+    document.getElementById('addItem').classList.add('none');
+  }
+  if (window.location.href.includes("/managerProfile")) {
+    document.getElementById('update-tab').classList.add('disabled');
+    document.getElementById('manage-tab').classList.add('disabled');
+  }
+  sessionStorage.setItem("connectedUser", JSON.stringify(null));
+  window.location.reload();
+}
