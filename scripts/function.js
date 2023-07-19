@@ -683,12 +683,12 @@ export function AddFood() {
     let foodType = document.querySelector('input[name="meat_dairy"]:checked').value;
     let kosherStatus = document.querySelector('input[name="kosher_noKosher"]:checked').value;
     let hypoallergenicStatus = document.querySelector('input[name="hypoallergenic_no"]:checked').value;
-    let foodImageInput = document.getElementById("addFoodImage");
+    let foodImage = document.getElementById("addFoodImage");
     let foodPrice = document.getElementById("addFoodPrice").value;
     let foodId = document.getElementById("addFoodId").value;
     let foodCategory = document.getElementById("addFoodCategory").value;
 
-    if (!foodName.value || !foodPrice || !foodId || !foodCategory) {
+    if (!foodName.value || !foodPrice || !foodId || !foodCategory || !foodImage.value) {
       alert("Please fill in all the fields.");
       return;
     }
@@ -703,12 +703,12 @@ export function AddFood() {
         foodName.style.border = "2px solid green";
       }
     }
-    let file = foodImageInput.files[0];
 
+    let file = foodImage.files[0];
     let reader = new FileReader();
 
     reader.onload = function (event) {
-      let img = event.target.result;
+      let Image = event.target.result;
 
       let food = {
         id: foodId,
@@ -717,7 +717,7 @@ export function AddFood() {
         foodType: foodType ? "meat" : "dairy",
         kosherStatus: kosherStatus ? "yes" : "no",
         hypoallergenicStatus: hypoallergenicStatus ? "yes" : "no",
-        foodImage: foodImage,
+        foodImage: Image,
         price: foodPrice,
       };
 
